@@ -27,9 +27,9 @@ Our issue tracker is available here: https://github.com/spring-projects/spring-o
 
 
 ## Database configuration
+The application datasource is MySQL, we've got a full digest of how to set it up on our [Wiki](https://github.com/Avilocap/ODB/wiki/InstanciarDatasourceOculusDB).
 
-
-You could start MySql locally with whatever installer works for your OS, or with docker:
+Also, you could start MySql locally with whatever installer works for your OS, or with docker:
 
 ```
 docker run -e MYSQL_USER=oculusdb -e MYSQL_PASSWORD=oculusdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=oculusdb -p 3306:3306 mysql:5.7.8
