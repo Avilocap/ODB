@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.oculusdb.owner;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -28,8 +28,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.samples.petclinic.visit.Visit;
-import org.springframework.samples.petclinic.visit.VisitRepository;
+import org.springframework.samples.oculusdb.visit.Visit;
+import org.springframework.samples.oculusdb.visit.VisitRepository;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.empty;

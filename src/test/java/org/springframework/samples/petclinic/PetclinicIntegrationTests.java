@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic;
+package org.springframework.samples.oculusdb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.petclinic.vet.VetRepository;
+import org.springframework.samples.oculusdb.vet.VetRepository;
 
 @SpringBootTest
-class PetclinicIntegrationTests {
+class oculusdbIntegrationTests {
 
 	@Autowired
 	private VetRepository vets;

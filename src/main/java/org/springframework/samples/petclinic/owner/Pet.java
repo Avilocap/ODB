@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.oculusdb.owner;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,8 +34,8 @@ import javax.persistence.Transient;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.samples.petclinic.model.NamedEntity;
-import org.springframework.samples.petclinic.visit.Visit;
+import org.springframework.samples.oculusdb.model.NamedEntity;
+import org.springframework.samples.oculusdb.visit.Visit;
 
 /**
  * Simple business object representing a pet.

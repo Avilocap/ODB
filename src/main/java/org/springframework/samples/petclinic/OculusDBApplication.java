@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic;
+package org.springframework.samples.oculusdb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * PetClinic Spring Boot Application.
+ * oculusdb Spring Boot Application.
  *
  * @author Dave Syer
  *
  */
 @SpringBootApplication(proxyBeanMethods = false)
-public class PetClinicApplication {
+public class oculusdbApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PetClinicApplication.class, args);
+		SpringApplication.run(oculusdbApplication.class, args);
 	}
 
 }

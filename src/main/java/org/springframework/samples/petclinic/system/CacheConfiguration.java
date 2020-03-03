@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.system;
+package org.springframework.samples.oculusdb.system;
 
 import javax.cache.configuration.MutableConfiguration;
 
@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Configuration;
 class CacheConfiguration {
 
 	@Bean
-	public JCacheManagerCustomizer petclinicCacheConfigurationCustomizer() {
+	public JCacheManagerCustomizer oculusdbCacheConfigurationCustomizer() {
 		return cm -> {
 			cm.createCache("vets", cacheConfiguration());
 		};

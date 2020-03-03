@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.service;
+package org.springframework.samples.oculusdb.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,15 +25,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.samples.petclinic.owner.Owner;
-import org.springframework.samples.petclinic.owner.OwnerRepository;
-import org.springframework.samples.petclinic.owner.Pet;
-import org.springframework.samples.petclinic.owner.PetRepository;
-import org.springframework.samples.petclinic.owner.PetType;
-import org.springframework.samples.petclinic.vet.Vet;
-import org.springframework.samples.petclinic.vet.VetRepository;
-import org.springframework.samples.petclinic.visit.Visit;
-import org.springframework.samples.petclinic.visit.VisitRepository;
+import org.springframework.samples.oculusdb.owner.Owner;
+import org.springframework.samples.oculusdb.owner.OwnerRepository;
+import org.springframework.samples.oculusdb.owner.Pet;
+import org.springframework.samples.oculusdb.owner.PetRepository;
+import org.springframework.samples.oculusdb.owner.PetType;
+import org.springframework.samples.oculusdb.vet.Vet;
+import org.springframework.samples.oculusdb.vet.VetRepository;
+import org.springframework.samples.oculusdb.visit.Visit;
+import org.springframework.samples.oculusdb.visit.VisitRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

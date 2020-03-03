@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.model;
+package org.springframework.samples.oculusdb.model;
 
 import java.util.Locale;
 import java.util.Set;

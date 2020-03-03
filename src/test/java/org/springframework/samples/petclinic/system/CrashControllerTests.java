@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.system;
+package org.springframework.samples.oculusdb.system;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

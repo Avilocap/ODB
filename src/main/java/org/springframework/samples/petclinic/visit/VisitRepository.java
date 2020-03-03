@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.visit;
+package org.springframework.samples.oculusdb.visit;
 
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.repository.Repository;
-import org.springframework.samples.petclinic.model.BaseEntity;
+import org.springframework.samples.oculusdb.model.BaseEntity;
 
 /**
  * Repository class for <code>Visit</code> domain objects All method names are compliant
