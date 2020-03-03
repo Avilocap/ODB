@@ -26,10 +26,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication(proxyBeanMethods = false)
-public class oculusdbApplication {
+public class OculusDBApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(oculusdbApplication.class, args);
+		SpringApplication.run(OculusDBApplication.class, args);
 	}
 
 }
