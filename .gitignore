@@ -12,6 +12,7 @@ local.properties
 .loadpath
 .recommenders
 .idea
+.DS_Store
 # External tool builders
 .externalToolBuilders/
 
