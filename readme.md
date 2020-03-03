@@ -12,7 +12,7 @@ cd ODB
 java -jar target/*.jar
 ```
 
-You can then access oculusdb here: http://localhost:8080/
+You can then access OculusDB here: http://localhost:8080/
 
 <img width="1042" alt="oculusdb-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
 
@@ -28,59 +28,12 @@ Our issue tracker is available here: https://github.com/spring-projects/spring-o
 
 ## Database configuration
 
-In its default configuration, oculusdb uses an in-memory database (HSQLDB) which
-gets populated at startup with data. A similar setup is provided for MySql in case a persistent database configuration is needed.
-Note that whenever the database type is changed, the app needs to be run with a different profile: `spring.profiles.active=mysql` for MySql.
 
 You could start MySql locally with whatever installer works for your OS, or with docker:
 
 ```
 docker run -e MYSQL_USER=oculusdb -e MYSQL_PASSWORD=oculusdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=oculusdb -p 3306:3306 mysql:5.7.8
 ```
-
-Further documentation is provided [here](https://github.com/spring-projects/spring-oculusdb/blob/master/src/main/resources/db/mysql/oculusdb_db_setup_mysql.txt).
-
-## Working with oculusdb in your IDE
-
-### Prerequisites
-The following items should be installed in your system:
-* Java 8 or newer.
-* git command line tool (https://help.github.com/articles/set-up-git)
-* Your preferred IDE 
-  * Eclipse with the m2e plugin. Note: when m2e is available, there is an m2 icon in `Help -> About` dialog. If m2e is
-  not there, just follow the install process here: https://www.eclipse.org/m2e/
-  * [Spring Tools Suite](https://spring.io/tools) (STS)
-  * IntelliJ IDEA
-  * [VS Code](https://code.visualstudio.com)
-
-### Steps:
-
-1) On the command line
-```
-git clone https://github.com/spring-projects/spring-oculusdb.git
-```
-2) Inside Eclipse or STS
-```
-File -> Import -> Maven -> Existing Maven project
-```
-
-Then either build on the command line `./mvnw generate-resources` or using the Eclipse launcher (right click on project and `Run As -> Maven install`) to generate the css. Run the application main method by right clicking on it and choosing `Run As -> Java Application`.
-
-3) Inside IntelliJ IDEA
-
-In the main menu, choose `File -> Open` and select the oculusdb [pom.xml](pom.xml). Click on the `Open` button.
-
-CSS files are generated from the Maven build. You can either build them on the command line `./mvnw generate-resources`
-or right click on the `spring-oculusdb` project then `Maven -> Generates sources and Update Folders`.
-
-A run configuration named `oculusdbApplication` should have been created for you if you're using a recent Ultimate
-version. Otherwise, run the application by right clicking on the `oculusdbApplication` main class and choosing
-`Run 'oculusdbApplication'`.
-
-4) Navigate to oculusdb
-
-Visit [http://localhost:8080](http://localhost:8080) in your browser.
-
 
 ## Looking for something in particular?
 
@@ -92,7 +45,7 @@ Visit [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Interesting Spring oculusdb branches and forks
 
-The Spring oculusdb master branch in the main [spring-projects](https://github.com/spring-projects/spring-oculusdb)
+The Spring OculusDB master branch in the main [spring-projects](https://github.com/spring-projects/spring-oculusdb)
 GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf. There are
 [quite a few forks](https://spring-oculusdb.github.io/docs/forks.html) in a special GitHub org
 [spring-oculusdb](https://github.com/spring-oculusdb). If you have a special interest in a different technology stack
@@ -119,7 +72,7 @@ For pull requests, editor preferences are available in the [editor config](.edit
 
 # License
 
-The Spring oculusdb sample application is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+The Spring OculusDB application is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
 
 [spring-oculusdb]: https://github.com/spring-projects/spring-oculusdb
 [spring-framework-oculusdb]: https://github.com/spring-oculusdb/spring-framework-oculusdb
