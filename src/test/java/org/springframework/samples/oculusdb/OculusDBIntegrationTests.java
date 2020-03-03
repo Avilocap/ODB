@@ -22,7 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.samples.oculusdb.vet.VetRepository;
 
 @SpringBootTest
-class oculusdbIntegrationTests {
+class OculusDBIntegrationTests {
 
 	@Autowired
 	private VetRepository vets;
