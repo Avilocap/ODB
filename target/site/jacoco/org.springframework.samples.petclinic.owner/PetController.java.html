@@ -40,73 +40,73 @@ class PetController {
 
 	private final OwnerRepository owners;
 
-<span class="fc" id="L43">	public PetController(PetRepository pets, OwnerRepository owners) {</span>
-<span class="fc" id="L44">		this.pets = pets;</span>
-<span class="fc" id="L45">		this.owners = owners;</span>
-<span class="fc" id="L46">	}</span>
+<span class="nc" id="L43">	public PetController(PetRepository pets, OwnerRepository owners) {</span>
+<span class="nc" id="L44">		this.pets = pets;</span>
+<span class="nc" id="L45">		this.owners = owners;</span>
+<span class="nc" id="L46">	}</span>
 
 	@ModelAttribute(&quot;types&quot;)
 	public Collection&lt;PetType&gt; populatePetTypes() {
-<span class="fc" id="L50">		return this.pets.findPetTypes();</span>
+<span class="nc" id="L50">		return this.pets.findPetTypes();</span>
 	}
 
 	@ModelAttribute(&quot;owner&quot;)
 	public Owner findOwner(@PathVariable(&quot;ownerId&quot;) int ownerId) {
-<span class="fc" id="L55">		return this.owners.findById(ownerId);</span>
+<span class="nc" id="L55">		return this.owners.findById(ownerId);</span>
 	}
 
 	@InitBinder(&quot;owner&quot;)
 	public void initOwnerBinder(WebDataBinder dataBinder) {
-<span class="fc" id="L60">		dataBinder.setDisallowedFields(&quot;id&quot;);</span>
-<span class="fc" id="L61">	}</span>
+<span class="nc" id="L60">		dataBinder.setDisallowedFields(&quot;id&quot;);</span>
+<span class="nc" id="L61">	}</span>
 
 	@InitBinder(&quot;pet&quot;)
 	public void initPetBinder(WebDataBinder dataBinder) {
-<span class="fc" id="L65">		dataBinder.setValidator(new PetValidator());</span>
-<span class="fc" id="L66">	}</span>
+<span class="nc" id="L65">		dataBinder.setValidator(new PetValidator());</span>
+<span class="nc" id="L66">	}</span>
 
 	@GetMapping(&quot;/pets/new&quot;)
 	public String initCreationForm(Owner owner, ModelMap model) {
-<span class="fc" id="L70">		Pet pet = new Pet();</span>
-<span class="fc" id="L71">		owner.addPet(pet);</span>
-<span class="fc" id="L72">		model.put(&quot;pet&quot;, pet);</span>
-<span class="fc" id="L73">		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc" id="L70">		Pet pet = new Pet();</span>
+<span class="nc" id="L71">		owner.addPet(pet);</span>
+<span class="nc" id="L72">		model.put(&quot;pet&quot;, pet);</span>
+<span class="nc" id="L73">		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
 	}
 
 	@PostMapping(&quot;/pets/new&quot;)
 	public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model) {
-<span class="pc bpc" id="L78" title="3 of 6 branches missed.">		if (StringUtils.hasLength(pet.getName()) &amp;&amp; pet.isNew() &amp;&amp; owner.getPet(pet.getName(), true) != null) {</span>
+<span class="nc bnc" id="L78" title="All 6 branches missed.">		if (StringUtils.hasLength(pet.getName()) &amp;&amp; pet.isNew() &amp;&amp; owner.getPet(pet.getName(), true) != null) {</span>
 <span class="nc" id="L79">			result.rejectValue(&quot;name&quot;, &quot;duplicate&quot;, &quot;already exists&quot;);</span>
 		}
-<span class="fc" id="L81">		owner.addPet(pet);</span>
-<span class="fc bfc" id="L82" title="All 2 branches covered.">		if (result.hasErrors()) {</span>
-<span class="fc" id="L83">			model.put(&quot;pet&quot;, pet);</span>
-<span class="fc" id="L84">			return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc" id="L81">		owner.addPet(pet);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		if (result.hasErrors()) {</span>
+<span class="nc" id="L83">			model.put(&quot;pet&quot;, pet);</span>
+<span class="nc" id="L84">			return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
 		}
 		else {
-<span class="fc" id="L87">			this.pets.save(pet);</span>
-<span class="fc" id="L88">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
+<span class="nc" id="L87">			this.pets.save(pet);</span>
+<span class="nc" id="L88">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
 		}
 	}
 
 	@GetMapping(&quot;/pets/{petId}/edit&quot;)
 	public String initUpdateForm(@PathVariable(&quot;petId&quot;) int petId, ModelMap model) {
-<span class="fc" id="L94">		Pet pet = this.pets.findById(petId);</span>
-<span class="fc" id="L95">		model.put(&quot;pet&quot;, pet);</span>
-<span class="fc" id="L96">		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc" id="L94">		Pet pet = this.pets.findById(petId);</span>
+<span class="nc" id="L95">		model.put(&quot;pet&quot;, pet);</span>
+<span class="nc" id="L96">		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
 	}
 
 	@PostMapping(&quot;/pets/{petId}/edit&quot;)
 	public String processUpdateForm(@Valid Pet pet, BindingResult result, Owner owner, ModelMap model) {
-<span class="fc bfc" id="L101" title="All 2 branches covered.">		if (result.hasErrors()) {</span>
-<span class="fc" id="L102">			pet.setOwner(owner);</span>
-<span class="fc" id="L103">			model.put(&quot;pet&quot;, pet);</span>
-<span class="fc" id="L104">			return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">		if (result.hasErrors()) {</span>
+<span class="nc" id="L102">			pet.setOwner(owner);</span>
+<span class="nc" id="L103">			model.put(&quot;pet&quot;, pet);</span>
+<span class="nc" id="L104">			return VIEWS_PETS_CREATE_OR_UPDATE_FORM;</span>
 		}
 		else {
-<span class="fc" id="L107">			owner.addPet(pet);</span>
-<span class="fc" id="L108">			this.pets.save(pet);</span>
-<span class="fc" id="L109">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
+<span class="nc" id="L107">			owner.addPet(pet);</span>
+<span class="nc" id="L108">			this.pets.save(pet);</span>
+<span class="nc" id="L109">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
 		}
 	}
 

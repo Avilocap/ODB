@@ -43,7 +43,7 @@ import org.springframework.samples.petclinic.model.Person;
  */
 @Entity
 @Table(name = &quot;vets&quot;)
-<span class="fc" id="L46">public class Vet extends Person {</span>
+<span class="nc" id="L46">public class Vet extends Person {</span>
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = &quot;vet_specialties&quot;, joinColumns = @JoinColumn(name = &quot;vet_id&quot;),
@@ -51,10 +51,10 @@ import org.springframework.samples.petclinic.model.Person;
 	private Set&lt;Specialty&gt; specialties;
 
 	protected Set&lt;Specialty&gt; getSpecialtiesInternal() {
-<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (this.specialties == null) {</span>
-<span class="fc" id="L55">			this.specialties = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">		if (this.specialties == null) {</span>
+<span class="nc" id="L55">			this.specialties = new HashSet&lt;&gt;();</span>
 		}
-<span class="fc" id="L57">		return this.specialties;</span>
+<span class="nc" id="L57">		return this.specialties;</span>
 	}
 
 	protected void setSpecialtiesInternal(Set&lt;Specialty&gt; specialties) {
@@ -63,18 +63,18 @@ import org.springframework.samples.petclinic.model.Person;
 
 	@XmlElement
 	public List&lt;Specialty&gt; getSpecialties() {
-<span class="fc" id="L66">		List&lt;Specialty&gt; sortedSpecs = new ArrayList&lt;&gt;(getSpecialtiesInternal());</span>
-<span class="fc" id="L67">		PropertyComparator.sort(sortedSpecs, new MutableSortDefinition(&quot;name&quot;, true, true));</span>
-<span class="fc" id="L68">		return Collections.unmodifiableList(sortedSpecs);</span>
+<span class="nc" id="L66">		List&lt;Specialty&gt; sortedSpecs = new ArrayList&lt;&gt;(getSpecialtiesInternal());</span>
+<span class="nc" id="L67">		PropertyComparator.sort(sortedSpecs, new MutableSortDefinition(&quot;name&quot;, true, true));</span>
+<span class="nc" id="L68">		return Collections.unmodifiableList(sortedSpecs);</span>
 	}
 
 	public int getNrOfSpecialties() {
-<span class="fc" id="L72">		return getSpecialtiesInternal().size();</span>
+<span class="nc" id="L72">		return getSpecialtiesInternal().size();</span>
 	}
 
 	public void addSpecialty(Specialty specialty) {
-<span class="fc" id="L76">		getSpecialtiesInternal().add(specialty);</span>
-<span class="fc" id="L77">	}</span>
+<span class="nc" id="L76">		getSpecialtiesInternal().add(specialty);</span>
+<span class="nc" id="L77">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

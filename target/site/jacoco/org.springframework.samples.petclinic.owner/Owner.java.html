@@ -44,7 +44,7 @@ import org.springframework.samples.petclinic.model.Person;
  */
 @Entity
 @Table(name = &quot;owners&quot;)
-<span class="fc" id="L47">public class Owner extends Person {</span>
+<span class="nc" id="L47">public class Owner extends Person {</span>
 
 	@Column(name = &quot;address&quot;)
 	@NotEmpty
@@ -63,52 +63,52 @@ import org.springframework.samples.petclinic.model.Person;
 	private Set&lt;Pet&gt; pets;
 
 	public String getAddress() {
-<span class="fc" id="L66">		return this.address;</span>
+<span class="nc" id="L66">		return this.address;</span>
 	}
 
 	public void setAddress(String address) {
-<span class="fc" id="L70">		this.address = address;</span>
-<span class="fc" id="L71">	}</span>
+<span class="nc" id="L70">		this.address = address;</span>
+<span class="nc" id="L71">	}</span>
 
 	public String getCity() {
-<span class="fc" id="L74">		return this.city;</span>
+<span class="nc" id="L74">		return this.city;</span>
 	}
 
 	public void setCity(String city) {
-<span class="fc" id="L78">		this.city = city;</span>
-<span class="fc" id="L79">	}</span>
+<span class="nc" id="L78">		this.city = city;</span>
+<span class="nc" id="L79">	}</span>
 
 	public String getTelephone() {
-<span class="fc" id="L82">		return this.telephone;</span>
+<span class="nc" id="L82">		return this.telephone;</span>
 	}
 
 	public void setTelephone(String telephone) {
-<span class="fc" id="L86">		this.telephone = telephone;</span>
-<span class="fc" id="L87">	}</span>
+<span class="nc" id="L86">		this.telephone = telephone;</span>
+<span class="nc" id="L87">	}</span>
 
 	protected Set&lt;Pet&gt; getPetsInternal() {
-<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (this.pets == null) {</span>
-<span class="fc" id="L91">			this.pets = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">		if (this.pets == null) {</span>
+<span class="nc" id="L91">			this.pets = new HashSet&lt;&gt;();</span>
 		}
-<span class="fc" id="L93">		return this.pets;</span>
+<span class="nc" id="L93">		return this.pets;</span>
 	}
 
 	protected void setPetsInternal(Set&lt;Pet&gt; pets) {
-<span class="fc" id="L97">		this.pets = pets;</span>
-<span class="fc" id="L98">	}</span>
+<span class="nc" id="L97">		this.pets = pets;</span>
+<span class="nc" id="L98">	}</span>
 
 	public List&lt;Pet&gt; getPets() {
-<span class="fc" id="L101">		List&lt;Pet&gt; sortedPets = new ArrayList&lt;&gt;(getPetsInternal());</span>
-<span class="fc" id="L102">		PropertyComparator.sort(sortedPets, new MutableSortDefinition(&quot;name&quot;, true, true));</span>
-<span class="fc" id="L103">		return Collections.unmodifiableList(sortedPets);</span>
+<span class="nc" id="L101">		List&lt;Pet&gt; sortedPets = new ArrayList&lt;&gt;(getPetsInternal());</span>
+<span class="nc" id="L102">		PropertyComparator.sort(sortedPets, new MutableSortDefinition(&quot;name&quot;, true, true));</span>
+<span class="nc" id="L103">		return Collections.unmodifiableList(sortedPets);</span>
 	}
 
 	public void addPet(Pet pet) {
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">		if (pet.isNew()) {</span>
-<span class="fc" id="L108">			getPetsInternal().add(pet);</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">		if (pet.isNew()) {</span>
+<span class="nc" id="L108">			getPetsInternal().add(pet);</span>
 		}
-<span class="fc" id="L110">		pet.setOwner(this);</span>
-<span class="fc" id="L111">	}</span>
+<span class="nc" id="L110">		pet.setOwner(this);</span>
+<span class="nc" id="L111">	}</span>
 
 	/**
 	 * Return the Pet with the given name, or null if none found for this Owner.
@@ -125,8 +125,8 @@ import org.springframework.samples.petclinic.model.Person;
 	 * @return true if pet name is already in use
 	 */
 	public Pet getPet(String name, boolean ignoreNew) {
-<span class="fc" id="L128">		name = name.toLowerCase();</span>
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">		for (Pet pet : getPetsInternal()) {</span>
+<span class="nc" id="L128">		name = name.toLowerCase();</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		for (Pet pet : getPetsInternal()) {</span>
 <span class="nc bnc" id="L130" title="All 4 branches missed.">			if (!ignoreNew || !pet.isNew()) {</span>
 <span class="nc" id="L131">				String compName = pet.getName();</span>
 <span class="nc" id="L132">				compName = compName.toLowerCase();</span>
@@ -135,16 +135,16 @@ import org.springframework.samples.petclinic.model.Person;
 				}
 			}
 <span class="nc" id="L137">		}</span>
-<span class="fc" id="L138">		return null;</span>
+<span class="nc" id="L138">		return null;</span>
 	}
 
 	@Override
 	public String toString() {
-<span class="fc" id="L143">		return new ToStringCreator(this)</span>
+<span class="nc" id="L143">		return new ToStringCreator(this)</span>
 
-<span class="fc" id="L145">				.append(&quot;id&quot;, this.getId()).append(&quot;new&quot;, this.isNew()).append(&quot;lastName&quot;, this.getLastName())</span>
-<span class="fc" id="L146">				.append(&quot;firstName&quot;, this.getFirstName()).append(&quot;address&quot;, this.address).append(&quot;city&quot;, this.city)</span>
-<span class="fc" id="L147">				.append(&quot;telephone&quot;, this.telephone).toString();</span>
+<span class="nc" id="L145">				.append(&quot;id&quot;, this.getId()).append(&quot;new&quot;, this.isNew()).append(&quot;lastName&quot;, this.getLastName())</span>
+<span class="nc" id="L146">				.append(&quot;firstName&quot;, this.getFirstName()).append(&quot;address&quot;, this.address).append(&quot;city&quot;, this.city)</span>
+<span class="nc" id="L147">				.append(&quot;telephone&quot;, this.telephone).toString();</span>
 	}
 
 }

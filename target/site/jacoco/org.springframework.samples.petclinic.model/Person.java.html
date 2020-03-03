@@ -25,7 +25,7 @@ import javax.validation.constraints.NotEmpty;
  * @author Ken Krebs
  */
 @MappedSuperclass
-<span class="fc" id="L28">public class Person extends BaseEntity {</span>
+<span class="nc" id="L28">public class Person extends BaseEntity {</span>
 
 	@Column(name = &quot;first_name&quot;)
 	@NotEmpty
@@ -36,20 +36,20 @@ import javax.validation.constraints.NotEmpty;
 	private String lastName;
 
 	public String getFirstName() {
-<span class="fc" id="L39">		return this.firstName;</span>
+<span class="nc" id="L39">		return this.firstName;</span>
 	}
 
 	public void setFirstName(String firstName) {
-<span class="fc" id="L43">		this.firstName = firstName;</span>
-<span class="fc" id="L44">	}</span>
+<span class="nc" id="L43">		this.firstName = firstName;</span>
+<span class="nc" id="L44">	}</span>
 
 	public String getLastName() {
-<span class="fc" id="L47">		return this.lastName;</span>
+<span class="nc" id="L47">		return this.lastName;</span>
 	}
 
 	public void setLastName(String lastName) {
-<span class="fc" id="L51">		this.lastName = lastName;</span>
-<span class="fc" id="L52">	}</span>
+<span class="nc" id="L51">		this.lastName = lastName;</span>
+<span class="nc" id="L52">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

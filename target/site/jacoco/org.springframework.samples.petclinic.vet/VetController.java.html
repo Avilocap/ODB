@@ -32,27 +32,27 @@ class VetController {
 
 	private final VetRepository vets;
 
-<span class="fc" id="L35">	public VetController(VetRepository clinicService) {</span>
-<span class="fc" id="L36">		this.vets = clinicService;</span>
-<span class="fc" id="L37">	}</span>
+<span class="nc" id="L35">	public VetController(VetRepository clinicService) {</span>
+<span class="nc" id="L36">		this.vets = clinicService;</span>
+<span class="nc" id="L37">	}</span>
 
 	@GetMapping(&quot;/vets.html&quot;)
 	public String showVetList(Map&lt;String, Object&gt; model) {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet
 		// objects so it is simpler for Object-Xml mapping
-<span class="fc" id="L43">		Vets vets = new Vets();</span>
-<span class="fc" id="L44">		vets.getVetList().addAll(this.vets.findAll());</span>
-<span class="fc" id="L45">		model.put(&quot;vets&quot;, vets);</span>
-<span class="fc" id="L46">		return &quot;vets/vetList&quot;;</span>
+<span class="nc" id="L43">		Vets vets = new Vets();</span>
+<span class="nc" id="L44">		vets.getVetList().addAll(this.vets.findAll());</span>
+<span class="nc" id="L45">		model.put(&quot;vets&quot;, vets);</span>
+<span class="nc" id="L46">		return &quot;vets/vetList&quot;;</span>
 	}
 
 	@GetMapping({ &quot;/vets&quot; })
 	public @ResponseBody Vets showResourcesVetList() {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet
 		// objects so it is simpler for JSon/Object mapping
-<span class="fc" id="L53">		Vets vets = new Vets();</span>
-<span class="fc" id="L54">		vets.getVetList().addAll(this.vets.findAll());</span>
-<span class="fc" id="L55">		return vets;</span>
+<span class="nc" id="L53">		Vets vets = new Vets();</span>
+<span class="nc" id="L54">		vets.getVetList().addAll(this.vets.findAll());</span>
+<span class="nc" id="L55">		return vets;</span>
 	}
 
 }

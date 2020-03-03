@@ -46,7 +46,7 @@ import org.springframework.samples.petclinic.visit.Visit;
  */
 @Entity
 @Table(name = &quot;pets&quot;)
-<span class="fc" id="L49">public class Pet extends NamedEntity {</span>
+<span class="nc" id="L49">public class Pet extends NamedEntity {</span>
 
 	@Column(name = &quot;birth_date&quot;)
 	@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)
@@ -60,54 +60,54 @@ import org.springframework.samples.petclinic.visit.Visit;
 	@JoinColumn(name = &quot;owner_id&quot;)
 	private Owner owner;
 
-<span class="fc" id="L63">	@Transient</span>
+<span class="nc" id="L63">	@Transient</span>
 	private Set&lt;Visit&gt; visits = new LinkedHashSet&lt;&gt;();
 
 	public void setBirthDate(LocalDate birthDate) {
-<span class="fc" id="L67">		this.birthDate = birthDate;</span>
-<span class="fc" id="L68">	}</span>
+<span class="nc" id="L67">		this.birthDate = birthDate;</span>
+<span class="nc" id="L68">	}</span>
 
 	public LocalDate getBirthDate() {
-<span class="fc" id="L71">		return this.birthDate;</span>
+<span class="nc" id="L71">		return this.birthDate;</span>
 	}
 
 	public PetType getType() {
-<span class="fc" id="L75">		return this.type;</span>
+<span class="nc" id="L75">		return this.type;</span>
 	}
 
 	public void setType(PetType type) {
-<span class="fc" id="L79">		this.type = type;</span>
-<span class="fc" id="L80">	}</span>
+<span class="nc" id="L79">		this.type = type;</span>
+<span class="nc" id="L80">	}</span>
 
 	public Owner getOwner() {
-<span class="fc" id="L83">		return this.owner;</span>
+<span class="nc" id="L83">		return this.owner;</span>
 	}
 
 	protected void setOwner(Owner owner) {
-<span class="fc" id="L87">		this.owner = owner;</span>
-<span class="fc" id="L88">	}</span>
+<span class="nc" id="L87">		this.owner = owner;</span>
+<span class="nc" id="L88">	}</span>
 
 	protected Set&lt;Visit&gt; getVisitsInternal() {
-<span class="pc bpc" id="L91" title="1 of 2 branches missed.">		if (this.visits == null) {</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">		if (this.visits == null) {</span>
 <span class="nc" id="L92">			this.visits = new HashSet&lt;&gt;();</span>
 		}
-<span class="fc" id="L94">		return this.visits;</span>
+<span class="nc" id="L94">		return this.visits;</span>
 	}
 
 	protected void setVisitsInternal(Collection&lt;Visit&gt; visits) {
-<span class="fc" id="L98">		this.visits = new LinkedHashSet&lt;&gt;(visits);</span>
-<span class="fc" id="L99">	}</span>
+<span class="nc" id="L98">		this.visits = new LinkedHashSet&lt;&gt;(visits);</span>
+<span class="nc" id="L99">	}</span>
 
 	public List&lt;Visit&gt; getVisits() {
-<span class="fc" id="L102">		List&lt;Visit&gt; sortedVisits = new ArrayList&lt;&gt;(getVisitsInternal());</span>
-<span class="fc" id="L103">		PropertyComparator.sort(sortedVisits, new MutableSortDefinition(&quot;date&quot;, false, false));</span>
-<span class="fc" id="L104">		return Collections.unmodifiableList(sortedVisits);</span>
+<span class="nc" id="L102">		List&lt;Visit&gt; sortedVisits = new ArrayList&lt;&gt;(getVisitsInternal());</span>
+<span class="nc" id="L103">		PropertyComparator.sort(sortedVisits, new MutableSortDefinition(&quot;date&quot;, false, false));</span>
+<span class="nc" id="L104">		return Collections.unmodifiableList(sortedVisits);</span>
 	}
 
 	public void addVisit(Visit visit) {
-<span class="fc" id="L108">		getVisitsInternal().add(visit);</span>
-<span class="fc" id="L109">		visit.setPetId(this.getId());</span>
-<span class="fc" id="L110">	}</span>
+<span class="nc" id="L108">		getVisitsInternal().add(visit);</span>
+<span class="nc" id="L109">		visit.setPetId(this.getId());</span>
+<span class="nc" id="L110">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

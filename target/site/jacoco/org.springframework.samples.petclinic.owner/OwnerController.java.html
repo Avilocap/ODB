@@ -45,84 +45,84 @@ class OwnerController {
 
 	private VisitRepository visits;
 
-<span class="fc" id="L48">	public OwnerController(OwnerRepository clinicService, VisitRepository visits) {</span>
-<span class="fc" id="L49">		this.owners = clinicService;</span>
-<span class="fc" id="L50">		this.visits = visits;</span>
-<span class="fc" id="L51">	}</span>
+<span class="nc" id="L48">	public OwnerController(OwnerRepository clinicService, VisitRepository visits) {</span>
+<span class="nc" id="L49">		this.owners = clinicService;</span>
+<span class="nc" id="L50">		this.visits = visits;</span>
+<span class="nc" id="L51">	}</span>
 
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
-<span class="fc" id="L55">		dataBinder.setDisallowedFields(&quot;id&quot;);</span>
-<span class="fc" id="L56">	}</span>
+<span class="nc" id="L55">		dataBinder.setDisallowedFields(&quot;id&quot;);</span>
+<span class="nc" id="L56">	}</span>
 
 	@GetMapping(&quot;/owners/new&quot;)
 	public String initCreationForm(Map&lt;String, Object&gt; model) {
-<span class="fc" id="L60">		Owner owner = new Owner();</span>
-<span class="fc" id="L61">		model.put(&quot;owner&quot;, owner);</span>
-<span class="fc" id="L62">		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc" id="L60">		Owner owner = new Owner();</span>
+<span class="nc" id="L61">		model.put(&quot;owner&quot;, owner);</span>
+<span class="nc" id="L62">		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
 	}
 
 	@PostMapping(&quot;/owners/new&quot;)
 	public String processCreationForm(@Valid Owner owner, BindingResult result) {
-<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (result.hasErrors()) {</span>
-<span class="fc" id="L68">			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		if (result.hasErrors()) {</span>
+<span class="nc" id="L68">			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
 		}
 		else {
-<span class="fc" id="L71">			this.owners.save(owner);</span>
-<span class="fc" id="L72">			return &quot;redirect:/owners/&quot; + owner.getId();</span>
+<span class="nc" id="L71">			this.owners.save(owner);</span>
+<span class="nc" id="L72">			return &quot;redirect:/owners/&quot; + owner.getId();</span>
 		}
 	}
 
 	@GetMapping(&quot;/owners/find&quot;)
 	public String initFindForm(Map&lt;String, Object&gt; model) {
-<span class="fc" id="L78">		model.put(&quot;owner&quot;, new Owner());</span>
-<span class="fc" id="L79">		return &quot;owners/findOwners&quot;;</span>
+<span class="nc" id="L78">		model.put(&quot;owner&quot;, new Owner());</span>
+<span class="nc" id="L79">		return &quot;owners/findOwners&quot;;</span>
 	}
 
 	@GetMapping(&quot;/owners&quot;)
 	public String processFindForm(Owner owner, BindingResult result, Map&lt;String, Object&gt; model) {
 
 		// allow parameterless GET request for /owners to return all records
-<span class="fc bfc" id="L86" title="All 2 branches covered.">		if (owner.getLastName() == null) {</span>
-<span class="fc" id="L87">			owner.setLastName(&quot;&quot;); // empty string signifies broadest possible search</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		if (owner.getLastName() == null) {</span>
+<span class="nc" id="L87">			owner.setLastName(&quot;&quot;); // empty string signifies broadest possible search</span>
 		}
 
 		// find owners by last name
-<span class="fc" id="L91">		Collection&lt;Owner&gt; results = this.owners.findByLastName(owner.getLastName());</span>
-<span class="fc bfc" id="L92" title="All 2 branches covered.">		if (results.isEmpty()) {</span>
+<span class="nc" id="L91">		Collection&lt;Owner&gt; results = this.owners.findByLastName(owner.getLastName());</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		if (results.isEmpty()) {</span>
 			// no owners found
-<span class="fc" id="L94">			result.rejectValue(&quot;lastName&quot;, &quot;notFound&quot;, &quot;not found&quot;);</span>
-<span class="fc" id="L95">			return &quot;owners/findOwners&quot;;</span>
+<span class="nc" id="L94">			result.rejectValue(&quot;lastName&quot;, &quot;notFound&quot;, &quot;not found&quot;);</span>
+<span class="nc" id="L95">			return &quot;owners/findOwners&quot;;</span>
 		}
-<span class="fc bfc" id="L97" title="All 2 branches covered.">		else if (results.size() == 1) {</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		else if (results.size() == 1) {</span>
 			// 1 owner found
-<span class="fc" id="L99">			owner = results.iterator().next();</span>
-<span class="fc" id="L100">			return &quot;redirect:/owners/&quot; + owner.getId();</span>
+<span class="nc" id="L99">			owner = results.iterator().next();</span>
+<span class="nc" id="L100">			return &quot;redirect:/owners/&quot; + owner.getId();</span>
 		}
 		else {
 			// multiple owners found
-<span class="fc" id="L104">			model.put(&quot;selections&quot;, results);</span>
-<span class="fc" id="L105">			return &quot;owners/ownersList&quot;;</span>
+<span class="nc" id="L104">			model.put(&quot;selections&quot;, results);</span>
+<span class="nc" id="L105">			return &quot;owners/ownersList&quot;;</span>
 		}
 	}
 
 	@GetMapping(&quot;/owners/{ownerId}/edit&quot;)
 	public String initUpdateOwnerForm(@PathVariable(&quot;ownerId&quot;) int ownerId, Model model) {
-<span class="fc" id="L111">		Owner owner = this.owners.findById(ownerId);</span>
-<span class="fc" id="L112">		model.addAttribute(owner);</span>
-<span class="fc" id="L113">		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc" id="L111">		Owner owner = this.owners.findById(ownerId);</span>
+<span class="nc" id="L112">		model.addAttribute(owner);</span>
+<span class="nc" id="L113">		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
 	}
 
 	@PostMapping(&quot;/owners/{ownerId}/edit&quot;)
 	public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result,
 			@PathVariable(&quot;ownerId&quot;) int ownerId) {
-<span class="fc bfc" id="L119" title="All 2 branches covered.">		if (result.hasErrors()) {</span>
-<span class="fc" id="L120">			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">		if (result.hasErrors()) {</span>
+<span class="nc" id="L120">			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;</span>
 		}
 		else {
-<span class="fc" id="L123">			owner.setId(ownerId);</span>
-<span class="fc" id="L124">			this.owners.save(owner);</span>
-<span class="fc" id="L125">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
+<span class="nc" id="L123">			owner.setId(ownerId);</span>
+<span class="nc" id="L124">			this.owners.save(owner);</span>
+<span class="nc" id="L125">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
 		}
 	}
 
@@ -133,13 +133,13 @@ class OwnerController {
 	 */
 	@GetMapping(&quot;/owners/{ownerId}&quot;)
 	public ModelAndView showOwner(@PathVariable(&quot;ownerId&quot;) int ownerId) {
-<span class="fc" id="L136">		ModelAndView mav = new ModelAndView(&quot;owners/ownerDetails&quot;);</span>
-<span class="fc" id="L137">		Owner owner = this.owners.findById(ownerId);</span>
-<span class="fc bfc" id="L138" title="All 2 branches covered.">		for (Pet pet : owner.getPets()) {</span>
-<span class="fc" id="L139">			pet.setVisitsInternal(visits.findByPetId(pet.getId()));</span>
-<span class="fc" id="L140">		}</span>
-<span class="fc" id="L141">		mav.addObject(owner);</span>
-<span class="fc" id="L142">		return mav;</span>
+<span class="nc" id="L136">		ModelAndView mav = new ModelAndView(&quot;owners/ownerDetails&quot;);</span>
+<span class="nc" id="L137">		Owner owner = this.owners.findById(ownerId);</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">		for (Pet pet : owner.getPets()) {</span>
+<span class="nc" id="L139">			pet.setVisitsInternal(visits.findByPetId(pet.getId()));</span>
+<span class="nc" id="L140">		}</span>
+<span class="nc" id="L141">		mav.addObject(owner);</span>
+<span class="nc" id="L142">		return mav;</span>
 	}
 
 }

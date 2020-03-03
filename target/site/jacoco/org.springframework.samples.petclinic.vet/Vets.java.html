@@ -28,16 +28,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Arjen Poutsma
  */
 @XmlRootElement
-<span class="fc" id="L31">public class Vets {</span>
+<span class="nc" id="L31">public class Vets {</span>
 
 	private List&lt;Vet&gt; vets;
 
 	@XmlElement
 	public List&lt;Vet&gt; getVetList() {
-<span class="fc bfc" id="L37" title="All 2 branches covered.">		if (vets == null) {</span>
-<span class="fc" id="L38">			vets = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">		if (vets == null) {</span>
+<span class="nc" id="L38">			vets = new ArrayList&lt;&gt;();</span>
 		}
-<span class="fc" id="L40">		return vets;</span>
+<span class="nc" id="L40">		return vets;</span>
 	}
 
 }

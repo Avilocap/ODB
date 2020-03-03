@@ -29,36 +29,36 @@ import org.springframework.validation.Validator;
  * @author Ken Krebs
  * @author Juergen Hoeller
  */
-<span class="fc" id="L32">public class PetValidator implements Validator {</span>
+<span class="nc" id="L32">public class PetValidator implements Validator {</span>
 
 	private static final String REQUIRED = &quot;required&quot;;
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-<span class="fc" id="L38">		Pet pet = (Pet) obj;</span>
-<span class="fc" id="L39">		String name = pet.getName();</span>
+<span class="nc" id="L38">		Pet pet = (Pet) obj;</span>
+<span class="nc" id="L39">		String name = pet.getName();</span>
 		// name validation
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">		if (!StringUtils.hasLength(name)) {</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">		if (!StringUtils.hasLength(name)) {</span>
 <span class="nc" id="L42">			errors.rejectValue(&quot;name&quot;, REQUIRED, REQUIRED);</span>
 		}
 
 		// type validation
-<span class="pc bpc" id="L46" title="1 of 4 branches missed.">		if (pet.isNew() &amp;&amp; pet.getType() == null) {</span>
-<span class="fc" id="L47">			errors.rejectValue(&quot;type&quot;, REQUIRED, REQUIRED);</span>
+<span class="nc bnc" id="L46" title="All 4 branches missed.">		if (pet.isNew() &amp;&amp; pet.getType() == null) {</span>
+<span class="nc" id="L47">			errors.rejectValue(&quot;type&quot;, REQUIRED, REQUIRED);</span>
 		}
 
 		// birth date validation
-<span class="fc bfc" id="L51" title="All 2 branches covered.">		if (pet.getBirthDate() == null) {</span>
-<span class="fc" id="L52">			errors.rejectValue(&quot;birthDate&quot;, REQUIRED, REQUIRED);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">		if (pet.getBirthDate() == null) {</span>
+<span class="nc" id="L52">			errors.rejectValue(&quot;birthDate&quot;, REQUIRED, REQUIRED);</span>
 		}
-<span class="fc" id="L54">	}</span>
+<span class="nc" id="L54">	}</span>
 
 	/**
 	 * This Validator validates *just* Pet instances
 	 */
 	@Override
 	public boolean supports(Class&lt;?&gt; clazz) {
-<span class="fc" id="L61">		return Pet.class.isAssignableFrom(clazz);</span>
+<span class="nc" id="L61">		return Pet.class.isAssignableFrom(clazz);</span>
 	}
 
 }

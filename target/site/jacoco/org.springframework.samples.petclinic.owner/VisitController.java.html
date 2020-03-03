@@ -44,15 +44,15 @@ class VisitController {
 
 	private final PetRepository pets;
 
-<span class="fc" id="L47">	public VisitController(VisitRepository visits, PetRepository pets) {</span>
-<span class="fc" id="L48">		this.visits = visits;</span>
-<span class="fc" id="L49">		this.pets = pets;</span>
-<span class="fc" id="L50">	}</span>
+<span class="nc" id="L47">	public VisitController(VisitRepository visits, PetRepository pets) {</span>
+<span class="nc" id="L48">		this.visits = visits;</span>
+<span class="nc" id="L49">		this.pets = pets;</span>
+<span class="nc" id="L50">	}</span>
 
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
-<span class="fc" id="L54">		dataBinder.setDisallowedFields(&quot;id&quot;);</span>
-<span class="fc" id="L55">	}</span>
+<span class="nc" id="L54">		dataBinder.setDisallowedFields(&quot;id&quot;);</span>
+<span class="nc" id="L55">	}</span>
 
 	/**
 	 * Called before each and every @RequestMapping annotated method. 2 goals: - Make sure
@@ -63,29 +63,29 @@ class VisitController {
 	 */
 	@ModelAttribute(&quot;visit&quot;)
 	public Visit loadPetWithVisit(@PathVariable(&quot;petId&quot;) int petId, Map&lt;String, Object&gt; model) {
-<span class="fc" id="L66">		Pet pet = this.pets.findById(petId);</span>
-<span class="fc" id="L67">		pet.setVisitsInternal(this.visits.findByPetId(petId));</span>
-<span class="fc" id="L68">		model.put(&quot;pet&quot;, pet);</span>
-<span class="fc" id="L69">		Visit visit = new Visit();</span>
-<span class="fc" id="L70">		pet.addVisit(visit);</span>
-<span class="fc" id="L71">		return visit;</span>
+<span class="nc" id="L66">		Pet pet = this.pets.findById(petId);</span>
+<span class="nc" id="L67">		pet.setVisitsInternal(this.visits.findByPetId(petId));</span>
+<span class="nc" id="L68">		model.put(&quot;pet&quot;, pet);</span>
+<span class="nc" id="L69">		Visit visit = new Visit();</span>
+<span class="nc" id="L70">		pet.addVisit(visit);</span>
+<span class="nc" id="L71">		return visit;</span>
 	}
 
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
 	@GetMapping(&quot;/owners/*/pets/{petId}/visits/new&quot;)
 	public String initNewVisitForm(@PathVariable(&quot;petId&quot;) int petId, Map&lt;String, Object&gt; model) {
-<span class="fc" id="L77">		return &quot;pets/createOrUpdateVisitForm&quot;;</span>
+<span class="nc" id="L77">		return &quot;pets/createOrUpdateVisitForm&quot;;</span>
 	}
 
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
 	@PostMapping(&quot;/owners/{ownerId}/pets/{petId}/visits/new&quot;)
 	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
-<span class="fc bfc" id="L83" title="All 2 branches covered.">		if (result.hasErrors()) {</span>
-<span class="fc" id="L84">			return &quot;pets/createOrUpdateVisitForm&quot;;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		if (result.hasErrors()) {</span>
+<span class="nc" id="L84">			return &quot;pets/createOrUpdateVisitForm&quot;;</span>
 		}
 		else {
-<span class="fc" id="L87">			this.visits.save(visit);</span>
-<span class="fc" id="L88">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
+<span class="nc" id="L87">			this.visits.save(visit);</span>
+<span class="nc" id="L88">			return &quot;redirect:/owners/{ownerId}&quot;;</span>
 		}
 	}
 

@@ -30,22 +30,22 @@ import javax.persistence.MappedSuperclass;
  * @author Juergen Hoeller
  */
 @MappedSuperclass
-<span class="fc" id="L33">public class BaseEntity implements Serializable {</span>
+<span class="nc" id="L33">public class BaseEntity implements Serializable {</span>
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	public Integer getId() {
-<span class="fc" id="L40">		return id;</span>
+<span class="nc" id="L40">		return id;</span>
 	}
 
 	public void setId(Integer id) {
-<span class="fc" id="L44">		this.id = id;</span>
-<span class="fc" id="L45">	}</span>
+<span class="nc" id="L44">		this.id = id;</span>
+<span class="nc" id="L45">	}</span>
 
 	public boolean isNew() {
-<span class="fc bfc" id="L48" title="All 2 branches covered.">		return this.id == null;</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		return this.id == null;</span>
 	}
 
 }

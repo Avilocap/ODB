@@ -26,22 +26,22 @@ import javax.persistence.MappedSuperclass;
  * @author Juergen Hoeller
  */
 @MappedSuperclass
-<span class="fc" id="L29">public class NamedEntity extends BaseEntity {</span>
+<span class="nc" id="L29">public class NamedEntity extends BaseEntity {</span>
 
 	@Column(name = &quot;name&quot;)
 	private String name;
 
 	public String getName() {
-<span class="fc" id="L35">		return this.name;</span>
+<span class="nc" id="L35">		return this.name;</span>
 	}
 
 	public void setName(String name) {
-<span class="fc" id="L39">		this.name = name;</span>
-<span class="fc" id="L40">	}</span>
+<span class="nc" id="L39">		this.name = name;</span>
+<span class="nc" id="L40">	}</span>
 
 	@Override
 	public String toString() {
-<span class="fc" id="L44">		return this.getName();</span>
+<span class="nc" id="L44">		return this.getName();</span>
 	}
 
 }

@@ -39,24 +39,24 @@ public class PetTypeFormatter implements Formatter&lt;PetType&gt; {
 	private final PetRepository pets;
 
 	@Autowired
-<span class="fc" id="L42">	public PetTypeFormatter(PetRepository pets) {</span>
-<span class="fc" id="L43">		this.pets = pets;</span>
-<span class="fc" id="L44">	}</span>
+<span class="nc" id="L42">	public PetTypeFormatter(PetRepository pets) {</span>
+<span class="nc" id="L43">		this.pets = pets;</span>
+<span class="nc" id="L44">	}</span>
 
 	@Override
 	public String print(PetType petType, Locale locale) {
-<span class="fc" id="L48">		return petType.getName();</span>
+<span class="nc" id="L48">		return petType.getName();</span>
 	}
 
 	@Override
 	public PetType parse(String text, Locale locale) throws ParseException {
-<span class="fc" id="L53">		Collection&lt;PetType&gt; findPetTypes = this.pets.findPetTypes();</span>
-<span class="fc bfc" id="L54" title="All 2 branches covered.">		for (PetType type : findPetTypes) {</span>
-<span class="fc bfc" id="L55" title="All 2 branches covered.">			if (type.getName().equals(text)) {</span>
-<span class="fc" id="L56">				return type;</span>
+<span class="nc" id="L53">		Collection&lt;PetType&gt; findPetTypes = this.pets.findPetTypes();</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">		for (PetType type : findPetTypes) {</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">			if (type.getName().equals(text)) {</span>
+<span class="nc" id="L56">				return type;</span>
 			}
-<span class="fc" id="L58">		}</span>
-<span class="fc" id="L59">		throw new ParseException(&quot;type not found: &quot; + text, 0);</span>
+<span class="nc" id="L58">		}</span>
+<span class="nc" id="L59">		throw new ParseException(&quot;type not found: &quot; + text, 0);</span>
 	}
 
 }
