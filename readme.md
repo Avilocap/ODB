@@ -43,14 +43,6 @@ docker run -e MYSQL_USER=oculusdb -e MYSQL_PASSWORD=oculusdb -e MYSQL_ROOT_PASSW
 |Properties Files | [application.properties](https://github.com/spring-projects/spring-oculusdb/blob/master/src/main/resources) |
 |Caching | [CacheConfiguration](https://github.com/spring-projects/spring-oculusdb/blob/master/src/main/java/org/springframework/samples/oculusdb/system/CacheConfiguration.java) |
 
-## Interesting Spring oculusdb branches and forks
-
-The Spring OculusDB master branch in the main [spring-projects](https://github.com/spring-projects/spring-oculusdb)
-GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf. There are
-[quite a few forks](https://spring-oculusdb.github.io/docs/forks.html) in a special GitHub org
-[spring-oculusdb](https://github.com/spring-oculusdb). If you have a special interest in a different technology stack
-that could be used to implement the Pet Clinic then please join the community there.
-
 
 ## Interaction with other open source projects
 
@@ -63,12 +55,6 @@ Here is a list of them:
 | Bean Validation / Hibernate Validator: simplify Maven dependencies and backward compatibility |[HV-790](https://hibernate.atlassian.net/browse/HV-790) and [HV-792](https://hibernate.atlassian.net/browse/HV-792) |
 | Spring Data: provide more flexibility when working with JPQL queries | [DATAJPA-292](https://jira.springsource.org/browse/DATAJPA-292) |
 
-
-# Contributing
-
-The [issue tracker](https://github.com/spring-projects/spring-oculusdb/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
-
-For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org>. If you have not previously done so, please fill out and submit the [Contributor License Agreement](https://cla.pivotal.io/sign/spring).
 
 # License
 
