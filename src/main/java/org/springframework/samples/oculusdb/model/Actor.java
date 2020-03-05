@@ -1,14 +1,30 @@
 
 package org.springframework.samples.oculusdb.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Table(name = "actors")
 public class Actor extends UserAccount {
 
+	@Column(name = "name")
+	@NotEmpty
 	private String		name;
+
+	@Column(name = "surname")
+	@NotEmpty
 	private String		surname;
+
+	@Column(name = "email")
+	@NotEmpty
 	private String		email;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "actor")
 	private UserAccount	userAccount;
 
 

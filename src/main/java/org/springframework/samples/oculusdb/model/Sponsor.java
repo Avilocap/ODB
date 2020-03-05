@@ -1,9 +1,20 @@
 
 package org.springframework.samples.oculusdb.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "sponsors")
 public class Sponsor extends Actor {
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sponsor")
 	private Sponsorship	sponsorship;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "sponsor")
 	private CreditCard	creditCard;
 
 

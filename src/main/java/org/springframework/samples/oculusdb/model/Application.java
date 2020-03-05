@@ -3,10 +3,12 @@ package org.springframework.samples.oculusdb.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Application {
@@ -27,9 +29,17 @@ public class Application {
 	private Integer			totalReviews;
 	private String			language;
 	private TypeOfApp		typeOfApp;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
 	private Platform		platform;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
 	private Category		category;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
 	private Reviews			reviews;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
 	private Comments		comments;
 
 
