@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+  <local-check-config name="maven-checkstyle-plugin nohttp-checkstyle-validation" location="file:/C:/Users/Manu/eclipse-workspace/ODB/src/checkstyle/nohttp-checkstyle.xml" type="remote" description="maven-checkstyle-plugin configuration nohttp-checkstyle-validation">
+    <property name="checkstyle.cache.file" value="${project_loc}/target/checkstyle-cachefile"/>
+    <property name="checkstyle.suppressions.file" value="C:\Users\Manu\Workspace-2.19\.metadata\.plugins\org.eclipse.core.resources\.projects\spring-oculusdb\com.basistech.m2e.code.quality.checkstyleConfigurator\checkstyle-suppressions-nohttp-checkstyle-validation.xml"/>
+    <property name="checkstyle.header.file" value="C:\Users\Manu\Workspace-2.19\.metadata\.plugins\org.eclipse.core.resources\.projects\spring-oculusdb\com.basistech.m2e.code.quality.checkstyleConfigurator\checkstyle-header-nohttp-checkstyle-validation.txt"/>
+  </local-check-config>
+  <fileset name="java-sources-nohttp-checkstyle-validation" enabled="true" check-config-name="maven-checkstyle-plugin nohttp-checkstyle-validation" local="true">
+    <file-match-pattern match-pattern="^.*" include-pattern="true"/>
+    <file-match-pattern match-pattern="^.*.*\.git/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern="^.*.*\.idea/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern="^.*.*target/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern="^.*.*\.flattened-pom\.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern="^.*.*\.class" include-pattern="false"/>
+    <file-match-pattern match-pattern="^src/main/resources/.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/main/resources/.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/test/resources.*\.properties" include-pattern="true"/>
+  </fileset>
+</fileset-config>
