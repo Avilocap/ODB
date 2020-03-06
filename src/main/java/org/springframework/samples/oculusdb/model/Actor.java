@@ -24,17 +24,17 @@ public class Actor extends UserAccount {
 	@NotEmpty
 	private String		email;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "actor")
-	private UserAccount	userAccount;
+//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "actor")
+//	private UserAccount	userAccount;
 
 
-	public UserAccount getUserAccount() {
-		return this.userAccount;
-	}
-
-	public void setUserAccount(final UserAccount userAccount) {
-		this.userAccount = userAccount;
-	}
+//	public UserAccount getUserAccount() {
+//		return this.userAccount;
+//	}
+//
+//	public void setUserAccount(final UserAccount userAccount) {
+//		this.userAccount = userAccount;
+//	}
 
 	public String getName() {
 		return this.name;
@@ -60,9 +60,9 @@ public class Actor extends UserAccount {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" + this.email + ", userAccount=" + this.userAccount + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" + this.email + ", userAccount=" + this.userAccount + "]";
+//	}
 
 }

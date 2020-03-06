@@ -9,7 +9,7 @@ public class Developer extends Actor {
 	private String		company;
 	private String		webpage;
 	private String		companyDescription;
-	private CreditCard	creditCard;
+//	private CreditCard	creditCard;
 
 
 	public String getCompany() {
@@ -36,17 +36,17 @@ public class Developer extends Actor {
 		this.companyDescription = companyDescription;
 	}
 
-	public CreditCard getCreditCard() {
-		return this.creditCard;
-	}
+//	public CreditCard getCreditCard() {
+//		return this.creditCard;
+//	}
+//
+//	public void setCreditCard(final CreditCard creditCard) {
+//		this.creditCard = creditCard;
+//	}
 
-	public void setCreditCard(final CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
-
-	@Override
-	public String toString() {
-		return "Developer [company=" + this.company + ", webpage=" + this.webpage + ", companyDescription=" + this.companyDescription + ", creditCard=" + this.creditCard + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Developer [company=" + this.company + ", webpage=" + this.webpage + ", companyDescription=" + this.companyDescription + ", creditCard=" + this.creditCard + "]";
+//	}
 
 }
