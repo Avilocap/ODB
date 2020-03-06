@@ -11,12 +11,15 @@ public class Reviews {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer	oculusId;
-	private String	title;
-	private String	content;
-	private String	publishDate;
-	private Boolean	usefull;
+	private Integer oculusId;
 
+	private String title;
+
+	private String content;
+
+	private String publishDate;
+
+	private Boolean usefull;
 
 	public Integer getOculusId() {
 		return this.oculusId;
@@ -60,7 +63,8 @@ public class Reviews {
 
 	@Override
 	public String toString() {
-		return "Reviews [oculusId=" + this.oculusId + ", title=" + this.title + ", content=" + this.content + ", publishDate=" + this.publishDate + ", usefull=" + this.usefull + "]";
+		return "Reviews [oculusId=" + this.oculusId + ", title=" + this.title + ", content=" + this.content
+				+ ", publishDate=" + this.publishDate + ", usefull=" + this.usefull + "]";
 	}
 
 }

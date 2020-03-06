@@ -3,9 +3,9 @@ package org.springframework.samples.oculusdb.model;
 
 public class Sponsorship {
 
-	private String	title;
-	private String	attachmentUrl;
+	private String title;
 
+	private String attachmentUrl;
 
 	public String getTitle() {
 		return this.title;

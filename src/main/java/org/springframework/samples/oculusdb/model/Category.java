@@ -6,10 +6,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Category {
-	private Integer id;
-	private String	title;
-	private String	description;
 
+	private Integer id;
+
+	private String title;
+
+	private String description;
 
 	public String getTitle() {
 		return this.title;

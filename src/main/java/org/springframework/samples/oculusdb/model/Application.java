@@ -15,33 +15,45 @@ public class Application {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer			oculusId;
-	private String			name;
-	private String			description;
-	private LocalDate		releaseDate;
-	private Double			price;
-	private String			website;
-	private String			company;
-	private String			picture;
-	private TypeOfGameplay	typeOfGameplay;
-	private Integer			salesEstimation;
-	private Integer			incomeEstimation;
-	private Integer			totalReviews;
-	private String			language;
-	private TypeOfApp		typeOfApp;
+	private Integer oculusId;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-//	private Platform		platform;
-//
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-//	private Category		category;
-//
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-//	private Reviews			reviews;
-//
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-//	private Comments		comments;
+	private String name;
 
+	private String description;
+
+	private LocalDate releaseDate;
+
+	private Double price;
+
+	private String website;
+
+	private String company;
+
+	private String picture;
+
+	private TypeOfGameplay typeOfGameplay;
+
+	private Integer salesEstimation;
+
+	private Integer incomeEstimation;
+
+	private Integer totalReviews;
+
+	private String language;
+
+	private TypeOfApp typeOfApp;
+
+	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+	// private Platform platform;
+	//
+	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+	// private Category category;
+	//
+	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+	// private Reviews reviews;
+	//
+	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+	// private Comments comments;
 
 	public Integer getOculusId() {
 		return this.oculusId;
@@ -155,43 +167,49 @@ public class Application {
 		this.typeOfApp = typeOfApp;
 	}
 
-//	public Platform getPlatform() {
-//		return this.platform;
-//	}
-//
-//	public void setPlatform(final Platform platform) {
-//		this.platform = platform;
-//	}
-//
-//	public Category getCategory() {
-//		return this.category;
-//	}
-//
-//	public void setCategory(final Category category) {
-//		this.category = category;
-//	}
-//
-//	public Reviews getReviews() {
-//		return this.reviews;
-//	}
-//
-//	public void setReviews(final Reviews reviews) {
-//		this.reviews = reviews;
-//	}
-//
-//	public Comments getComments() {
-//		return this.comments;
-//	}
-//
-//	public void setComments(final Comments comments) {
-//		this.comments = comments;
-//	}
+	// public Platform getPlatform() {
+	// return this.platform;
+	// }
+	//
+	// public void setPlatform(final Platform platform) {
+	// this.platform = platform;
+	// }
+	//
+	// public Category getCategory() {
+	// return this.category;
+	// }
+	//
+	// public void setCategory(final Category category) {
+	// this.category = category;
+	// }
+	//
+	// public Reviews getReviews() {
+	// return this.reviews;
+	// }
+	//
+	// public void setReviews(final Reviews reviews) {
+	// this.reviews = reviews;
+	// }
+	//
+	// public Comments getComments() {
+	// return this.comments;
+	// }
+	//
+	// public void setComments(final Comments comments) {
+	// this.comments = comments;
+	// }
 
-//	@Override
-//	public String toString() {
-//		return "Application [oculusId=" + this.oculusId + ", name=" + this.name + ", description=" + this.description + ", releaseDate=" + this.releaseDate + ", price=" + this.price + ", website=" + this.website + ", company=" + this.company + ", picture="
-//			+ this.picture + ", typeOfGameplay=" + this.typeOfGameplay + ", salesEstimation=" + this.salesEstimation + ", incomeEstimation=" + this.incomeEstimation + ", totalReviews=" + this.totalReviews + ", language=" + this.language + ", typeOfApp="
-//			+ this.typeOfApp + ", platform=" + this.platform + ", category=" + this.category + ", reviews=" + this.reviews + ", comments=" + this.comments + "]";
-//	}
+	// @Override
+	// public String toString() {
+	// return "Application [oculusId=" + this.oculusId + ", name=" + this.name + ",
+	// description=" + this.description + ", releaseDate=" + this.releaseDate + ", price="
+	// + this.price + ", website=" + this.website + ", company=" + this.company + ",
+	// picture="
+	// + this.picture + ", typeOfGameplay=" + this.typeOfGameplay + ", salesEstimation=" +
+	// this.salesEstimation + ", incomeEstimation=" + this.incomeEstimation + ",
+	// totalReviews=" + this.totalReviews + ", language=" + this.language + ", typeOfApp="
+	// + this.typeOfApp + ", platform=" + this.platform + ", category=" + this.category +
+	// ", reviews=" + this.reviews + ", comments=" + this.comments + "]";
+	// }
 
 }

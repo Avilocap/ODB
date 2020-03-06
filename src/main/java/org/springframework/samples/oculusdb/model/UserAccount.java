@@ -10,16 +10,15 @@ public class UserAccount extends BaseEntity {
 
 	@Column(name = "nick")
 	@NotEmpty
-	private String	nick;
+	private String nick;
 
 	@Column(name = "password")
 	@NotEmpty
-	private String	password;
+	private String password;
 
 	@Column(name = "authority")
 	@NotEmpty
-	private String	authority;
-
+	private String authority;
 
 	public String getNick() {
 		return this.nick;

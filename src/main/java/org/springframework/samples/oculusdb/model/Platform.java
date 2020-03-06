@@ -6,9 +6,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Platform {
+
 	private Integer id;
-	private String	title;
-	private String	description;
+
+	private String title;
+
+	private String description;
 
 	@Id
 	public Integer getId() {

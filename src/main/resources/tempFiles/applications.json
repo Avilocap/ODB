@@ -1,0 +1,814 @@
+{
+  "JSON": {
+    "data": {
+      "viewer": {
+        "user": null
+      },
+      "node": {
+        "__typename": "Application",
+        "id": "1304877726278670",
+        "display_name": "Beat Saber",
+        "platform": "PC",
+        "iarc_cert": {
+          "iarc_rating": {
+            "descriptors": [],
+            "interactive_elements": [],
+            "id": "183793802248949",
+            "large_age_rating_image": {
+              "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/12138845_169332346868547_134368769114898432_n.png?_nc_cat=105&_nc_ohc=4cfSo6ZcHtoAQki3vEFSn5u3BtoiGuX0BVILprimi5AEgPoz7mdiBaWzw&_nc_ht=scontent.oculuscdn.com&oh=1e336ef17bb95e288825eaef37cd9560&oe=5E2B6FB3"
+            },
+            "small_age_rating_image": {
+              "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/12482345_1839933169554530_3608172115217350656_n.png?_nc_cat=111&_nc_ohc=K3FeCZPDHqoAQlY7aVKiLRGYSS45MPnLPv2MeP8zwWibARAvsAATv_IEw&_nc_ht=scontent.oculuscdn.com&oh=89211ef5929b5bf4fb26cd21631d3406&oe=5E240AFC"
+            },
+            "age_rating_text": "PEGI 3",
+            "rating_definition_uri": "https://www.globalratings.com/ratings-guide-pegi",
+            "__typename": "IARCRating"
+          },
+          "id": "183793798915616"
+        },
+        "category": "GAMES",
+        "item_bundles": [
+          {
+            "id": "464577247677632",
+            "__typename": "AppItemBundle",
+            "cover_landscape_image": {
+              "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/39035337_1389491407866528_983455985030922240_n.jpg?_nc_cat=106&_nc_ohc=teZORr8AdE0AQnhZrBNJd3anR7m_71jeFAQokbgSloRyUQkr_7Cjx6ihw&_nc_ht=scontent.oculuscdn.com&oh=43162254110dab26a813bfb81671c1f5&oe=5E257EB8"
+            },
+            "cover_portrait_image": {
+              "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s515x515/38982705_1222589084574547_6713713996014288896_n.jpg?_nc_cat=107&_nc_ohc=XBfRK_hUZ8MAQkRW0h8z7FH1eKdhfIu6CUh6rfNS7i6XumUU4N8uxIOVA&_nc_ht=scontent.oculuscdn.com&oh=c4d8ebc1d3458082dfab271ffff4490a&oe=5E2659C2"
+            },
+            "cover_square_image": {
+              "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38974800_599443777232878_8009570629252546560_n.jpg?_nc_cat=111&_nc_ohc=PaGEEOyGWaYAQmXp3Zm_w6Wa75nDJKLq6WhMApR8RYFtI3SBWTFLRW0AA&_nc_ht=scontent.oculuscdn.com&oh=a0df83d4481c33dc3fa38568f600109d&oe=5E295BD4"
+            },
+            "screenshots": [
+              {
+                "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/10000000_393440494595866_375503836728524800_n.jpg?_nc_cat=102&_nc_ohc=xTW0QTfE-SMAQlMwyLadvvY0mvkudPRocZgodAHKOTxSTDsiDqhvGg9yQ&_nc_ht=scontent.oculuscdn.com&oh=341cdbebab6eea58e03173e28c6bf591&oe=5E266241"
+              }
+            ],
+            "display_name": "Beat Saber + Imagine Dragons",
+            "display_short_description": "Imagine Dragons Music Pack is brought to you by Universal Music.",
+            "is_viewer_entitled": false
+          }
+        ],
+        "related_items_with_ranking_trace": {
+          "edges": [
+            {
+              "ranking_trace": "0_1069133196442024_SKYLINEWEB_1rC1epe5eRhnbMCIK",
+              "node": {
+                "id": "1069133196442024",
+                "canonicalName": "owlchemy-labs-job-simulator",
+                "current_offer": {
+                  "__typename": "AppStoreOffer",
+                  "end_time": 0,
+                  "show_timer": false,
+                  "id": "255872085361624",
+                  "offer_type": "APPSTORE_OFFER",
+                  "price": {
+                    "currency": "EUR",
+                    "offset_amount": "1999",
+                    "formatted": "19,99 €"
+                  },
+                  "strikethrough_price": null,
+                  "promo_benefit": null
+                },
+                "current_trial_offer": null,
+                "release_date": 1480924800,
+                "viewer_has_preorder": false,
+                "__typename": "Application",
+                "cover_landscape_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12482181_896630600510783_8686707918940143616_n.jpg?_nc_cat=1&_nc_ohc=7KADQlHSJ44AQmVGxXehTzcB0kus5ULwMhTJ28ibr-2cOeigE05SbKxng&_nc_ht=scontent.oculuscdn.com&oh=c54ca2d4c5ce22c0b7c4da074930da2b&oe=5E245E8A"
+                },
+                "cover_portrait_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s515x515/12139307_1312767975440712_7671955817188294656_n.jpg?_nc_cat=109&_nc_ohc=aw0AwG5L9AkAQmh0YK5YwM3UtSIooqQQwoXjzgD9DbDL3d7C-k7pRLUhw&_nc_ht=scontent.oculuscdn.com&oh=3e18529d4bacfe6ae1b3d069169ec630&oe=5E2B5D49"
+                },
+                "cover_square_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12139365_1253866474669078_8767538417471848448_n.jpg?_nc_cat=111&_nc_ohc=1L_WodNjaC8AQnetZfehbm3NV1MY61c9UXIXR1JBsc9bOtVXbk5or-O8A&_nc_ht=scontent.oculuscdn.com&oh=8358a0bdbd0ceea413c9e6528dfa0aec&oe=5E29A8A2"
+                },
+                "screenshots": [
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12482343_341902836182898_3663515848317861888_n.jpg?_nc_cat=104&_nc_ohc=kZfiWUoPVD8AQmuyFVLka4wlDu4lHZTpaofuZf7DXqbNVvf1YxeX_tbZw&_nc_ht=scontent.oculuscdn.com&oh=9a57d82208d289cb04ea54e7a0a93a5c&oe=5E286E41"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12331034_339031126469128_1766304106479091712_n.jpg?_nc_cat=106&_nc_ohc=0pFo21Nn-oMAQn7M0uogeDr6ZLAuTyj-RP0nNediuEvW7qIpJ5o0DazhA&_nc_ht=scontent.oculuscdn.com&oh=52d8e8bd344964edcca80e1f546f2a5a&oe=5E2404F6"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/11162717_1978496759072579_869686029391495168_n.jpg?_nc_cat=100&_nc_ohc=UHrnQP3VDFAAQmBDZRvTYP3ibR_LCNJTFDKL_bvXg_pXXmApn_Id6uqCw&_nc_ht=scontent.oculuscdn.com&oh=f0d5405068650c7749da60c2f07e247f&oe=5E3C0F43"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12410399_136969643449764_8649854264862048256_n.jpg?_nc_cat=105&_nc_ohc=SL0qswpOxD4AQkQYYEtYs7sYHRZPNnAOyY3D1VPs4u3_1ZbH7LswOdFiQ&_nc_ht=scontent.oculuscdn.com&oh=50034c40845af3238af723abbb5b8d96&oe=5E27F2C4"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12727850_338397559877730_4285171326001348608_n.jpg?_nc_cat=106&_nc_ohc=TyFbK-xrQMMAQkZoc_38vq5kothHgwmLqihwbPZBcWxWGxRxcDKrVLJng&_nc_ht=scontent.oculuscdn.com&oh=3c50f0657e1f1b99b031551f7ad87c3e&oe=5E2C2BEC"
+                  }
+                ],
+                "display_name": "Job Simulator",
+                "display_short_description": "A tongue-in-cheek virtual reality experience for Oculus Touch. In a world where robots have replaced all human jobs, step into the \"Job Simulator\" to learn what it was like 'to job'. Now with never-ending gameplay with the new \"Infinite Overtime\" update!"
+              }
+            },
+            {
+              "ranking_trace": "0_1012593518800648_SKYLINEWEB_2Q5A81XqSuNiTQQ7C",
+              "node": {
+                "id": "1012593518800648",
+                "canonicalName": "superhot-superhot",
+                "current_offer": {
+                  "__typename": "AppStoreOffer",
+                  "end_time": 0,
+                  "show_timer": false,
+                  "id": "1169432853134804",
+                  "offer_type": "APPSTORE_OFFER",
+                  "price": {
+                    "currency": "EUR",
+                    "offset_amount": "2499",
+                    "formatted": "24,99 €"
+                  },
+                  "strikethrough_price": null,
+                  "promo_benefit": null
+                },
+                "current_trial_offer": null,
+                "release_date": 1480924800,
+                "viewer_has_preorder": false,
+                "__typename": "Application",
+                "cover_landscape_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38974738_753586411777704_62746233789218816_n.jpg?_nc_cat=1&_nc_ohc=6ws45KTrerMAQnjx-d537jnt8cNX4xPi6L2Kl3LOc5ciVcOVU4yDk6CuA&_nc_ht=scontent.oculuscdn.com&oh=9c9f2b052a57f40f8a429a1305f72b61&oe=5E25C852"
+                },
+                "cover_portrait_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s515x515/39035420_1822513767893459_1014452433293672448_n.jpg?_nc_cat=105&_nc_ohc=kdJPQFz_BNYAQm63DhHsZRQ2Q9J-ar-Gic08efHH4XsL-1rBChY0B-GeA&_nc_ht=scontent.oculuscdn.com&oh=4d0095b4c0c2c0841fde8aebc116ee32&oe=5E277BFF"
+                },
+                "cover_square_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38974698_556155668503338_8155081200663265280_n.jpg?_nc_cat=106&_nc_ohc=qBaM-82XJE4AQmxKRHb_SaU8woOnwwpBvuXD0HkSk2OF9x2BbIpmWRzQw&_nc_ht=scontent.oculuscdn.com&oh=a23e658e12a6a1460b31a21bc87d4b37&oe=5E2D608C"
+                },
+                "screenshots": [
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/39001722_1922580241188735_8993677946073907200_n.jpg?_nc_cat=111&_nc_ohc=kAPTtTIAkVsAQnx8iHkP26HFyi4f8XBIo2dNujXWArGY-SoAbhDBAQUyg&_nc_ht=scontent.oculuscdn.com&oh=28d8f0ca18ac447e665d750442143105&oe=5E3C17A0"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38982696_207682006787593_3036590995517997056_n.jpg?_nc_cat=101&_nc_ohc=ZhL9FvgQPYUAQkFaCv8GiGjtlPvXsCMl9alWoYUQGUA4rshlqUhHe7otA&_nc_ht=scontent.oculuscdn.com&oh=0313b32e9469bd04f27b6d41b8325436&oe=5E271262"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38974498_660055221057737_7286480689896095744_n.jpg?_nc_cat=108&_nc_ohc=SEVx0baI73YAQnW8ztkt2_QZvxSPWE72lyIwhMnFs2tr6AM9xflwzv9Yg&_nc_ht=scontent.oculuscdn.com&oh=2560b159bc3700c538d02bd687e89133&oe=5E2AC0FB"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38974553_2284162771819655_8316651466542546944_n.jpg?_nc_cat=104&_nc_ohc=fohyPMg6NOEAQlwI8JLh9jJUsJhE6tQMRwHZHmU8ucsomwgIkbkwtnlbA&_nc_ht=scontent.oculuscdn.com&oh=cbe76f9893481ab1278652ee5f368339&oe=5E26B1D3"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/38974804_600078720428598_5668988210856853504_n.jpg?_nc_cat=101&_nc_ohc=HZyLecR1R9oAQmruP3hGRid08R6DghDFZwWBzoLsUyfRbnmpr7loKo8HA&_nc_ht=scontent.oculuscdn.com&oh=d1a8d888fca3c34a6d1155f524875a17&oe=5E2B5560"
+                  }
+                ],
+                "display_name": "SUPERHOT VR",
+                "display_short_description": "DICE Immersive Reality Game of the Year 2017 Winner\nGDCA VR/AR Game of the Year 2017 Nominee\nNew York Game Awards Game of the Year 2017 Winner\nGame Connection Best Hardcore Game 2017 Winner\n\n\nSUPERHOT is the first person shooter where time moves only when you move. No regenerating health bars. No conveniently placed ammo drops. It's just you, outnumbered and outgunned, grabbing the weapons of fallen enemies to shoot, slice, and maneuver through a hurricane of slow-motion bullets."
+              }
+            },
+            {
+              "ranking_trace": "0_980771811959458_SKYLINEWEB_3DbNJdAToWVPhCuxr",
+              "node": {
+                "id": "980771811959458",
+                "canonicalName": "epic-games-bullet-train-gdc",
+                "current_offer": {
+                  "__typename": "AppStoreOffer",
+                  "end_time": 0,
+                  "show_timer": false,
+                  "id": "585265678332518",
+                  "offer_type": "APPSTORE_OFFER",
+                  "price": {
+                    "currency": "USD",
+                    "offset_amount": "0",
+                    "formatted": "0,00 $"
+                  },
+                  "strikethrough_price": null,
+                  "promo_benefit": null
+                },
+                "current_trial_offer": null,
+                "release_date": 1480924800,
+                "viewer_has_preorder": false,
+                "__typename": "Application",
+                "cover_landscape_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138837_1012917828802038_1992119748_n.jpg?_nc_cat=104&_nc_ohc=ZZTRtDa0qY4AQklTmkgTIfFtXTOJ0hL2a-ege7Zl-cKGU4tOob6hHbt7g&_nc_ht=scontent.oculuscdn.com&oh=e9ad2a1f3fba34f1904a936c0cce4b8d&oe=5E2ACB52"
+                },
+                "cover_portrait_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s515x515/12138771_838991342896714_256104990_n.jpg?_nc_cat=107&_nc_ohc=1awpEQHBXD0AQl7MgU0_U-ytGNlcNU2e2q419RuWhutebEza70bqbCxgw&_nc_ht=scontent.oculuscdn.com&oh=54e80bc7fb955b40c9c6139c241203b1&oe=5E3B1DB0"
+                },
+                "cover_square_image": {
+                  "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138837_999072950179770_866464133_n.jpg?_nc_cat=103&_nc_ohc=u_cFLP4QbzAAQlg1h4VvT0DynNEFzDM0V5UigGYfbORBZ9t7f0a3uy0Uw&_nc_ht=scontent.oculuscdn.com&oh=911e02128a29d13820220206eed47b03&oe=5E27F161"
+                },
+                "screenshots": [
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138834_1243838098977489_1209632348_n.jpg?_nc_cat=110&_nc_ohc=M-_b18LhZrcAQkBwGv6NpR8JfflYmYKP2DRFTQ2IKQ2OtuNmH7q-bLjCg&_nc_ht=scontent.oculuscdn.com&oh=26de361dbaf081c6da4e6e5ec5f80dcc&oe=5E2BD804"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138836_980073005419569_1818036262_n.jpg?_nc_cat=109&_nc_ohc=8MPEp_WyymAAQljsHORiVfsQyR_QnILeB2HtRyV9Q23IeYL1hhx1dnS4A&_nc_ht=scontent.oculuscdn.com&oh=df3d16e785ec1eab59ab59a60847fbcc&oe=5E2A8F36"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138840_504835929705744_2067038372_n.jpg?_nc_cat=105&_nc_ohc=uuurrLgW80YAQmHDlhup4CQ8meKb48NXcnUOKlD3cqTN-X3p4Qxm1ISfg&_nc_ht=scontent.oculuscdn.com&oh=ea6d37222bdc23b934444d36361bb967&oe=5E268721"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138836_186776921714952_1268430737_n.jpg?_nc_cat=101&_nc_ohc=J1Vg3CwcDiYAQnpMpsjX1J9ZphbA04XZ2QfavWBt_jB3zXkc0bGu4bTvw&_nc_ht=scontent.oculuscdn.com&oh=8a7efab38481687556bf72fe5494c87a&oe=5E2C84E2"
+                  },
+                  {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/12138787_729159697220931_1469480979_n.jpg?_nc_cat=100&_nc_ohc=NfRbrGh1Xs4AQlQl0rC0y15XwhMhj1OK0FBnSb294IVRpSXpO9N7Sux-w&_nc_ht=scontent.oculuscdn.com&oh=ab77f49545ebeedffb6eff169f5b7746&oe=5E3CE3E9"
+                  }
+                ],
+                "display_name": "Bullet Train",
+                "display_short_description": "Bullet Train es la última experiencia de realidad virtual de Epic Games, los creadores de la popular demo Showdown VR. Epic se mantiene fiel a la forma y te coloca en el centro de la acción: utiliza controles de movimientos mientras desempeñas el papel de un agente en una infiltración simulada dentro de una moderna estación de tren. Domina el arte del teletransporte, la manipulación temporal y el combate desde cerca para acabar con las fuerzas de resistencia."
+              }
+            }
+          ]
+        },
+        "hero": {
+          "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974907_2331967010236357_4676861902331052032_n.jpg?_nc_cat=110&_nc_ohc=leqrTun2VBcAQlGoEb-KXsdIrrBuZ6ZKmYF3Ndic9em5-nw4mcsxBq53w&_nc_ht=scontent.oculuscdn.com&oh=4ea327f2a3e2c220912273f14281f4e9&oe=5E3DF4D2"
+        },
+        "screenshots": [
+          {
+            "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s1440x1440/39001669_519891535277870_6246389767156531200_n.jpg?_nc_cat=109&_nc_ohc=D96a9V5qv6gAQkP87HeOA3MkHbpfz1mcndiLVL3k96S7IohrkSr9lmy7Q&_nc_ht=scontent.oculuscdn.com&oh=8f998b6857d766f472dfea50aebca19c&oe=5E28CF5C"
+          },
+          {
+            "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s1440x1440/38982475_1190727977804195_8816774221746143232_n.jpg?_nc_cat=100&_nc_ohc=7H_9jHUem5EAQkFZqAdnitIC-pNuBKU11GxY0aFfyei0T533w316ZKCug&_nc_ht=scontent.oculuscdn.com&oh=e047d838a7a28e102793545d0bbab9f1&oe=5E27922E"
+          },
+          {
+            "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s1440x1440/75302222_2894239163928680_8955198414946041856_n.jpg?_nc_cat=104&_nc_ohc=5FzPkfXscYYAQnTtST_CZR4M99McTZyqPplFfePiZjWpdTjthW_OgXvqQ&_nc_ht=scontent.oculuscdn.com&oh=5fee4d80be820cce0687242a018cb677&oe=5E28225F"
+          },
+          {
+            "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s1440x1440/39031364_2537839879760723_3295414894530134016_n.jpg?_nc_cat=106&_nc_ohc=hhHmKdbrYFEAQkCvKHcVycJFQAD_kw2537bj4-ijaTR7C2OFiBJ-2N_RQ&_nc_ht=scontent.oculuscdn.com&oh=273ba7e18ea052cbd13b9708c970fa31&oe=5E28C6B7"
+          },
+          {
+            "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s1440x1440/75236134_1255887137948137_3606890080364396544_n.jpg?_nc_cat=105&_nc_ohc=D9mCEtBFHjsAQkDoRiWKgCLev3eIliIWB5xA1MBaEnxurb8yzYw_Hm7mQ&_nc_ht=scontent.oculuscdn.com&oh=18dbd6dea296524ab2e48a2766a76916&oe=5E256AD7"
+          }
+        ],
+        "trailer": {
+          "thumbnail": {
+            "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s1440x1440/39036684_569278417212226_5765571747487154176_n.jpg?_nc_cat=106&_nc_ohc=IDOiGIsTUhIAQl11z_e4O6P7DqFjdHxcsICltWLmkQjWkFit_j8VGrPHA&_nc_ht=scontent.oculuscdn.com&oh=1ffb9cc4d06e8f9c48d1183c622e920f&oe=5E2C257E"
+          },
+          "uri": "https://scontent.oculuscdn.com/v/t64.7195-25/75302221_569276820545719_7237135832107188224_n.mp4?_nc_cat=107&_nc_ohc=Sdk0QBE3zsgAQn3sNOX6CRrKbE2lCeR9-SXRmURxAyfr4VMZAkANNzOzA&_nc_ht=scontent.oculuscdn.com&oh=d43e453350ddfe44cf053db5dd5a68cc&oe=5E286540"
+        },
+        "quality_rating_histogram_aggregate": [
+          {
+            "star_rating": 1,
+            "count": 167,
+            "starRating": 1
+          },
+          {
+            "star_rating": 2,
+            "count": 81,
+            "starRating": 2
+          },
+          {
+            "star_rating": 3,
+            "count": 202,
+            "starRating": 3
+          },
+          {
+            "star_rating": 4,
+            "count": 1006,
+            "starRating": 4
+          },
+          {
+            "star_rating": 5,
+            "count": 11545,
+            "starRating": 5
+          }
+        ],
+        "display_long_description": "Beat Saber es un exclusivo juego de ritmo para realidad virtual en el que tienes que hacer tajos los sonidos (representados por pequeños cubos) a medida que se te van acercando. \n\nCada sonido te indica qué sable debes usar y en qué dirección tienes que asestar el golpe. Toda la música se compone de forma que encaje perfectamente en los niveles elaborados de forma artesanal. \n\nNuestro objetivo es que los jugadores prácticamente bailen mientras cortan los cubos y esquivan los obstáculos. \n\nCada corte va acompañado de geniales efectos sonoros y visuales para acentuar el ritmo.",
+        "age_rating": null,
+        "category_name": "Juegos",
+        "developer_name": "Beat Games",
+        "current_offer": {
+          "__typename": "AppStoreOffer",
+          "offer_type": "APPSTORE_OFFER",
+          "id": "573732943191130",
+          "price": {
+            "offset_amount": "2999",
+            "currency": "EUR",
+            "formatted": "29,99 €"
+          },
+          "viewer": {
+            "user": null
+          },
+          "strikethrough_price": null,
+          "promo_benefit": null,
+          "end_time": 1578297600,
+          "show_timer": false
+        },
+        "developer_privacy_policy_url": "https://beatsaber.com/doc/privacypolicy.txt",
+        "developer_terms_of_service_url": "https://beatsaber.com/doc/eula.txt",
+        "genre_names": [
+          "Ocasionales",
+          "Música",
+          "Deportes"
+        ],
+        "is_360_sensor_setup_required": false,
+        "latest_supported_binary": {
+          "__typename": "PCBinary",
+          "version": "1.6.0",
+          "change_log": "Green Day Music Pack is here! It features six of the band's most iconic hits & new singles. \n\nThis update also comes with:\n- Brand new 360 and 90 Degree Levels.\n- Adaptive SFX volume.\n- Automatic player height detection.\n- UI improvements.\n- Graphics improvements.\n- Various tweaks and fixes.",
+          "supported_hmd_types": [
+            "RIFT",
+            "LAGUNA"
+          ],
+          "total_installed_space": "542610044",
+          "id": "2264419510324482",
+          "required_space_adjusted": "2690093692",
+          "storeAssetFiles": {
+            "count": 36
+          },
+          "firstIapItems": {
+            "page_info": {
+              "end_cursor": "AQHR5YKXhBxM97M3LtPiKLyb2OYityxGJHP3teIT0tBw8_gk2C4MskJUsPKPhnXd6jZ4igtIuv6FLAo8b-AZS95beQ",
+              "start_cursor": "AQHRSCTjHAKMyCNks1VhhHXauILVHEAxCKOUmiV2uw_Ye0WnVaMNT4GLW885mo_Qo2TqJNkNx7Pj40JS-FCYU_qDOg"
+            },
+            "count": 36,
+            "edges": [
+              {
+                "node": {
+                  "id": "2264418286991271",
+                  "iap_item": {
+                    "id": "2770924596314818",
+                    "current_offer": {
+                      "__typename": "AppStoreOffer",
+                      "id": "2341431022794628",
+                      "offer_type": "APPSTORE_OFFER",
+                      "price": {
+                        "currency": "EUR",
+                        "offset_amount": "199",
+                        "formatted": "1,99 €"
+                      },
+                      "strikethrough_price": null
+                    },
+                    "store_listing": null,
+                    "is_viewer_entitled": false,
+                    "parentApplication": {
+                      "canonicalName": "hyperbolic-magnetism-beat-saber",
+                      "id": "1304877726278670"
+                    },
+                    "display_name": "Imagine Dragons - \"Whatever It Takes\"",
+                    "purchase_alerts": [
+                      {
+                        "type": "PARENT_APP_REQUIRED",
+                        "message": "Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar"
+                      }
+                    ],
+                    "__typename": "IAPItem",
+                    "parent_application": {
+                      "id": "1304877726278670"
+                    },
+                    "display_short_description": "Imagine Dragons - \"Whatever It Takes\""
+                  }
+                }
+              },
+              {
+                "node": {
+                  "id": "2264418240324609",
+                  "iap_item": {
+                    "id": "1783156588450779",
+                    "current_offer": {
+                      "__typename": "AppStoreOffer",
+                      "id": "1524130211053468",
+                      "offer_type": "APPSTORE_OFFER",
+                      "price": {
+                        "currency": "EUR",
+                        "offset_amount": "199",
+                        "formatted": "1,99 €"
+                      },
+                      "strikethrough_price": null
+                    },
+                    "store_listing": null,
+                    "is_viewer_entitled": false,
+                    "parentApplication": {
+                      "canonicalName": "hyperbolic-magnetism-beat-saber",
+                      "id": "1304877726278670"
+                    },
+                    "display_name": "Feint - \"We Won't Be Alone (feat. Laura Brehm)\"",
+                    "purchase_alerts": [
+                      {
+                        "type": "PARENT_APP_REQUIRED",
+                        "message": "Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar"
+                      }
+                    ],
+                    "__typename": "IAPItem",
+                    "parent_application": {
+                      "id": "1304877726278670"
+                    },
+                    "display_short_description": "Feint - \"We Won't Be Alone (feat. Laura Brehm)\""
+                  }
+                }
+              },
+              {
+                "node": {
+                  "id": "2264418153657951",
+                  "iap_item": {
+                    "id": "2770922959648315",
+                    "current_offer": {
+                      "__typename": "AppStoreOffer",
+                      "id": "2489774011251990",
+                      "offer_type": "APPSTORE_OFFER",
+                      "price": {
+                        "currency": "EUR",
+                        "offset_amount": "199",
+                        "formatted": "1,99 €"
+                      },
+                      "strikethrough_price": null
+                    },
+                    "store_listing": null,
+                    "is_viewer_entitled": false,
+                    "parentApplication": {
+                      "canonicalName": "hyperbolic-magnetism-beat-saber",
+                      "id": "1304877726278670"
+                    },
+                    "display_name": "Imagine Dragons - \"Warriors\"",
+                    "purchase_alerts": [
+                      {
+                        "type": "PARENT_APP_REQUIRED",
+                        "message": "Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar"
+                      }
+                    ],
+                    "__typename": "IAPItem",
+                    "parent_application": {
+                      "id": "1304877726278670"
+                    },
+                    "display_short_description": "Imagine Dragons - \"Warriors\""
+                  }
+                }
+              },
+              {
+                "node": {
+                  "id": "2264418073657959",
+                  "iap_item": {
+                    "id": "3062122113861730",
+                    "current_offer": {
+                      "__typename": "AppStoreOffer",
+                      "id": "2952923978056183",
+                      "offer_type": "APPSTORE_OFFER",
+                      "price": {
+                        "currency": "EUR",
+                        "offset_amount": "199",
+                        "formatted": "1,99 €"
+                      },
+                      "strikethrough_price": null
+                    },
+                    "store_listing": null,
+                    "is_viewer_entitled": false,
+                    "parentApplication": {
+                      "canonicalName": "hyperbolic-magnetism-beat-saber",
+                      "id": "1304877726278670"
+                    },
+                    "display_name": "Panic! At The Disco – \"Victorious\"",
+                    "purchase_alerts": [
+                      {
+                        "type": "PARENT_APP_REQUIRED",
+                        "message": "Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar"
+                      }
+                    ],
+                    "__typename": "IAPItem",
+                    "parent_application": {
+                      "id": "1304877726278670"
+                    },
+                    "display_short_description": "Panic! At The Disco – \"Victorious\""
+                  }
+                }
+              },
+              {
+                "node": {
+                  "id": "2264418023657964",
+                  "iap_item": {
+                    "id": "1783155641784207",
+                    "current_offer": {
+                      "__typename": "AppStoreOffer",
+                      "id": "2324096477916135",
+                      "offer_type": "APPSTORE_OFFER",
+                      "price": {
+                        "currency": "EUR",
+                        "offset_amount": "199",
+                        "formatted": "1,99 €"
+                      },
+                      "strikethrough_price": null
+                    },
+                    "store_listing": null,
+                    "is_viewer_entitled": false,
+                    "parentApplication": {
+                      "canonicalName": "hyperbolic-magnetism-beat-saber",
+                      "id": "1304877726278670"
+                    },
+                    "display_name": "Tristam - \"Till It's Over\"",
+                    "purchase_alerts": [
+                      {
+                        "type": "PARENT_APP_REQUIRED",
+                        "message": "Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar"
+                      }
+                    ],
+                    "__typename": "IAPItem",
+                    "parent_application": {
+                      "id": "1304877726278670"
+                    },
+                    "display_short_description": "Tristam - \"Till It's Over\""
+                  }
+                }
+              }
+            ]
+          },
+          "windows_min_spec": null,
+          "redistributables": {
+            "edges": []
+          }
+        },
+        "publisher_name": "Beat Games",
+        "recommended_graphics": "Nvidia GTX 1060 or equivalent",
+        "recommended_memory_gb": 8,
+        "recommended_processor": "Intel Core i7 Skylake or equivalent",
+        "release_date": 1525201200,
+        "supported_in_app_languages": [
+          {
+            "name": "Inglés"
+          }
+        ],
+        "supported_input_device_names": [
+          "Oculus Touch"
+        ],
+        "supported_player_modes": [
+          "STANDING",
+          "ROOM_SCALE"
+        ],
+        "supported_tracking_modes": [
+          "FRONT_FACING"
+        ],
+        "user_interaction_mode_names": [
+          "Usuario único"
+        ],
+        "website_url": "https://beatsaber.com/",
+        "viewer_release_channel": {
+          "id": "2017290351867153"
+        },
+        "live_release_channel": {
+          "id": "2017290351867153",
+          "channel_name": "LIVE",
+          "latest_supported_binary": {
+            "__typename": "PCBinary",
+            "id": "2264419510324482"
+          }
+        },
+        "release_channels": {
+          "count": 1,
+          "nodes": [
+            {
+              "channel_name": "LIVE",
+              "id": "2017290351867153",
+              "latest_supported_binary": {
+                "__typename": "PCBinary",
+                "version": "1.6.0",
+                "id": "2264419510324482"
+              }
+            }
+          ]
+        },
+        "grouping": {
+          "listedIapItems": {
+            "count": 0
+          },
+          "id": "1546487868739502",
+          "firstIapItems": {
+            "page_info": {
+              "end_cursor": null,
+              "start_cursor": null
+            },
+            "count": 0,
+            "edges": []
+          },
+          "upcoming_events": {
+            "edges": []
+          },
+          "iap_items_2": {
+            "edges": [
+              {
+                "cursor": "AQHRyy3axLLY2nr-5QQ4KRCTOXEky5BTS6U8NtVfGo-oQAmHJtjHynrdnZ5NiPaH_J-a9fYiBvHIGQ_0Awx5_nuV_g"
+              }
+            ]
+          }
+        },
+        "externalReviewsForDisplay": {
+          "nodes": []
+        },
+        "externalReviewsComplete": {
+          "count": 0
+        },
+        "comfort_rating": "COMFORTABLE_FOR_MOST",
+        "is_viewer_subscribed_coming_soon": false,
+        "internet_connection": "NOT_REQUIRED",
+        "internet_connection_name": "No se necesita conexión a internet",
+        "supported_hmd_platforms": [
+          "RIFT",
+          "LAGUNA"
+        ],
+        "supported_input_devices_list": [
+          {
+            "name": "Oculus Touch",
+            "tag": "OCULUS_TOUCH"
+          }
+        ],
+        "canonicalName": "hyperbolic-magnetism-beat-saber",
+        "viewer_has_preorder": false,
+        "purchase_alerts": [],
+        "is_granted_on_hardware_registration": false,
+        "current_trial_offer": null,
+        "extra_buy_box_section": {
+          "content": "Política de reembolsos de Oculus",
+          "link_uri": "https://www.oculus.com/legal/quest-rift-content-refund-policy/"
+        },
+        "is_viewer_entitled": false,
+        "baseline_offer": {
+          "price": {
+            "offset_amount": "2999"
+          },
+          "id": "573732943191130"
+        },
+        "entry": null,
+        "is_demo_of": null,
+        "appName": "Beat Saber",
+        "platformOffer": null,
+        "externalReviews": {
+          "count": 0
+        },
+        "quality_rating_aggregate": 4.821475271133,
+        "support_website_url": null,
+        "quality_ratings_by_viewer": [],
+        "reviewInfo": {
+          "count": 1459,
+          "orderings": [
+            {
+              "key": "top",
+              "label": "Más relevantes"
+            },
+            {
+              "key": "most_recent",
+              "label": "Más recientes"
+            }
+          ]
+        },
+        "firstQualityRatings": {
+          "count": 1459,
+          "page_info": {
+            "end_cursor": "AQHRKIj4UAIOJ-J5c-HxpmdGrGdCpydlPmVBC1CXfpkFm-Q_NOYXYDQ5ZnSCHYdS02jEYgaxsEE97w_edUPfODfOcQ",
+            "start_cursor": "AQHRaakkL20q324yDzd4PR-8pdC6uran0PsXeWTFxw5h-YbDxa-tmh8TlQSpiKfF7UathPLR65aousEvrBvBi1MGtw"
+          },
+          "edges": [
+            {
+              "node": {
+                "id": "158100008477272",
+                "author": {
+                  "id": "118995512387722",
+                  "display_name": "nick2528",
+                  "profile_photo": null
+                },
+                "score": 5,
+                "reviewDescription": "If the Rift was like one of those 80's handheld game pads that came with just one game built into it, and beat saber was that game.... it would still be worth £400. buy it\n\nalso for the guy moaning about lack of songs. The Beat Saver Mod is installed in less than 60 seconds and then can all be managed from within the game, it becomes part of the game with a huge music library to choose from",
+                "reviewTitle": "worth",
+                "review_helpful_count": 1198,
+                "review_rank_by_viewer": null,
+                "date": 1539810105,
+                "developerResponse": null
+              }
+            },
+            {
+              "node": {
+                "id": "614321922297928",
+                "author": {
+                  "id": "501732446890210",
+                  "display_name": "Sarstan",
+                  "profile_photo": {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/c0.0.176.176a/s160x160/11162791_501732660223522_1749515371376803840_n.jpg?_nc_cat=107&_nc_ohc=-nnoiQOUxpAAQlgyKSZNnKEKXYtthoXp87FgupJpGHjpwLb4PDUn2W_ig&_nc_ht=scontent.oculuscdn.com&oh=1e39849c2eebdaae404b7ddf7cfc1caf&oe=5E28297E"
+                  }
+                },
+                "score": 1,
+                "reviewDescription": "This game gets rave reviews all the time, but truly they're not deserved. Great concept, extremely poor execution is the name of the game here. I'm going to focus on the negatives that no one wants to talk about.\nMusic variety is a joke. About a dozen songs that consist almost exclusively of garbage rap and EDM that sounds like something pulled from an amateur.\nBut everyone wants to highlight the range of music that's available. That's true. If you don't mind spending a few hours downloading the mod to make any of it work, installing it, finding the maps and music (where there is a TON of rubbish to sift through), installing those, and hoping you did it all right before hopping into VR. Maybe that doesn't sound so bad, but every slight update to the game (which aren't many anyway) breaks the mod and you have to redownload any and all you used if the newest version is available to begin with.\nThat perhaps doesn't sound so bad either, but the whole reason people like this game, myself included, is based on the work of others. The developers don't release any music. The developers don't release any options, effects, or enhancements that are desperately needed. The developers are leaning back and raking in cash while others provide the content for their pretty broken game that has NO mod support natively. You won't have trouble getting mods to work, but like I mentioned they WILL break the moment anything happens by the developers. Who like to release small bug fixes at times.\nI feel deeply bothered that, based on what the developers have provided, the game is a pretty empty shell. Insult to injury when you can expect your experience to be ruined regularly at each update. And the content you actually want is relied upon by the community to make, which itself is overwhelmingly just thrown together and not worth messing with. Other popular games at least had content to stand on. Without all the mods and community, this game is a joke.",
+                "reviewTitle": "Great Game If You Don't Mind Caveats",
+                "review_helpful_count": 1557,
+                "review_rank_by_viewer": null,
+                "date": 1536028189,
+                "developerResponse": {
+                  "date": 1558488750,
+                  "body": "Hi Sarstan, thank you for sharing your thoughts about Beat Saber with us, we would like to address your concerns. :)\n\nBeat Saber's Music: We are aware that since the release, we were mostly covering electronic music genre. At the beginning, when we started developing the game, we were experimenting with many genres, but we realised electronic music fits the game the best. But we want to have genres variety too. That's why we have many other genres in our music roadmap. Our upcoming Music Pack is a great example. We are sure you will love it. Stay tuned! \n\nMods: Mods aren't official part of the game but are created by the community. Updates are a regular part of every development process and of course, in almost all cases, when source code of the game changes – the mods require updates by their authors too. \n\nUnfortunately, we cannot provide you with additional support for mods which are created by a 3rd party. Please, try to respect this fact and understand that we are not breaking mods on purpose.\n\nIn the past months, we brought features we wanted to the game (and we have even bigger plans and ideas for the future), made many improvements and will continue polishing it and bringing new music content. Especially licensing the music is an extremely complicated process. But right now, we have several big-name artists locked in the road map for this year! We know you might feel that we are not moving fast enough but please, keep in mind that we are a small indie studio and we want to make sure Beat Saber is highly polished and your gaming experience the best possible. All this needs time. \nWe hope this will give you an insight into what we do and plan for the future. Thank you for sharing your thoughts!",
+                  "id": "757565171306935"
+                }
+              }
+            },
+            {
+              "node": {
+                "id": "559459281187402",
+                "author": {
+                  "id": "423443091455689",
+                  "display_name": "SanchoSandCat",
+                  "profile_photo": {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/c0.0.304.304a/s160x160/12331303_423518191448179_3536706758514835456_n.jpg?_nc_cat=103&_nc_ohc=yLmlmOVPVxIAQl9V-INVPbvfwQQD-4D5_scr5wb11iSFYF-STSNHym-8Q&_nc_ht=scontent.oculuscdn.com&oh=f6e48a750707b7ac1c30ec53b96e5675&oe=5E2B892F"
+                  }
+                },
+                "score": 5,
+                "reviewDescription": "Fantastic game! Excellent to use for therapy. \n\nI was in a severe car accident, smashed my head against the car window, which shattered, and then a split second later, against someone’s hand, which also shattered.  Hard headed, am I right? But that left me with a brain injury. I couldn’t process information I was receiving, both audio and visual. I would get confused or forget conversations while having them, couldn’t even remember what it was I was doing sometimes.\n\nThen I found Beat Saber. \n\nStarted on normal, did badly. I kept freezing up when I didn’t understand the sequence coming at me. But I kept at it, a hour a day, every day.  7 months later, I’m clearing expert plus and a whole plethora of custom songs, plus lost 20lbs of trauma weight as a bonus.  I’m following conversations, my reaction time is much better and I just plain understand better. \n\nNow I’m not saying the game cured me.  But it did definitely help. And with so few tools for brain therapy, stumbling across Beat Saber was a boon. If you or someone you know suffer from the aftereffects of a head injury, I encourage you, try VR, try Beat Saber. It’s one of the cheapest forms of brain therapy and it’s incredibly fun.",
+                "reviewTitle": "Good for the Brain",
+                "review_helpful_count": 325,
+                "review_rank_by_viewer": null,
+                "date": 1547846015,
+                "developerResponse": null
+              }
+            },
+            {
+              "node": {
+                "id": "179546663203129",
+                "author": {
+                  "id": "113942603096869",
+                  "display_name": "SteveMacAwesome",
+                  "profile_photo": {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/c0.0.176.176a/s160x160/39031510_159245471899915_3213500432152264704_n.jpg?_nc_cat=104&_nc_ohc=-ButQ5dL2PYAQnOfPN1eGxzpgSM4iCEjyVUMvwpY7V_SyHdGBpeKhOfwQ&_nc_ht=scontent.oculuscdn.com&oh=e2d013978f8a8d74a80dae3ce179c4d8&oe=5E3B9680"
+                  }
+                },
+                "score": 5,
+                "reviewDescription": "If you're reading this, you know Beat Saber. You know what it is, and what it does. \n\nBuy it.\n\nSeriously. If you can afford it, buy the game. Take it from me, friend, it will be worth your hard-earned money. Even if you only play it once, you'll still have moved around to the beat for a bit. \n\nRemember that gym membership you've been meaning to cancel? You know, the one you started back in January, where you went to the gym just once before you ended up never going back? It's ok, I know you've been meaning to work out - but there just isn't enough time. Don't worry friend, Beat Saber has you covered. Now you can get sweaty in the comfort of your own living room, with your personal shower close at hand, whilst feeding your brain those dopamine doses it so desires after a long day at work or school.\n\nBeat Saber is great for everyone.\n\nHow do I know this? Take my boss for example. We introduced him to Beat Saber in VR. Now he has:\n- beaten pretty much every level on expert\n- been told off by his wife for staying up late playing Beat Saber\n- knocked over lamps\n- challenged everyone else at work to beat him at the game\n\nBe like my boss. Go wild on some Beat Saber. You won't regret it.",
+                "reviewTitle": "Beat Saber got my boss playing VR games",
+                "review_helpful_count": 167,
+                "review_rank_by_viewer": null,
+                "date": 1571085913,
+                "developerResponse": null
+              }
+            },
+            {
+              "node": {
+                "id": "274096013244957",
+                "author": {
+                  "id": "182657372388822",
+                  "display_name": "TheRealDarklaser",
+                  "profile_photo": {
+                    "uri": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/c0.0.176.176a/s160x160/12410200_182658135722079_4587559735426809856_n.jpg?_nc_cat=102&_nc_ohc=q-R3woVMIucAQk1wMpIAsrIlifNiFw3LfplRe2AMI1SElT26uCdjRktVg&_nc_ht=scontent.oculuscdn.com&oh=e376afaf913e8ee28a984f4c255422f4&oe=5E24527A"
+                  }
+                },
+                "score": 5,
+                "reviewDescription": "[see notes about plugins at the bottom] I don't tend to care all that much for Guitar Hero and Fruit Ninja style games, but this game is incredible!  We have a household of Dad, Mom, and 6 kids ranging from 8 to 18, and everyone we have introduced to it (both young and old) absolute love it.  It even makes a great party game because people really get into watching it.  We've had a couple parties where that was the entertainment, and rather than hanging around the food, most people are watching the screen.  We've had this for about 2 months, and it is still the favorite game.  As much as we love Skyrim VR, Skyrim has even taken a back seat to Beat Saber.\n\nPlugins: \n- Beat Saber Mod Manager (Important - google search \"Beat Saber Mod Manger\" and download it from Umbranoxio's Github page)\n- Install at the least SongBrowser plugin and SongLoader plugin\n- We also really like the CustomSaber plugin\n\nThe SongBrowser plugin adds a song downloader tool in the game that you can use to download songs, however it only gives you a handful of pages of songs to browse.  But you can head on over to BeatSaver.com (not BeatSaber.com) where you can download all of the songs you want (we currently have 150+ songs).  Then find your \"YOUR-OCULUS-CATEGORY/Software/hyperbolic-magnetism-beat-saber/CustomSongs/\" folder (inside your Oculus apps location), and unzip the downloaded song and copy everything that was in it into the CustomSongs folder.  The folder you should be coping in will be called NUMBER-NUMBER (for example 128-174 or 1068-725, etc).\n\nThe game dynamics are awesome, but I think having been able to add all of these songs to play, has really made the game for us.",
+                "reviewTitle": "Fantastic Game (with plugins included)",
+                "review_helpful_count": 280,
+                "review_rank_by_viewer": null,
+                "date": 1540672783,
+                "developerResponse": null
+              }
+            }
+          ]
+        },
+        "can_viewer_review": false,
+        "website_page_meta": {
+          "description": "Beat Saber es un juego de ritmo para realidad virtual en el que tienes que hacer tajos los sonidos, que encajan perfectamente en una melodía cuidadosamente elaborada de forma artesanal.",
+          "image_height": 405,
+          "image_type": "image/jpeg",
+          "image_url": "https://scontent.oculuscdn.com/v/t64.5771-25/q92/s720x720/75258662_984293468616301_3529956628998651904_n.jpg?_nc_cat=100&_nc_ohc=TJt3kec44DYAQmIdQW8k9mk0tYz6yL5Lf3wMN4JM2yElLeCjlAYMqG07w&_nc_ht=scontent.oculuscdn.com&oh=f5602a7d4f6af27347b7284be79bbf12&oe=5E269CBF",
+          "image_width": 720,
+          "og_locale": "es_ES",
+          "og_type": "website",
+          "page_url": "https://www.oculus.com/experiences/rift/1304877726278670/",
+          "site_name": "Oculus",
+          "title": "Beat Saber en Oculus Rift"
+        },
+        "fallback_ranking_trace": ""
+      }
+    },
+    "errors": [
+      {
+        "message": "Errors while executing operation \"StoreAppQuery\": At Query.viewer:Viewer.user: Field implementation threw an exception. Check your server logs for more information.",
+        "severity": "ERROR",
+        "path": [
+          "viewer",
+          "user"
+        ]
+      },
+      {
+        "message": "Errors while executing operation \"StoreAppQuery\": At Query.node:Application.current_offer:AppStoreOffer.viewer:Viewer.user: Field implementation threw an exception. Check your server logs for more information.",
+        "severity": "ERROR",
+        "path": [
+          "node",
+          "current_offer",
+          "viewer",
+          "user"
+        ]
+      },
+      {
+        "message": "Errors while executing operation \"StoreAppQuery\": At Query.node:Application.purchase_alerts: Field implementation threw an exception. Check your server logs for more information.",
+        "severity": "ERROR",
+        "path": [
+          "node",
+          "purchase_alerts"
+        ]
+      }
+    ]
+  },
+  "Vista preliminar": {
+    "HTML_PREVIEW": {
+      "responseContent": {
+        "content": {
+          "mimeType": "text/html; charset=utf-8",
+          "text": "{\"data\":{\"viewer\":{\"user\":null},\"node\":{\"__typename\":\"Application\",\"id\":\"1304877726278670\",\"display_name\":\"Beat Saber\",\"platform\":\"PC\",\"iarc_cert\":{\"iarc_rating\":{\"descriptors\":[],\"interactive_elements\":[],\"id\":\"183793802248949\",\"large_age_rating_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/12138845_169332346868547_134368769114898432_n.png?_nc_cat=105&_nc_ohc=4cfSo6ZcHtoAQki3vEFSn5u3BtoiGuX0BVILprimi5AEgPoz7mdiBaWzw&_nc_ht=scontent.oculuscdn.com&oh=1e336ef17bb95e288825eaef37cd9560&oe=5E2B6FB3\"},\"small_age_rating_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/12482345_1839933169554530_3608172115217350656_n.png?_nc_cat=111&_nc_ohc=K3FeCZPDHqoAQlY7aVKiLRGYSS45MPnLPv2MeP8zwWibARAvsAATv_IEw&_nc_ht=scontent.oculuscdn.com&oh=89211ef5929b5bf4fb26cd21631d3406&oe=5E240AFC\"},\"age_rating_text\":\"PEGI 3\",\"rating_definition_uri\":\"https:\\/\\/www.globalratings.com\\/ratings-guide-pegi\",\"__typename\":\"IARCRating\"},\"id\":\"183793798915616\"},\"category\":\"GAMES\",\"item_bundles\":[{\"id\":\"464577247677632\",\"__typename\":\"AppItemBundle\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/39035337_1389491407866528_983455985030922240_n.jpg?_nc_cat=106&_nc_ohc=teZORr8AdE0AQnhZrBNJd3anR7m_71jeFAQokbgSloRyUQkr_7Cjx6ihw&_nc_ht=scontent.oculuscdn.com&oh=43162254110dab26a813bfb81671c1f5&oe=5E257EB8\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/38982705_1222589084574547_6713713996014288896_n.jpg?_nc_cat=107&_nc_ohc=XBfRK_hUZ8MAQkRW0h8z7FH1eKdhfIu6CUh6rfNS7i6XumUU4N8uxIOVA&_nc_ht=scontent.oculuscdn.com&oh=c4d8ebc1d3458082dfab271ffff4490a&oe=5E2659C2\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974800_599443777232878_8009570629252546560_n.jpg?_nc_cat=111&_nc_ohc=PaGEEOyGWaYAQmXp3Zm_w6Wa75nDJKLq6WhMApR8RYFtI3SBWTFLRW0AA&_nc_ht=scontent.oculuscdn.com&oh=a0df83d4481c33dc3fa38568f600109d&oe=5E295BD4\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/10000000_393440494595866_375503836728524800_n.jpg?_nc_cat=102&_nc_ohc=xTW0QTfE-SMAQlMwyLadvvY0mvkudPRocZgodAHKOTxSTDsiDqhvGg9yQ&_nc_ht=scontent.oculuscdn.com&oh=341cdbebab6eea58e03173e28c6bf591&oe=5E266241\"}],\"display_name\":\"Beat Saber + Imagine Dragons\",\"display_short_description\":\"Imagine Dragons Music Pack is brought to you by Universal Music.\",\"is_viewer_entitled\":false}],\"related_items_with_ranking_trace\":{\"edges\":[{\"ranking_trace\":\"0_1069133196442024_SKYLINEWEB_1rC1epe5eRhnbMCIK\",\"node\":{\"id\":\"1069133196442024\",\"canonicalName\":\"owlchemy-labs-job-simulator\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"end_time\":0,\"show_timer\":false,\"id\":\"255872085361624\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"1999\",\"formatted\":\"19,99\\u00a0\\u20ac\"},\"strikethrough_price\":null,\"promo_benefit\":null},\"current_trial_offer\":null,\"release_date\":1480924800,\"viewer_has_preorder\":false,\"__typename\":\"Application\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12482181_896630600510783_8686707918940143616_n.jpg?_nc_cat=1&_nc_ohc=7KADQlHSJ44AQmVGxXehTzcB0kus5ULwMhTJ28ibr-2cOeigE05SbKxng&_nc_ht=scontent.oculuscdn.com&oh=c54ca2d4c5ce22c0b7c4da074930da2b&oe=5E245E8A\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/12139307_1312767975440712_7671955817188294656_n.jpg?_nc_cat=109&_nc_ohc=aw0AwG5L9AkAQmh0YK5YwM3UtSIooqQQwoXjzgD9DbDL3d7C-k7pRLUhw&_nc_ht=scontent.oculuscdn.com&oh=3e18529d4bacfe6ae1b3d069169ec630&oe=5E2B5D49\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12139365_1253866474669078_8767538417471848448_n.jpg?_nc_cat=111&_nc_ohc=1L_WodNjaC8AQnetZfehbm3NV1MY61c9UXIXR1JBsc9bOtVXbk5or-O8A&_nc_ht=scontent.oculuscdn.com&oh=8358a0bdbd0ceea413c9e6528dfa0aec&oe=5E29A8A2\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12482343_341902836182898_3663515848317861888_n.jpg?_nc_cat=104&_nc_ohc=kZfiWUoPVD8AQmuyFVLka4wlDu4lHZTpaofuZf7DXqbNVvf1YxeX_tbZw&_nc_ht=scontent.oculuscdn.com&oh=9a57d82208d289cb04ea54e7a0a93a5c&oe=5E286E41\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12331034_339031126469128_1766304106479091712_n.jpg?_nc_cat=106&_nc_ohc=0pFo21Nn-oMAQn7M0uogeDr6ZLAuTyj-RP0nNediuEvW7qIpJ5o0DazhA&_nc_ht=scontent.oculuscdn.com&oh=52d8e8bd344964edcca80e1f546f2a5a&oe=5E2404F6\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/11162717_1978496759072579_869686029391495168_n.jpg?_nc_cat=100&_nc_ohc=UHrnQP3VDFAAQmBDZRvTYP3ibR_LCNJTFDKL_bvXg_pXXmApn_Id6uqCw&_nc_ht=scontent.oculuscdn.com&oh=f0d5405068650c7749da60c2f07e247f&oe=5E3C0F43\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12410399_136969643449764_8649854264862048256_n.jpg?_nc_cat=105&_nc_ohc=SL0qswpOxD4AQkQYYEtYs7sYHRZPNnAOyY3D1VPs4u3_1ZbH7LswOdFiQ&_nc_ht=scontent.oculuscdn.com&oh=50034c40845af3238af723abbb5b8d96&oe=5E27F2C4\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12727850_338397559877730_4285171326001348608_n.jpg?_nc_cat=106&_nc_ohc=TyFbK-xrQMMAQkZoc_38vq5kothHgwmLqihwbPZBcWxWGxRxcDKrVLJng&_nc_ht=scontent.oculuscdn.com&oh=3c50f0657e1f1b99b031551f7ad87c3e&oe=5E2C2BEC\"}],\"display_name\":\"Job Simulator\",\"display_short_description\":\"A tongue-in-cheek virtual reality experience for Oculus Touch. In a world where robots have replaced all human jobs, step into the \\\"Job Simulator\\\" to learn what it was like 'to job'. Now with never-ending gameplay with the new \\\"Infinite Overtime\\\" update!\"}},{\"ranking_trace\":\"0_1012593518800648_SKYLINEWEB_2Q5A81XqSuNiTQQ7C\",\"node\":{\"id\":\"1012593518800648\",\"canonicalName\":\"superhot-superhot\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"end_time\":0,\"show_timer\":false,\"id\":\"1169432853134804\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"2499\",\"formatted\":\"24,99\\u00a0\\u20ac\"},\"strikethrough_price\":null,\"promo_benefit\":null},\"current_trial_offer\":null,\"release_date\":1480924800,\"viewer_has_preorder\":false,\"__typename\":\"Application\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974738_753586411777704_62746233789218816_n.jpg?_nc_cat=1&_nc_ohc=6ws45KTrerMAQnjx-d537jnt8cNX4xPi6L2Kl3LOc5ciVcOVU4yDk6CuA&_nc_ht=scontent.oculuscdn.com&oh=9c9f2b052a57f40f8a429a1305f72b61&oe=5E25C852\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/39035420_1822513767893459_1014452433293672448_n.jpg?_nc_cat=105&_nc_ohc=kdJPQFz_BNYAQm63DhHsZRQ2Q9J-ar-Gic08efHH4XsL-1rBChY0B-GeA&_nc_ht=scontent.oculuscdn.com&oh=4d0095b4c0c2c0841fde8aebc116ee32&oe=5E277BFF\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974698_556155668503338_8155081200663265280_n.jpg?_nc_cat=106&_nc_ohc=qBaM-82XJE4AQmxKRHb_SaU8woOnwwpBvuXD0HkSk2OF9x2BbIpmWRzQw&_nc_ht=scontent.oculuscdn.com&oh=a23e658e12a6a1460b31a21bc87d4b37&oe=5E2D608C\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/39001722_1922580241188735_8993677946073907200_n.jpg?_nc_cat=111&_nc_ohc=kAPTtTIAkVsAQnx8iHkP26HFyi4f8XBIo2dNujXWArGY-SoAbhDBAQUyg&_nc_ht=scontent.oculuscdn.com&oh=28d8f0ca18ac447e665d750442143105&oe=5E3C17A0\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38982696_207682006787593_3036590995517997056_n.jpg?_nc_cat=101&_nc_ohc=ZhL9FvgQPYUAQkFaCv8GiGjtlPvXsCMl9alWoYUQGUA4rshlqUhHe7otA&_nc_ht=scontent.oculuscdn.com&oh=0313b32e9469bd04f27b6d41b8325436&oe=5E271262\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974498_660055221057737_7286480689896095744_n.jpg?_nc_cat=108&_nc_ohc=SEVx0baI73YAQnW8ztkt2_QZvxSPWE72lyIwhMnFs2tr6AM9xflwzv9Yg&_nc_ht=scontent.oculuscdn.com&oh=2560b159bc3700c538d02bd687e89133&oe=5E2AC0FB\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974553_2284162771819655_8316651466542546944_n.jpg?_nc_cat=104&_nc_ohc=fohyPMg6NOEAQlwI8JLh9jJUsJhE6tQMRwHZHmU8ucsomwgIkbkwtnlbA&_nc_ht=scontent.oculuscdn.com&oh=cbe76f9893481ab1278652ee5f368339&oe=5E26B1D3\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974804_600078720428598_5668988210856853504_n.jpg?_nc_cat=101&_nc_ohc=HZyLecR1R9oAQmruP3hGRid08R6DghDFZwWBzoLsUyfRbnmpr7loKo8HA&_nc_ht=scontent.oculuscdn.com&oh=d1a8d888fca3c34a6d1155f524875a17&oe=5E2B5560\"}],\"display_name\":\"SUPERHOT VR\",\"display_short_description\":\"DICE Immersive Reality Game of the Year 2017 Winner\\nGDCA VR\\/AR Game of the Year 2017 Nominee\\nNew York Game Awards Game of the Year 2017 Winner\\nGame Connection Best Hardcore Game 2017 Winner\\n\\n\\nSUPERHOT is the first person shooter where time moves only when you move. No regenerating health bars. No conveniently placed ammo drops. It's just you, outnumbered and outgunned, grabbing the weapons of fallen enemies to shoot, slice, and maneuver through a hurricane of slow-motion bullets.\"}},{\"ranking_trace\":\"0_980771811959458_SKYLINEWEB_3DbNJdAToWVPhCuxr\",\"node\":{\"id\":\"980771811959458\",\"canonicalName\":\"epic-games-bullet-train-gdc\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"end_time\":0,\"show_timer\":false,\"id\":\"585265678332518\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"USD\",\"offset_amount\":\"0\",\"formatted\":\"0,00\\u00a0$\"},\"strikethrough_price\":null,\"promo_benefit\":null},\"current_trial_offer\":null,\"release_date\":1480924800,\"viewer_has_preorder\":false,\"__typename\":\"Application\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138837_1012917828802038_1992119748_n.jpg?_nc_cat=104&_nc_ohc=ZZTRtDa0qY4AQklTmkgTIfFtXTOJ0hL2a-ege7Zl-cKGU4tOob6hHbt7g&_nc_ht=scontent.oculuscdn.com&oh=e9ad2a1f3fba34f1904a936c0cce4b8d&oe=5E2ACB52\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/12138771_838991342896714_256104990_n.jpg?_nc_cat=107&_nc_ohc=1awpEQHBXD0AQl7MgU0_U-ytGNlcNU2e2q419RuWhutebEza70bqbCxgw&_nc_ht=scontent.oculuscdn.com&oh=54e80bc7fb955b40c9c6139c241203b1&oe=5E3B1DB0\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138837_999072950179770_866464133_n.jpg?_nc_cat=103&_nc_ohc=u_cFLP4QbzAAQlg1h4VvT0DynNEFzDM0V5UigGYfbORBZ9t7f0a3uy0Uw&_nc_ht=scontent.oculuscdn.com&oh=911e02128a29d13820220206eed47b03&oe=5E27F161\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138834_1243838098977489_1209632348_n.jpg?_nc_cat=110&_nc_ohc=M-_b18LhZrcAQkBwGv6NpR8JfflYmYKP2DRFTQ2IKQ2OtuNmH7q-bLjCg&_nc_ht=scontent.oculuscdn.com&oh=26de361dbaf081c6da4e6e5ec5f80dcc&oe=5E2BD804\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138836_980073005419569_1818036262_n.jpg?_nc_cat=109&_nc_ohc=8MPEp_WyymAAQljsHORiVfsQyR_QnILeB2HtRyV9Q23IeYL1hhx1dnS4A&_nc_ht=scontent.oculuscdn.com&oh=df3d16e785ec1eab59ab59a60847fbcc&oe=5E2A8F36\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138840_504835929705744_2067038372_n.jpg?_nc_cat=105&_nc_ohc=uuurrLgW80YAQmHDlhup4CQ8meKb48NXcnUOKlD3cqTN-X3p4Qxm1ISfg&_nc_ht=scontent.oculuscdn.com&oh=ea6d37222bdc23b934444d36361bb967&oe=5E268721\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138836_186776921714952_1268430737_n.jpg?_nc_cat=101&_nc_ohc=J1Vg3CwcDiYAQnpMpsjX1J9ZphbA04XZ2QfavWBt_jB3zXkc0bGu4bTvw&_nc_ht=scontent.oculuscdn.com&oh=8a7efab38481687556bf72fe5494c87a&oe=5E2C84E2\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138787_729159697220931_1469480979_n.jpg?_nc_cat=100&_nc_ohc=NfRbrGh1Xs4AQlQl0rC0y15XwhMhj1OK0FBnSb294IVRpSXpO9N7Sux-w&_nc_ht=scontent.oculuscdn.com&oh=ab77f49545ebeedffb6eff169f5b7746&oe=5E3CE3E9\"}],\"display_name\":\"Bullet Train\",\"display_short_description\":\"Bullet Train es la \\u00faltima experiencia de realidad virtual de Epic Games, los creadores de la popular demo Showdown VR. Epic se mantiene fiel a la forma y te coloca en el centro de la acci\\u00f3n: utiliza controles de movimientos mientras desempe\\u00f1as el papel de un agente en una infiltraci\\u00f3n simulada dentro de una moderna estaci\\u00f3n de tren. Domina el arte del teletransporte, la manipulaci\\u00f3n temporal y el combate desde cerca para acabar con las fuerzas de resistencia.\"}}]},\"hero\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s2048x2048\\/38974907_2331967010236357_4676861902331052032_n.jpg?_nc_cat=110&_nc_ohc=leqrTun2VBcAQlGoEb-KXsdIrrBuZ6ZKmYF3Ndic9em5-nw4mcsxBq53w&_nc_ht=scontent.oculuscdn.com&oh=4ea327f2a3e2c220912273f14281f4e9&oe=5E3DF4D2\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/39001669_519891535277870_6246389767156531200_n.jpg?_nc_cat=109&_nc_ohc=D96a9V5qv6gAQkP87HeOA3MkHbpfz1mcndiLVL3k96S7IohrkSr9lmy7Q&_nc_ht=scontent.oculuscdn.com&oh=8f998b6857d766f472dfea50aebca19c&oe=5E28CF5C\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/38982475_1190727977804195_8816774221746143232_n.jpg?_nc_cat=100&_nc_ohc=7H_9jHUem5EAQkFZqAdnitIC-pNuBKU11GxY0aFfyei0T533w316ZKCug&_nc_ht=scontent.oculuscdn.com&oh=e047d838a7a28e102793545d0bbab9f1&oe=5E27922E\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/75302222_2894239163928680_8955198414946041856_n.jpg?_nc_cat=104&_nc_ohc=5FzPkfXscYYAQnTtST_CZR4M99McTZyqPplFfePiZjWpdTjthW_OgXvqQ&_nc_ht=scontent.oculuscdn.com&oh=5fee4d80be820cce0687242a018cb677&oe=5E28225F\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/39031364_2537839879760723_3295414894530134016_n.jpg?_nc_cat=106&_nc_ohc=hhHmKdbrYFEAQkCvKHcVycJFQAD_kw2537bj4-ijaTR7C2OFiBJ-2N_RQ&_nc_ht=scontent.oculuscdn.com&oh=273ba7e18ea052cbd13b9708c970fa31&oe=5E28C6B7\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/75236134_1255887137948137_3606890080364396544_n.jpg?_nc_cat=105&_nc_ohc=D9mCEtBFHjsAQkDoRiWKgCLev3eIliIWB5xA1MBaEnxurb8yzYw_Hm7mQ&_nc_ht=scontent.oculuscdn.com&oh=18dbd6dea296524ab2e48a2766a76916&oe=5E256AD7\"}],\"trailer\":{\"thumbnail\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/39036684_569278417212226_5765571747487154176_n.jpg?_nc_cat=106&_nc_ohc=IDOiGIsTUhIAQl11z_e4O6P7DqFjdHxcsICltWLmkQjWkFit_j8VGrPHA&_nc_ht=scontent.oculuscdn.com&oh=1ffb9cc4d06e8f9c48d1183c622e920f&oe=5E2C257E\"},\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.7195-25\\/75302221_569276820545719_7237135832107188224_n.mp4?_nc_cat=107&_nc_ohc=Sdk0QBE3zsgAQn3sNOX6CRrKbE2lCeR9-SXRmURxAyfr4VMZAkANNzOzA&_nc_ht=scontent.oculuscdn.com&oh=d43e453350ddfe44cf053db5dd5a68cc&oe=5E286540\"},\"quality_rating_histogram_aggregate\":[{\"star_rating\":1,\"count\":167,\"starRating\":1},{\"star_rating\":2,\"count\":81,\"starRating\":2},{\"star_rating\":3,\"count\":202,\"starRating\":3},{\"star_rating\":4,\"count\":1006,\"starRating\":4},{\"star_rating\":5,\"count\":11545,\"starRating\":5}],\"display_long_description\":\"Beat Saber es un exclusivo juego de ritmo para realidad virtual en el que tienes que hacer tajos los sonidos (representados por peque\\u00f1os cubos) a medida que se te van acercando. \\n\\nCada sonido te indica qu\\u00e9 sable debes usar y en qu\\u00e9 direcci\\u00f3n tienes que asestar el golpe. Toda la m\\u00fasica se compone de forma que encaje perfectamente en los niveles elaborados de forma artesanal. \\n\\nNuestro objetivo es que los jugadores pr\\u00e1cticamente bailen mientras cortan los cubos y esquivan los obst\\u00e1culos. \\n\\nCada corte va acompa\\u00f1ado de geniales efectos sonoros y visuales para acentuar el ritmo.\",\"age_rating\":null,\"category_name\":\"Juegos\",\"developer_name\":\"Beat Games\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"offer_type\":\"APPSTORE_OFFER\",\"id\":\"573732943191130\",\"price\":{\"offset_amount\":\"2999\",\"currency\":\"EUR\",\"formatted\":\"29,99\\u00a0\\u20ac\"},\"viewer\":{\"user\":null},\"strikethrough_price\":null,\"promo_benefit\":null,\"end_time\":1578297600,\"show_timer\":false},\"developer_privacy_policy_url\":\"https:\\/\\/beatsaber.com\\/doc\\/privacypolicy.txt\",\"developer_terms_of_service_url\":\"https:\\/\\/beatsaber.com\\/doc\\/eula.txt\",\"genre_names\":[\"Ocasionales\",\"M\\u00fasica\",\"Deportes\"],\"is_360_sensor_setup_required\":false,\"latest_supported_binary\":{\"__typename\":\"PCBinary\",\"version\":\"1.6.0\",\"change_log\":\"Green Day Music Pack is here! It features six of the band's most iconic hits & new singles. \\n\\nThis update also comes with:\\n- Brand new 360 and 90 Degree Levels.\\n- Adaptive SFX volume.\\n- Automatic player height detection.\\n- UI improvements.\\n- Graphics improvements.\\n- Various tweaks and fixes.\",\"supported_hmd_types\":[\"RIFT\",\"LAGUNA\"],\"total_installed_space\":\"542610044\",\"id\":\"2264419510324482\",\"required_space_adjusted\":\"2690093692\",\"storeAssetFiles\":{\"count\":36},\"firstIapItems\":{\"page_info\":{\"end_cursor\":\"AQHR5YKXhBxM97M3LtPiKLyb2OYityxGJHP3teIT0tBw8_gk2C4MskJUsPKPhnXd6jZ4igtIuv6FLAo8b-AZS95beQ\",\"start_cursor\":\"AQHRSCTjHAKMyCNks1VhhHXauILVHEAxCKOUmiV2uw_Ye0WnVaMNT4GLW885mo_Qo2TqJNkNx7Pj40JS-FCYU_qDOg\"},\"count\":36,\"edges\":[{\"node\":{\"id\":\"2264418286991271\",\"iap_item\":{\"id\":\"2770924596314818\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2341431022794628\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Imagine Dragons - \\\"Whatever It Takes\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Imagine Dragons - \\\"Whatever It Takes\\\"\"}}},{\"node\":{\"id\":\"2264418240324609\",\"iap_item\":{\"id\":\"1783156588450779\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"1524130211053468\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Feint - \\\"We Won't Be Alone (feat. Laura Brehm)\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Feint - \\\"We Won't Be Alone (feat. Laura Brehm)\\\"\"}}},{\"node\":{\"id\":\"2264418153657951\",\"iap_item\":{\"id\":\"2770922959648315\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2489774011251990\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Imagine Dragons - \\\"Warriors\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Imagine Dragons - \\\"Warriors\\\"\"}}},{\"node\":{\"id\":\"2264418073657959\",\"iap_item\":{\"id\":\"3062122113861730\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2952923978056183\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Panic! At The Disco \\u2013 \\\"Victorious\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Panic! At The Disco \\u2013 \\\"Victorious\\\"\"}}},{\"node\":{\"id\":\"2264418023657964\",\"iap_item\":{\"id\":\"1783155641784207\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2324096477916135\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Tristam - \\\"Till It's Over\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Tristam - \\\"Till It's Over\\\"\"}}}]},\"windows_min_spec\":null,\"redistributables\":{\"edges\":[]}},\"publisher_name\":\"Beat Games\",\"recommended_graphics\":\"Nvidia GTX 1060 or equivalent\",\"recommended_memory_gb\":8,\"recommended_processor\":\"Intel Core i7 Skylake or equivalent\",\"release_date\":1525201200,\"supported_in_app_languages\":[{\"name\":\"Ingl\\u00e9s\"}],\"supported_input_device_names\":[\"Oculus Touch\"],\"supported_player_modes\":[\"STANDING\",\"ROOM_SCALE\"],\"supported_tracking_modes\":[\"FRONT_FACING\"],\"user_interaction_mode_names\":[\"Usuario \\u00fanico\"],\"website_url\":\"https:\\/\\/beatsaber.com\\/\",\"viewer_release_channel\":{\"id\":\"2017290351867153\"},\"live_release_channel\":{\"id\":\"2017290351867153\",\"channel_name\":\"LIVE\",\"latest_supported_binary\":{\"__typename\":\"PCBinary\",\"id\":\"2264419510324482\"}},\"release_channels\":{\"count\":1,\"nodes\":[{\"channel_name\":\"LIVE\",\"id\":\"2017290351867153\",\"latest_supported_binary\":{\"__typename\":\"PCBinary\",\"version\":\"1.6.0\",\"id\":\"2264419510324482\"}}]},\"grouping\":{\"listedIapItems\":{\"count\":0},\"id\":\"1546487868739502\",\"firstIapItems\":{\"page_info\":{\"end_cursor\":null,\"start_cursor\":null},\"count\":0,\"edges\":[]},\"upcoming_events\":{\"edges\":[]},\"iap_items_2\":{\"edges\":[{\"cursor\":\"AQHRyy3axLLY2nr-5QQ4KRCTOXEky5BTS6U8NtVfGo-oQAmHJtjHynrdnZ5NiPaH_J-a9fYiBvHIGQ_0Awx5_nuV_g\"}]}},\"externalReviewsForDisplay\":{\"nodes\":[]},\"externalReviewsComplete\":{\"count\":0},\"comfort_rating\":\"COMFORTABLE_FOR_MOST\",\"is_viewer_subscribed_coming_soon\":false,\"internet_connection\":\"NOT_REQUIRED\",\"internet_connection_name\":\"No se necesita conexi\\u00f3n a internet\",\"supported_hmd_platforms\":[\"RIFT\",\"LAGUNA\"],\"supported_input_devices_list\":[{\"name\":\"Oculus Touch\",\"tag\":\"OCULUS_TOUCH\"}],\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"viewer_has_preorder\":false,\"purchase_alerts\":[],\"is_granted_on_hardware_registration\":false,\"current_trial_offer\":null,\"extra_buy_box_section\":{\"content\":\"Pol\\u00edtica de reembolsos de Oculus\",\"link_uri\":\"https:\\/\\/www.oculus.com\\/legal\\/quest-rift-content-refund-policy\\/\"},\"is_viewer_entitled\":false,\"baseline_offer\":{\"price\":{\"offset_amount\":\"2999\"},\"id\":\"573732943191130\"},\"entry\":null,\"is_demo_of\":null,\"appName\":\"Beat Saber\",\"platformOffer\":null,\"externalReviews\":{\"count\":0},\"quality_rating_aggregate\":4.821475271133,\"support_website_url\":null,\"quality_ratings_by_viewer\":[],\"reviewInfo\":{\"count\":1459,\"orderings\":[{\"key\":\"top\",\"label\":\"M\\u00e1s relevantes\"},{\"key\":\"most_recent\",\"label\":\"M\\u00e1s recientes\"}]},\"firstQualityRatings\":{\"count\":1459,\"page_info\":{\"end_cursor\":\"AQHRKIj4UAIOJ-J5c-HxpmdGrGdCpydlPmVBC1CXfpkFm-Q_NOYXYDQ5ZnSCHYdS02jEYgaxsEE97w_edUPfODfOcQ\",\"start_cursor\":\"AQHRaakkL20q324yDzd4PR-8pdC6uran0PsXeWTFxw5h-YbDxa-tmh8TlQSpiKfF7UathPLR65aousEvrBvBi1MGtw\"},\"edges\":[{\"node\":{\"id\":\"158100008477272\",\"author\":{\"id\":\"118995512387722\",\"display_name\":\"nick2528\",\"profile_photo\":null},\"score\":5,\"reviewDescription\":\"If the Rift was like one of those 80's handheld game pads that came with just one game built into it, and beat saber was that game.... it would still be worth \\u00a3400. buy it\\n\\nalso for the guy moaning about lack of songs. The Beat Saver Mod is installed in less than 60 seconds and then can all be managed from within the game, it becomes part of the game with a huge music library to choose from\",\"reviewTitle\":\"worth\",\"review_helpful_count\":1198,\"review_rank_by_viewer\":null,\"date\":1539810105,\"developerResponse\":null}},{\"node\":{\"id\":\"614321922297928\",\"author\":{\"id\":\"501732446890210\",\"display_name\":\"Sarstan\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.176.176a\\/s160x160\\/11162791_501732660223522_1749515371376803840_n.jpg?_nc_cat=107&_nc_ohc=-nnoiQOUxpAAQlgyKSZNnKEKXYtthoXp87FgupJpGHjpwLb4PDUn2W_ig&_nc_ht=scontent.oculuscdn.com&oh=1e39849c2eebdaae404b7ddf7cfc1caf&oe=5E28297E\"}},\"score\":1,\"reviewDescription\":\"This game gets rave reviews all the time, but truly they're not deserved. Great concept, extremely poor execution is the name of the game here. I'm going to focus on the negatives that no one wants to talk about.\\nMusic variety is a joke. About a dozen songs that consist almost exclusively of garbage rap and EDM that sounds like something pulled from an amateur.\\nBut everyone wants to highlight the range of music that's available. That's true. If you don't mind spending a few hours downloading the mod to make any of it work, installing it, finding the maps and music (where there is a TON of rubbish to sift through), installing those, and hoping you did it all right before hopping into VR. Maybe that doesn't sound so bad, but every slight update to the game (which aren't many anyway) breaks the mod and you have to redownload any and all you used if the newest version is available to begin with.\\nThat perhaps doesn't sound so bad either, but the whole reason people like this game, myself included, is based on the work of others. The developers don't release any music. The developers don't release any options, effects, or enhancements that are desperately needed. The developers are leaning back and raking in cash while others provide the content for their pretty broken game that has NO mod support natively. You won't have trouble getting mods to work, but like I mentioned they WILL break the moment anything happens by the developers. Who like to release small bug fixes at times.\\nI feel deeply bothered that, based on what the developers have provided, the game is a pretty empty shell. Insult to injury when you can expect your experience to be ruined regularly at each update. And the content you actually want is relied upon by the community to make, which itself is overwhelmingly just thrown together and not worth messing with. Other popular games at least had content to stand on. Without all the mods and community, this game is a joke.\",\"reviewTitle\":\"Great Game If You Don't Mind Caveats\",\"review_helpful_count\":1557,\"review_rank_by_viewer\":null,\"date\":1536028189,\"developerResponse\":{\"date\":1558488750,\"body\":\"Hi Sarstan, thank you for sharing your thoughts about Beat Saber with us, we would like to address your concerns. :)\\n\\nBeat Saber's Music: We are aware that since the release, we were mostly covering electronic music genre. At the beginning, when we started developing the game, we were experimenting with many genres, but we realised electronic music fits the game the best. But we want to have genres variety too. That's why we have many other genres in our music roadmap. Our upcoming Music Pack is a great example. We are sure you will love it. Stay tuned! \\n\\nMods: Mods aren't official part of the game but are created by the community. Updates are a regular part of every development process and of course, in almost all cases, when source code of the game changes \\u2013 the mods require updates by their authors too. \\n\\nUnfortunately, we cannot provide you with additional support for mods which are created by a 3rd party. Please, try to respect this fact and understand that we are not breaking mods on purpose.\\n\\nIn the past months, we brought features we wanted to the game (and we have even bigger plans and ideas for the future), made many improvements and will continue polishing it and bringing new music content. Especially licensing the music is an extremely complicated process. But right now, we have several big-name artists locked in the road map for this year! We know you might feel that we are not moving fast enough but please, keep in mind that we are a small indie studio and we want to make sure Beat Saber is highly polished and your gaming experience the best possible. All this needs time. \\nWe hope this will give you an insight into what we do and plan for the future. Thank you for sharing your thoughts!\",\"id\":\"757565171306935\"}}},{\"node\":{\"id\":\"559459281187402\",\"author\":{\"id\":\"423443091455689\",\"display_name\":\"SanchoSandCat\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.304.304a\\/s160x160\\/12331303_423518191448179_3536706758514835456_n.jpg?_nc_cat=103&_nc_ohc=yLmlmOVPVxIAQl9V-INVPbvfwQQD-4D5_scr5wb11iSFYF-STSNHym-8Q&_nc_ht=scontent.oculuscdn.com&oh=f6e48a750707b7ac1c30ec53b96e5675&oe=5E2B892F\"}},\"score\":5,\"reviewDescription\":\"Fantastic game! Excellent to use for therapy. \\n\\nI was in a severe car accident, smashed my head against the car window, which shattered, and then a split second later, against someone\\u2019s hand, which also shattered.  Hard headed, am I right? But that left me with a brain injury. I couldn\\u2019t process information I was receiving, both audio and visual. I would get confused or forget conversations while having them, couldn\\u2019t even remember what it was I was doing sometimes.\\n\\nThen I found Beat Saber. \\n\\nStarted on normal, did badly. I kept freezing up when I didn\\u2019t understand the sequence coming at me. But I kept at it, a hour a day, every day.  7 months later, I\\u2019m clearing expert plus and a whole plethora of custom songs, plus lost 20lbs of trauma weight as a bonus.  I\\u2019m following conversations, my reaction time is much better and I just plain understand better. \\n\\nNow I\\u2019m not saying the game cured me.  But it did definitely help. And with so few tools for brain therapy, stumbling across Beat Saber was a boon. If you or someone you know suffer from the aftereffects of a head injury, I encourage you, try VR, try Beat Saber. It\\u2019s one of the cheapest forms of brain therapy and it\\u2019s incredibly fun.\",\"reviewTitle\":\"Good for the Brain\",\"review_helpful_count\":325,\"review_rank_by_viewer\":null,\"date\":1547846015,\"developerResponse\":null}},{\"node\":{\"id\":\"179546663203129\",\"author\":{\"id\":\"113942603096869\",\"display_name\":\"SteveMacAwesome\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.176.176a\\/s160x160\\/39031510_159245471899915_3213500432152264704_n.jpg?_nc_cat=104&_nc_ohc=-ButQ5dL2PYAQnOfPN1eGxzpgSM4iCEjyVUMvwpY7V_SyHdGBpeKhOfwQ&_nc_ht=scontent.oculuscdn.com&oh=e2d013978f8a8d74a80dae3ce179c4d8&oe=5E3B9680\"}},\"score\":5,\"reviewDescription\":\"If you're reading this, you know Beat Saber. You know what it is, and what it does. \\n\\nBuy it.\\n\\nSeriously. If you can afford it, buy the game. Take it from me, friend, it will be worth your hard-earned money. Even if you only play it once, you'll still have moved around to the beat for a bit. \\n\\nRemember that gym membership you've been meaning to cancel? You know, the one you started back in January, where you went to the gym just once before you ended up never going back? It's ok, I know you've been meaning to work out - but there just isn't enough time. Don't worry friend, Beat Saber has you covered. Now you can get sweaty in the comfort of your own living room, with your personal shower close at hand, whilst feeding your brain those dopamine doses it so desires after a long day at work or school.\\n\\nBeat Saber is great for everyone.\\n\\nHow do I know this? Take my boss for example. We introduced him to Beat Saber in VR. Now he has:\\n- beaten pretty much every level on expert\\n- been told off by his wife for staying up late playing Beat Saber\\n- knocked over lamps\\n- challenged everyone else at work to beat him at the game\\n\\nBe like my boss. Go wild on some Beat Saber. You won't regret it.\",\"reviewTitle\":\"Beat Saber got my boss playing VR games\",\"review_helpful_count\":167,\"review_rank_by_viewer\":null,\"date\":1571085913,\"developerResponse\":null}},{\"node\":{\"id\":\"274096013244957\",\"author\":{\"id\":\"182657372388822\",\"display_name\":\"TheRealDarklaser\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.176.176a\\/s160x160\\/12410200_182658135722079_4587559735426809856_n.jpg?_nc_cat=102&_nc_ohc=q-R3woVMIucAQk1wMpIAsrIlifNiFw3LfplRe2AMI1SElT26uCdjRktVg&_nc_ht=scontent.oculuscdn.com&oh=e376afaf913e8ee28a984f4c255422f4&oe=5E24527A\"}},\"score\":5,\"reviewDescription\":\"[see notes about plugins at the bottom] I don't tend to care all that much for Guitar Hero and Fruit Ninja style games, but this game is incredible!  We have a household of Dad, Mom, and 6 kids ranging from 8 to 18, and everyone we have introduced to it (both young and old) absolute love it.  It even makes a great party game because people really get into watching it.  We've had a couple parties where that was the entertainment, and rather than hanging around the food, most people are watching the screen.  We've had this for about 2 months, and it is still the favorite game.  As much as we love Skyrim VR, Skyrim has even taken a back seat to Beat Saber.\\n\\nPlugins: \\n- Beat Saber Mod Manager (Important - google search \\\"Beat Saber Mod Manger\\\" and download it from Umbranoxio's Github page)\\n- Install at the least SongBrowser plugin and SongLoader plugin\\n- We also really like the CustomSaber plugin\\n\\nThe SongBrowser plugin adds a song downloader tool in the game that you can use to download songs, however it only gives you a handful of pages of songs to browse.  But you can head on over to BeatSaver.com (not BeatSaber.com) where you can download all of the songs you want (we currently have 150+ songs).  Then find your \\\"YOUR-OCULUS-CATEGORY\\/Software\\/hyperbolic-magnetism-beat-saber\\/CustomSongs\\/\\\" folder (inside your Oculus apps location), and unzip the downloaded song and copy everything that was in it into the CustomSongs folder.  The folder you should be coping in will be called NUMBER-NUMBER (for example 128-174 or 1068-725, etc).\\n\\nThe game dynamics are awesome, but I think having been able to add all of these songs to play, has really made the game for us.\",\"reviewTitle\":\"Fantastic Game (with plugins included)\",\"review_helpful_count\":280,\"review_rank_by_viewer\":null,\"date\":1540672783,\"developerResponse\":null}}]},\"can_viewer_review\":false,\"website_page_meta\":{\"description\":\"Beat Saber es un juego de ritmo para realidad virtual en el que tienes que hacer tajos los sonidos, que encajan perfectamente en una melod\\u00eda cuidadosamente elaborada de forma artesanal.\",\"image_height\":405,\"image_type\":\"image\\/jpeg\",\"image_url\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/75258662_984293468616301_3529956628998651904_n.jpg?_nc_cat=100&_nc_ohc=TJt3kec44DYAQmIdQW8k9mk0tYz6yL5Lf3wMN4JM2yElLeCjlAYMqG07w&_nc_ht=scontent.oculuscdn.com&oh=f5602a7d4f6af27347b7284be79bbf12&oe=5E269CBF\",\"image_width\":720,\"og_locale\":\"es_ES\",\"og_type\":\"website\",\"page_url\":\"https:\\/\\/www.oculus.com\\/experiences\\/rift\\/1304877726278670\\/\",\"site_name\":\"Oculus\",\"title\":\"Beat Saber en Oculus Rift\"},\"fallback_ranking_trace\":\"\"}},\"errors\":[{\"message\":\"Errors while executing operation \\\"StoreAppQuery\\\": At Query.viewer:Viewer.user: Field implementation threw an exception. Check your server logs for more information.\",\"severity\":\"ERROR\",\"path\":[\"viewer\",\"user\"]},{\"message\":\"Errors while executing operation \\\"StoreAppQuery\\\": At Query.node:Application.current_offer:AppStoreOffer.viewer:Viewer.user: Field implementation threw an exception. Check your server logs for more information.\",\"severity\":\"ERROR\",\"path\":[\"node\",\"current_offer\",\"viewer\",\"user\"]},{\"message\":\"Errors while executing operation \\\"StoreAppQuery\\\": At Query.node:Application.purchase_alerts: Field implementation threw an exception. Check your server logs for more information.\",\"severity\":\"ERROR\",\"path\":[\"node\",\"purchase_alerts\"]}]}",
+          "size": 36127,
+          "transferredSize": 14776
+        },
+        "contentDiscarded": false,
+        "from": "server0.conn0.netEvent24741"
+      }
+    }
+  },
+  "Contenido de respuesta": {
+    "EDITOR_CONFIG": {
+      "text": "{\"data\":{\"viewer\":{\"user\":null},\"node\":{\"__typename\":\"Application\",\"id\":\"1304877726278670\",\"display_name\":\"Beat Saber\",\"platform\":\"PC\",\"iarc_cert\":{\"iarc_rating\":{\"descriptors\":[],\"interactive_elements\":[],\"id\":\"183793802248949\",\"large_age_rating_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/12138845_169332346868547_134368769114898432_n.png?_nc_cat=105&_nc_ohc=4cfSo6ZcHtoAQki3vEFSn5u3BtoiGuX0BVILprimi5AEgPoz7mdiBaWzw&_nc_ht=scontent.oculuscdn.com&oh=1e336ef17bb95e288825eaef37cd9560&oe=5E2B6FB3\"},\"small_age_rating_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/12482345_1839933169554530_3608172115217350656_n.png?_nc_cat=111&_nc_ohc=K3FeCZPDHqoAQlY7aVKiLRGYSS45MPnLPv2MeP8zwWibARAvsAATv_IEw&_nc_ht=scontent.oculuscdn.com&oh=89211ef5929b5bf4fb26cd21631d3406&oe=5E240AFC\"},\"age_rating_text\":\"PEGI 3\",\"rating_definition_uri\":\"https:\\/\\/www.globalratings.com\\/ratings-guide-pegi\",\"__typename\":\"IARCRating\"},\"id\":\"183793798915616\"},\"category\":\"GAMES\",\"item_bundles\":[{\"id\":\"464577247677632\",\"__typename\":\"AppItemBundle\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/39035337_1389491407866528_983455985030922240_n.jpg?_nc_cat=106&_nc_ohc=teZORr8AdE0AQnhZrBNJd3anR7m_71jeFAQokbgSloRyUQkr_7Cjx6ihw&_nc_ht=scontent.oculuscdn.com&oh=43162254110dab26a813bfb81671c1f5&oe=5E257EB8\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/38982705_1222589084574547_6713713996014288896_n.jpg?_nc_cat=107&_nc_ohc=XBfRK_hUZ8MAQkRW0h8z7FH1eKdhfIu6CUh6rfNS7i6XumUU4N8uxIOVA&_nc_ht=scontent.oculuscdn.com&oh=c4d8ebc1d3458082dfab271ffff4490a&oe=5E2659C2\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974800_599443777232878_8009570629252546560_n.jpg?_nc_cat=111&_nc_ohc=PaGEEOyGWaYAQmXp3Zm_w6Wa75nDJKLq6WhMApR8RYFtI3SBWTFLRW0AA&_nc_ht=scontent.oculuscdn.com&oh=a0df83d4481c33dc3fa38568f600109d&oe=5E295BD4\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/10000000_393440494595866_375503836728524800_n.jpg?_nc_cat=102&_nc_ohc=xTW0QTfE-SMAQlMwyLadvvY0mvkudPRocZgodAHKOTxSTDsiDqhvGg9yQ&_nc_ht=scontent.oculuscdn.com&oh=341cdbebab6eea58e03173e28c6bf591&oe=5E266241\"}],\"display_name\":\"Beat Saber + Imagine Dragons\",\"display_short_description\":\"Imagine Dragons Music Pack is brought to you by Universal Music.\",\"is_viewer_entitled\":false}],\"related_items_with_ranking_trace\":{\"edges\":[{\"ranking_trace\":\"0_1069133196442024_SKYLINEWEB_1rC1epe5eRhnbMCIK\",\"node\":{\"id\":\"1069133196442024\",\"canonicalName\":\"owlchemy-labs-job-simulator\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"end_time\":0,\"show_timer\":false,\"id\":\"255872085361624\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"1999\",\"formatted\":\"19,99\\u00a0\\u20ac\"},\"strikethrough_price\":null,\"promo_benefit\":null},\"current_trial_offer\":null,\"release_date\":1480924800,\"viewer_has_preorder\":false,\"__typename\":\"Application\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12482181_896630600510783_8686707918940143616_n.jpg?_nc_cat=1&_nc_ohc=7KADQlHSJ44AQmVGxXehTzcB0kus5ULwMhTJ28ibr-2cOeigE05SbKxng&_nc_ht=scontent.oculuscdn.com&oh=c54ca2d4c5ce22c0b7c4da074930da2b&oe=5E245E8A\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/12139307_1312767975440712_7671955817188294656_n.jpg?_nc_cat=109&_nc_ohc=aw0AwG5L9AkAQmh0YK5YwM3UtSIooqQQwoXjzgD9DbDL3d7C-k7pRLUhw&_nc_ht=scontent.oculuscdn.com&oh=3e18529d4bacfe6ae1b3d069169ec630&oe=5E2B5D49\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12139365_1253866474669078_8767538417471848448_n.jpg?_nc_cat=111&_nc_ohc=1L_WodNjaC8AQnetZfehbm3NV1MY61c9UXIXR1JBsc9bOtVXbk5or-O8A&_nc_ht=scontent.oculuscdn.com&oh=8358a0bdbd0ceea413c9e6528dfa0aec&oe=5E29A8A2\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12482343_341902836182898_3663515848317861888_n.jpg?_nc_cat=104&_nc_ohc=kZfiWUoPVD8AQmuyFVLka4wlDu4lHZTpaofuZf7DXqbNVvf1YxeX_tbZw&_nc_ht=scontent.oculuscdn.com&oh=9a57d82208d289cb04ea54e7a0a93a5c&oe=5E286E41\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12331034_339031126469128_1766304106479091712_n.jpg?_nc_cat=106&_nc_ohc=0pFo21Nn-oMAQn7M0uogeDr6ZLAuTyj-RP0nNediuEvW7qIpJ5o0DazhA&_nc_ht=scontent.oculuscdn.com&oh=52d8e8bd344964edcca80e1f546f2a5a&oe=5E2404F6\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/11162717_1978496759072579_869686029391495168_n.jpg?_nc_cat=100&_nc_ohc=UHrnQP3VDFAAQmBDZRvTYP3ibR_LCNJTFDKL_bvXg_pXXmApn_Id6uqCw&_nc_ht=scontent.oculuscdn.com&oh=f0d5405068650c7749da60c2f07e247f&oe=5E3C0F43\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12410399_136969643449764_8649854264862048256_n.jpg?_nc_cat=105&_nc_ohc=SL0qswpOxD4AQkQYYEtYs7sYHRZPNnAOyY3D1VPs4u3_1ZbH7LswOdFiQ&_nc_ht=scontent.oculuscdn.com&oh=50034c40845af3238af723abbb5b8d96&oe=5E27F2C4\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12727850_338397559877730_4285171326001348608_n.jpg?_nc_cat=106&_nc_ohc=TyFbK-xrQMMAQkZoc_38vq5kothHgwmLqihwbPZBcWxWGxRxcDKrVLJng&_nc_ht=scontent.oculuscdn.com&oh=3c50f0657e1f1b99b031551f7ad87c3e&oe=5E2C2BEC\"}],\"display_name\":\"Job Simulator\",\"display_short_description\":\"A tongue-in-cheek virtual reality experience for Oculus Touch. In a world where robots have replaced all human jobs, step into the \\\"Job Simulator\\\" to learn what it was like 'to job'. Now with never-ending gameplay with the new \\\"Infinite Overtime\\\" update!\"}},{\"ranking_trace\":\"0_1012593518800648_SKYLINEWEB_2Q5A81XqSuNiTQQ7C\",\"node\":{\"id\":\"1012593518800648\",\"canonicalName\":\"superhot-superhot\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"end_time\":0,\"show_timer\":false,\"id\":\"1169432853134804\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"2499\",\"formatted\":\"24,99\\u00a0\\u20ac\"},\"strikethrough_price\":null,\"promo_benefit\":null},\"current_trial_offer\":null,\"release_date\":1480924800,\"viewer_has_preorder\":false,\"__typename\":\"Application\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974738_753586411777704_62746233789218816_n.jpg?_nc_cat=1&_nc_ohc=6ws45KTrerMAQnjx-d537jnt8cNX4xPi6L2Kl3LOc5ciVcOVU4yDk6CuA&_nc_ht=scontent.oculuscdn.com&oh=9c9f2b052a57f40f8a429a1305f72b61&oe=5E25C852\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/39035420_1822513767893459_1014452433293672448_n.jpg?_nc_cat=105&_nc_ohc=kdJPQFz_BNYAQm63DhHsZRQ2Q9J-ar-Gic08efHH4XsL-1rBChY0B-GeA&_nc_ht=scontent.oculuscdn.com&oh=4d0095b4c0c2c0841fde8aebc116ee32&oe=5E277BFF\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974698_556155668503338_8155081200663265280_n.jpg?_nc_cat=106&_nc_ohc=qBaM-82XJE4AQmxKRHb_SaU8woOnwwpBvuXD0HkSk2OF9x2BbIpmWRzQw&_nc_ht=scontent.oculuscdn.com&oh=a23e658e12a6a1460b31a21bc87d4b37&oe=5E2D608C\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/39001722_1922580241188735_8993677946073907200_n.jpg?_nc_cat=111&_nc_ohc=kAPTtTIAkVsAQnx8iHkP26HFyi4f8XBIo2dNujXWArGY-SoAbhDBAQUyg&_nc_ht=scontent.oculuscdn.com&oh=28d8f0ca18ac447e665d750442143105&oe=5E3C17A0\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38982696_207682006787593_3036590995517997056_n.jpg?_nc_cat=101&_nc_ohc=ZhL9FvgQPYUAQkFaCv8GiGjtlPvXsCMl9alWoYUQGUA4rshlqUhHe7otA&_nc_ht=scontent.oculuscdn.com&oh=0313b32e9469bd04f27b6d41b8325436&oe=5E271262\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974498_660055221057737_7286480689896095744_n.jpg?_nc_cat=108&_nc_ohc=SEVx0baI73YAQnW8ztkt2_QZvxSPWE72lyIwhMnFs2tr6AM9xflwzv9Yg&_nc_ht=scontent.oculuscdn.com&oh=2560b159bc3700c538d02bd687e89133&oe=5E2AC0FB\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974553_2284162771819655_8316651466542546944_n.jpg?_nc_cat=104&_nc_ohc=fohyPMg6NOEAQlwI8JLh9jJUsJhE6tQMRwHZHmU8ucsomwgIkbkwtnlbA&_nc_ht=scontent.oculuscdn.com&oh=cbe76f9893481ab1278652ee5f368339&oe=5E26B1D3\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/38974804_600078720428598_5668988210856853504_n.jpg?_nc_cat=101&_nc_ohc=HZyLecR1R9oAQmruP3hGRid08R6DghDFZwWBzoLsUyfRbnmpr7loKo8HA&_nc_ht=scontent.oculuscdn.com&oh=d1a8d888fca3c34a6d1155f524875a17&oe=5E2B5560\"}],\"display_name\":\"SUPERHOT VR\",\"display_short_description\":\"DICE Immersive Reality Game of the Year 2017 Winner\\nGDCA VR\\/AR Game of the Year 2017 Nominee\\nNew York Game Awards Game of the Year 2017 Winner\\nGame Connection Best Hardcore Game 2017 Winner\\n\\n\\nSUPERHOT is the first person shooter where time moves only when you move. No regenerating health bars. No conveniently placed ammo drops. It's just you, outnumbered and outgunned, grabbing the weapons of fallen enemies to shoot, slice, and maneuver through a hurricane of slow-motion bullets.\"}},{\"ranking_trace\":\"0_980771811959458_SKYLINEWEB_3DbNJdAToWVPhCuxr\",\"node\":{\"id\":\"980771811959458\",\"canonicalName\":\"epic-games-bullet-train-gdc\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"end_time\":0,\"show_timer\":false,\"id\":\"585265678332518\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"USD\",\"offset_amount\":\"0\",\"formatted\":\"0,00\\u00a0$\"},\"strikethrough_price\":null,\"promo_benefit\":null},\"current_trial_offer\":null,\"release_date\":1480924800,\"viewer_has_preorder\":false,\"__typename\":\"Application\",\"cover_landscape_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138837_1012917828802038_1992119748_n.jpg?_nc_cat=104&_nc_ohc=ZZTRtDa0qY4AQklTmkgTIfFtXTOJ0hL2a-ege7Zl-cKGU4tOob6hHbt7g&_nc_ht=scontent.oculuscdn.com&oh=e9ad2a1f3fba34f1904a936c0cce4b8d&oe=5E2ACB52\"},\"cover_portrait_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s515x515\\/12138771_838991342896714_256104990_n.jpg?_nc_cat=107&_nc_ohc=1awpEQHBXD0AQl7MgU0_U-ytGNlcNU2e2q419RuWhutebEza70bqbCxgw&_nc_ht=scontent.oculuscdn.com&oh=54e80bc7fb955b40c9c6139c241203b1&oe=5E3B1DB0\"},\"cover_square_image\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138837_999072950179770_866464133_n.jpg?_nc_cat=103&_nc_ohc=u_cFLP4QbzAAQlg1h4VvT0DynNEFzDM0V5UigGYfbORBZ9t7f0a3uy0Uw&_nc_ht=scontent.oculuscdn.com&oh=911e02128a29d13820220206eed47b03&oe=5E27F161\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138834_1243838098977489_1209632348_n.jpg?_nc_cat=110&_nc_ohc=M-_b18LhZrcAQkBwGv6NpR8JfflYmYKP2DRFTQ2IKQ2OtuNmH7q-bLjCg&_nc_ht=scontent.oculuscdn.com&oh=26de361dbaf081c6da4e6e5ec5f80dcc&oe=5E2BD804\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138836_980073005419569_1818036262_n.jpg?_nc_cat=109&_nc_ohc=8MPEp_WyymAAQljsHORiVfsQyR_QnILeB2HtRyV9Q23IeYL1hhx1dnS4A&_nc_ht=scontent.oculuscdn.com&oh=df3d16e785ec1eab59ab59a60847fbcc&oe=5E2A8F36\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138840_504835929705744_2067038372_n.jpg?_nc_cat=105&_nc_ohc=uuurrLgW80YAQmHDlhup4CQ8meKb48NXcnUOKlD3cqTN-X3p4Qxm1ISfg&_nc_ht=scontent.oculuscdn.com&oh=ea6d37222bdc23b934444d36361bb967&oe=5E268721\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138836_186776921714952_1268430737_n.jpg?_nc_cat=101&_nc_ohc=J1Vg3CwcDiYAQnpMpsjX1J9ZphbA04XZ2QfavWBt_jB3zXkc0bGu4bTvw&_nc_ht=scontent.oculuscdn.com&oh=8a7efab38481687556bf72fe5494c87a&oe=5E2C84E2\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/12138787_729159697220931_1469480979_n.jpg?_nc_cat=100&_nc_ohc=NfRbrGh1Xs4AQlQl0rC0y15XwhMhj1OK0FBnSb294IVRpSXpO9N7Sux-w&_nc_ht=scontent.oculuscdn.com&oh=ab77f49545ebeedffb6eff169f5b7746&oe=5E3CE3E9\"}],\"display_name\":\"Bullet Train\",\"display_short_description\":\"Bullet Train es la \\u00faltima experiencia de realidad virtual de Epic Games, los creadores de la popular demo Showdown VR. Epic se mantiene fiel a la forma y te coloca en el centro de la acci\\u00f3n: utiliza controles de movimientos mientras desempe\\u00f1as el papel de un agente en una infiltraci\\u00f3n simulada dentro de una moderna estaci\\u00f3n de tren. Domina el arte del teletransporte, la manipulaci\\u00f3n temporal y el combate desde cerca para acabar con las fuerzas de resistencia.\"}}]},\"hero\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s2048x2048\\/38974907_2331967010236357_4676861902331052032_n.jpg?_nc_cat=110&_nc_ohc=leqrTun2VBcAQlGoEb-KXsdIrrBuZ6ZKmYF3Ndic9em5-nw4mcsxBq53w&_nc_ht=scontent.oculuscdn.com&oh=4ea327f2a3e2c220912273f14281f4e9&oe=5E3DF4D2\"},\"screenshots\":[{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/39001669_519891535277870_6246389767156531200_n.jpg?_nc_cat=109&_nc_ohc=D96a9V5qv6gAQkP87HeOA3MkHbpfz1mcndiLVL3k96S7IohrkSr9lmy7Q&_nc_ht=scontent.oculuscdn.com&oh=8f998b6857d766f472dfea50aebca19c&oe=5E28CF5C\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/38982475_1190727977804195_8816774221746143232_n.jpg?_nc_cat=100&_nc_ohc=7H_9jHUem5EAQkFZqAdnitIC-pNuBKU11GxY0aFfyei0T533w316ZKCug&_nc_ht=scontent.oculuscdn.com&oh=e047d838a7a28e102793545d0bbab9f1&oe=5E27922E\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/75302222_2894239163928680_8955198414946041856_n.jpg?_nc_cat=104&_nc_ohc=5FzPkfXscYYAQnTtST_CZR4M99McTZyqPplFfePiZjWpdTjthW_OgXvqQ&_nc_ht=scontent.oculuscdn.com&oh=5fee4d80be820cce0687242a018cb677&oe=5E28225F\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/39031364_2537839879760723_3295414894530134016_n.jpg?_nc_cat=106&_nc_ohc=hhHmKdbrYFEAQkCvKHcVycJFQAD_kw2537bj4-ijaTR7C2OFiBJ-2N_RQ&_nc_ht=scontent.oculuscdn.com&oh=273ba7e18ea052cbd13b9708c970fa31&oe=5E28C6B7\"},{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/75236134_1255887137948137_3606890080364396544_n.jpg?_nc_cat=105&_nc_ohc=D9mCEtBFHjsAQkDoRiWKgCLev3eIliIWB5xA1MBaEnxurb8yzYw_Hm7mQ&_nc_ht=scontent.oculuscdn.com&oh=18dbd6dea296524ab2e48a2766a76916&oe=5E256AD7\"}],\"trailer\":{\"thumbnail\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s1440x1440\\/39036684_569278417212226_5765571747487154176_n.jpg?_nc_cat=106&_nc_ohc=IDOiGIsTUhIAQl11z_e4O6P7DqFjdHxcsICltWLmkQjWkFit_j8VGrPHA&_nc_ht=scontent.oculuscdn.com&oh=1ffb9cc4d06e8f9c48d1183c622e920f&oe=5E2C257E\"},\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.7195-25\\/75302221_569276820545719_7237135832107188224_n.mp4?_nc_cat=107&_nc_ohc=Sdk0QBE3zsgAQn3sNOX6CRrKbE2lCeR9-SXRmURxAyfr4VMZAkANNzOzA&_nc_ht=scontent.oculuscdn.com&oh=d43e453350ddfe44cf053db5dd5a68cc&oe=5E286540\"},\"quality_rating_histogram_aggregate\":[{\"star_rating\":1,\"count\":167,\"starRating\":1},{\"star_rating\":2,\"count\":81,\"starRating\":2},{\"star_rating\":3,\"count\":202,\"starRating\":3},{\"star_rating\":4,\"count\":1006,\"starRating\":4},{\"star_rating\":5,\"count\":11545,\"starRating\":5}],\"display_long_description\":\"Beat Saber es un exclusivo juego de ritmo para realidad virtual en el que tienes que hacer tajos los sonidos (representados por peque\\u00f1os cubos) a medida que se te van acercando. \\n\\nCada sonido te indica qu\\u00e9 sable debes usar y en qu\\u00e9 direcci\\u00f3n tienes que asestar el golpe. Toda la m\\u00fasica se compone de forma que encaje perfectamente en los niveles elaborados de forma artesanal. \\n\\nNuestro objetivo es que los jugadores pr\\u00e1cticamente bailen mientras cortan los cubos y esquivan los obst\\u00e1culos. \\n\\nCada corte va acompa\\u00f1ado de geniales efectos sonoros y visuales para acentuar el ritmo.\",\"age_rating\":null,\"category_name\":\"Juegos\",\"developer_name\":\"Beat Games\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"offer_type\":\"APPSTORE_OFFER\",\"id\":\"573732943191130\",\"price\":{\"offset_amount\":\"2999\",\"currency\":\"EUR\",\"formatted\":\"29,99\\u00a0\\u20ac\"},\"viewer\":{\"user\":null},\"strikethrough_price\":null,\"promo_benefit\":null,\"end_time\":1578297600,\"show_timer\":false},\"developer_privacy_policy_url\":\"https:\\/\\/beatsaber.com\\/doc\\/privacypolicy.txt\",\"developer_terms_of_service_url\":\"https:\\/\\/beatsaber.com\\/doc\\/eula.txt\",\"genre_names\":[\"Ocasionales\",\"M\\u00fasica\",\"Deportes\"],\"is_360_sensor_setup_required\":false,\"latest_supported_binary\":{\"__typename\":\"PCBinary\",\"version\":\"1.6.0\",\"change_log\":\"Green Day Music Pack is here! It features six of the band's most iconic hits & new singles. \\n\\nThis update also comes with:\\n- Brand new 360 and 90 Degree Levels.\\n- Adaptive SFX volume.\\n- Automatic player height detection.\\n- UI improvements.\\n- Graphics improvements.\\n- Various tweaks and fixes.\",\"supported_hmd_types\":[\"RIFT\",\"LAGUNA\"],\"total_installed_space\":\"542610044\",\"id\":\"2264419510324482\",\"required_space_adjusted\":\"2690093692\",\"storeAssetFiles\":{\"count\":36},\"firstIapItems\":{\"page_info\":{\"end_cursor\":\"AQHR5YKXhBxM97M3LtPiKLyb2OYityxGJHP3teIT0tBw8_gk2C4MskJUsPKPhnXd6jZ4igtIuv6FLAo8b-AZS95beQ\",\"start_cursor\":\"AQHRSCTjHAKMyCNks1VhhHXauILVHEAxCKOUmiV2uw_Ye0WnVaMNT4GLW885mo_Qo2TqJNkNx7Pj40JS-FCYU_qDOg\"},\"count\":36,\"edges\":[{\"node\":{\"id\":\"2264418286991271\",\"iap_item\":{\"id\":\"2770924596314818\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2341431022794628\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Imagine Dragons - \\\"Whatever It Takes\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Imagine Dragons - \\\"Whatever It Takes\\\"\"}}},{\"node\":{\"id\":\"2264418240324609\",\"iap_item\":{\"id\":\"1783156588450779\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"1524130211053468\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Feint - \\\"We Won't Be Alone (feat. Laura Brehm)\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Feint - \\\"We Won't Be Alone (feat. Laura Brehm)\\\"\"}}},{\"node\":{\"id\":\"2264418153657951\",\"iap_item\":{\"id\":\"2770922959648315\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2489774011251990\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Imagine Dragons - \\\"Warriors\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Imagine Dragons - \\\"Warriors\\\"\"}}},{\"node\":{\"id\":\"2264418073657959\",\"iap_item\":{\"id\":\"3062122113861730\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2952923978056183\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Panic! At The Disco \\u2013 \\\"Victorious\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Panic! At The Disco \\u2013 \\\"Victorious\\\"\"}}},{\"node\":{\"id\":\"2264418023657964\",\"iap_item\":{\"id\":\"1783155641784207\",\"current_offer\":{\"__typename\":\"AppStoreOffer\",\"id\":\"2324096477916135\",\"offer_type\":\"APPSTORE_OFFER\",\"price\":{\"currency\":\"EUR\",\"offset_amount\":\"199\",\"formatted\":\"1,99\\u00a0\\u20ac\"},\"strikethrough_price\":null},\"store_listing\":null,\"is_viewer_entitled\":false,\"parentApplication\":{\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"id\":\"1304877726278670\"},\"display_name\":\"Tristam - \\\"Till It's Over\\\"\",\"purchase_alerts\":[{\"type\":\"PARENT_APP_REQUIRED\",\"message\":\"Este contenido es un complemento y requiere un juego base (Beat Saber) para poder jugar\"}],\"__typename\":\"IAPItem\",\"parent_application\":{\"id\":\"1304877726278670\"},\"display_short_description\":\"Tristam - \\\"Till It's Over\\\"\"}}}]},\"windows_min_spec\":null,\"redistributables\":{\"edges\":[]}},\"publisher_name\":\"Beat Games\",\"recommended_graphics\":\"Nvidia GTX 1060 or equivalent\",\"recommended_memory_gb\":8,\"recommended_processor\":\"Intel Core i7 Skylake or equivalent\",\"release_date\":1525201200,\"supported_in_app_languages\":[{\"name\":\"Ingl\\u00e9s\"}],\"supported_input_device_names\":[\"Oculus Touch\"],\"supported_player_modes\":[\"STANDING\",\"ROOM_SCALE\"],\"supported_tracking_modes\":[\"FRONT_FACING\"],\"user_interaction_mode_names\":[\"Usuario \\u00fanico\"],\"website_url\":\"https:\\/\\/beatsaber.com\\/\",\"viewer_release_channel\":{\"id\":\"2017290351867153\"},\"live_release_channel\":{\"id\":\"2017290351867153\",\"channel_name\":\"LIVE\",\"latest_supported_binary\":{\"__typename\":\"PCBinary\",\"id\":\"2264419510324482\"}},\"release_channels\":{\"count\":1,\"nodes\":[{\"channel_name\":\"LIVE\",\"id\":\"2017290351867153\",\"latest_supported_binary\":{\"__typename\":\"PCBinary\",\"version\":\"1.6.0\",\"id\":\"2264419510324482\"}}]},\"grouping\":{\"listedIapItems\":{\"count\":0},\"id\":\"1546487868739502\",\"firstIapItems\":{\"page_info\":{\"end_cursor\":null,\"start_cursor\":null},\"count\":0,\"edges\":[]},\"upcoming_events\":{\"edges\":[]},\"iap_items_2\":{\"edges\":[{\"cursor\":\"AQHRyy3axLLY2nr-5QQ4KRCTOXEky5BTS6U8NtVfGo-oQAmHJtjHynrdnZ5NiPaH_J-a9fYiBvHIGQ_0Awx5_nuV_g\"}]}},\"externalReviewsForDisplay\":{\"nodes\":[]},\"externalReviewsComplete\":{\"count\":0},\"comfort_rating\":\"COMFORTABLE_FOR_MOST\",\"is_viewer_subscribed_coming_soon\":false,\"internet_connection\":\"NOT_REQUIRED\",\"internet_connection_name\":\"No se necesita conexi\\u00f3n a internet\",\"supported_hmd_platforms\":[\"RIFT\",\"LAGUNA\"],\"supported_input_devices_list\":[{\"name\":\"Oculus Touch\",\"tag\":\"OCULUS_TOUCH\"}],\"canonicalName\":\"hyperbolic-magnetism-beat-saber\",\"viewer_has_preorder\":false,\"purchase_alerts\":[],\"is_granted_on_hardware_registration\":false,\"current_trial_offer\":null,\"extra_buy_box_section\":{\"content\":\"Pol\\u00edtica de reembolsos de Oculus\",\"link_uri\":\"https:\\/\\/www.oculus.com\\/legal\\/quest-rift-content-refund-policy\\/\"},\"is_viewer_entitled\":false,\"baseline_offer\":{\"price\":{\"offset_amount\":\"2999\"},\"id\":\"573732943191130\"},\"entry\":null,\"is_demo_of\":null,\"appName\":\"Beat Saber\",\"platformOffer\":null,\"externalReviews\":{\"count\":0},\"quality_rating_aggregate\":4.821475271133,\"support_website_url\":null,\"quality_ratings_by_viewer\":[],\"reviewInfo\":{\"count\":1459,\"orderings\":[{\"key\":\"top\",\"label\":\"M\\u00e1s relevantes\"},{\"key\":\"most_recent\",\"label\":\"M\\u00e1s recientes\"}]},\"firstQualityRatings\":{\"count\":1459,\"page_info\":{\"end_cursor\":\"AQHRKIj4UAIOJ-J5c-HxpmdGrGdCpydlPmVBC1CXfpkFm-Q_NOYXYDQ5ZnSCHYdS02jEYgaxsEE97w_edUPfODfOcQ\",\"start_cursor\":\"AQHRaakkL20q324yDzd4PR-8pdC6uran0PsXeWTFxw5h-YbDxa-tmh8TlQSpiKfF7UathPLR65aousEvrBvBi1MGtw\"},\"edges\":[{\"node\":{\"id\":\"158100008477272\",\"author\":{\"id\":\"118995512387722\",\"display_name\":\"nick2528\",\"profile_photo\":null},\"score\":5,\"reviewDescription\":\"If the Rift was like one of those 80's handheld game pads that came with just one game built into it, and beat saber was that game.... it would still be worth \\u00a3400. buy it\\n\\nalso for the guy moaning about lack of songs. The Beat Saver Mod is installed in less than 60 seconds and then can all be managed from within the game, it becomes part of the game with a huge music library to choose from\",\"reviewTitle\":\"worth\",\"review_helpful_count\":1198,\"review_rank_by_viewer\":null,\"date\":1539810105,\"developerResponse\":null}},{\"node\":{\"id\":\"614321922297928\",\"author\":{\"id\":\"501732446890210\",\"display_name\":\"Sarstan\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.176.176a\\/s160x160\\/11162791_501732660223522_1749515371376803840_n.jpg?_nc_cat=107&_nc_ohc=-nnoiQOUxpAAQlgyKSZNnKEKXYtthoXp87FgupJpGHjpwLb4PDUn2W_ig&_nc_ht=scontent.oculuscdn.com&oh=1e39849c2eebdaae404b7ddf7cfc1caf&oe=5E28297E\"}},\"score\":1,\"reviewDescription\":\"This game gets rave reviews all the time, but truly they're not deserved. Great concept, extremely poor execution is the name of the game here. I'm going to focus on the negatives that no one wants to talk about.\\nMusic variety is a joke. About a dozen songs that consist almost exclusively of garbage rap and EDM that sounds like something pulled from an amateur.\\nBut everyone wants to highlight the range of music that's available. That's true. If you don't mind spending a few hours downloading the mod to make any of it work, installing it, finding the maps and music (where there is a TON of rubbish to sift through), installing those, and hoping you did it all right before hopping into VR. Maybe that doesn't sound so bad, but every slight update to the game (which aren't many anyway) breaks the mod and you have to redownload any and all you used if the newest version is available to begin with.\\nThat perhaps doesn't sound so bad either, but the whole reason people like this game, myself included, is based on the work of others. The developers don't release any music. The developers don't release any options, effects, or enhancements that are desperately needed. The developers are leaning back and raking in cash while others provide the content for their pretty broken game that has NO mod support natively. You won't have trouble getting mods to work, but like I mentioned they WILL break the moment anything happens by the developers. Who like to release small bug fixes at times.\\nI feel deeply bothered that, based on what the developers have provided, the game is a pretty empty shell. Insult to injury when you can expect your experience to be ruined regularly at each update. And the content you actually want is relied upon by the community to make, which itself is overwhelmingly just thrown together and not worth messing with. Other popular games at least had content to stand on. Without all the mods and community, this game is a joke.\",\"reviewTitle\":\"Great Game If You Don't Mind Caveats\",\"review_helpful_count\":1557,\"review_rank_by_viewer\":null,\"date\":1536028189,\"developerResponse\":{\"date\":1558488750,\"body\":\"Hi Sarstan, thank you for sharing your thoughts about Beat Saber with us, we would like to address your concerns. :)\\n\\nBeat Saber's Music: We are aware that since the release, we were mostly covering electronic music genre. At the beginning, when we started developing the game, we were experimenting with many genres, but we realised electronic music fits the game the best. But we want to have genres variety too. That's why we have many other genres in our music roadmap. Our upcoming Music Pack is a great example. We are sure you will love it. Stay tuned! \\n\\nMods: Mods aren't official part of the game but are created by the community. Updates are a regular part of every development process and of course, in almost all cases, when source code of the game changes \\u2013 the mods require updates by their authors too. \\n\\nUnfortunately, we cannot provide you with additional support for mods which are created by a 3rd party. Please, try to respect this fact and understand that we are not breaking mods on purpose.\\n\\nIn the past months, we brought features we wanted to the game (and we have even bigger plans and ideas for the future), made many improvements and will continue polishing it and bringing new music content. Especially licensing the music is an extremely complicated process. But right now, we have several big-name artists locked in the road map for this year! We know you might feel that we are not moving fast enough but please, keep in mind that we are a small indie studio and we want to make sure Beat Saber is highly polished and your gaming experience the best possible. All this needs time. \\nWe hope this will give you an insight into what we do and plan for the future. Thank you for sharing your thoughts!\",\"id\":\"757565171306935\"}}},{\"node\":{\"id\":\"559459281187402\",\"author\":{\"id\":\"423443091455689\",\"display_name\":\"SanchoSandCat\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.304.304a\\/s160x160\\/12331303_423518191448179_3536706758514835456_n.jpg?_nc_cat=103&_nc_ohc=yLmlmOVPVxIAQl9V-INVPbvfwQQD-4D5_scr5wb11iSFYF-STSNHym-8Q&_nc_ht=scontent.oculuscdn.com&oh=f6e48a750707b7ac1c30ec53b96e5675&oe=5E2B892F\"}},\"score\":5,\"reviewDescription\":\"Fantastic game! Excellent to use for therapy. \\n\\nI was in a severe car accident, smashed my head against the car window, which shattered, and then a split second later, against someone\\u2019s hand, which also shattered.  Hard headed, am I right? But that left me with a brain injury. I couldn\\u2019t process information I was receiving, both audio and visual. I would get confused or forget conversations while having them, couldn\\u2019t even remember what it was I was doing sometimes.\\n\\nThen I found Beat Saber. \\n\\nStarted on normal, did badly. I kept freezing up when I didn\\u2019t understand the sequence coming at me. But I kept at it, a hour a day, every day.  7 months later, I\\u2019m clearing expert plus and a whole plethora of custom songs, plus lost 20lbs of trauma weight as a bonus.  I\\u2019m following conversations, my reaction time is much better and I just plain understand better. \\n\\nNow I\\u2019m not saying the game cured me.  But it did definitely help. And with so few tools for brain therapy, stumbling across Beat Saber was a boon. If you or someone you know suffer from the aftereffects of a head injury, I encourage you, try VR, try Beat Saber. It\\u2019s one of the cheapest forms of brain therapy and it\\u2019s incredibly fun.\",\"reviewTitle\":\"Good for the Brain\",\"review_helpful_count\":325,\"review_rank_by_viewer\":null,\"date\":1547846015,\"developerResponse\":null}},{\"node\":{\"id\":\"179546663203129\",\"author\":{\"id\":\"113942603096869\",\"display_name\":\"SteveMacAwesome\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.176.176a\\/s160x160\\/39031510_159245471899915_3213500432152264704_n.jpg?_nc_cat=104&_nc_ohc=-ButQ5dL2PYAQnOfPN1eGxzpgSM4iCEjyVUMvwpY7V_SyHdGBpeKhOfwQ&_nc_ht=scontent.oculuscdn.com&oh=e2d013978f8a8d74a80dae3ce179c4d8&oe=5E3B9680\"}},\"score\":5,\"reviewDescription\":\"If you're reading this, you know Beat Saber. You know what it is, and what it does. \\n\\nBuy it.\\n\\nSeriously. If you can afford it, buy the game. Take it from me, friend, it will be worth your hard-earned money. Even if you only play it once, you'll still have moved around to the beat for a bit. \\n\\nRemember that gym membership you've been meaning to cancel? You know, the one you started back in January, where you went to the gym just once before you ended up never going back? It's ok, I know you've been meaning to work out - but there just isn't enough time. Don't worry friend, Beat Saber has you covered. Now you can get sweaty in the comfort of your own living room, with your personal shower close at hand, whilst feeding your brain those dopamine doses it so desires after a long day at work or school.\\n\\nBeat Saber is great for everyone.\\n\\nHow do I know this? Take my boss for example. We introduced him to Beat Saber in VR. Now he has:\\n- beaten pretty much every level on expert\\n- been told off by his wife for staying up late playing Beat Saber\\n- knocked over lamps\\n- challenged everyone else at work to beat him at the game\\n\\nBe like my boss. Go wild on some Beat Saber. You won't regret it.\",\"reviewTitle\":\"Beat Saber got my boss playing VR games\",\"review_helpful_count\":167,\"review_rank_by_viewer\":null,\"date\":1571085913,\"developerResponse\":null}},{\"node\":{\"id\":\"274096013244957\",\"author\":{\"id\":\"182657372388822\",\"display_name\":\"TheRealDarklaser\",\"profile_photo\":{\"uri\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/c0.0.176.176a\\/s160x160\\/12410200_182658135722079_4587559735426809856_n.jpg?_nc_cat=102&_nc_ohc=q-R3woVMIucAQk1wMpIAsrIlifNiFw3LfplRe2AMI1SElT26uCdjRktVg&_nc_ht=scontent.oculuscdn.com&oh=e376afaf913e8ee28a984f4c255422f4&oe=5E24527A\"}},\"score\":5,\"reviewDescription\":\"[see notes about plugins at the bottom] I don't tend to care all that much for Guitar Hero and Fruit Ninja style games, but this game is incredible!  We have a household of Dad, Mom, and 6 kids ranging from 8 to 18, and everyone we have introduced to it (both young and old) absolute love it.  It even makes a great party game because people really get into watching it.  We've had a couple parties where that was the entertainment, and rather than hanging around the food, most people are watching the screen.  We've had this for about 2 months, and it is still the favorite game.  As much as we love Skyrim VR, Skyrim has even taken a back seat to Beat Saber.\\n\\nPlugins: \\n- Beat Saber Mod Manager (Important - google search \\\"Beat Saber Mod Manger\\\" and download it from Umbranoxio's Github page)\\n- Install at the least SongBrowser plugin and SongLoader plugin\\n- We also really like the CustomSaber plugin\\n\\nThe SongBrowser plugin adds a song downloader tool in the game that you can use to download songs, however it only gives you a handful of pages of songs to browse.  But you can head on over to BeatSaver.com (not BeatSaber.com) where you can download all of the songs you want (we currently have 150+ songs).  Then find your \\\"YOUR-OCULUS-CATEGORY\\/Software\\/hyperbolic-magnetism-beat-saber\\/CustomSongs\\/\\\" folder (inside your Oculus apps location), and unzip the downloaded song and copy everything that was in it into the CustomSongs folder.  The folder you should be coping in will be called NUMBER-NUMBER (for example 128-174 or 1068-725, etc).\\n\\nThe game dynamics are awesome, but I think having been able to add all of these songs to play, has really made the game for us.\",\"reviewTitle\":\"Fantastic Game (with plugins included)\",\"review_helpful_count\":280,\"review_rank_by_viewer\":null,\"date\":1540672783,\"developerResponse\":null}}]},\"can_viewer_review\":false,\"website_page_meta\":{\"description\":\"Beat Saber es un juego de ritmo para realidad virtual en el que tienes que hacer tajos los sonidos, que encajan perfectamente en una melod\\u00eda cuidadosamente elaborada de forma artesanal.\",\"image_height\":405,\"image_type\":\"image\\/jpeg\",\"image_url\":\"https:\\/\\/scontent.oculuscdn.com\\/v\\/t64.5771-25\\/q92\\/s720x720\\/75258662_984293468616301_3529956628998651904_n.jpg?_nc_cat=100&_nc_ohc=TJt3kec44DYAQmIdQW8k9mk0tYz6yL5Lf3wMN4JM2yElLeCjlAYMqG07w&_nc_ht=scontent.oculuscdn.com&oh=f5602a7d4f6af27347b7284be79bbf12&oe=5E269CBF\",\"image_width\":720,\"og_locale\":\"es_ES\",\"og_type\":\"website\",\"page_url\":\"https:\\/\\/www.oculus.com\\/experiences\\/rift\\/1304877726278670\\/\",\"site_name\":\"Oculus\",\"title\":\"Beat Saber en Oculus Rift\"},\"fallback_ranking_trace\":\"\"}},\"errors\":[{\"message\":\"Errors while executing operation \\\"StoreAppQuery\\\": At Query.viewer:Viewer.user: Field implementation threw an exception. Check your server logs for more information.\",\"severity\":\"ERROR\",\"path\":[\"viewer\",\"user\"]},{\"message\":\"Errors while executing operation \\\"StoreAppQuery\\\": At Query.node:Application.current_offer:AppStoreOffer.viewer:Viewer.user: Field implementation threw an exception. Check your server logs for more information.\",\"severity\":\"ERROR\",\"path\":[\"node\",\"current_offer\",\"viewer\",\"user\"]},{\"message\":\"Errors while executing operation \\\"StoreAppQuery\\\": At Query.node:Application.purchase_alerts: Field implementation threw an exception. Check your server logs for more information.\",\"severity\":\"ERROR\",\"path\":[\"node\",\"purchase_alerts\"]}]}",
+      "mode": "application/json"
+    }
+  }
+}

@@ -6,11 +6,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Comments {
+
 	private Integer id;
 
-	private String	title;
-	private String	content;
+	private String title;
 
+	private String content;
 
 	public String getTitle() {
 		return this.title;

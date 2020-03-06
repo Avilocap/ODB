@@ -14,27 +14,26 @@ public class Actor extends UserAccount {
 
 	@Column(name = "name")
 	@NotEmpty
-	private String		name;
+	private String name;
 
 	@Column(name = "surname")
 	@NotEmpty
-	private String		surname;
+	private String surname;
 
 	@Column(name = "email")
 	@NotEmpty
-	private String		email;
+	private String email;
 
-//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "actor")
-//	private UserAccount	userAccount;
+	// @OneToOne(cascade = CascadeType.ALL, mappedBy = "actor")
+	// private UserAccount userAccount;
 
-
-//	public UserAccount getUserAccount() {
-//		return this.userAccount;
-//	}
-//
-//	public void setUserAccount(final UserAccount userAccount) {
-//		this.userAccount = userAccount;
-//	}
+	// public UserAccount getUserAccount() {
+	// return this.userAccount;
+	// }
+	//
+	// public void setUserAccount(final UserAccount userAccount) {
+	// this.userAccount = userAccount;
+	// }
 
 	public String getName() {
 		return this.name;
@@ -60,9 +59,10 @@ public class Actor extends UserAccount {
 		this.email = email;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" + this.email + ", userAccount=" + this.userAccount + "]";
-//	}
+	// @Override
+	// public String toString() {
+	// return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" +
+	// this.email + ", userAccount=" + this.userAccount + "]";
+	// }
 
 }
