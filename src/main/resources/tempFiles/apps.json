@@ -1,10 +1,14 @@
 {
-  "oculusId" : "4623553",
-  "name" : "miguelito en busca del arca perdida",
-  "description" :"dafoasdifh,asdjfhlsdhfdlashfkds",
-  "company" :  "java",
-  "releaseDate" : "2019/08/01",
-  "website" : "https://miguelito.com",
-  "language" : "en"
-
+    "oculusId": "4623553",
+    "name": "miguelito en busca del arca perdida",
+    "description": "dafoasdifh,asdjfhlsdhfdlashfkds",
+    "company": "java",
+    "releaseDate": "",
+    "website": "https://miguelito.com",
+    "language": "en",
+    "picture": "http://www.pics.com/pic1.png",
+    "typeOfGameplay": "MULTIPLAYER",
+    "salesEstimation": 200000,
+    "platform": "",
+    "category": ""
 }
