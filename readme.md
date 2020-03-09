@@ -42,9 +42,6 @@ ALTER DATABASE oculusdb   DEFAULT CHARACTER SET utf8   DEFAULT COLLATE utf8_gene
 CREATE USER 'oculusdb'@'%' IDENTIFIED BY 'oculusdb';
 GRANT ALL PRIVILEGES ON *.* TO 'oculusdb'@'%' WITH GRANT OPTION;`
 
-```
-docker run -e MYSQL_USER=oculusdb -e MYSQL_PASSWORD=oculusdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=oculusdb -p 3306:3306 mysql:5.7.8
-```
 
 ## Looking for something in particular?
 
