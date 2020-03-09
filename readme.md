@@ -27,20 +27,15 @@ Our issue tracker is available here: https://github.com/spring-projects/spring-o
 
 
 ## Database configuration
-1. Instalamos [MySQL Community Server 8.0.19](https://dev.mysql.com/downloads/mysql/). Seguimos los pasos y creamos una contraseña temporal para el usuario root.
+1. Install [MySQL Community Server 8.0.19](https://dev.mysql.com/downloads/mysql/). Follow the steps and create a password for root user.
 
-2. Abrimos una consola de mysql:
+2. Open mysql console with:
 
 `mysql -u root -p`
 
- y la contraseña que hemos configurado en la instalación.
+ and the password you just have chosen in the installation step.
 
-3. Cambiamos la contraseña de root:
-
-`UPDATE mysql.user SET authentication_string='password' WHERE user='root' and host='localhost';`
-
-
-4. Creamos la base de datos de nuestro proyecto:
+4. Create the database of the project with the following command:
 
 `CREATE DATABASE IF NOT EXISTS oculusdb;
 ALTER DATABASE oculusdb   DEFAULT CHARACTER SET utf8   DEFAULT COLLATE utf8_general_ci;
