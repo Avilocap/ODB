@@ -1,7 +1,9 @@
 
-package org.springframework.samples.oculusdb.administrator;
+package org.springframework.samples.oculusdb.application;
 
+import org.springframework.samples.oculusdb.category.Category;
 import org.springframework.samples.oculusdb.model.*;
+import org.springframework.samples.oculusdb.platform.Platform;
 
 import javax.persistence.*;
 import java.time.LocalDate;

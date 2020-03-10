@@ -2,10 +2,9 @@ package org.springframework.samples.oculusdb.administrator;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.samples.oculusdb.application.Application2;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 public class JsonReader {
