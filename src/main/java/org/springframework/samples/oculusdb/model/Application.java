@@ -1,59 +1,79 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.oculusdb.application.Comments;
+import org.springframework.samples.oculusdb.application.Reviews;
+import org.springframework.samples.oculusdb.category.Category;
+import org.springframework.samples.oculusdb.platform.Platform;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import java.time.LocalDate;
+import java.util.Collection;
+
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
-public class Application {
+@Table(name = "application")
+public class Application extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "oculusDBId")
+	@NotEmpty
 	private Integer oculusId;
 
+	@Column(name = "name")
+	@NotEmpty
 	private String name;
 
+	@Column(name = "description")
 	private String description;
 
+	@Column(name = "releaseDate")
+	@DateTimeFormat(pattern = "mm-dd-yyyy")
 	private LocalDate releaseDate;
 
+	@Column(name = "price")
 	private Double price;
 
+	@Column(name = "website")
 	private String website;
 
+	@Column(name = "company")
 	private String company;
 
+	@Column(name = "picture")
 	private String picture;
 
+	@Column(name = "type_of_gameplay")
 	private TypeOfGameplay typeOfGameplay;
 
+	@Column(name = "sales_estimations")
 	private Integer salesEstimation;
 
+	@Column(name = "income_estimation")
 	private Integer incomeEstimation;
 
+	@Column(name = "total_reviews")
 	private Integer totalReviews;
 
+	@Column(name = "language")
 	private String language;
 
+	@Column(name = "typeOfApp")
 	private TypeOfApp typeOfApp;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-	// private Platform platform;
-	//
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-	// private Category category;
-	//
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-	// private Reviews reviews;
-	//
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-	// private Comments comments;
+	@ManyToOne
+	private Platform platform;
+
+	@ManyToOne
+	private Category category;
+
+	@OneToMany
+	private Collection<Reviews> reviewsCollection;
+
+	@OneToMany
+	private Collection<Comments> comments;
 
 	public Integer getOculusId() {
 		return this.oculusId;
@@ -167,49 +187,59 @@ public class Application {
 		this.typeOfApp = typeOfApp;
 	}
 
-	// public Platform getPlatform() {
-	// return this.platform;
-	// }
-	//
-	// public void setPlatform(final Platform platform) {
-	// this.platform = platform;
-	// }
-	//
-	// public Category getCategory() {
-	// return this.category;
-	// }
-	//
-	// public void setCategory(final Category category) {
-	// this.category = category;
-	// }
-	//
-	// public Reviews getReviews() {
-	// return this.reviews;
-	// }
-	//
-	// public void setReviews(final Reviews reviews) {
-	// this.reviews = reviews;
-	// }
-	//
-	// public Comments getComments() {
-	// return this.comments;
-	// }
-	//
-	// public void setComments(final Comments comments) {
-	// this.comments = comments;
-	// }
+	public Platform getPlatform() {
+		return platform;
+	}
 
-	// @Override
-	// public String toString() {
-	// return "Application [oculusId=" + this.oculusId + ", name=" + this.name + ",
-	// description=" + this.description + ", releaseDate=" + this.releaseDate + ", price="
-	// + this.price + ", website=" + this.website + ", company=" + this.company + ",
-	// picture="
-	// + this.picture + ", typeOfGameplay=" + this.typeOfGameplay + ", salesEstimation=" +
-	// this.salesEstimation + ", incomeEstimation=" + this.incomeEstimation + ",
-	// totalReviews=" + this.totalReviews + ", language=" + this.language + ", typeOfApp="
-	// + this.typeOfApp + ", platform=" + this.platform + ", category=" + this.category +
-	// ", reviews=" + this.reviews + ", comments=" + this.comments + "]";
-	// }
+	public void setPlatform(Platform platform) {
+		this.platform = platform;
+	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Collection<Reviews> getReviewsCollection() {
+		return reviewsCollection;
+	}
+
+	public void setReviewsCollection(Collection<Reviews> reviewsCollection) {
+		this.reviewsCollection = reviewsCollection;
+	}
+
+	public Collection<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comments> comments) {
+		this.comments = comments;
+	}
+
+	@Override
+	public String toString() {
+		return "Application{" +
+				"oculusId=" + oculusId +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", releaseDate=" + releaseDate +
+				", price=" + price +
+				", website='" + website + '\'' +
+				", company='" + company + '\'' +
+				", picture='" + picture + '\'' +
+				", typeOfGameplay=" + typeOfGameplay +
+				", salesEstimation=" + salesEstimation +
+				", incomeEstimation=" + incomeEstimation +
+				", totalReviews=" + totalReviews +
+				", language='" + language + '\'' +
+				", typeOfApp=" + typeOfApp +
+				", platform=" + platform +
+				", category=" + category +
+				", reviewsCollection=" + reviewsCollection +
+				", comments=" + comments +
+				'}';
+	}
 }

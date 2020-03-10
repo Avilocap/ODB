@@ -1,16 +1,11 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "actors")
-public class Actor extends UserAccount {
+@MappedSuperclass
+public class Actor extends BaseEntity {
 
 	@Column(name = "name")
 	@NotEmpty
@@ -24,16 +19,16 @@ public class Actor extends UserAccount {
 	@NotEmpty
 	private String email;
 
-	// @OneToOne(cascade = CascadeType.ALL, mappedBy = "actor")
-	// private UserAccount userAccount;
+	 @OneToOne
+	 private UserAccount userAccount;
 
-	// public UserAccount getUserAccount() {
-	// return this.userAccount;
-	// }
-	//
-	// public void setUserAccount(final UserAccount userAccount) {
-	// this.userAccount = userAccount;
-	// }
+	 public UserAccount getUserAccount() {
+	 return this.userAccount;
+	 }
+
+	 public void setUserAccount(final UserAccount userAccount) {
+	 this.userAccount = userAccount;
+	 }
 
 	public String getName() {
 		return this.name;
@@ -59,10 +54,10 @@ public class Actor extends UserAccount {
 		this.email = email;
 	}
 
-	// @Override
-	// public String toString() {
-	// return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" +
-	// this.email + ", userAccount=" + this.userAccount + "]";
-	// }
+	 @Override
+	 public String toString() {
+	 return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" +
+	 this.email + ", userAccount=" + this.userAccount + "]";
+	 }
 
 }

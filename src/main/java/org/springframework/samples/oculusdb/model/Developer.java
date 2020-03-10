@@ -1,18 +1,28 @@
 
 package org.springframework.samples.oculusdb.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Table(name = "developer")
 public class Developer extends Actor {
 
+	@Column(name = "company")
+	@NotEmpty
 	private String company;
 
+	@Column(name = "webpage")
 	private String webpage;
 
+	@Column(name = "company_description")
 	private String companyDescription;
 
-	// private CreditCard creditCard;
+	@OneToOne
+	private CreditCard creditCard;
 
 	public String getCompany() {
 		return this.company;
@@ -38,19 +48,21 @@ public class Developer extends Actor {
 		this.companyDescription = companyDescription;
 	}
 
-	// public CreditCard getCreditCard() {
-	// return this.creditCard;
-	// }
-	//
-	// public void setCreditCard(final CreditCard creditCard) {
-	// this.creditCard = creditCard;
-	// }
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
 
-	// @Override
-	// public String toString() {
-	// return "Developer [company=" + this.company + ", webpage=" + this.webpage + ",
-	// companyDescription=" + this.companyDescription + ", creditCard=" + this.creditCard
-	// + "]";
-	// }
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
 
+	@Override
+	public String toString() {
+		return "Developer{" +
+				"company='" + company + '\'' +
+				", webpage='" + webpage + '\'' +
+				", companyDescription='" + companyDescription + '\'' +
+				", creditCard=" + creditCard +
+				'}';
+	}
 }
