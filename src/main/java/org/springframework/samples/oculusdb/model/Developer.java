@@ -58,11 +58,8 @@ public class Developer extends Actor {
 
 	@Override
 	public String toString() {
-		return "Developer{" +
-				"company='" + company + '\'' +
-				", webpage='" + webpage + '\'' +
-				", companyDescription='" + companyDescription + '\'' +
-				", creditCard=" + creditCard +
-				'}';
+		return "Developer{" + "company='" + company + '\'' + ", webpage='" + webpage + '\'' + ", companyDescription='"
+				+ companyDescription + '\'' + ", creditCard=" + creditCard + '}';
 	}
+
 }

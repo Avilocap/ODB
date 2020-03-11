@@ -50,7 +50,7 @@ public class AjaxRequest {
 			try (InputStream instream = entity.getContent()) {
 				String result = convertStreamToString(instream);
 				JSONObject myObject = new JSONObject(result);
-				file = new FileWriter("src/main/resources/tempFiles/game.json");
+				file = new FileWriter("src/main/resources/tempFiles/applications.json");
 				file.write(result);
 				// Constructs a FileWriter given a file name, using the platform's default
 				// charset

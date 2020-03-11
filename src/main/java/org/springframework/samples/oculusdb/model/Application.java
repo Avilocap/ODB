@@ -221,25 +221,13 @@ public class Application extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Application{" +
-				"oculusId=" + oculusId +
-				", name='" + name + '\'' +
-				", description='" + description + '\'' +
-				", releaseDate=" + releaseDate +
-				", price=" + price +
-				", website='" + website + '\'' +
-				", company='" + company + '\'' +
-				", picture='" + picture + '\'' +
-				", typeOfGameplay=" + typeOfGameplay +
-				", salesEstimation=" + salesEstimation +
-				", incomeEstimation=" + incomeEstimation +
-				", totalReviews=" + totalReviews +
-				", language='" + language + '\'' +
-				", typeOfApp=" + typeOfApp +
-				", platform=" + platform +
-				", category=" + category +
-				", reviewsCollection=" + reviewsCollection +
-				", comments=" + comments +
-				'}';
+		return "Application{" + "oculusId=" + oculusId + ", name='" + name + '\'' + ", description='" + description
+				+ '\'' + ", releaseDate=" + releaseDate + ", price=" + price + ", website='" + website + '\''
+				+ ", company='" + company + '\'' + ", picture='" + picture + '\'' + ", typeOfGameplay=" + typeOfGameplay
+				+ ", salesEstimation=" + salesEstimation + ", incomeEstimation=" + incomeEstimation + ", totalReviews="
+				+ totalReviews + ", language='" + language + '\'' + ", typeOfApp=" + typeOfApp + ", platform="
+				+ platform + ", category=" + category + ", reviewsCollection=" + reviewsCollection + ", comments="
+				+ comments + '}';
 	}
+
 }

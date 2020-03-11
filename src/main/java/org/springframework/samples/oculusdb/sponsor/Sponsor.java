@@ -12,33 +12,31 @@ import java.util.Collection;
 @Table(name = "sponsors")
 public class Sponsor extends Actor {
 
-    @OneToMany(mappedBy = "sponsor")
+	@OneToMany(mappedBy = "sponsor")
 	private Collection<Sponsorship> sponsorships;
 
-    @OneToOne
-    private CreditCard creditCard;
+	@OneToOne
+	private CreditCard creditCard;
 
-    public Collection<Sponsorship> getSponsorships() {
-        return sponsorships;
-    }
+	public Collection<Sponsorship> getSponsorships() {
+		return sponsorships;
+	}
 
-    public void setSponsorships(Collection<Sponsorship> sponsorships) {
-        this.sponsorships = sponsorships;
-    }
+	public void setSponsorships(Collection<Sponsorship> sponsorships) {
+		this.sponsorships = sponsorships;
+	}
 
-    public CreditCard getCreditCard() {
-        return creditCard;
-    }
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
 
-    public void setCreditCard(CreditCard creditCard) {
-        this.creditCard = creditCard;
-    }
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
 
-    @Override
-    public String toString() {
-        return "Sponsor{" +
-                "sponsorships=" + sponsorships +
-                ", creditCard=" + creditCard +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Sponsor{" + "sponsorships=" + sponsorships + ", creditCard=" + creditCard + '}';
+	}
+
 }

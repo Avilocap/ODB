@@ -48,10 +48,8 @@ public class Comments extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Comments{" +
-				"title='" + title + '\'' +
-				", content='" + content + '\'' +
-				", application=" + application +
-				'}';
+		return "Comments{" + "title='" + title + '\'' + ", content='" + content + '\'' + ", application=" + application
+				+ '}';
 	}
+
 }

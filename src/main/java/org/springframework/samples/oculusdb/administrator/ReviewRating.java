@@ -5,95 +5,106 @@ import java.util.*;
 
 public class ReviewRating {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        getPositiveAdjetivesOfText("A really fun and probably overlooked rhythm-action game! It's more challenging than Beat Saber, Audica and Pistol Whip, especially in the sense that you need to move around quite a bit more, but the easy difficulty will ease anyone into the play style efficiently enough. I kinda love the campaign storyline; it gives you a little bit more of a reason to play than just working your way through a track list and perfecting your scores on indvidual songs.\n" +
-                "\n" +
-                "There aren't any licensed songs but the composer (or composers?) has done a really good job of creating great-sounding original tracks that span multiple EDM genres. I also really like the idea of each in-game character you compete against loosely representing a genre/style. Oh, and there's an option to add custom songs, which I haven't tried yet but will no doubt cater to anyone who'd like to use tracks from their own library.");
+		getPositiveAdjetivesOfText(
+				"A really fun and probably overlooked rhythm-action game! It's more challenging than Beat Saber, Audica and Pistol Whip, especially in the sense that you need to move around quite a bit more, but the easy difficulty will ease anyone into the play style efficiently enough. I kinda love the campaign storyline; it gives you a little bit more of a reason to play than just working your way through a track list and perfecting your scores on indvidual songs.\n"
+						+ "\n"
+						+ "There aren't any licensed songs but the composer (or composers?) has done a really good job of creating great-sounding original tracks that span multiple EDM genres. I also really like the idea of each in-game character you compete against loosely representing a genre/style. Oh, and there's an option to add custom songs, which I haven't tried yet but will no doubt cater to anyone who'd like to use tracks from their own library.");
 
-        getNegativeAdjetivesOfText("A really fun and probably overlooked rhythm-action game! It's more challenging than Beat Saber, Audica and Pistol Whip, especially in the sense that you need to move around quite a bit more, but the easy difficulty will ease anyone into the play style efficiently enough. I kinda love the campaign storyline; it gives you a little bit more of a reason to play than just working your way through a track list and perfecting your scores on indvidual songs.\n" +
-                "\n" +
-                "There aren't any licensed songs but the composer (or composers?) has done a really good job of creating great-sounding original tracks that span multiple EDM genres. I also really like the idea of each in-game character you compete against loosely representing a genre/style. Oh, and there's an option to add custom songs, which I haven't tried yet but will no doubt cater to anyone who'd like to use tracks from their own library.");
+		getNegativeAdjetivesOfText(
+				"A really fun and probably overlooked rhythm-action game! It's more challenging than Beat Saber, Audica and Pistol Whip, especially in the sense that you need to move around quite a bit more, but the easy difficulty will ease anyone into the play style efficiently enough. I kinda love the campaign storyline; it gives you a little bit more of a reason to play than just working your way through a track list and perfecting your scores on indvidual songs.\n"
+						+ "\n"
+						+ "There aren't any licensed songs but the composer (or composers?) has done a really good job of creating great-sounding original tracks that span multiple EDM genres. I also really like the idea of each in-game character you compete against loosely representing a genre/style. Oh, and there's an option to add custom songs, which I haven't tried yet but will no doubt cater to anyone who'd like to use tracks from their own library.");
 
-    }
-    private static Map<String, Integer> getPositiveAdjetivesOfText(String paragraph){
+	}
 
-        File positiveFile = new File("src/main/resources/tempFiles/positiveWords.txt");
+	private static Map<String, Integer> getPositiveAdjetivesOfText(String paragraph) {
 
-        ArrayList<String> positiveWordList = new ArrayList<String>();;
+		File positiveFile = new File("src/main/resources/tempFiles/positiveWords.txt");
 
-        try {
+		ArrayList<String> positiveWordList = new ArrayList<String>();
+		;
 
-            BufferedReader br = new BufferedReader(new FileReader(positiveFile));
-            String st;
-            while ((st = br.readLine()) != null){
-                st = br.readLine();
-                positiveWordList.add(st);
-        }
+		try {
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+			BufferedReader br = new BufferedReader(new FileReader(positiveFile));
+			String st;
+			while ((st = br.readLine()) != null) {
+				st = br.readLine();
+				positiveWordList.add(st);
+			}
 
-        Map<String, Integer> positiveOccurrences = new HashMap<String, Integer>();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 
-        String[] splittedWords = paragraph.split(" ");
+		Map<String, Integer> positiveOccurrences = new HashMap<String, Integer>();
 
-        for ( String word : splittedWords ) {
-            if (positiveWordList.contains(word)){
-                Integer poldCount = positiveOccurrences.get(word);
-                if ( poldCount == null ) {
-                    poldCount = 0;
-                }
-                positiveOccurrences.put(word, poldCount + 1);
-            }else{
-                continue;
-            }
-        }
-        System.out.println(positiveOccurrences);
+		String[] splittedWords = paragraph.split(" ");
 
-        return positiveOccurrences;
-    }
+		for (String word : splittedWords) {
+			if (positiveWordList.contains(word)) {
+				Integer poldCount = positiveOccurrences.get(word);
+				if (poldCount == null) {
+					poldCount = 0;
+				}
+				positiveOccurrences.put(word, poldCount + 1);
+			}
+			else {
+				continue;
+			}
+		}
+		System.out.println(positiveOccurrences);
 
+		return positiveOccurrences;
+	}
 
-    private static Map<String, Integer> getNegativeAdjetivesOfText(String paragraph){
+	private static Map<String, Integer> getNegativeAdjetivesOfText(String paragraph) {
 
-        File negativeFile = new File("src/main/resources/tempFiles/negativeWords.txt");
+		File negativeFile = new File("src/main/resources/tempFiles/negativeWords.txt");
 
-        ArrayList<String> negativeWordList = new ArrayList<String>();;
+		ArrayList<String> negativeWordList = new ArrayList<String>();
+		;
 
-        try {
-            BufferedReader br2 = new BufferedReader(new FileReader(negativeFile));
-            String st2;
-            while ((st2 = br2.readLine()) != null) {
-                st2 = br2.readLine();
-                negativeWordList.add(st2);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		try {
+			BufferedReader br2 = new BufferedReader(new FileReader(negativeFile));
+			String st2;
+			while ((st2 = br2.readLine()) != null) {
+				st2 = br2.readLine();
+				negativeWordList.add(st2);
+			}
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 
-        Map<String, Integer> negativeOccurrences = new HashMap<String, Integer>();
+		Map<String, Integer> negativeOccurrences = new HashMap<String, Integer>();
 
-        String[] splittedWords = paragraph.split(" ");
+		String[] splittedWords = paragraph.split(" ");
 
-        for ( String word : splittedWords ) {
-            if(negativeWordList.contains(word)){
-                Integer noldCount = negativeOccurrences.get(word);
-                if ( noldCount == null ) {
-                    noldCount = 0;
-                }
-                negativeOccurrences.put(word, noldCount + 1);
-            }else{
-                continue;
-            }
-        }
-        System.out.println(negativeOccurrences);
+		for (String word : splittedWords) {
+			if (negativeWordList.contains(word)) {
+				Integer noldCount = negativeOccurrences.get(word);
+				if (noldCount == null) {
+					noldCount = 0;
+				}
+				negativeOccurrences.put(word, noldCount + 1);
+			}
+			else {
+				continue;
+			}
+		}
+		System.out.println(negativeOccurrences);
 
-        return negativeOccurrences;
-    }
+		return negativeOccurrences;
+	}
+
 }

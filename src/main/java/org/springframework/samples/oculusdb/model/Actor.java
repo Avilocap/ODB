@@ -19,16 +19,16 @@ public class Actor extends BaseEntity {
 	@NotEmpty
 	private String email;
 
-	 @OneToOne
-	 private UserAccount userAccount;
+	@OneToOne
+	private UserAccount userAccount;
 
-	 public UserAccount getUserAccount() {
-	 return this.userAccount;
-	 }
+	public UserAccount getUserAccount() {
+		return this.userAccount;
+	}
 
-	 public void setUserAccount(final UserAccount userAccount) {
-	 this.userAccount = userAccount;
-	 }
+	public void setUserAccount(final UserAccount userAccount) {
+		this.userAccount = userAccount;
+	}
 
 	public String getName() {
 		return this.name;
@@ -54,10 +54,10 @@ public class Actor extends BaseEntity {
 		this.email = email;
 	}
 
-	 @Override
-	 public String toString() {
-	 return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" +
-	 this.email + ", userAccount=" + this.userAccount + "]";
-	 }
+	@Override
+	public String toString() {
+		return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" + this.email + ", userAccount="
+				+ this.userAccount + "]";
+	}
 
 }

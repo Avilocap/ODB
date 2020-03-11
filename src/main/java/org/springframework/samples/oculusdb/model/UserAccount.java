@@ -20,7 +20,6 @@ public class UserAccount extends BaseEntity {
 	@NotEmpty
 	private String authority;
 
-
 	public String getNick() {
 		return this.nick;
 	}

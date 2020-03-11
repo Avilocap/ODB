@@ -12,74 +12,73 @@ import javax.validation.constraints.NotNull;
 @Table(name = "sponsors")
 public class CreditCard extends BaseEntity {
 
-    @Column(name = "holder_name")
-    @NotEmpty
-    private String holderName;
-    @Column(name = "number")
-    @NotNull
-    private Integer number;
-    @Column(name = "expiration_month")
-    @NotNull
-    @Range(min = 1,max = 12)
-    private Integer expirationMonth;
-    @Column(name = "expiration_year")
-    @NotNull
-    @Range(min = 2020, max = 2027)
-    private Integer expirationYear;
+	@Column(name = "holder_name")
+	@NotEmpty
+	private String holderName;
 
-    @Column(name = "cvv")
-    @NotNull
-    @Range(min = 001, max = 999)
-    private Integer CVV;
+	@Column(name = "number")
+	@NotNull
+	private Integer number;
 
-    public String getHolderName() {
-        return holderName;
-    }
+	@Column(name = "expiration_month")
+	@NotNull
+	@Range(min = 1, max = 12)
+	private Integer expirationMonth;
 
-    public void setHolderName(String holderName) {
-        this.holderName = holderName;
-    }
+	@Column(name = "expiration_year")
+	@NotNull
+	@Range(min = 2020, max = 2027)
+	private Integer expirationYear;
 
-    public Integer getNumber() {
-        return number;
-    }
+	@Column(name = "cvv")
+	@NotNull
+	@Range(min = 001, max = 999)
+	private Integer CVV;
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
+	public String getHolderName() {
+		return holderName;
+	}
 
-    public Integer getExpirationMonth() {
-        return expirationMonth;
-    }
+	public void setHolderName(String holderName) {
+		this.holderName = holderName;
+	}
 
-    public void setExpirationMonth(Integer expirationMonth) {
-        this.expirationMonth = expirationMonth;
-    }
+	public Integer getNumber() {
+		return number;
+	}
 
-    public Integer getExpirationYear() {
-        return expirationYear;
-    }
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
 
-    public void setExpirationYear(Integer expirationYear) {
-        this.expirationYear = expirationYear;
-    }
+	public Integer getExpirationMonth() {
+		return expirationMonth;
+	}
 
-    public Integer getCVV() {
-        return CVV;
-    }
+	public void setExpirationMonth(Integer expirationMonth) {
+		this.expirationMonth = expirationMonth;
+	}
 
-    public void setCVV(Integer CVV) {
-        this.CVV = CVV;
-    }
+	public Integer getExpirationYear() {
+		return expirationYear;
+	}
 
-    @Override
-    public String toString() {
-        return "CreditCard{" +
-                "holderName='" + holderName + '\'' +
-                ", number=" + number +
-                ", expirationMonth=" + expirationMonth +
-                ", expirationYear=" + expirationYear +
-                ", CVV=" + CVV +
-                '}';
-    }
+	public void setExpirationYear(Integer expirationYear) {
+		this.expirationYear = expirationYear;
+	}
+
+	public Integer getCVV() {
+		return CVV;
+	}
+
+	public void setCVV(Integer CVV) {
+		this.CVV = CVV;
+	}
+
+	@Override
+	public String toString() {
+		return "CreditCard{" + "holderName='" + holderName + '\'' + ", number=" + number + ", expirationMonth="
+				+ expirationMonth + ", expirationYear=" + expirationYear + ", CVV=" + CVV + '}';
+	}
+
 }

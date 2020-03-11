@@ -7,10 +7,10 @@ import org.springframework.samples.oculusdb.model.Application;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 public class JsonReader {
 
 	private static Application2Repository applications;
-
 
 	public static void main(String[] args) throws IOException {
 
@@ -26,8 +26,7 @@ public class JsonReader {
 
 		System.out.println("Application Object\n" + parsedApp);
 
-		//applications.save(parsedApp);
-
+		// applications.save(parsedApp);
 
 	}
 

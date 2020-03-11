@@ -86,13 +86,9 @@ public class Reviews extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Reviews{" +
-				"oculusId=" + oculusId +
-				", title='" + title + '\'' +
-				", content='" + content + '\'' +
-				", publishDate='" + publishDate + '\'' +
-				", usefull=" + usefull +
-				", application=" + application +
-				'}';
+		return "Reviews{" + "oculusId=" + oculusId + ", title='" + title + '\'' + ", content='" + content + '\''
+				+ ", publishDate='" + publishDate + '\'' + ", usefull=" + usefull + ", application=" + application
+				+ '}';
 	}
+
 }
