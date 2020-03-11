@@ -15,7 +15,7 @@ public class JsonReader {
 	public static void main(String[] args) throws IOException {
 
 		// read json file data to String
-		byte[] jsonData = Files.readAllBytes(Paths.get("src/main/resources/tempFiles/", "apps.json"));
+		byte[] jsonData = Files.readAllBytes(Paths.get("src/main/resources/tempFiles/", "applications.json"));
 
 		// create ObjectMapper instance
 		ObjectMapper objectMapper = new ObjectMapper();
