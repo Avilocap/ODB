@@ -12,7 +12,7 @@ import java.util.Collection;
 @Table(name = "sponsors")
 public class Sponsor extends Actor {
 
-    @OneToMany
+    @OneToMany(mappedBy = "sponsor")
 	private Collection<Sponsorship> sponsorships;
 
     @OneToOne
