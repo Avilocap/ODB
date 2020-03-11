@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 public class JsonReader {
 
-	private static Application2Repository applications;
+	private static ApplicationRepository applications;
 
 	public static void main(String[] args) throws IOException {
 
