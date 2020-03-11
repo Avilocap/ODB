@@ -1,7 +1,7 @@
 package org.springframework.samples.oculusdb.administrator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.samples.oculusdb.application.Application2;
+import org.springframework.samples.oculusdb.model.Application;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ public class JsonReader {
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		// convert json string to object
-		Application2 parsedApp = objectMapper.readValue(jsonData, Application2.class);
+		Application parsedApp = objectMapper.readValue(jsonData, Application.class);
 
 		System.out.println("Application Object\n" + parsedApp);
 

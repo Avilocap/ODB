@@ -19,7 +19,7 @@ public class Platform extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
-	@OneToMany
+	@OneToMany(mappedBy = "platform")
 	private Collection<Application> applications;
 
 	public String getTitle() {

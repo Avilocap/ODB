@@ -69,10 +69,10 @@ public class Application extends BaseEntity {
 	@ManyToOne
 	private Category category;
 
-	@OneToMany
+	@OneToMany(mappedBy = "application")
 	private Collection<Reviews> reviewsCollection;
 
-	@OneToMany
+	@OneToMany(mappedBy = "application")
 	private Collection<Comments> comments;
 
 	public Integer getOculusId() {

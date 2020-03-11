@@ -19,7 +19,7 @@ public class Category extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
-	@OneToMany
+	@OneToMany(mappedBy = "category")
 	private Collection<Application> applications;
 
 	public String getTitle() {
