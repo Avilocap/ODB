@@ -1,6 +1,5 @@
-package org.springframework.samples.oculusdb.model;
 
-import org.hibernate.validator.constraints.Range;
+package org.springframework.samples.oculusdb.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,77 +7,79 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
-@Table(name = "sponsors")
+@Table(name = "credit_cards")
 public class CreditCard extends BaseEntity {
 
 	@Column(name = "holder_name")
 	@NotEmpty
-	private String holderName;
+	private String	holderName;
 
 	@Column(name = "number")
 	@NotNull
-	private Integer number;
+	private Integer	number;
 
 	@Column(name = "expiration_month")
 	@NotNull
 	@Range(min = 1, max = 12)
-	private Integer expirationMonth;
+	private Integer	expirationMonth;
 
 	@Column(name = "expiration_year")
 	@NotNull
 	@Range(min = 2020, max = 2027)
-	private Integer expirationYear;
+	private Integer	expirationYear;
 
 	@Column(name = "cvv")
 	@NotNull
 	@Range(min = 001, max = 999)
-	private Integer CVV;
+	private Integer	CVV;
+
 
 	public String getHolderName() {
-		return holderName;
+		return this.holderName;
 	}
 
-	public void setHolderName(String holderName) {
+	public void setHolderName(final String holderName) {
 		this.holderName = holderName;
 	}
 
 	public Integer getNumber() {
-		return number;
+		return this.number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(final Integer number) {
 		this.number = number;
 	}
 
 	public Integer getExpirationMonth() {
-		return expirationMonth;
+		return this.expirationMonth;
 	}
 
-	public void setExpirationMonth(Integer expirationMonth) {
+	public void setExpirationMonth(final Integer expirationMonth) {
 		this.expirationMonth = expirationMonth;
 	}
 
 	public Integer getExpirationYear() {
-		return expirationYear;
+		return this.expirationYear;
 	}
 
-	public void setExpirationYear(Integer expirationYear) {
+	public void setExpirationYear(final Integer expirationYear) {
 		this.expirationYear = expirationYear;
 	}
 
 	public Integer getCVV() {
-		return CVV;
+		return this.CVV;
 	}
 
-	public void setCVV(Integer CVV) {
+	public void setCVV(final Integer CVV) {
 		this.CVV = CVV;
 	}
 
 	@Override
 	public String toString() {
-		return "CreditCard{" + "holderName='" + holderName + '\'' + ", number=" + number + ", expirationMonth="
-				+ expirationMonth + ", expirationYear=" + expirationYear + ", CVV=" + CVV + '}';
+		return "CreditCard{" + "holderName='" + this.holderName + '\'' + ", number=" + this.number + ", expirationMonth=" + this.expirationMonth + ", expirationYear=" + this.expirationYear + ", CVV=" + this.CVV + '}';
 	}
 
 }

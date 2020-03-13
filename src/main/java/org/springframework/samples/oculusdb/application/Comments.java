@@ -1,26 +1,30 @@
 
 package org.springframework.samples.oculusdb.application;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.BaseEntity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-
 @Entity
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comments extends BaseEntity {
 
 	@Column(name = "title")
 	@NotEmpty
-	private String title;
+	private String		title;
 
 	@Column(name = "content")
 	@NotEmpty
-	private String content;
+	private String		content;
 
 	@ManyToOne
-	private Application application;
+	private Application	application;
+
 
 	public String getTitle() {
 		return this.title;
@@ -39,17 +43,16 @@ public class Comments extends BaseEntity {
 	}
 
 	public Application getApplication() {
-		return application;
+		return this.application;
 	}
 
-	public void setApplication(Application application) {
+	public void setApplication(final Application application) {
 		this.application = application;
 	}
 
 	@Override
 	public String toString() {
-		return "Comments{" + "title='" + title + '\'' + ", content='" + content + '\'' + ", application=" + application
-				+ '}';
+		return "Comments{" + "title='" + this.title + '\'' + ", content='" + this.content + '\'' + ", application=" + this.application + '}';
 	}
 
 }
