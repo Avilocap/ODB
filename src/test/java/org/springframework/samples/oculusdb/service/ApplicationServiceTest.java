@@ -32,8 +32,9 @@ public class ApplicationServiceTest {
 
 
 	@Test
-	public void testCountWithInitialData2() {
+	public void testFindAllWithInitialData() {
 		Collection<Application> applications = new HashSet<Application>((Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertNotNull(applications);
 	}
+
 }
