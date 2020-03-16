@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JsonReaderTest {
 
-
 	@Test
 	void jsonReaderWithValidJSON() throws IOException {
 
@@ -32,7 +31,7 @@ class JsonReaderTest {
 	}
 
 	@Test
-	void jsonReaderWithInvalidCategoryAtJSON(){
+	void jsonReaderWithInvalidCategoryAtJSON() {
 
 		// read json String
 		String jsonData = "{ \"oculusId\": \"4623553\", \"name\": \"miguelito en busca del arca perdida\", \"description\": \"dafoasdifh,asdjfhlsdhfdlashfkds\", \"company\": \"java\",\"releaseDate\": \"\",\"website\": \"https://miguelito.com\",\"language\": \"en\",\"picture\": \"http://www.pics.com/pic1.png\",\"typeOfGameplay\": \"MULTIPLAYER\",\"salesEstimation\": 200000,\"platform\": \"\",\"category\": \"ACCION\" }";
@@ -49,9 +48,8 @@ class JsonReaderTest {
 
 	}
 
-
 	@Test
-	void jsonReaderWithInvalidJSON(){
+	void jsonReaderWithInvalidJSON() {
 
 		// read json String
 		String jsonData = "{ \"oculusId\": \"4623553\", \"name\": \"miguelito en busca del arca perdida\", \"description\": \"dafoasdifh,asdjfhlsdhfdlashfkds\", \"company\": \"java\",\"releaseDate\": \"\",\"website\": \"https://miguelito.com\",\"language\": \"en\",\"picture\": \"http://www.pics.com/pic1.png\",\"typeOfGameplay\": \"MULTIPLAYER\",\"salesEstimation\": 200000,\"platform\": \"PSP\",\"category\": \"\" }";

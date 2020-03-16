@@ -30,10 +30,10 @@ public class ApplicationServiceTest {
 		Assertions.assertEquals(count, 3);
 	}
 
-
 	@Test
 	public void testFindAllWithInitialData() {
-		Collection<Application> applications = new HashSet<Application>((Collection<? extends Application>) this.applicationService.findAll());
+		Collection<Application> applications = new HashSet<Application>(
+				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertNotNull(applications);
 	}
 
