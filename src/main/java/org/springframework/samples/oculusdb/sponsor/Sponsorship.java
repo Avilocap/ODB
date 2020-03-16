@@ -1,28 +1,29 @@
 
 package org.springframework.samples.oculusdb.sponsor;
 
-import org.springframework.samples.oculusdb.model.BaseEntity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.samples.oculusdb.model.BaseEntity;
+
 @Entity
-@Table(name = "sponsorhip")
+@Table(name = "sponsorship")
 public class Sponsorship extends BaseEntity {
 
 	@Column(name = "title")
 	@NotEmpty
-	private String title;
+	private String	title;
 
 	@Column(name = "attachmentURL")
 	@NotEmpty
-	private String attachmentUrl;
+	private String	attachmentUrl;
 
 	@ManyToOne
-	private Sponsor sponsor;
+	private Sponsor	sponsor;
+
 
 	public String getTitle() {
 		return this.title;
@@ -41,10 +42,10 @@ public class Sponsorship extends BaseEntity {
 	}
 
 	public Sponsor getSponsor() {
-		return sponsor;
+		return this.sponsor;
 	}
 
-	public void setSponsor(Sponsor sponsor) {
+	public void setSponsor(final Sponsor sponsor) {
 		this.sponsor = sponsor;
 	}
 
