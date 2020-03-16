@@ -16,15 +16,14 @@ public class Comments extends BaseEntity {
 
 	@Column(name = "title")
 	@NotEmpty
-	private String		title;
+	private String title;
 
 	@Column(name = "content")
 	@NotEmpty
-	private String		content;
+	private String content;
 
 	@ManyToOne
-	private Application	application;
-
+	private Application application;
 
 	public String getTitle() {
 		return this.title;
@@ -52,7 +51,8 @@ public class Comments extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Comments{" + "title='" + this.title + '\'' + ", content='" + this.content + '\'' + ", application=" + this.application + '}';
+		return "Comments{" + "title='" + this.title + '\'' + ", content='" + this.content + '\'' + ", application="
+				+ this.application + '}';
 	}
 
 }

@@ -15,15 +15,14 @@ public class Sponsorship extends BaseEntity {
 
 	@Column(name = "title")
 	@NotEmpty
-	private String	title;
+	private String title;
 
 	@Column(name = "attachmentURL")
 	@NotEmpty
-	private String	attachmentUrl;
+	private String attachmentUrl;
 
 	@ManyToOne
-	private Sponsor	sponsor;
-
+	private Sponsor sponsor;
 
 	public String getTitle() {
 		return this.title;

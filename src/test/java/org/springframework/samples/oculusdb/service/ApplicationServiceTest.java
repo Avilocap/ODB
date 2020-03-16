@@ -16,7 +16,6 @@ public class ApplicationServiceTest {
 	@Autowired
 	private ApplicationService applicationService;
 
-
 	@Test
 	public void testCountWithInitialData() {
 		int count = this.applicationService.applicationCount();

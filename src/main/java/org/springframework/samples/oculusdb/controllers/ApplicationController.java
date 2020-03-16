@@ -15,7 +15,6 @@ public class ApplicationController {
 	@Autowired
 	private ApplicationService applicationService;
 
-
 	@GetMapping()
 	public String listadoAplicaciones(final ModelMap modelMap) {
 		String vista = "applications/listadoAplicaciones";

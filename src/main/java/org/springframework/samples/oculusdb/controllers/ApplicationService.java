@@ -13,7 +13,6 @@ public class ApplicationService {
 	@Autowired
 	private ApplicationRepository applicationRepository;
 
-
 	@Transactional
 	public int applicationCount() {
 		return (int) this.applicationRepository.count();

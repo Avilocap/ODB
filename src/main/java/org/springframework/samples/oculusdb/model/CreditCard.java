@@ -15,27 +15,26 @@ public class CreditCard extends BaseEntity {
 
 	@Column(name = "holder_name")
 	@NotEmpty
-	private String	holderName;
+	private String holderName;
 
 	@Column(name = "number")
 	@NotNull
-	private Integer	number;
+	private Integer number;
 
 	@Column(name = "expiration_month")
 	@NotNull
 	@Range(min = 1, max = 12)
-	private Integer	expirationMonth;
+	private Integer expirationMonth;
 
 	@Column(name = "expiration_year")
 	@NotNull
 	@Range(min = 2020, max = 2027)
-	private Integer	expirationYear;
+	private Integer expirationYear;
 
 	@Column(name = "cvv")
 	@NotNull
 	@Range(min = 001, max = 999)
-	private Integer	CVV;
-
+	private Integer CVV;
 
 	public String getHolderName() {
 		return this.holderName;
@@ -79,7 +78,9 @@ public class CreditCard extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "CreditCard{" + "holderName='" + this.holderName + '\'' + ", number=" + this.number + ", expirationMonth=" + this.expirationMonth + ", expirationYear=" + this.expirationYear + ", CVV=" + this.CVV + '}';
+		return "CreditCard{" + "holderName='" + this.holderName + '\'' + ", number=" + this.number
+				+ ", expirationMonth=" + this.expirationMonth + ", expirationYear=" + this.expirationYear + ", CVV="
+				+ this.CVV + '}';
 	}
 
 }
