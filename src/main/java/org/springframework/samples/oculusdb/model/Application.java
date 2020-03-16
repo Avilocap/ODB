@@ -1,6 +1,7 @@
 
 package org.springframework.samples.oculusdb.model;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.application.Reviews;
@@ -18,15 +19,36 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "application")
 public class Application extends BaseEntity {
 
+	public Application(){
+
+	}
+
+	public Application(String oculusId, String name, String description, LocalDate releaseDate, Double price, String website, String company
+	, String picture, Integer incomeEstimation, Integer salesEstimation, Integer totalReviews) {
+		this.oculusId = oculusId;
+		this.name = name;
+		this.description = description;
+		this.releaseDate = releaseDate;
+		this.price = price;
+		this.website = website;
+		this.company = company;
+		this.price = price;
+		this.picture = picture;
+		this.incomeEstimation = incomeEstimation;
+		this.salesEstimation = salesEstimation;
+		this.totalReviews = totalReviews;
+	}
+
 	@Column(name = "oculusDBId")
 	@NotEmpty
-	private Integer oculusId;
+	private String oculusId;
 
 	@Column(name = "name")
 	@NotEmpty
 	private String name;
 
-	@Column(name = "description")
+	@Lob
+	@Column(name = "description", columnDefinition = "LONGTEXT")
 	private String description;
 
 	@Column(name = "releaseDate")
@@ -75,11 +97,11 @@ public class Application extends BaseEntity {
 	@OneToMany(mappedBy = "application")
 	private Collection<Comments> comments;
 
-	public Integer getOculusId() {
+	public String getOculusId() {
 		return this.oculusId;
 	}
 
-	public void setOculusId(final Integer oculusId) {
+	public void setOculusId(final String oculusId) {
 		this.oculusId = oculusId;
 	}
 

@@ -11,20 +11,20 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AjaxRequest {
 
+	public static ApplicationRepository applicationRepository;
 	private static String API_URL = "https://graph.oculus.com/graphql?forced_locale=en_EN";
 
 	public static void main(String[] args) {
-		try {
-			getInfoOfOneApplication("1471853306166046");
-		}
-		catch (IOException e) {
-			System.out.println(e);
-		}
+
+			salesEstimatitonCalculator(21);
+
 
 	}
 
@@ -49,14 +49,64 @@ public class AjaxRequest {
 		if (entity != null) {
 			try (InputStream instream = entity.getContent()) {
 				String result = convertStreamToString(instream);
-				JSONObject myObject = new JSONObject(result);
-				file = new FileWriter("src/main/resources/tempFiles/applications.json");
-				file.write(result);
-				// Constructs a FileWriter given a file name, using the platform's default
-				// charset
+				JSONObject rawJson = new JSONObject(result);
+				JSONObject data = rawJson.getJSONObject("data");
+				JSONObject node = data.getJSONObject("node");
+
+				//Basic
+				String oculusId = node.getString("id");
+				String name = node.getString("display_name");
+				String description = node.getString("display_long_description");
+				String website = node.getString("website_url");
+				String company = node.getString("developer_name");
+
+				//Price
+				JSONObject currentOffer = node.getJSONObject("current_offer");
+				JSONObject priceJson = currentOffer.getJSONObject("price");
+				Integer rawPrice = priceJson.getInt("offset_amount");
+				String formatted = priceJson.getString("formatted").substring(1);
+				Double price = new Double(formatted);
+
+				//Date
+				//TODO esto siempre da 1970
+				Integer releaseDateInteger =  node.getInt("release_date");
+				Long releaseDateLong = Long.valueOf(releaseDateInteger);
+				Timestamp timestamp = new Timestamp(releaseDateLong);
+				LocalDate releaseDate = timestamp.toLocalDateTime().toLocalDate();
+				System.out.println(releaseDateLong);
+				System.out.println(releaseDate.toString());
+
+				//Picture
+				JSONObject hero = node.getJSONObject("hero");
+				String picture =  hero.getString("uri");
+
+				//Total Reviews
+				JSONObject reviewInfo = node.getJSONObject("reviewInfo");
+				Integer totalReviews = reviewInfo.getInt("count");
+				System.out.println(totalReviews);
+
+				//Derivate Properties
+				Integer salesEstimation = salesEstimatitonCalculator(totalReviews);
+				Double incomeEstimationDouble = salesEstimation * price;
+				Integer incomeEstimation = incomeEstimationDouble.intValue();
+
 			}
 		}
 
+	}
+
+	private static Integer salesEstimatitonCalculator(Integer reviewCount){
+
+		Integer result;
+
+		if(reviewCount == 0){
+			return 0;
+		}
+
+		Double aux = reviewCount / 0.05;
+		result = aux.intValue();
+		System.out.println(result);
+		return result;
 	}
 
 	private static String convertStreamToString(InputStream is) {

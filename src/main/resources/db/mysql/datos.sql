@@ -34,9 +34,9 @@ INSERT IGNORE INTO credit_cards VALUES (4, 678, 3, 2022, 'Miguel López', 354789
 
 --Applications
 
-INSERT IGNORE INTO application VALUES (1, 'Activision', 'description1', 126000, 'English', 'Call of duty', 170, 'http://www.google.com/imagen1', 70, '13-03-2020', 1000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.callfoduty.com', 1, 3);
-INSERT IGNORE INTO application VALUES (2, 'EA Sports', 'description2', 150000, 'English', 'FIFA 20', 16, 'http://www.google.com/imagen2', 70, '21-09-2019', 2000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.fifa20.com', 2, 2);
-INSERT IGNORE INTO application VALUES (3, 'Epic games', 'description3', 200000, 'English', 'Fortnite', 207, 'http://www.google.com/imagen3', 10, '13-09-2018', 7000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.fortnite.com', 3, 1);
+INSERT IGNORE INTO application VALUES ('1471853306166046', 'Activision', 'description1', 126000, 'English', 'Call of duty', 170, 'http://www.google.com/imagen1', 70, '13-03-2020', 1000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.callfoduty.com', 1, 3);
+INSERT IGNORE INTO application VALUES ('1471853306166044', 'EA Sports', 'description2', 150000, 'English', 'FIFA 20', 16, 'http://www.google.com/imagen2', 70, '21-09-2019', 2000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.fifa20.com', 2, 2);
+INSERT IGNORE INTO application VALUES ('1471853306166042', 'Epic games', 'description3', 200000, 'English', 'Fortnite', 207, 'http://www.google.com/imagen3', 10, '13-09-2018', 7000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.fortnite.com', 3, 1);
 
 --Administrator
 
