@@ -1,3 +1,4 @@
+
 package org.springframework.samples.oculusdb.repositories;
 
 import org.springframework.data.repository.CrudRepository;
