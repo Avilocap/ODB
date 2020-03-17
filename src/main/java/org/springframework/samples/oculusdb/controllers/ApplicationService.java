@@ -1,6 +1,8 @@
 
 package org.springframework.samples.oculusdb.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.ApplicationRepository;
 import org.springframework.samples.oculusdb.model.Application;
@@ -21,6 +23,11 @@ public class ApplicationService {
 	@Transactional
 	public Iterable<Application> findAll() {
 		return this.applicationRepository.findAll();
+	}
+	
+	@Transactional
+	public Optional<Application> findApplicationById(int id){
+		return this.applicationRepository.findById(id);
 	}
 
 }

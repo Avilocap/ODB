@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+
+  <body>
+  
+  
+    <h2>Application Information</h2>
+  
+  
+    <table class="table table-striped" th:object="${app}">
+      <tr>
+        <th>Name</th>
+        <td><b th:text="*{name}"></b></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td th:text="*{description}" /></td>
+      </tr>
+      <tr>
+        <th>Release Date</th>
+        <td th:text="*{releaseDate}" /></td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td th:text="*{price}" /></td>
+      </tr>
+      <tr>
+        <th>Website</th>
+        <td th:text="*{website}" /></td>
+      </tr>
+      <tr>
+        <th>Company</th>
+        <td th:text="*{company}" /></td>
+      </tr>
+      <tr>
+        <th>Picture</th>
+        <td th:text="*{picture}" /></td>
+      </tr>
+    </table>
+  
+   
+  
+  </body>
+
+</html>
