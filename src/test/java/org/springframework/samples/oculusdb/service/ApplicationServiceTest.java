@@ -27,7 +27,7 @@ public class ApplicationServiceTest {
 	@Test
 	public void testCountWithInitialData() {
 		int count = this.applicationService.applicationCount();
-		Assertions.assertEquals(count, 3);
+		Assertions.assertEquals(count, 2);
 	}
 
 	@Test
