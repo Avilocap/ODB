@@ -16,7 +16,7 @@
         <tbody>
           <tr th:each="app : ${applications}">
               <td>
-                  <a th:href="@{/applications/applications/applicationDetails}" th:text="${app.name}"/></a>
+                  <a th:href="@{/applications/applications/__${app.id}__}" th:text="${app.name}"/></a>
               </td>
               <td th:text="${app.description}"/>
           </tr>
