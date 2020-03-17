@@ -19,12 +19,13 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "application")
 public class Application extends BaseEntity {
 
-	public Application(){
+	public Application() {
 
 	}
 
-	public Application(String oculusId, String name, String description, LocalDate releaseDate, Double price, String website, String company
-	, String picture, Integer incomeEstimation, Integer salesEstimation, Integer totalReviews) {
+	public Application(String oculusId, String name, String description, LocalDate releaseDate, Double price,
+			String website, String company, String picture, Integer incomeEstimation, Integer salesEstimation,
+			Integer totalReviews) {
 		this.oculusId = oculusId;
 		this.name = name;
 		this.description = description;

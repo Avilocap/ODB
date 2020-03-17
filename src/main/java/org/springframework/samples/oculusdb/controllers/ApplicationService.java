@@ -41,7 +41,6 @@ public class ApplicationService {
 	@Transactional
 	public void getInfoOfOneApplication(String game_id) throws IOException {
 
-
 		String API_URL = "https://graph.oculus.com/graphql?forced_locale=en_EN";
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(API_URL);
@@ -66,40 +65,41 @@ public class ApplicationService {
 				JSONObject data = rawJson.getJSONObject("data");
 				JSONObject node = data.getJSONObject("node");
 
-				//Basic
+				// Basic
 				String oculusId = node.getString("id");
 				String name = node.getString("display_name");
 				String description = node.getString("display_long_description");
 				String website = node.getString("website_url");
 				String company = node.getString("developer_name");
 
-				//Price
+				// Price
 				JSONObject currentOffer = node.getJSONObject("current_offer");
 				JSONObject priceJson = currentOffer.getJSONObject("price");
 				String formatted = priceJson.getString("formatted").substring(1);
 				Double price = new Double(formatted);
 
-				//Date
-				//TODO esto siempre da 1970
-				Integer releaseDateInteger =  node.getInt("release_date");
+				// Date
+				// TODO esto siempre da 1970
+				Integer releaseDateInteger = node.getInt("release_date");
 				Long releaseDateLong = Long.valueOf(releaseDateInteger);
 				Timestamp timestamp = new Timestamp(releaseDateLong);
 				LocalDate releaseDate = timestamp.toLocalDateTime().toLocalDate();
 
-				//Picture
+				// Picture
 				JSONObject hero = node.getJSONObject("hero");
-				String picture =  hero.getString("uri");
+				String picture = hero.getString("uri");
 
-				//Total Reviews
+				// Total Reviews
 				JSONObject reviewInfo = node.getJSONObject("reviewInfo");
 				Integer totalReviews = reviewInfo.getInt("count");
 
-				//Derivate Properties
+				// Derivate Properties
 				Integer salesEstimation = salesEstimatitonCalculator(totalReviews);
 				Double incomeEstimationDouble = salesEstimation * price;
 				Integer incomeEstimation = incomeEstimationDouble.intValue();
 
-				Application application = new Application(oculusId,name,description,releaseDate,price,website,company,picture,incomeEstimation,salesEstimation,totalReviews);
+				Application application = new Application(oculusId, name, description, releaseDate, price, website,
+						company, picture, incomeEstimation, salesEstimation, totalReviews);
 
 				applicationRepository.save(application);
 			}
@@ -107,11 +107,11 @@ public class ApplicationService {
 
 	}
 
-	private static Integer salesEstimatitonCalculator(Integer reviewCount){
+	private static Integer salesEstimatitonCalculator(Integer reviewCount) {
 
 		Integer result;
 
-		if(reviewCount == 0){
+		if (reviewCount == 0) {
 			return 0;
 		}
 
@@ -145,4 +145,5 @@ public class ApplicationService {
 		}
 		return sb.toString();
 	}
+
 }
