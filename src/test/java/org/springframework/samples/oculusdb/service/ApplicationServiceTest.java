@@ -3,8 +3,10 @@ package org.springframework.samples.oculusdb.service;
 
 import java.io.IOException;
 import java.security.Provider.Service;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import org.json.JSONException;
@@ -43,8 +45,16 @@ public class ApplicationServiceTest {
 
 	@Test
 	void getInfoOfOneApplication() throws IOException {
-		Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-			this.applicationService.getInfoOfOneApplication("1471853306166046");
+		List<Application> apps = new ArrayList<Application>(
+				(Collection<? extends Application>) this.applicationService.findAll());
+		// this.applicationService.getInfoOfOneApplication("1471853306166046");
+
+	}
+
+	@Test
+	void getInfoOfOneApplicationNegative() throws IOException {
+		Assertions.assertThrows(JSONException.class, () -> {
+			this.applicationService.getInfoOfOneApplication("14718406166046");
 		});
 	}
 
