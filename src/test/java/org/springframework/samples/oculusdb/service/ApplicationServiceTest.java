@@ -47,7 +47,7 @@ public class ApplicationServiceTest {
 	void getInfoOfOneApplication() throws IOException {
 		List<Application> apps = new ArrayList<Application>(
 				(Collection<? extends Application>) this.applicationService.findAll());
-		// this.applicationService.getInfoOfOneApplication("1471853306166046");
+		this.applicationService.getInfoOfOneApplication("1471853306166046");
 
 	}
 
