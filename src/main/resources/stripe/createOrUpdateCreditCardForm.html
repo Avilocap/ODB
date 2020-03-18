@@ -1,0 +1,12 @@
+<html th:replace="~{fragments/layout :: layout (~{::body},'payment')}"
+      xmlns:th="https://www.thymeleaf.org">
+<script src="https://js.stripe.com/v3/"></script>
+
+<body>
+
+<a class="btn btn-success" th:href="@{/charge}">Create One-Time Charge</a>
+
+
+</body>
+
+</html>
