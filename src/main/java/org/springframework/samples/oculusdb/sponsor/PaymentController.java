@@ -10,30 +10,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PaymentController {
 
-   @Value("${stripe.keys.public}")
-   private String API_PUBLIC_KEY;
+	@Value("${stripe.keys.public}")
+	private String API_PUBLIC_KEY;
 
-   private StripeService stripeService;
+	private StripeService stripeService;
 
-   public PaymentController(StripeService stripeService) {
-      this.stripeService = stripeService;
-   }
+	public PaymentController(StripeService stripeService) {
+		this.stripeService = stripeService;
+	}
 
-   @GetMapping("/")
-   public String homepage() {
-      return "homepage";
-   }
+	@GetMapping("/")
+	public String homepage() {
+		return "homepage";
+	}
 
-   @GetMapping("/charge")
-   public String chargePage(Model model) {
-      model.addAttribute("stripePublicKey", API_PUBLIC_KEY);
-      return "charge";
-   }
+	@GetMapping("/charge")
+	public String chargePage(Model model) {
+		model.addAttribute("stripePublicKey", API_PUBLIC_KEY);
+		return "charge";
+	}
 
-   @PostMapping("/create-charge")
-   public @ResponseBody
-   void createCharge(String email, String token) {
-      //create charge
-      String chargeId = stripeService.createCharge(email, token, 999); //$9.99 USD
-   }
+	@PostMapping("/create-charge")
+	public @ResponseBody
+	void createCharge(String email, String token) {
+		// create charge
+		String chargeId = stripeService.createCharge(email, token, 999); // $9.99 USD
+	}
+
 }

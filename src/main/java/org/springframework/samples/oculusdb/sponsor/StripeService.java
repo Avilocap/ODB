@@ -1,6 +1,5 @@
 package org.springframework.samples.oculusdb.sponsor;
 
-
 import com.stripe.Stripe;
 import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,17 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Service
 public class StripeService {
-
 
    @Value("${stripe.keys.secret}")
    private String API_SECRET_KEY;
 
    public StripeService() {
    }
-
 
    public String createCharge(String email, String token, int amount) {
       String id = null;
@@ -31,7 +27,7 @@ public class StripeService {
          chargeParams.put("description", "Charge for " + email);
          chargeParams.put("source", token); // ^ obtained with Stripe.js
 
-         //create a charge
+         // create a charge
          Charge charge = Charge.create(chargeParams);
          id = charge.getId();
       } catch (Exception ex) {
@@ -39,4 +35,5 @@ public class StripeService {
       }
       return id;
    }
+
 }
