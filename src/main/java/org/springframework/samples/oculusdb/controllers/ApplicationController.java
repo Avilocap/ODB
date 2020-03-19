@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/applications")
 public class ApplicationController {
@@ -28,7 +30,6 @@ public class ApplicationController {
 		
 	}
 	
-
 	
 	@GetMapping("/applications/{applicationId}")
 	public ModelAndView showOwner(@PathVariable("applicationId") int applicationId) {
@@ -37,4 +38,12 @@ public class ApplicationController {
 		mav.addObject(this.applicationService.findApplicationById(applicationId));
 		return mav;
 	}
+
+	@RequestMapping("/get")
+	public String getApplication(@RequestParam String id) throws IOException {
+		String vista = "applications/test";
+		this.applicationService.getInfoOfOneApplication(id);
+		return vista;
+	}
+
 }
