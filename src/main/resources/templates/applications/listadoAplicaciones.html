@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'')}">
 
   <body>
 
-    <h2>Owners</h2>
+    <h2>Applications</h2>
 
-    <table id="applications" class="table table-striped">
+    <table id="app" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;">Name</th>
             <th style="width: 200px;">Description</th>
-            <th>Release date</th>
-            <th style="width: 120px">Price</th>
         </tr>
         </thead>
         <tbody>
-          <tr th:each="application : ${selections}">
+          <tr th:each="app : ${applications}">
               <td>
-                  <a th:href="@{/applications/__${application.id}__}" th:text="${application.name}"/></a>
+                  <a th:href="@{/applications/applications/__${app.id}__}" th:text="${app.name}"/></a>
               </td>
-              <td th:text="${application.description}"/>
-              <td th:text="${application.releaseDate}"/>
-              <td th:text="${application.price}"/>
-              </td>
+              <td th:text="${app.description}"/>
           </tr>
         </tbody>
     </table>
 
   </body>
 </html>
+
+

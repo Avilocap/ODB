@@ -54,10 +54,13 @@
                       <span>Find owners</span>
                   </li>
   
-                  <li th:replace="::menuItem ('/vets.html','vets','veterinarians','th-list','Veterinarians')">
-                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                      <span>Veterinarians</span>
-                  </li>
+                  
+                  
+                  <li class="nav-item">
+                <a class="nav-link" th:href="@{/applications/applications/list}">Applications</a>
+            </li>
+                  
+                 
   
                   <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','warning-sign','Error')">
                       <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
