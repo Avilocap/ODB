@@ -28,12 +28,6 @@ public class ApplicationController {
 		
 	}
 	
-	@GetMapping("/application/{applicationId}")
-	public String application(@RequestParam("applicationId") int applicationId, ModelMap model) {
-		model.put("applications", this.applicationService.findApplicationById(applicationId));
-		return "applications/applicationsDetails";
-	}
-	
 
 	
 	@GetMapping("/applications/{applicationId}")
