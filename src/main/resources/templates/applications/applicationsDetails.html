@@ -4,24 +4,27 @@
   th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
 
   <body>
-  
-  
-    <h2>Application Information</h2>
-  
-  
-    <table id="app" class="table table-striped">
-      <tr>
-        <th th:text="${app.name}">Name</th>
-      </tr>
-      <tr>
-        <th>Description</th>
-        
-      </tr>
-      <tr>
-        <th>Price</th>
-        
-      </tr>
-    </table>
+
+
+  <table class="table table-striped" th:object="${app}">
+    <tr>
+      <th>Name</th>
+      <td><b th:text="*{name}"></b></td>
+    </tr>
+    <tr>
+      <th>Address</th>
+    </tr>
+    <tr>
+      <th>City</th>
+    </tr>
+    <tr>
+      <th>Telephone</th>
+    </tr>
+  </table>
+
+  <br />
+  <br />
+  <br />
   
    
   
