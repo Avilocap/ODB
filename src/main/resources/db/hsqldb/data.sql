@@ -1,53 +1,67 @@
-INSERT INTO vets VALUES (1, 'James', 'Carter');
-INSERT INTO vets VALUES (2, 'Helen', 'Leary');
-INSERT INTO vets VALUES (3, 'Linda', 'Douglas');
-INSERT INTO vets VALUES (4, 'Rafael', 'Ortega');
-INSERT INTO vets VALUES (5, 'Henry', 'Stevens');
-INSERT INTO vets VALUES (6, 'Sharon', 'Jenkins');
+--Platform
 
-INSERT INTO specialties VALUES (1, 'radiology');
-INSERT INTO specialties VALUES (2, 'surgery');
-INSERT INTO specialties VALUES (3, 'dentistry');
+INSERT IGNORE INTO platform VALUES (1, 'Wireless', 'Quest');
+INSERT IGNORE INTO platform VALUES (2, 'Power your dreams', 'Rift');
+INSERT IGNORE INTO platform VALUES (3, '4 the players', 'PS4');
 
-INSERT INTO vet_specialties VALUES (2, 1);
-INSERT INTO vet_specialties VALUES (3, 2);
-INSERT INTO vet_specialties VALUES (3, 3);
-INSERT INTO vet_specialties VALUES (4, 2);
-INSERT INTO vet_specialties VALUES (5, 1);
+--Category
 
-INSERT INTO types VALUES (1, 'cat');
-INSERT INTO types VALUES (2, 'dog');
-INSERT INTO types VALUES (3, 'lizard');
-INSERT INTO types VALUES (4, 'snake');
-INSERT INTO types VALUES (5, 'bird');
-INSERT INTO types VALUES (6, 'hamster');
+INSERT IGNORE INTO category VALUES (1, 'Amazing', 'Action');
+INSERT IGNORE INTO category VALUES (2, 'Funny', 'Sports');
+INSERT IGNORE INTO category VALUES (3, 'Incredible', 'Arcade');
 
-INSERT INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023');
-INSERT INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749');
-INSERT INTO owners VALUES (3, 'Eduardo', 'Rodriquez', '2693 Commerce St.', 'McFarland', '6085558763');
-INSERT INTO owners VALUES (4, 'Harold', 'Davis', '563 Friendly St.', 'Windsor', '6085553198');
-INSERT INTO owners VALUES (5, 'Peter', 'McTavish', '2387 S. Fair Way', 'Madison', '6085552765');
-INSERT INTO owners VALUES (6, 'Jean', 'Coleman', '105 N. Lake St.', 'Monona', '6085552654');
-INSERT INTO owners VALUES (7, 'Jeff', 'Black', '1450 Oak Blvd.', 'Monona', '6085555387');
-INSERT INTO owners VALUES (8, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '6085557683');
-INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435');
-INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487');
+--Users
 
-INSERT INTO pets VALUES (1, 'Leo', '2010-09-07', 1, 1);
-INSERT INTO pets VALUES (2, 'Basil', '2012-08-06', 6, 2);
-INSERT INTO pets VALUES (3, 'Rosy', '2011-04-17', 2, 3);
-INSERT INTO pets VALUES (4, 'Jewel', '2010-03-07', 2, 3);
-INSERT INTO pets VALUES (5, 'Iggy', '2010-11-30', 3, 4);
-INSERT INTO pets VALUES (6, 'George', '2010-01-20', 4, 5);
-INSERT INTO pets VALUES (7, 'Samantha', '2012-09-04', 1, 6);
-INSERT INTO pets VALUES (8, 'Max', '2012-09-04', 1, 6);
-INSERT INTO pets VALUES (9, 'Lucky', '2011-08-06', 5, 7);
-INSERT INTO pets VALUES (10, 'Mulligan', '2007-02-24', 2, 8);
-INSERT INTO pets VALUES (11, 'Freddy', '2010-03-09', 5, 9);
-INSERT INTO pets VALUES (12, 'Lucky', '2010-06-24', 2, 10);
-INSERT INTO pets VALUES (13, 'Sly', '2012-06-08', 1, 10);
+INSERT IGNORE INTO users VALUES (1, 'pedro@gmail.com', 'Pedro', 'Rodríguez', 1);
+INSERT IGNORE INTO users VALUES (2, 'manu@gmail.com', 'Manuel', 'Jiménez', 2);
+INSERT IGNORE INTO users VALUES (3, 'antonio@gmail.com', 'Antonio', 'Ruiz', 3);
 
-INSERT INTO visits VALUES (1, 7, '2013-01-01', 'rabies shot');
-INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
-INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
-INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
+--User accounts
+
+INSERT IGNORE INTO user_account VALUES (1, 'authority1', 'pedro1', 'pedro1');
+INSERT IGNORE INTO user_account VALUES (2, 'authority2', 'manu1', 'manu1');
+INSERT IGNORE INTO user_account VALUES (3, 'authority3', 'antonio1', 'antonio1');
+INSERT IGNORE INTO user_account VALUES (4, 'authority4', 'miguel1', 'miguel1');
+INSERT IGNORE INTO user_account VALUES (5, 'authority5', 'adri1', 'adri1');
+INSERT IGNORE INTO user_account VALUES (6, 'authority6', 'josema1', 'josema1');
+
+--Credit cards
+
+INSERT IGNORE INTO credit_cards VALUES (1, 123, 12, 2022, 'Pedro Rodríguez', 123456);
+INSERT IGNORE INTO credit_cards VALUES (2, 456, 5, 2024, 'Manuel Jiménez', 256478);
+INSERT IGNORE INTO credit_cards VALUES (3, 789, 7, 2023, 'Antonio Ruiz', 338976);
+INSERT IGNORE INTO credit_cards VALUES (4, 678, 3, 2022, 'Miguel López', 354789);
+
+--Applications
+
+INSERT IGNORE INTO application VALUES ('1471853306166046', 'Activision', 'description1', 126000, 'English', 'Call of duty', 170, 'http://www.google.com/imagen1', 70, '13-03-2020', 1000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.callfoduty.com', 1, 3);
+INSERT IGNORE INTO application VALUES ('1471853306166044', 'EA Sports', 'description2', 150000, 'English', 'FIFA 20', 16, 'http://www.google.com/imagen2', 70, '21-09-2019', 2000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.fifa20.com', 2, 2);
+INSERT IGNORE INTO application VALUES ('1471853306166042', 'Epic games', 'description3', 200000, 'English', 'Fortnite', 207, 'http://www.google.com/imagen3', 10, '13-09-2018', 7000000, 1, 'GAME', 'MULTIPLAYER', 'http://www.fortnite.com', 3, 1);
+
+--Administrator
+
+INSERT IGNORE INTO administrator VALUES (1, 'pedro@gmail.com', 'Pedro', 'Rodríguez', 1);
+
+--Comments
+
+INSERT IGNORE INTO comments VALUES (1, 'This game is awesome!', 'Perfect', 1);
+INSERT IGNORE INTO comments VALUES (2, 'This game is a shit', 'Bad', 3);
+INSERT IGNORE INTO comments VALUES (3, 'Best game in the world', 'Incredible', 2);
+
+--Developer
+
+INSERT IGNORE INTO developer VALUES (1, 'manu@gmail.com', 'Manuel', 'Jiménez', 'Microsoft', 'Be whats next', 'http://www.microsoft.com', 2, 2);
+
+--Reviews
+
+INSERT IGNORE INTO reviews VALUES (1, 'perfect videogame', 170, '17/02/2020', 'review 1', TRUE, 1);
+INSERT IGNORE INTO reviews VALUES (2, 'could be better', 16, '27/01/2020', 'review 2', TRUE, 2);
+INSERT IGNORE INTO reviews VALUES (3, 'incredible videogame', 207, '17/01/2020', 'review 3', TRUE, 3);
+
+--Sponsor
+
+INSERT IGNORE INTO sponsors VALUES (1, 'miguel1@gmail', 'Miguel', 'López', 4, 4);
+
+--Sponsorship
+
+INSERT IGNORE INTO sponsorship VALUES (1, 'http://www.miguel.com', 'miguel', 1);
