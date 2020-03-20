@@ -35,7 +35,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B -Drun.profiles=github test --file pom.xml
+        run: mvn -B test -Drun.profiles=github --file pom.xml
 
   package:
 
