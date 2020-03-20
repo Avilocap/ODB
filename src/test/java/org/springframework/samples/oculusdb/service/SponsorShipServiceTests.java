@@ -16,7 +16,7 @@ public class SponsorShipServiceTests {
 	@Test
 	public void testCount() {
 		int count = this.sponsorShipService.sponsorShipCount();
-		Assertions.assertEquals(count, 0);
+		Assertions.assertTrue(count > 0);
 	}
 
 }

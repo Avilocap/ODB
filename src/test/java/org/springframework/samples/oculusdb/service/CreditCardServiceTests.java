@@ -16,7 +16,7 @@ public class CreditCardServiceTests {
 	@Test
 	public void testCount() {
 		int count = this.creditCardService.creditCardCount();
-		Assertions.assertEquals(count, 0);
+		Assertions.assertTrue(count > 0);
 	}
 
 }

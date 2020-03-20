@@ -16,7 +16,7 @@ public class CategoryServiceTests {
 	@Test
 	public void testCount() {
 		int count = this.categoryService.categoryCount();
-		Assertions.assertEquals(count, 0);
+		Assertions.assertTrue(count > 0);
 	}
 
 }
