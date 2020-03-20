@@ -10,6 +10,19 @@ on:
     branches: [ master ]
 
 jobs:
+
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build with Maven
+        run: mvn -B validate -Drun.profiles=github --file pom.xml
+
   package:
 
     runs-on: ubuntu-latest
@@ -24,13 +37,14 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -Drun.profiles=github -DskipTests --file pom.xml
 
-    - name: Upload Maven build artifact
+    - name: Build artifact
       uses: actions/upload-artifact@v1
       with:
         name: spring-oculusdb.jar
         path: target/spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar
 
   run:
+
       runs-on: ubuntu-latest
 
       steps:
@@ -41,3 +55,16 @@ jobs:
           java-version: 1.8
       - name: Build with Maven
         run: mvn -Drun.profiles=github -DskipTests spring-boot:run
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build with Maven
+        run: mvn -B test -Drun.profiles=github --file pom.xml
