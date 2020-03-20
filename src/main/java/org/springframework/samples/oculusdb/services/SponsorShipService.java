@@ -16,6 +16,6 @@ public class SponsorShipService {
    @Transactional
    public int sponsorShipCount() {
       return (int) this.sponsorShipRepository.count();
-	}
+   }
 
 }

@@ -17,6 +17,6 @@ public class SponsorService {
    @Transactional
    public Sponsor sponsorById(final int id) {
       return this.sponsorRepository.findById(id).orElse(null);
-	}
+   }
 
 }

@@ -16,6 +16,6 @@ public class PlatformService {
    @Transactional
    public int platformCount() {
       return (int) this.platformRepository.count();
-	}
+   }
 
 }

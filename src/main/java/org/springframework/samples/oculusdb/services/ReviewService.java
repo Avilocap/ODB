@@ -16,6 +16,6 @@ public class ReviewService {
    @Transactional
    public int reviewCount() {
       return (int) this.reviewRepository.count();
-	}
+   }
 
 }

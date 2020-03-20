@@ -16,6 +16,6 @@ public class CommentsService {
    @Transactional
    public int commentsCount() {
       return (int) this.commentsRepository.count();
-	}
+   }
 
 }

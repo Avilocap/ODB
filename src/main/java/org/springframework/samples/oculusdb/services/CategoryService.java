@@ -10,12 +10,12 @@ import javax.transaction.Transactional;
 @Service
 public class CategoryService {
 
-   @Autowired
-   private CategoryRepository categoryRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
 
-   @Transactional
-   public int categoryCount() {
-      return (int) this.categoryRepository.count();
+	@Transactional
+	public int categoryCount() {
+		return (int) this.categoryRepository.count();
 	}
 
 }
