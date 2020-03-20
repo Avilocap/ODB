@@ -54,23 +54,24 @@ public class ApplicationServiceTest {
 	// org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
 	// }
 
-	@Test
-	void getInfoOfOneApplicationIfExists() throws IOException {
-		// Checking the pool size of apps after updating them.
-		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
-		int sizeBefore = apps.size();
-		// Upgrade process
-		this.applicationService.getInfoOfOneApplication("1471853306166046");
-		// Checking the pool size of apps before updating them.
-		Assertions.assertThrows(JSONException.class, () -> {
-			this.applicationService.getInfoOfOneApplication("1471853306160646");
-			List<Application> appsUpdated = new ArrayList<>(
-					(Collection<? extends Application>) this.applicationService.findAll());
-			int sizeAfter = appsUpdated.size();
-			org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
-		});
-
-	}
+	// @Test
+	// void getInfoOfOneApplicationIfExists() throws IOException {
+	// // Checking the pool size of apps after updating them.
+	// List<Application> apps = new ArrayList<>((Collection<? extends Application>)
+	// this.applicationService.findAll());
+	// int sizeBefore = apps.size();
+	// // Upgrade process
+	// this.applicationService.getInfoOfOneApplication("1471853306166046");
+	// // Checking the pool size of apps before updating them.
+	// Assertions.assertThrows(JSONException.class, () -> {
+	// this.applicationService.getInfoOfOneApplication("1471853306160646");
+	// List<Application> appsUpdated = new ArrayList<>(
+	// (Collection<? extends Application>) this.applicationService.findAll());
+	// int sizeAfter = appsUpdated.size();
+	// org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
+	// });
+	//
+	// }
 
 	@Test
 	void getInfoOfOneApplicationRandomID() {
