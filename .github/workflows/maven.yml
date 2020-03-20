@@ -23,6 +23,19 @@ jobs:
       - name: Build with Maven
         run: mvn -B validate -Drun.profiles=github --file pom.xml
 
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build with Maven
+        run: mvn -B test -Drun.profiles=hsqldb --file pom.xml
+
   package:
 
     runs-on: ubuntu-latest
@@ -43,18 +56,6 @@ jobs:
         name: spring-oculusdb.jar
         path: target/spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar
 
-  test:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Build with Maven
-        run: mvn -B test -Drun.profiles=hsqldb --file pom.xml
 
   run:
 
