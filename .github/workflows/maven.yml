@@ -21,5 +21,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn -B package -Drun.profiles=github -DskipTests --file pom.xml
-      run: java -jar target/spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar
+      run: mvn -B install -Drun.profiles=github -DskipTests --file pom.xml
