@@ -10,9 +10,9 @@ on:
     branches: [ master ]
 
 jobs:
-  package & upload:
+  package & upload of artifact:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
         path: target/spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar
 
   run:
-      runs-on: macos-latest
+      runs-on: ubuntu-latest
 
       steps:
       - uses: actions/checkout@v2
