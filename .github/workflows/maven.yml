@@ -10,9 +10,9 @@ on:
     branches: [ master ]
 
 jobs:
-  package:
+  package & upload:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -27,11 +27,11 @@ jobs:
     - name: Upload Maven build artifact
       uses: actions/upload-artifact@v1
       with:
-        name: artifact
+        name: spring-oculusdb.jar
         path: target/spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar
 
   run:
-      runs-on: ubuntu-latest
+      runs-on: macos-latest
 
       steps:
       - uses: actions/checkout@v2
