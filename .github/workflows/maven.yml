@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  package & upload of artifact:
+  package:
 
     runs-on: ubuntu-latest
 
