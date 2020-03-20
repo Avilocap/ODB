@@ -1,4 +1,3 @@
-create schema oculusdb collate utf8_general_ci;
 
 create table category
 (
