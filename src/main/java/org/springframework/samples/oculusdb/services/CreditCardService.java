@@ -10,12 +10,12 @@ import javax.transaction.Transactional;
 @Service
 public class CreditCardService {
 
-   @Autowired
-   private CreditCardRepository creditCardRepository;
+	@Autowired
+	private CreditCardRepository creditCardRepository;
 
-   @Transactional
-   public int creditCardCount() {
-      return (int) this.creditCardRepository.count();
-   }
+	@Transactional
+	public int creditCardCount() {
+		return (int) this.creditCardRepository.count();
+	}
 
 }
