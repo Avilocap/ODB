@@ -10,12 +10,12 @@ import javax.transaction.Transactional;
 @Service
 public class CommentsService {
 
-   @Autowired
-   private CommentsRepository commentsRepository;
+	@Autowired
+	private CommentsRepository commentsRepository;
 
-   @Transactional
-   public int commentsCount() {
-      return (int) this.commentsRepository.count();
-   }
+	@Transactional
+	public int commentsCount() {
+		return (int) this.commentsRepository.count();
+	}
 
 }
