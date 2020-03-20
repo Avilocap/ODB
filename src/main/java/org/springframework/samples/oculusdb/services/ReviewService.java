@@ -10,12 +10,12 @@ import javax.transaction.Transactional;
 @Service
 public class ReviewService {
 
-   @Autowired
-   private ReviewRepository reviewRepository;
+	@Autowired
+	private ReviewRepository reviewRepository;
 
-   @Transactional
-   public int reviewCount() {
-      return (int) this.reviewRepository.count();
-   }
+	@Transactional
+	public int reviewCount() {
+		return (int) this.reviewRepository.count();
+	}
 
 }

@@ -10,12 +10,12 @@ import javax.transaction.Transactional;
 @Service
 public class PlatformService {
 
-   @Autowired
-   private PlatformRepository platformRepository;
+	@Autowired
+	private PlatformRepository platformRepository;
 
-   @Transactional
-   public int platformCount() {
-      return (int) this.platformRepository.count();
-   }
+	@Transactional
+	public int platformCount() {
+		return (int) this.platformRepository.count();
+	}
 
 }

@@ -11,12 +11,12 @@ import javax.transaction.Transactional;
 @Service
 public class UserService {
 
-   @Autowired
-   private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-   @Transactional
-   public User userById(final int id) {
-      return this.userRepository.findById(id).orElse(null);
-   }
+	@Transactional
+	public User userById(final int id) {
+		return this.userRepository.findById(id).orElse(null);
+	}
 
 }

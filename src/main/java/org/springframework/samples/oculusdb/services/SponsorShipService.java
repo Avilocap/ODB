@@ -10,12 +10,12 @@ import javax.transaction.Transactional;
 @Service
 public class SponsorShipService {
 
-   @Autowired
-   private SponsorShipRepository sponsorShipRepository;
+	@Autowired
+	private SponsorShipRepository sponsorShipRepository;
 
-   @Transactional
-   public int sponsorShipCount() {
-      return (int) this.sponsorShipRepository.count();
-   }
+	@Transactional
+	public int sponsorShipCount() {
+		return (int) this.sponsorShipRepository.count();
+	}
 
 }
