@@ -35,7 +35,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B test -Drun.profiles=hsqldb --file pom.xml
+        run: mvn -B test -Drun.profiles=hsqldb -DskipTests --file pom.xml
 
   package:
 
