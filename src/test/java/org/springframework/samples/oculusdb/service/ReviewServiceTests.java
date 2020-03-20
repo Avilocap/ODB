@@ -13,10 +13,10 @@ public class ReviewServiceTests {
 	@Autowired
 	private ReviewService reviewService;
 
-
 	@Test
 	public void testCount() {
 		int count = this.reviewService.reviewCount();
 		Assertions.assertEquals(count, 0);
 	}
+
 }

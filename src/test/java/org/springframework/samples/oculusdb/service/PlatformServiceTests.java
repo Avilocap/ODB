@@ -13,10 +13,10 @@ public class PlatformServiceTests {
 	@Autowired
 	private PlatformService platformService;
 
-
 	@Test
 	public void testCount() {
 		int count = this.platformService.platformCount();
 		Assertions.assertEquals(count, 0);
 	}
+
 }

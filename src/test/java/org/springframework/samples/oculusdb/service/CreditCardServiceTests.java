@@ -13,7 +13,6 @@ public class CreditCardServiceTests {
 	@Autowired
 	private CreditCardService creditCardService;
 
-
 	@Test
 	public void testCount() {
 		int count = this.creditCardService.creditCardCount();

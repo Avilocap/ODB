@@ -1,7 +1,5 @@
 package org.springframework.samples.oculusdb.controllers;
 
-import java.util.Optional;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -11,7 +9,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.ApplicationRepository;
 import org.springframework.samples.oculusdb.model.Application;
@@ -23,6 +20,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApplicationService {
@@ -39,9 +37,9 @@ public class ApplicationService {
 	public Iterable<Application> findAll() {
 		return this.applicationRepository.findAll();
 	}
-	
+
 	@Transactional
-	public Optional<Application> findApplicationById(int id){
+	public Optional<Application> findApplicationById(int id) {
 		return this.applicationRepository.findById(id);
 	}
 

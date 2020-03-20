@@ -13,7 +13,6 @@ public class SponsorShipServiceTests {
 	@Autowired
 	private SponsorShipService sponsorShipService;
 
-
 	@Test
 	public void testCount() {
 		int count = this.sponsorShipService.sponsorShipCount();

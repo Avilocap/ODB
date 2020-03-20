@@ -36,7 +36,7 @@ public class PaymentController {
 		// create charge
 		String chargeId = stripeService.createCharge(email, token, 999); // $9.99 USD
 	}
-	//https://attacomsian.com/blog/stripe-integration-with-spring-boot#
-	//https://www.baeldung.com/java-stripe-api
+	// https://attacomsian.com/blog/stripe-integration-with-spring-boot#
+	// https://www.baeldung.com/java-stripe-api
 
 }

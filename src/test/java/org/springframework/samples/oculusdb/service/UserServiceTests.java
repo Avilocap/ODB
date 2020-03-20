@@ -14,7 +14,6 @@ public class UserServiceTests {
 	@Autowired
 	private UserService userService;
 
-
 	@Test
 	public void testId() {
 		int id = 0;

@@ -14,7 +14,6 @@ public class SponsorServiceTests {
 	@Autowired
 	private SponsorService sponsorService;
 
-
 	@Test
 	public void testId() {
 		int id = 0;
@@ -22,4 +21,5 @@ public class SponsorServiceTests {
 		Sponsor s2 = this.sponsorService.sponsorById(id);
 		Assertions.assertEquals(s, s2);
 	}
+
 }

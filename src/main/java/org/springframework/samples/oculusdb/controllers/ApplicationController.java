@@ -4,7 +4,6 @@ package org.springframework.samples.oculusdb.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,9 +27,8 @@ public class ApplicationController {
 		Iterable<Application> applications = applicationService.findAll();
 		modelMap.addAttribute("applications", applications);
 		return vista;
-		
-	}
 
+	}
 
 	@GetMapping("/appInfo/{appId}")
 	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
@@ -38,10 +36,10 @@ public class ApplicationController {
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
-		if(ap.isPresent()){
+		if (ap.isPresent()) {
 			application = ap.get();
 		}
-		vista.addObject("app",application);
+		vista.addObject("app", application);
 		return vista;
 	}
 

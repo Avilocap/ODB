@@ -13,10 +13,10 @@ public class CommentsServiceTests {
 	@Autowired
 	private CommentsService commentsService;
 
-
 	@Test
 	public void testCount() {
 		int count = this.commentsService.commentsCount();
 		Assertions.assertEquals(count, 0);
 	}
+
 }

@@ -13,7 +13,6 @@ public class CategoryServiceTests {
 	@Autowired
 	private CategoryService categoryService;
 
-
 	@Test
 	public void testCount() {
 		int count = this.categoryService.categoryCount();
