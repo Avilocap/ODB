@@ -1,0 +1,19 @@
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+
+<body>
+
+  <h2>Find Owners</h2>
+
+  <form th:action="@{/applications/get}">
+    <label for="id">Oculus Store id:</label><br>
+   <input type="text" id="id" name="id" th:value="1368187813209608">
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <br />
+  <a class="btn btn-default" th:href="@{/owners/new}">Add Owner</a>
+
+</body>
+</html>

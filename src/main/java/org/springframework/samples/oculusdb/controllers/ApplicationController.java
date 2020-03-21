@@ -21,13 +21,19 @@ public class ApplicationController {
 	@Autowired
 	private ApplicationService applicationService;
 
-	@GetMapping("/applications/list")
+	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
 		String vista = "applications/listadoAplicaciones";
 		Iterable<Application> applications = applicationService.findAll();
 		modelMap.addAttribute("applications", applications);
 		return vista;
 
+	}
+
+	@GetMapping("/loadGet")
+	public String loadApplicationGet(){
+		String vista = "applications/getApplication";
+		return vista;
 	}
 
 	@GetMapping("/appInfo/{appId}")
@@ -44,9 +50,10 @@ public class ApplicationController {
 	}
 
 	@RequestMapping("/get")
-	public String getApplication(@RequestParam String id) throws IOException {
-		String vista = "applications/test";
-		this.applicationService.getInfoOfOneApplication(id);
+	public ModelAndView getApplication(@RequestParam String id) throws IOException {
+		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
+		Application application = this.applicationService.getInfoOfOneApplication(id);
+		vista.addObject("app", application);
 		return vista;
 	}
 

@@ -44,7 +44,9 @@ public class ApplicationService {
 	}
 
 	@Transactional
-	public void getInfoOfOneApplication(String game_id) throws IOException {
+	public Application getInfoOfOneApplication(String game_id) throws IOException {
+
+		Application res = new Application();
 
 		String API_URL = "https://graph.oculus.com/graphql?forced_locale=en_EN";
 		HttpClient httpclient = HttpClients.createDefault();
@@ -106,10 +108,10 @@ public class ApplicationService {
 				Application application = new Application(oculusId, name, description, releaseDate, price, website,
 						company, picture, incomeEstimation, salesEstimation, totalReviews);
 
-				applicationRepository.save(application);
+				res = applicationRepository.save(application);
 			}
 		}
-
+		return res;
 	}
 
 	private static Integer salesEstimatitonCalculator(Integer reviewCount) {
