@@ -45,7 +45,7 @@ public class ApplicationController {
 		if (ap.isPresent()) {
 			application = ap.get();
 		}
-		//Esto es una prueba
+		// Esto es una prueba
 		vista.addObject("app", application);
 		return vista;
 	}
