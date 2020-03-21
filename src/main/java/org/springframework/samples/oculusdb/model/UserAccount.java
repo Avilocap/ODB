@@ -1,7 +1,9 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -10,15 +12,16 @@ public class UserAccount extends BaseEntity {
 
 	@Column(name = "nick")
 	@NotEmpty
-	private String nick;
+	private String	nick;
 
 	@Column(name = "password")
 	@NotEmpty
-	private String password;
+	private String	password;
 
 	@Column(name = "authority")
 	@NotEmpty
-	private String authority;
+	private String	authority;
+
 
 	public String getNick() {
 		return this.nick;
@@ -41,6 +44,13 @@ public class UserAccount extends BaseEntity {
 	}
 
 	public void setAuthority(final String authority) {
+		this.authority = authority;
+	}
+
+	public UserAccount(@NotEmpty final String nick, @NotEmpty final String password, @NotEmpty final String authority) {
+		super();
+		this.nick = nick;
+		this.password = password;
 		this.authority = authority;
 	}
 

@@ -1,4 +1,4 @@
-package org.springframework.samples.oculusdb.controllers;
+package org.springframework.samples.oculusdb.services;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

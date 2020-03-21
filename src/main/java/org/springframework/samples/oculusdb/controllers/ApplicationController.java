@@ -1,8 +1,12 @@
 
 package org.springframework.samples.oculusdb.controllers;
 
+import java.io.IOException;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/applications")
 public class ApplicationController {
@@ -21,10 +22,11 @@ public class ApplicationController {
 	@Autowired
 	private ApplicationService applicationService;
 
+
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
 		String vista = "applications/listadoAplicaciones";
-		Iterable<Application> applications = applicationService.findAll();
+		Iterable<Application> applications = this.applicationService.findAll();
 		modelMap.addAttribute("applications", applications);
 		return vista;
 
@@ -37,7 +39,7 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/appInfo/{appId}")
-	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
+	public ModelAndView applicationDetails(@PathVariable("appId") final int appId) {
 
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
@@ -51,7 +53,7 @@ public class ApplicationController {
 	}
 
 	@RequestMapping("/get")
-	public ModelAndView getApplication(@RequestParam String id) throws IOException {
+	public ModelAndView getApplication(@RequestParam final String id) throws IOException {
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = this.applicationService.getInfoOfOneApplication(id);
 		vista.addObject("app", application);
