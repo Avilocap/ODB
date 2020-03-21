@@ -69,4 +69,4 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -DskipTests spring-boot:run
+        run: mvn -T 4 -Drun.profiles=hsqldb -DskipTests spring-boot:run
