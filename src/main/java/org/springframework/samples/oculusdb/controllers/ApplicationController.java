@@ -31,7 +31,7 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/loadGet")
-	public String loadApplicationGet(){
+	public String loadApplicationGet() {
 		String vista = "applications/getApplication";
 		return vista;
 	}
