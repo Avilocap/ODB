@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B validate -Drun.profiles=github --file pom.xml
+        run: mvn -B validate --file pom.xml
 
   test:
 
@@ -35,7 +35,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B test -Drun.profiles=hsqldb -DskipTests --file pom.xml
+        run: mvn -B test --file pom.xml
 
   package:
 
@@ -49,7 +49,7 @@ jobs:
         java-version: 1.8
 
     - name: Build with Maven
-      run: mvn -B package -Drun.profiles=github -DskipTests --file pom.xml
+      run: mvn -B package -DskipTests --file pom.xml
 
     - name: Build artifact
       uses: actions/upload-artifact@v1
@@ -69,4 +69,4 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -Drun.profiles=github -DskipTests spring-boot:run
+        run: mvn -T 4 -Drun.profiles=hsqldb -DskipTests spring-boot:run

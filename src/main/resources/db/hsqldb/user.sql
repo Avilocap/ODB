@@ -1,7 +1,0 @@
-CREATE DATABASE IF NOT EXISTS oculusdb;
-
-ALTER DATABASE oculusdb
-  DEFAULT CHARACTER SET utf8
-  DEFAULT COLLATE utf8_general_ci;
-
-GRANT ALL PRIVILEGES ON oculusdb.* TO 'oculusdb@%' IDENTIFIED BY 'oculusdb';
