@@ -57,18 +57,24 @@
                   
                   
                   <li class="nav-item">
+
                 	  <a class="nav-link" th:href="@{/applications/list}">Applications</a>
             	  </li>
             	  
             	  <li class="nav-item">
                 	  <a class="nav-link" th:href="@{/login}">Log in</a>
             	  </li>
+
                   
                  
   
                   <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','warning-sign','Error')">
                       <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                       <span>Error</span>
+                  </li>
+                  
+                  <li class="nav-item">
+                  <a class="nav-link" th:href="@{/login}">Login</a>
                   </li>
   
               </ul>
