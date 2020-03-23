@@ -1,0 +1,42 @@
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+
+<body>
+
+  <h2>
+    <th:block th:if="${app['new']}">New </th:block>
+    Application
+  </h2>
+
+
+  <form th:object="${app}" class="form-horizontal" method="post">
+
+    <input type="hidden" name="id" th:value="*{id}" />
+    <input type="hidden" name="oculusId" th:value="*{oculusId}" />
+    <div class="form-group has-feedback">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Owner</label>
+      </div>
+      <input
+        th:replace="~{fragments/inputField :: input ('Name', 'name', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Description', 'description', 'text')}" />
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button
+          th:with="text=${app['new']} ? 'Add Pet' : 'Update App'"
+          class="btn btn-default" type="submit" th:text="${text}">Add
+          Pet</button>
+        <a th:href="@{delete(appId=*{id})}">Delete
+          Application</a>
+      </div>
+    </div>
+  </form>
+
+  <a th:href="@{delete(appId=${app.id})}">Delete
+    Application</a>
+
+</body>
+
+</html>

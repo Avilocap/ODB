@@ -65,7 +65,8 @@ public class Application extends BaseEntity {
 	@Column(name = "company")
 	private String company;
 
-	@Column(name = "picture")
+	@Lob
+	@Column(name = "picture", columnDefinition = "LONGTEXT")
 	private String picture;
 
 	@Column(name = "type_of_gameplay")
@@ -92,10 +93,10 @@ public class Application extends BaseEntity {
 	@ManyToOne
 	private Category category;
 
-	@OneToMany(mappedBy = "application")
+	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
 	private Collection<Reviews> reviewsCollection;
 
-	@OneToMany(mappedBy = "application")
+	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
 	private Collection<Comments> comments;
 
 	public String getOculusId() {

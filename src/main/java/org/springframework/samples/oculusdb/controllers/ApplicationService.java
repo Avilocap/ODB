@@ -35,6 +35,11 @@ public class ApplicationService {
 	}
 
 	@Transactional
+	public Application saveApplication(Application app) {
+		return this.applicationRepository.save(app);
+	}
+
+	@Transactional
 	public Iterable<Application> findAll() {
 		return this.applicationRepository.findAll();
 	}
@@ -42,6 +47,11 @@ public class ApplicationService {
 	@Transactional
 	public Optional<Application> findApplicationById(int id) {
 		return this.applicationRepository.findById(id);
+	}
+
+	@Transactional
+	public void deleteApplication(Application t) {
+		this.applicationRepository.delete(t);
 	}
 
 	@Transactional

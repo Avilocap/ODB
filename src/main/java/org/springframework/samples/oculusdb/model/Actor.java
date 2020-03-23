@@ -19,7 +19,7 @@ public class Actor extends BaseEntity {
 	@NotEmpty
 	private String email;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private UserAccount userAccount;
 
 	public UserAccount getUserAccount() {
