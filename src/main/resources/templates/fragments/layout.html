@@ -1,5 +1,5 @@
 <!doctype html>
-<html th:fragment="layout (template, menu)">
+<html th:fragment="layout (template, menu)" xmlns:th="http://www.w3.org/1999/xhtml">
 
   <head>
 
@@ -49,15 +49,15 @@
                       <span>Home</span>
                   </li>
   
-                  <li th:replace="::menuItem ('/owners/find','owners','find owners','search','Find owners')">
-                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                      <span>Find owners</span>
-                  </li>
-  
+<!--                  <li th:replace="::menuItem ('/owners/find','owners','find owners','search','Find owners')">-->
+<!--                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>-->
+<!--                      <span>Find owners</span>-->
+<!--                  </li>-->
+<!--  -->
                   
                   
                   <li class="nav-item">
-                <a class="nav-link" th:href="@{/applications/list}">Applications</a>
+                <a class="nav-link" th:href="@{/applications/list}">Application list</a>
             </li>
                   
                  
