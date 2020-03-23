@@ -18,7 +18,6 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
-
 	@Transactional
 	public User userById(final int id) {
 		return this.userRepository.findById(id).orElse(null);
@@ -27,11 +26,13 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(final String nick) throws UsernameNotFoundException {
 
-		User user = this.userRepository.findByNick(nick).orElseThrow(() -> new UsernameNotFoundException("No existe usuario"));
+		User user = this.userRepository.findByNick(nick)
+				.orElseThrow(() -> new UsernameNotFoundException("No existe usuario"));
 
 		String authority = user.getUserAccount().getAuthority();
 
-		UserDetails user2 = (UserDetails) new UserAccount(user.getUserAccount().getNick(), user.getUserAccount().getPassword(), user.getUserAccount().getAuthority());
+		UserDetails user2 = (UserDetails) new UserAccount(user.getUserAccount().getNick(),
+				user.getUserAccount().getPassword(), user.getUserAccount().getAuthority());
 
 		return user2;
 
