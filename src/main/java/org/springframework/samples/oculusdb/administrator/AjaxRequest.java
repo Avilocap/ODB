@@ -8,6 +8,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -28,7 +29,7 @@ public class AjaxRequest {
 
 	}
 
-	private static void getInfoOfOneApplication(String game_id) throws IOException {
+	private static void getInfoOfOneApplication(String game_id) throws IOException, JSONException {
 
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(API_URL);

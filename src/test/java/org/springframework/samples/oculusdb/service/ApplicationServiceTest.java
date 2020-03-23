@@ -12,13 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
+import java.lang.reflect.UndeclaredThrowableException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
 @SpringBootTest
-@Transactional
 public class ApplicationServiceTest {
 
 	@Autowired
@@ -37,7 +37,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	void getInfoOfOneApplicationCase0() throws IOException {
+	void getInfoOfOneApplicationCase0() throws IOException, JSONException {
 		// Checking the pool size of apps after updating them.
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();
@@ -52,7 +52,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	void getInfoOfOneApplicationIfExists() throws IOException {
+	void getInfoOfOneApplicationIfExists() throws IOException, JSONException {
 		// Checking the pool size of apps after updating them.
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();

@@ -1,6 +1,7 @@
 
 package org.springframework.samples.oculusdb.controllers;
 
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,7 @@ public class ApplicationController {
 	}
 
 	@RequestMapping("/get")
-	public ModelAndView getApplication(@RequestParam String id) throws IOException {
+	public ModelAndView getApplication(@RequestParam String id) throws IOException, JSONException {
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = this.applicationService.getInfoOfOneApplication(id);
 		vista.addObject("app", application);

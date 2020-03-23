@@ -8,6 +8,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.ApplicationRepository;
@@ -44,7 +45,7 @@ public class ApplicationService {
 	}
 
 	@Transactional
-	public Application getInfoOfOneApplication(String game_id) throws IOException {
+	public Application getInfoOfOneApplication(String game_id) throws IOException, JSONException {
 
 		Application res = new Application();
 
