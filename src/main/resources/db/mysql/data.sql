@@ -1,3 +1,4 @@
+
 --Platform
 
 INSERT IGNORE INTO platform VALUES (1, 'Wireless', 'Quest');
