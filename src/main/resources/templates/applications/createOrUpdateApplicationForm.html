@@ -1,5 +1,5 @@
 <html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+  th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
 
 <body>
 
@@ -13,29 +13,41 @@
 
     <input type="hidden" name="id" th:value="*{id}" />
     <input type="hidden" name="oculusId" th:value="*{oculusId}" />
+<!--    <input type="hidden" name="releaseDate" th:value="*{releaseDate}" />-->
+    <input type="hidden" name="typeOfApp" th:value="*{typeOfApp}" />
+    <input type="hidden" name="picture" th:value="*{picture}" />
+    <input type="hidden" name="typeOfGameplay" th:value="*{typeOfGameplay}" />
+    <input type="hidden" name="platform" th:value="*{platform}" />
+    <input type="hidden" name="category" th:value="*{category}" />
+
+    <!--    <input type="hidden" name="reviewsCollection" th:value="*{reviewsCollection}" />-->
+<!--    <input type="hidden" name="comments" th:value="*{comments}" />-->
+
     <div class="form-group has-feedback">
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Owner</label>
-      </div>
-      <input
-        th:replace="~{fragments/inputField :: input ('Name', 'name', 'text')}" />
-      <input
-        th:replace="~{fragments/inputField :: input ('Description', 'description', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Name', 'name', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Description', 'description', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Website', 'website', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Price', 'price', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Company', 'company', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Sales est.', 'salesEstimation', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Income est.', 'incomeEstimation', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Total reviews', 'totalReviews', 'text')}" />
+      <input th:replace="~{fragments/inputField :: input ('Language', 'language', 'text')}" />
+
+
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button
-          th:with="text=${app['new']} ? 'Add Pet' : 'Update App'"
+          th:with="text=${app['new']} ? 'Add app' : 'Update app'"
           class="btn btn-default" type="submit" th:text="${text}">Add
-          Pet</button>
+          app</button>
+
         <a th:href="@{delete(appId=*{id})}">Delete
           Application</a>
       </div>
     </div>
   </form>
-
-  <a th:href="@{delete(appId=${app.id})}">Delete
-    Application</a>
 
 </body>
 

@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
 
   <body>
 
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped" th:object="${app}">
 
-  <table class="table table-striped" th:object="${app}">
-    <tr>
-      <th>Name</th>
-      <td><b th:text="*{name}"></b></td>
-    </tr>
-    <tr>
-      <th>Address</th>
-    </tr>
-    <tr>
-      <th>City</th>
-    </tr>
-    <tr>
-      <th>Telephone</th>
-    </tr>
-    <tr>
-      <td><a
-              th:href="@{edit(appId=${app.id})}">Edit
-        Application</a></td>
-    </tr>
-  </table>
+        <img th:src="*{picture}" title="banner_app_img" class="img-responsive"/>
+        <br />
+        <h1 th:text="*{name}"></h1>
+
+        <a sec:authorize="hasRole('ADMINISTRATOR')" th:href="@{edit(appId=${app.id})}">Edit
+          Application</a>
+
+        <br />
+        <tr>
+          <b th:text="*{description}"></b>
+          <br />
+        </tr>
+        <tr>
+          <th >Release date</th>
+          <td><b th:text="*{releaseDate}"></b></td>    </tr>
+        <tr>
+          <th>Price</th>
+          <td><b th:text="*{price}"></b> €</td>    </tr>
+        <tr>
+          <th>Web site</th>
+          <td>
+            <a th:href="*{website}"><b th:text="*{website}"></b></a>
+          </td>
+        </tr>
+
+        <tr>
+          <th>Company</th>
+          <td><b th:text="*{company}"></b></td>    </tr>
+        <tr>
+          <th>Income estimation</th>
+          <td><b th:text="*{incomeEstimation}"></b> €</td>    </tr>
+        <tr>
+          <th>Sales estimation</th>
+          <td><b th:text="*{salesEstimation}"></b> uds.</td>    </tr>
+        <tr>
+          <th>Total reviews</th>
+          <td><b th:text="*{totalReviews}"></b></td>    </tr>
+
+      </table>
+    </div>
+  </div>
+
 
   <br />
   <br />

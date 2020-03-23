@@ -33,7 +33,6 @@ public class Application extends BaseEntity {
 		this.price = price;
 		this.website = website;
 		this.company = company;
-		this.price = price;
 		this.picture = picture;
 		this.incomeEstimation = incomeEstimation;
 		this.salesEstimation = salesEstimation;
