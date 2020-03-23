@@ -38,7 +38,7 @@ jobs:
       - name: Format
         run: mvn spring-javaformat:apply
       - name: Build with Maven
-        run: mvn -B test --file pom.xml
+        run: mvn -T 4 -B test -Dspring.profiles.active=hsqldb --file pom.xml
 
   package:
 
@@ -76,4 +76,7 @@ jobs:
       - name: Format
         run: mvn spring-javaformat:apply
       - name: Build with Maven
-        run: mvn -T 4 -Drun.profiles=hsqldb -DskipTests spring-boot:run
+        run: mvn -T 4 -Dspring.profiles.active=hsqldb -DskipTests spring-boot:run
+
+
+
