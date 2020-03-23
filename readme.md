@@ -1,4 +1,5 @@
-# Spring OculusDB Application [![Build Status](https://travis-ci.org/spring-projects/spring-oculusdb.png?branch=master)](https://travis-ci.com/Avilocap/ODB.svg?branch=master/)
+# Spring OculusDB Application 
+
 ## CI / CD Deployments
 ![Java CI with Maven](https://github.com/Avilocap/ODB/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master&event=push)
 
