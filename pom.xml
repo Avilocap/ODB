@@ -101,12 +101,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.3.6</version>
-        </dependency>
-
         <!-- caching -->
         <dependency>
             <groupId>javax.cache</groupId>
@@ -138,14 +132,6 @@
             <version>${webjars-bootstrap.version}</version>
         </dependency>
         <!-- end of webjars -->
-
-        <!-- Json -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20160810</version>
-        </dependency>
-        <!-- end of Json -->
 
         <!-- Testing -->
         <dependency>
