@@ -3,6 +3,7 @@ package org.springframework.samples.oculusdb.controllers;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -20,6 +23,9 @@ public class ApplicationController {
 
 	@Autowired
 	private ApplicationService applicationService;
+
+	@Autowired
+	PdfGeneratorUtil pdfGeneratorUtil;
 
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
@@ -32,8 +38,7 @@ public class ApplicationController {
 
 	@GetMapping("/loadGet")
 	public String loadApplicationGet() {
-		String vista = "applications/getApplication";
-		return vista;
+		return "applications/getApplication";
 	}
 
 	@GetMapping("/appInfo/{appId}")
@@ -48,6 +53,26 @@ public class ApplicationController {
 		// Esto es una prueba
 		vista.addObject("app", application);
 		return vista;
+	}
+
+	@GetMapping("/pdf/{appId}")
+	public ModelAndView appToPDF(@PathVariable("appId") int appId) throws Exception {
+		// https://www.oodlestechnologies.com/blogs/How-To-Create-PDF-through-HTML-Template-In-Spring-Boot/
+		ModelAndView vistaPDF = new ModelAndView("applications/applicationsDetails");
+		Application application = new Application();
+		Optional<Application> ap = this.applicationService.findApplicationById(appId);
+		if (ap.isPresent()) {
+			application = ap.get();
+		}
+
+		Map<String, String> data = new HashMap<String, String>();
+		data.put("Name", application.getName());
+		data.put("Description", application.getDescription());
+		data.put("Picture", application.getPicture());
+
+		pdfGeneratorUtil.createPdf("applications/applicationsDetails", data);
+		vistaPDF.addObject("app", application);
+		return vistaPDF;
 	}
 
 	@RequestMapping("/get")
@@ -74,8 +99,7 @@ public class ApplicationController {
 	public String processUpdateForm(@Valid Application application, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("app", application);
-			String view = "applications/createOrUpdateApplicationForm";
-			return view;
+			return "applications/createOrUpdateApplicationForm";
 		}
 		else {
 			Application application1 = this.applicationService.saveApplication(application);
@@ -89,9 +113,7 @@ public class ApplicationController {
 	public String deleteApp(@RequestParam("appId") int appId) {
 
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
-		if (ap.isPresent()) {
-			this.applicationService.deleteApplication(ap.get());
-		}
+		ap.ifPresent(application -> this.applicationService.deleteApplication(application));
 		return "applications/todoOk";
 	}
 

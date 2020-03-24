@@ -18,6 +18,7 @@
             <th style="width: 150px;">Release date</th>
             <th style="width: 150px;">Price (€)</th>
             <th style="width: 150px;">Company</th>
+            <th style="width: 150px;">Get PDF</th>
 
         </tr>
         </thead>
@@ -30,6 +31,9 @@
               <td th:text="${app.releaseDate}"></td>
               <td th:text="${app.price}"></td>
               <td th:text="${app.company}"></td>
+              <td text="Export">
+                  <a th:href="@{/pdf/__${app.id}__}"/>Download</a>
+              </td>
           </tr>
         </tbody>
     </table>

@@ -173,7 +173,17 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf</artifactId>
+            <version>9.1.16</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.1</version>
+        </dependency>
     </dependencies>
 
     <build>
