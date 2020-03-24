@@ -25,14 +25,14 @@
         <tbody>
           <tr th:each="app : ${applications}">
               <td>
-                  <a th:href="@{/applications/appInfo/__${app.id}__}" th:text="${app.name}"/></a>
+                  <a th:href="@{/applications/appInfo/__${app.id}__}" th:text="${app.name}"></a>
               </td>
               <td><img th:src="${app.picture}" title="app_img" class="img-responsive"/></td>
               <td th:text="${app.releaseDate}"></td>
               <td th:text="${app.price}"></td>
               <td th:text="${app.company}"></td>
               <td text="Export">
-                  <a th:href="@{/pdf/__${app.id}__}"/>Download</a>
+                  <a th:href="@{/pdf/__${app.id}__}">Download</a>
               </td>
           </tr>
         </tbody>
