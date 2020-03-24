@@ -16,14 +16,26 @@
 
 package org.springframework.samples.oculusdb.system;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.oculusdb.controllers.ApplicationService;
+import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.management.modelmbean.ModelMBeanAttributeInfo;
 
 @Controller
 class WelcomeController {
 
+	@Autowired
+	private ApplicationService applicationService;
+
 	@GetMapping("/")
-	public String welcome() {
+	public String welcome(final ModelMap modelMap) {
+		Iterable<Application> applications = applicationService.findAll();
+		modelMap.addAttribute("applications", applications);
 		return "welcome";
 	}
 

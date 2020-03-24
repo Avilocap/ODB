@@ -2,36 +2,25 @@
 
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
   <body>
-  <h2 th:text="#{welcome}">Welcome to Oculus DB</h2>
+  <h1 style="text-align: center; font-size: 60px;" th:text="#{welcome}">Welcome to Oculus DB</h1>
+  <h2 style="text-align: center;">Explore all the applications</h2>
 
-<!--  <div class="col-md-12">-->
-<!--      <br />-->
-<!--      <table id="app" class="table table-striped">-->
-<!--          <thead>-->
-<!--          <tr>-->
-<!--              <th style="width: 200px;">Name</th>-->
-<!--              <th style="width: 150px;">Picture</th>-->
-<!--              <th style="width: 150px;">Release date</th>-->
-<!--              <th style="width: 150px;">Price (€)</th>-->
-<!--              <th style="width: 150px;">Company</th>-->
-
-<!--          </tr>-->
-<!--          </thead>-->
-<!--          <tbody>-->
-<!--          <tr th:each="app : ${applications}">-->
-<!--              <td>-->
-<!--                  <a th:href="@{/applications/appInfo/__${app.id}__}" th:text="${app.name}"/></a>-->
-<!--              </td>-->
-<!--              <td><img th:src="${app.picture}" title="app_img" class="img-responsive"/></td>-->
-<!--              <td th:text="${app.releaseDate}"></td>-->
-<!--              <td th:text="${app.price}"></td>-->
-<!--              <td th:text="${app.company}"></td>-->
-<!--          </tr>-->
-<!--          </tbody>-->
-<!--      </table>-->
-<!--  </div>-->
+  <div class="col-md-12">
+      <br />
+      <table id="app" class="table table-striped">
+          <thead>
+          </thead>
+          <tbody>
+          <tr th:each="app : ${applications}">
+              <div class="img-responsive">
+              <a th:class="imagebox" th:href="@{/applications/appInfo/__${app.id}__}">
+                <img th:src="${app.picture}" th:title="${app.name}" class="img-responsive" th:alt="${app.name}"/>
+                  <h2> </h2>
+              </a>
+              </div>
+          </tr>
+          </tbody>
+      </table>
+  </div>
   </body>
   </html>
-
-
-</html>
