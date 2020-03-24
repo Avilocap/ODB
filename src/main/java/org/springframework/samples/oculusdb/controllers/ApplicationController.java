@@ -66,9 +66,9 @@ public class ApplicationController {
 		}
 
 		Map<String, String> data = new HashMap<String, String>();
-		data.put("Name", application.getName());
-		data.put("Description", application.getDescription());
-		data.put("Picture", application.getPicture());
+		data.put("name", application.getName());
+		data.put("description", application.getDescription());
+		data.put("picture", application.getPicture());
 
 		pdfGeneratorUtil.createPdf("applications/applicationsDetails", data);
 		vistaPDF.addObject("app", application);
