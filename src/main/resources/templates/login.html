@@ -1,12 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
+<!doctype html>
 
-	<!-- He borrado todo por si el fallo estaba aqui -->
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'')}">
 
-</body>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon.png}">
+
+    <title>Login</title>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" th:href="@{/resources/css/oculusdb.css}"/>
+
+  </head>
+  
+  <body>
+  	<form th:action="@{/}" method="get">
+  		<div>
+  			<input type="text" placeholder="Nombre de usuario" name="username" value="josema1"/>
+  		</div>
+  		<div>
+  			<input type="password" placeholder="Contraseña" name="password" value="josema1"/>
+  		</div>
+  		<button type="submit"> Ingresar </button>
+	</form>
+	<div th:if="${param.error}">
+		Usuario o contraseña no válidos.
+	</div>
+  </body>
 </html>

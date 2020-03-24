@@ -21,17 +21,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
 
+
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/resources/**", "/webjars/**", "/h2-console/**","/login").permitAll()
-				.antMatchers(HttpMethod.GET, "/", "/oups").permitAll().antMatchers("/user/**").authenticated()
-				.antMatchers("/admin/**").hasAnyAuthority("ADMIN").antMatchers("/sponsor/**")
-				.hasAnyAuthority("SPONSOR", "ADMIN").antMatchers("/developer/**").hasAnyAuthority("DEVELOPER", "ADMIN")
-				.anyRequest().denyAll().and().formLogin().loginPage("/login").failureUrl("/login-error").and().logout()
-				.logoutSuccessUrl("/");
+		http.authorizeRequests().antMatchers("/resources/**", "/webjars/**", "/h2-console/**", "/login").permitAll().antMatchers(HttpMethod.GET, "/", "/oups", "/applications/**").permitAll().antMatchers("/user/**").authenticated().antMatchers("/admin/**")
+			.hasAnyAuthority("ADMIN").antMatchers("/sponsor/**").hasAnyAuthority("SPONSOR", "ADMIN").antMatchers("/developer/**").hasAnyAuthority("DEVELOPER", "ADMIN").anyRequest().denyAll().and().formLogin().loginPage("/login").failureUrl("/login-error")
+			.and().logout().logoutSuccessUrl("/");
 	}
 
+
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
 	// Crea el encriptador de contraseñas
 	@Bean
@@ -45,8 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return this.bCryptPasswordEncoder;
 	}
 
+
 	@Autowired
 	UserService userDetailsService;
+
 
 	// Registra el service para usuarios y el encriptador de contrasena
 	@Autowired
