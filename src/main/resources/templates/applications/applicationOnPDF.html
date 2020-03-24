@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div class="col-md-12">
+        <img th:src="*{picture}" th:title="*{name}" class="img-responsive"/>
+        <h2> </h2>
+        <h1 style="font-weight: bold; font-size: 3em;" th:text="*{name}"></h1>
+        <br> </br>
+            <b th:text="*{description}"></b>
+    <br> </br>
+    
+            <h1>Release date</h1>
+            <b th:text="*{releaseDate}"></b>
+    <br> </br>
+            <h1>Price</h1>
+            <b th:text="*{price}"></b> €
+    <br> </br>
+            <h1>Web site</h1>
+            <b th:text="*{website}"></b>
+    <br> </br>
+            <h1>Company</h1>
+            <b th:text="*{company}"></b>
+    <br> </br>
+            <h1>Income estimation</h1>
+            <b th:text="*{incomeEstimation}"></b> €
+    <br> </br>
+            <h1>Sales estimation</h1>
+            <b th:text="*{salesEstimation}"></b> uds.
+    <br> </br>
+            <h1>Total reviews</h1>
+            <b th:text="*{totalReviews}"></b>
+</div>
+
+</body>
+</html>

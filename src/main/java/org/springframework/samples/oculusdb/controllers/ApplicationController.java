@@ -69,8 +69,15 @@ public class ApplicationController {
 		data.put("name", application.getName());
 		data.put("description", application.getDescription());
 		data.put("picture", application.getPicture());
+		data.put("releaseDate", application.getReleaseDate().toString());
+		data.put("price", application.getPrice().toString());
+		data.put("website", application.getWebsite());
+		data.put("company", application.getCompany());
+		data.put("incomeEstimation", application.getIncomeEstimation().toString());
+		data.put("salesEstimation", application.getSalesEstimation().toString());
+		data.put("totalReviews", application.getTotalReviews().toString());
 
-		pdfGeneratorUtil.createPdf("applications/applicationsDetails", data);
+		pdfGeneratorUtil.createPdf("applications/applicationOnPDF", data);
 		vistaPDF.addObject("app", application);
 		return vistaPDF;
 	}
