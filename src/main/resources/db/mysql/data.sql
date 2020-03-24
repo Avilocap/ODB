@@ -34,7 +34,71 @@ INSERT IGNORE INTO credit_cards VALUES (3, 789, 7, 2023, 'Antonio Ruiz', 338976)
 INSERT IGNORE INTO credit_cards VALUES (4, 678, 3, 2022, 'Miguel López', 354789);
 
 --Applications
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (2, 'Ready At Dawn', 'In Lone Echo’s single player story, you’ll be transported to an advanced mining facility within the rings of Saturn, complete with a detailed space station, expansive outer-space environments, and interactive space equipment. Taking on the role of Jack—an advanced artificial intelligence with a state-of-the-art synthetic body—you’ll help Captain Olivia Rhodes solve an increasingly threatening mystery as you use futuristic tools, clever problem solving, and interactive dialogue to engage with the world around you. Taking advantage of the Oculus Touch controllers and full 360° gameplay, Lone Echo lets you take a hands-on approach to exploring space unlike anything you’ve ever played before.', 1146113, 'English', 'Lone Echo', '1368187813209608', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/11162690_1597657833600851_7686325918767251456_n.jpg?_nc_cat=102&_nc_sid=79b88e&_nc_ohc=EDYQro3RcYIAX9OLr4p&_nc_ht=scontent.oculuscdn.com&oh=6d3f91c39e0041300f93804491748257&oe=5E9E7776', 39.99, '1970-01-17', 28660, 1433, 0, 0, 'https://www.oculus.com/lone-echo', 1, 1);
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (3, 'Roman Rekhler, Hamzeh Alsalhi, Oscar Vazquez', 'The ultimate Table Tennis simulator. Play opponents in online multiplayer or practice against the advanced AI. With physics designed to be as real as ever achieved in a Table Tennis simulator, you will forget you are in VR.', 131134, 'English', 'Eleven Table Tennis', '1995434190525828', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/75394636_182687759653029_532373432701026304_n.jpg?_nc_cat=111&_nc_sid=79b88e&_nc_oc=AQke-_vfRnsJo6A--cUPcRxpPFql0w9CbGVZR8pWudAJXJFmW_OaMQ0ydYn7IhaJkqQ&_nc_ht=scontent.oculuscdn.com&oh=cb9075e4aaca01e9b39dc873ae4688a3&oe=5EA07FF3', 19.99, '1970-01-18', 6560, 328, 0, 0, 'https://forfunlabs.github.io/', 1, 1);
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (4, 'Cubicle Ninjas', 'Experience music enhanced, Tai Chi inspired workouts in Virtual Reality. Stimulate your mind, body, and spirit.
 
+*7/5/19 – ADDED 150+ NEW SESSIONS, TWO NEW MODES, & TWO NEW LEVELS*
+
+–EASY TO FOLLOW, CHALLENGING TO MASTER–
+Nothing to learn or memorize. Simply follow along. 3-minute to 60-minute sessions.
+
+–MOVING MEDITATIONS–
+Let go of tension and stress across 100 sessions in FLOW MODE. A perfect gateway to the concepts of Tai Chi for beginners. Find yourself in the flow, refreshed and energized.
+
+–ARCADE AND WORLD TOUR MODES–
+Win points for perfect form across 100 sessions in ARCADE MODE or challenge yourself with the randomized WORLD TOUR MODE, a 60-minute Tai Chi endurance marathon. Strengthen and tone your body, while relaxing your mind.
+
+–BEAUTIFUL NATURE ENVIRONMENTS–
+Discover the wilds of nature, in the comfort of your own home with Explore Mode. Eleven beautiful, exotic destinations.
+
+Find your happy place.™', 26773, 'English', 'Guided Tai Chi', '1756328964489238', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38982495_319099892117745_3651611088031580160_n.jpg?_nc_cat=109&_nc_sid=79b88e&_nc_oc=AQlu5Pd2Zm2z_sNm2-GrRpsrOJ5S-Iso96e3z1FK4eqyLxYSNo0DEJgfu8wCHHW55L8&_nc_ht=scontent.oculuscdn.com&oh=daae2cee61a0fe2bc60381d787a527d2&oe=5EA0EA5B', 9.99, '1970-01-18', 2680, 134, 0, 0, 'http://guidedtaichi.com/', 1, 1);
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (5, 'Harmonix Music Systems, Inc.', 'Dance Central™ is back! Designed from the ground up for VR, Dance Central immerses you and your friends in the world’s best dance club experience where you are the life of the party and nobody steps on your toes.
+
+Dance Central includes a 32 song soundtrack featuring chart-toppers from the 1970s through to today’s biggest hits. With two difficulty levels and unique routines choreographed for each song, there’s plenty to keep you dancing all night.
+
+Dance Central also features the franchise’s first dive into synchronous online multiplayer. Customize your look, take an in-game selfie and then meet up with friends in the multiplayer lounge to party, chat, and dance your hearts out. With cross-play, you can compete against your friends on both the Oculus Quest and Rift Platform in free-for-all or team dance games to see who''s the best in the crew.
+
+Dance Central supports cross-buy. Buy once, play on both Oculus Quest and Rift Platform.', 85171, 'English', 'Dance Central', '2453152771391571', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/39031307_457832864824333_6563712254611554304_n.jpg?_nc_cat=105&_nc_sid=79b88e&_nc_oc=AQmcmHBA6U7nKx6yFewsXzSrc55kVE3HGRp8BkRkP9c6CfgdOrgfCVyroGWH4CXsHK0&_nc_ht=scontent.oculuscdn.com&oh=9119d696eedcdf53f96cb31c1d17fafd&oe=5EA0A511', 29.99, '1970-01-18', 2840, 142, 0, 0, 'http://www.dancecentral.com/', 1, 1);
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (6, 'Cloudhead Games, Ltd.', 'Inspired by God-mode action movies like John Wick and Equilibrium, Pistol Whip puts you gun-first through an explosive batch of hand-crafted action scenes each set to their own pulse-pounding soundtrack. But unlike traditional music games, Pistol Whip has no line in the sand; you have complete freedom to shoot, melee, and dodge targets to the rhythm YOU see fit.
+
+• Pair the pulse-pounding pace of an FPS with the flow-state energy of a music game in a cinematic symphony of violence.
+
+• Form your rhythm and find your playstyle, from tactical to musical, then challenge your skill with friends and world leaderboards.
+
+• Infiltrate a fever dream of hand-crafted scenes, from bank heists to android uprisings, each uniquely designed to music.
+
+• Featuring EDM artists from Kannibalen Records, including Apashe, HVDES, and Black Tiger Sex Machine; with more to come...
+
+• Pistol Whip is cross-buy enabled for Rift and Quest.', 802810, 'English', 'Pistol Whip', '2104963472963790', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974643_490010415002535_6855805631723470848_n.jpg?_nc_cat=110&_nc_sid=79b88e&_nc_ohc=mX1jPjUU-10AX8diT7Q&_nc_ht=scontent.oculuscdn.com&oh=49ec2f5be46f2cbf07379bc7f3a8f370&oe=5EA0A863', 22.99, '1970-01-18', 34920, 1746, 0, 0, 'http://cloudheadgames.com/pistolwhip/', 1, 1);
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (7, 'SculptrVR, Inc.', 'Create smooth, polygonal, and cubey sculptures and worlds of any size. SculptrVR''s 10,000x zoom enables massive creations with tiny details! SculptrVR gives you almost unlimited space so your imagination is totally free!
+
+SculptrVR’s intuitive and fun tools let your imagination turn into real creations.
+
+Get a better view of your sculpted landscapes by Hang gliding through them.
+
+Join an online game with 4 friends (cross platform with Go and Rift!) to build massive monuments together or have a sculpt-off!
+
+When you''re happy with your creation, you can upload to the SculptrVR content gallery and let others see the incredible things you''ve made. You can also browse the gallery with hundreds of creations!
+
+Creations made in SculptrVR can be exported to OBJ or FBX formats for 3D printing or sharing online!
+
+In your world, anything is possible.', 22977, 'English', 'SculptrVR', '1978992975501648', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974561_621234305285673_8048003890697732096_n.jpg?_nc_cat=105&_nc_sid=79b88e&_nc_oc=AQkOd_Nat5TExTIAyEddzuc-MmVXSBzgClkSu3nMzrAydnW5fvZjIy1CTiNp_jaLVuo&_nc_ht=scontent.oculuscdn.com&oh=483347ccf3319483a73e71bf7015f6cb&oe=5EA0F3D6', 9.99, '1970-01-18', 2300, 115, 0, 0, 'http://www.sculptrvr.com/', 1, 1);
+INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (8, 'Gravity Sketch', 'Gravity Sketch is an intuitive sketching experience giving you extensive access to tools for creative exploration. You can fully express your ideas in real-time at any scale, from initial conception to model. Create loose free form sketches, detailed models, expansive scenes, and artwork unrestricted.
+
+Export your work as an image or model for use in other phases of your workflow. Gravity Sketch is a tool for the designer who makes every stroke count. Join the community of creatives defining new design workflows.
+
+“The ability to start in 3D and stay in 3D has been the most transformative aspect of the workflow provided by Gravity Sketch, allowing me to create a 3D “napkin sketch” straight from my brain.”
+
+      - Saiful Haque, Concept Artist, Avatar Sequels
+
+- 6 Creation Tools
+- 4 Creation Layers
+- 4 Environments
+- Image import (.jpg and .png)
+- Snapshot Tool for quick image capture
+- Export/Import .OBJ
+- Upload to Landing Pad (a 3D Cloud file management Platform)', 57580, 'English', 'Gravity Sketch', '1587090851394426', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974705_1273531666148327_7602878707115491328_n.jpg?_nc_cat=100&_nc_sid=79b88e&_nc_ohc=R_T21J2icYIAX9etYM8&_nc_ht=scontent.oculuscdn.com&oh=f6fbb13ae8836df2838cd33f34265fe9&oe=5E9FBFCB', 29.99, '1970-01-18', 1920, 96, 0, 0, 'https://www.gravitysketch.com/', 1, 1);
 INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (9, 'Lucky VR Inc.', 'PokerStars, the world’s leading poker brand, has combined live and online poker in a truly immersive VR experience.
 
 -Study your opponents, pick up on their tells, and chat in real time
@@ -109,8 +173,6 @@ Key Jobbing Features:
 ●	Able to juggle tomatoes in real life? Do it in VR! Unable to juggle? There''s no cleanup required in VR!
 ●	Gain valuable life experience by firing new employees, serving slushy treats, brewing English tea, and ripping apart car engines!
 ●	Work the never-ending night shift with Infinite Overtime mode!', 476502, 'English', 'Job Simulator', '3235570703151406', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974655_311843986407378_6697994888157331456_n.jpg?_nc_cat=111&_nc_sid=79b88e&_nc_oc=AQmRMzIw5Nkrm3aUysUUfpD7rCdDUjd3q_fNhjmtZZ5ls6Ui0DprUF-5J2KBKUwhr_M&_nc_ht=scontent.oculuscdn.com&oh=e37f1ae8e6903c7272468d620244ec61&oe=5E9D6BDA', 15.99, '1970-01-18', 29800, 1490, 0, 0, 'http://jobsimulatorgame.com/', 1, 1);
-
-
 
 --Administrator
 
