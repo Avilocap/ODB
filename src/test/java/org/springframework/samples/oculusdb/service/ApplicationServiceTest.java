@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 public class ApplicationServiceTest {
 
 	@Autowired
