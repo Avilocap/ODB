@@ -48,7 +48,7 @@ public class Category extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Category [title=" + this.title + ", description=" + this.description + "]";
+		return this.title + " ~ " + this.description;
 	}
 
 }
