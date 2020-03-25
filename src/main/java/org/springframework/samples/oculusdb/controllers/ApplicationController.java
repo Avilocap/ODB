@@ -1,6 +1,7 @@
 
 package org.springframework.samples.oculusdb.controllers;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
@@ -23,9 +24,6 @@ public class ApplicationController {
 
 	@Autowired
 	private ApplicationService applicationService;
-
-	@Autowired
-	PdfGeneratorUtil pdfGeneratorUtil;
 
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
@@ -77,7 +75,12 @@ public class ApplicationController {
 		data.put("salesEstimation", application.getSalesEstimation().toString());
 		data.put("totalReviews", application.getTotalReviews().toString());
 
-		pdfGeneratorUtil.createPdf("applications/applicationOnPDF", data);
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+				"org.springframework.samples.oculusdb");
+		context.refresh();
+		PdfGeneratorUtil pdfGenerator = context.getBean(PdfGeneratorUtil.class);
+
+		pdfGenerator.createPdf("applications/applicationOnPDF", data);
 		vistaPDF.addObject("app", application);
 		return vistaPDF;
 	}
