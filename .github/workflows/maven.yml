@@ -20,8 +20,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Format
-        run: mvn spring-javaformat:apply
       - name: Build with Maven
         run: mvn spring-javaformat:apply -B validate --file pom.xml
 
@@ -35,8 +33,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Format
-        run: mvn spring-javaformat:apply
       - name: Build with Maven
         run: mvn -B test --file pom.xml
 
@@ -50,9 +46,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-
-    - name: Format
-      run: mvn spring-javaformat:apply
     - name: Build with Maven
       run: mvn -B package -DskipTests --file pom.xml
 
