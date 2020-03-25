@@ -1,7 +1,7 @@
 # Spring OculusDB Application 
 
 ## CI / CD Deployments
-![Java CI with Maven](https://github.com/Avilocap/ODB/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master&event=push)
+![Java CI / CD with Maven](https://github.com/Avilocap/ODB/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master&event=push)
 
 ## Running oculusdb locally
 oculusdb is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). You can build a jar file and run it from the command line:
