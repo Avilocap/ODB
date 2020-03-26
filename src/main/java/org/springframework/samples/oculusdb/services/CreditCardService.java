@@ -18,4 +18,12 @@ public class CreditCardService {
 		return (int) this.creditCardRepository.count();
 	}
 
+	@Transactional
+	public boolean checkCreditCard(String number, int expirationMonth, int expirationYear, int cvv) {
+		boolean res = true;
+
+		return res;
+
+	}
+
 }
