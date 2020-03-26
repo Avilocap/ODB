@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'comments')}">
+
+<body>
+
+<h2>Comments</h2>
+
+<div class="col-md-12">
+    <br />
+    <table id="app" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 200px;">Title</th>
+            <th style="width: 150px;">Content</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="comments : ${comments}">
+            <td th:text="${comments.title}"></td>
+            <td th:text="${comments.content}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>

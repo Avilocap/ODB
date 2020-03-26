@@ -1,7 +1,9 @@
 
 package org.springframework.samples.oculusdb.services;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.repositories.CommentsRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,15 @@ public class CommentsService {
 		return (int) this.commentsRepository.count();
 	}
 
+	@Transactional
+	public void saveComment(Comments comment) {
+		commentsRepository.save(comment);
+	}
+
+	@Transactional
+	public Iterable<Comments> findAllByAplicationId(int applicationId) {
+		return this.commentsRepository.findAllByApplicationId(applicationId);
+
+
+	}
 }

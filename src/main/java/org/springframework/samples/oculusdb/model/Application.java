@@ -95,7 +95,7 @@ public class Application extends BaseEntity {
 	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
 	private Collection<Reviews> reviewsCollection;
 
-	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Collection<Comments> comments;
 
 	public String getOculusId() {
@@ -240,6 +240,11 @@ public class Application extends BaseEntity {
 
 	public void setComments(Collection<Comments> comments) {
 		this.comments = comments;
+	}
+
+	public void addComment(Comments comments) {
+		getComments().add(comments);
+		comments.setApplication(this);
 	}
 
 	@Override
