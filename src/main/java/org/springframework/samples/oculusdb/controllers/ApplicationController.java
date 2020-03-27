@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
 import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;

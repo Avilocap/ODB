@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.services.CommentsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

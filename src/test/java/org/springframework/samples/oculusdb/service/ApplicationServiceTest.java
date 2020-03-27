@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.samples.oculusdb.controllers.ApplicationService;
+import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
-import java.lang.reflect.UndeclaredThrowableException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -61,7 +60,7 @@ public class ApplicationServiceTest {
 		// Checking the pool size of apps after updating them.
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();
-		Assertions.assertThrows(JSONException.class, () -> {
+		Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
 			// Upgrade process
 			this.applicationService.getInfoOfOneApplication("2104963472963790");
 			// Checking the pool size of apps before updating them.

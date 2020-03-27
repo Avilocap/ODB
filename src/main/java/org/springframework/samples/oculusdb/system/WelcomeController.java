@@ -17,7 +17,7 @@
 package org.springframework.samples.oculusdb.system;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.oculusdb.controllers.ApplicationService;
+import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

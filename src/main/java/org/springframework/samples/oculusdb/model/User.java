@@ -8,4 +8,16 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User extends Actor {
 
+	public String getUsername() {
+		return super.getUsername();
+	}
+
+	public String getPassword() {
+		return super.getPassword();
+	}
+
+	public String getGetPasswordConfirm() {
+		return super.getGetPasswordConfirm();
+	}
+
 }

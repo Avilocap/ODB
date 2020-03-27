@@ -35,7 +35,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.BDDMockito.given;
 
-import org.springframework.samples.oculusdb.controllers.ApplicationService;
+import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -54,8 +54,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // @AutoConfigureMockMvc
 // @EnableAutoConfiguration
 // @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@SpringBootTest
+//@WebMvcTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest
+@ContextConfiguration(locations = "classpath:META-INF/resources")
 @Disabled
 class ApplicationControllerTests {
 
