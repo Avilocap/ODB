@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.management.modelmbean.ModelMBeanAttributeInfo;
 
 @Controller
-class WelcomeController {
+public class WelcomeController {
 
 	@Autowired
 	private ApplicationService applicationService;

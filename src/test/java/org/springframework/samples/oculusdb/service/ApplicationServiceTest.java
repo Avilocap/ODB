@@ -44,13 +44,16 @@ public class ApplicationServiceTest {
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();
 		// Upgrade process
-		this.applicationService.getInfoOfOneApplication("2385436581584047");
+		// Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
+
+		this.applicationService.getInfoOfOneApplication("1320373124698683");
 		// Checking the pool size of apps before updating them.
 		List<Application> appsUpdated = new ArrayList<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		// Let's make sure that they're different.
 		int sizeAfter = appsUpdated.size();
 		org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
+		// });
 	}
 
 	@Test
