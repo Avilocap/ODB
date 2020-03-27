@@ -3,51 +3,71 @@
 <html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
       th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
 
-  <body>
+<body>
 
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped" th:object="${app}">
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped" th:object="${app}">
 
-        <img th:src="*{picture}" th:title="*{name}" class="img-responsive"/>
-        <h2> </h2>
-        <h1 style="font-weight: bold; font-size: 3em;" th:text="*{name}"></h1>
+      <img th:src="*{picture}" th:title="*{name}" class="img-responsive"/>
+      <h2> </h2>
+      <h1 style="font-weight: bold; font-size: 3em;" th:text="*{name}"></h1>
 
-        <a sec:authorize="hasRole('ADMIN')" th:href="@{edit(appId=${app.id})}">Edit
-          Application</a>
+      <a sec:authorize="hasRole('ADMIN')" th:href="@{edit(appId=${app.id})}">Edit
+        Application</a>
 
-        <h2> </h2>
-          <tr>
-          <b th:text="*{description}"></b>
-            <h2> </h2>
-          </tr>
-        <tr>
-          <th>Release date</th>
-          <td><b th:text="*{releaseDate}"></b></td>
-        </tr>
-        <tr>
-          <th>Price</th>
-          <td><b th:text="*{price}"></b> €</td>
-        </tr>
-        <tr>
-          <th>Web site</th>
-          <td>
-            <a th:href="*{website}"><b th:text="*{website}"></b></a>
-          </td>
-        </tr>
+      <h2> </h2>
+      <tr>
+        <b th:text="*{description}"></b>
+        <h1> </h1>
+      </tr>
+      <tr>
+        <th>Release date</th>
+        <td><b th:text="*{releaseDate}"></b></td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td><b th:text="*{price}"></b> €</td>
+      </tr>
+      <tr>
+        <th>Type of game play</th>
+        <td><b th:text="*{typeOfGameplay}"></b></td>
+      </tr>
+      <tr>
+        <th>Type of app</th>
+        <td><b th:text="*{typeOfApp}"></b></td>
+      </tr>
+      <tr>
+        <th>Platform</th>
+        <td><b th:text="*{platform}"></b></td>
+      </tr>
+      <tr>
+        <th>Category</th>
+        <td><b th:text="*{category}"></b></td>
+      </tr>
+      <tr>
+        <th>Web site</th>
+        <td>
+          <a th:href="*{website}"><b th:text="*{website}"></b></a>
+        </td>
+      </tr>
+      <tr>
+        <th>Company</th>
+        <td><b th:text="*{company}"></b></td>
+      </tr>
+      <tr>
+        <th>Income estimation</th>
+        <td><b th:text="*{incomeEstimation}"></b> €</td>
+      </tr>
+      <tr>
+        <th>Sales estimation</th>
+        <td><b th:text="*{salesEstimation}"></b> uds.</td>
+      </tr>
+      <tr>
+        <th>Total reviews</th>
+        <td><b th:text="*{totalReviews}"></b></td>
+      </tr>
 
-        <tr>
-          <th>Company</th>
-          <td><b th:text="*{company}"></b></td>    </tr>
-        <tr>
-          <th>Income estimation</th>
-          <td><b th:text="*{incomeEstimation}"></b> €</td>    </tr>
-        <tr>
-          <th>Sales estimation</th>
-          <td><b th:text="*{salesEstimation}"></b> uds.</td>    </tr>
-        <tr>
-          <th>Total reviews</th>
-          <td><b th:text="*{totalReviews}"></b></td>    </tr>
 
         <h2> </h2>
 
@@ -61,15 +81,17 @@
 
 
     </div>
+    </table>
   </div>
+</div>
 
 
-  <br />
-  <br />
-  <br />
-  
-   
-  
-  </body>
+<br />
+<br />
+<br />
+
+
+
+</body>
 
 </html>
