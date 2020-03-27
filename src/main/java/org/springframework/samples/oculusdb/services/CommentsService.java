@@ -29,6 +29,6 @@ public class CommentsService {
 	public Iterable<Comments> findAllByAplicationId(int applicationId) {
 		return this.commentsRepository.findAllByApplicationId(applicationId);
 
-
 	}
+
 }
