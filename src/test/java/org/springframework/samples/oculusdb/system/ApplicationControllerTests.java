@@ -54,8 +54,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // @AutoConfigureMockMvc
 // @EnableAutoConfiguration
 // @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@SpringBootTest
-//@WebMvcTest
+// @SpringBootTest
+// @WebMvcTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:META-INF/resources")
 @Disabled
