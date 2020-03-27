@@ -40,7 +40,7 @@ public class Platform extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Platform [title=" + this.title + ", description=" + this.description + "]";
+		return this.title + " (" + this.description + ")";
 	}
 
 }
