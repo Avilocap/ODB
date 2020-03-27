@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+
+<div class="container">
+
+
+    <h2 class="form-signin-heading">Login in your account</h2>
+
+
+    <form method="POST" th:action="@{/login}" class="form-signin">
+
+            <input name="username" type="text" class="form-control" placeholder="Username"
+                   autofocus="true"/>
+            <input name="password" type="password" class="form-control" placeholder="Password"/>
+
+            <input class="btn btn-lg btn-primary btn-block" type="submit">
+            <h4 class="text-center"><a href="/registration">Create an account</a></h4>
+    </form>
+
+
+
+
+</div>
+</body>
+</html>

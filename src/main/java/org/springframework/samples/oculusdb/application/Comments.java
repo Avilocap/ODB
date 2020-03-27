@@ -22,7 +22,7 @@ public class Comments extends BaseEntity {
 	@NotEmpty
 	private String content;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Application application;
 
 	public String getTitle() {

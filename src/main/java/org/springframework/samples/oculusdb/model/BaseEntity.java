@@ -35,7 +35,7 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
 	public Integer getId() {

@@ -11,21 +11,21 @@ INSERT IGNORE INTO category VALUES (1, 'Amazing', 'Action');
 INSERT IGNORE INTO category VALUES (2, 'Funny', 'Sports');
 INSERT IGNORE INTO category VALUES (3, 'Incredible', 'Arcade');
 
+--Roles
+
+INSERT IGNORE INTO role VALUES (1,'ADMIN');
+INSERT IGNORE INTO role VALUES (2,'USER');
+INSERT IGNORE INTO role VALUES (3,'SPONSOR');
+INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
+
 --Users
+INSERT IGNORE INTO users(id,username,password,name,surname,email) VALUES (100,'pedro','pedro','Pedro', 'Rodríguez', 'pedro@gmail.com');
+INSERT IGNORE INTO users(id,username,password,name,surname,email) VALUES (200,'manu','manu','Manuel', 'Jiménez', 'manu@gmail.com');
+INSERT IGNORE INTO users(id,username,password,name,surname,email) VALUES (300,'antonio','antonio','Antonio', 'Ruiz', 'antonio@gmail.com');
 
-INSERT IGNORE INTO users VALUES (1, 'pedro@gmail.com', 'Pedro', 'Rodríguez', 1);
-INSERT IGNORE INTO users VALUES (2, 'manu@gmail.com', 'Manuel', 'Jiménez', 2);
-INSERT IGNORE INTO users VALUES (3, 'antonio@gmail.com', 'Antonio', 'Ruiz', 3);
-
---User accounts
-
-INSERT IGNORE INTO user_account VALUES (1, 'authority1', 'pedro1', 'pedro1');
-INSERT IGNORE INTO user_account VALUES (2, 'authority2', 'manu1', 'manu1');
-INSERT IGNORE INTO user_account VALUES (3, 'authority3', 'antonio1', 'antonio1');
-INSERT IGNORE INTO user_account VALUES (4, 'authority4', 'miguel1', 'miguel1');
-INSERT IGNORE INTO user_account VALUES (5, 'authority5', 'adri1', 'adri1');
-INSERT IGNORE INTO user_account VALUES (6, 'authority6', 'josema1', 'josema1');
-
+INSERT IGNORE INTO users_roles(users_id,roles_id) VALUES (1,2);
+INSERT IGNORE INTO users_roles(users_id,roles_id) VALUES (2,2);
+INSERT IGNORE INTO users_roles(users_id,roles_id) VALUES (3,2);
 --Credit cards
 
 INSERT IGNORE INTO credit_cards VALUES (1, 123, 12, 2022, 'Pedro Rodríguez', 123456);
@@ -176,8 +176,8 @@ Key Jobbing Features:
 
 --Administrator
 
-INSERT IGNORE INTO administrator VALUES (1, 'pedro@gmail.com', 'Pedro', 'Rodríguez', 1);
-
+INSERT IGNORE INTO oculusdb.administrator(id,username,password,name,surname,email) VALUES (1,'pedro','pedro','Pedro', 'Rodríguez', 'pedro@gmail.com');
+INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
 
 INSERT IGNORE INTO comments VALUES (1, 'This game is awesome!', 'Perfect', 1);
@@ -186,7 +186,8 @@ INSERT IGNORE INTO comments VALUES (3, 'Best game in the world', 'Incredible', 2
 
 --Developer
 
-INSERT IGNORE INTO developer VALUES (1, 'manu@gmail.com', 'Manuel', 'Jiménez', 'Microsoft', 'Be whats next', 'http://www.microsoft.com', 2, 2);
+INSERT IGNORE INTO oculusdb.developer(id,username,password,name,surname,email,company,webpage,company_description) VALUES (1,'miguel','miguel','Miguel', 'López', 'miguel1@Miguel','Microsoft','http://www.microsoft.com','Be whats next');
+INSERT IGNORE INTO developer_roles(developer_id,roles_id) VALUES (1,3);
 
 --Reviews
 
@@ -196,7 +197,8 @@ INSERT IGNORE INTO reviews VALUES (3, 'incredible videogame', 207, '17/01/2020',
 
 --Sponsor
 
-INSERT IGNORE INTO sponsors VALUES (1, 'miguel1@gmail', 'Miguel', 'López', 4, 4);
+INSERT IGNORE INTO oculusdb.sponsors(id,username,password,name,surname,email) VALUES (1,'miguel','miguel','Miguel', 'López', 'miguel1@Miguel');
+INSERT IGNORE INTO sponsors_roles(sponsor_id,roles_id) VALUES (1,4);
 
 --Sponsorship
 

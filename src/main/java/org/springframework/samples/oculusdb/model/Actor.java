@@ -3,9 +3,23 @@ package org.springframework.samples.oculusdb.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @MappedSuperclass
 public class Actor extends BaseEntity {
+
+	@Column(name = "username")
+	private String username;
+
+	@Column(name = "password")
+	private String password;
+
+	@Transient
+	private String getPasswordConfirm;
+
+	@ManyToMany
+	@Column(name = "roles")
+	private Set<Role> roles;
 
 	@Column(name = "name")
 	@NotEmpty
@@ -18,17 +32,6 @@ public class Actor extends BaseEntity {
 	@Column(name = "email")
 	@NotEmpty
 	private String email;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	private UserAccount userAccount;
-
-	public UserAccount getUserAccount() {
-		return this.userAccount;
-	}
-
-	public void setUserAccount(final UserAccount userAccount) {
-		this.userAccount = userAccount;
-	}
 
 	public String getName() {
 		return this.name;
@@ -54,10 +57,41 @@ public class Actor extends BaseEntity {
 		this.email = email;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getGetPasswordConfirm() {
+		return getPasswordConfirm;
+	}
+
+	public void setGetPasswordConfirm(String getPasswordConfirm) {
+		this.getPasswordConfirm = getPasswordConfirm;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString() {
-		return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" + this.email + ", userAccount="
-				+ this.userAccount + "]";
+		return "Actor [name=" + this.name + ", surname=" + this.surname + ", email=" + this.email;
 	}
 
 }

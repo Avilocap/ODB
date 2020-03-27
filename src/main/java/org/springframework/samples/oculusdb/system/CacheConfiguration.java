@@ -35,7 +35,7 @@ class CacheConfiguration {
 	@Bean
 	public JCacheManagerCustomizer oculusdbCacheConfigurationCustomizer() {
 		return cm -> {
-			cm.createCache("vets", cacheConfiguration());
+			cm.createCache("application", cacheConfiguration());
 		};
 	}
 
