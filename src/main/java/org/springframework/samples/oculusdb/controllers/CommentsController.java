@@ -19,58 +19,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommentsController {
 
-    private CommentsService commentsService;
-    private ApplicationService applicationService;
+	private CommentsService commentsService;
 
-    @Autowired
-    public CommentsController (CommentsService commentsService, ApplicationService applicationService) {
-        this.commentsService = commentsService;
-        this.applicationService = applicationService;
-    }
+	private ApplicationService applicationService;
 
+	@Autowired
+	public CommentsController(CommentsService commentsService, ApplicationService applicationService) {
+		this.commentsService = commentsService;
+		this.applicationService = applicationService;
+	}
 
-    @GetMapping(value = "/appInfo/{appId}/comments/new")
-    public String agregarProducto(@PathVariable("appId") int appId, Model model) {
+	@GetMapping(value = "/appInfo/{appId}/comments/new")
+	public String agregarProducto(@PathVariable("appId") int appId, Model model) {
 
-        Application app = new Application();
-        Optional<Application> ap = this.applicationService.findApplicationById(appId);
-        if (ap.isPresent()) {
-            app = ap.get();
-        }
+		Application app = new Application();
+		Optional<Application> ap = this.applicationService.findApplicationById(appId);
+		if (ap.isPresent()) {
+			app = ap.get();
+		}
 
-        Comments comment = new Comments();
-        app.addComment(comment);
-        model.addAttribute("comment", comment);
-        return "comments/newComment";
+		Comments comment = new Comments();
+		app.addComment(comment);
+		model.addAttribute("comment", comment);
+		return "comments/newComment";
 
-    }
+	}
 
+	@PostMapping(value = "/appInfo/{appId}/comments/new")
+	public String guardarProducto(@PathVariable("appId") int appId, @Valid Comments comment, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
 
-    @PostMapping(value = "/appInfo/{appId}/comments/new")
-    public String guardarProducto(@PathVariable("appId") int appId,@Valid Comments comment, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+			Application app = new Application();
+			Optional<Application> ap = this.applicationService.findApplicationById(appId);
+			if (ap.isPresent()) {
+				app = ap.get();
+			}
 
-            Application app = new Application();
-            Optional<Application> ap = this.applicationService.findApplicationById(appId);
-            if (ap.isPresent()) {
-                app = ap.get();
-            }
+			model.addAttribute("comment", comment);
+			return "comments/newComment";
+		}
+		else {
+			this.commentsService.saveComment(comment);
+			return "redirect:/applications/appInfo/{appId}";
+		}
 
-            model.addAttribute("comment",comment);
-            return "comments/newComment";
-        } else {
-            this.commentsService.saveComment(comment);
-            return "redirect:/applications/appInfo/{appId}";
-        }
+	}
 
-    }
+	@GetMapping(value = "/appInfo/{appId}/comments/list")
+	public String listarComentarios(@PathVariable("appId") int appId, Model model) {
+		Iterable<Comments> comments = this.commentsService.findAllByAplicationId(appId);
+		model.addAttribute("comments", comments);
 
-    @GetMapping(value = "/appInfo/{appId}/comments/list")
-    public String listarComentarios(@PathVariable("appId") int appId, Model model) {
-        Iterable<Comments> comments = this.commentsService.findAllByAplicationId(appId);
-        model.addAttribute("comments", comments);
-
-        return "comments/listComments";
-    }
+		return "comments/listComments";
+	}
+	// ------
 
 }
