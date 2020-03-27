@@ -68,6 +68,19 @@
         <td><b th:text="*{totalReviews}"></b></td>
       </tr>
 
+
+        <h2> </h2>
+
+        <a th:href="@{/appInfo/{appId}/comments/new(appId=${app.id})}" class="btn btn-default">Add
+          New Comment</a>
+
+        <a th:href="@{/appInfo/{appId}/comments/list(appId=${app.id})}" class="btn btn-default">Comments</a>
+
+
+      </table>
+
+
+    </div>
     </table>
   </div>
 </div>
