@@ -98,9 +98,8 @@ public class ApplicationService {
 
 				// Date
 				// TODO esto siempre da 1970
-				Integer releaseDateInteger = node.getInt("release_date");
-				Long releaseDateLong = Long.valueOf(releaseDateInteger);
-				Timestamp timestamp = new Timestamp(releaseDateLong);
+				int releaseDateInteger = node.getInt("release_date");
+				Timestamp timestamp = new Timestamp((long) releaseDateInteger);
 				LocalDate releaseDate = timestamp.toLocalDateTime().toLocalDate();
 
 				// Picture
@@ -111,30 +110,28 @@ public class ApplicationService {
 				JSONObject reviewInfo = node.getJSONObject("reviewInfo");
 				Integer totalReviews = reviewInfo.getInt("count");
 
-				// Derivate Properties
-				Integer salesEstimation = salesEstimatitonCalculator(totalReviews);
-				Double incomeEstimationDouble = salesEstimation * price;
-				Integer incomeEstimation = incomeEstimationDouble.intValue();
-
-				Application application = new Application(oculusId, name, description, releaseDate, price, website,
-						company, picture, incomeEstimation, salesEstimation, totalReviews);
-
-				res = applicationRepository.save(application);
+				// Derived Properties
+				Integer salesEstimation = salesEstimationCalculator(totalReviews);
+				double incomeEstimationDouble = salesEstimation * price;
+				Integer incomeEstimation = (int) incomeEstimationDouble;
+				Application app2 = new Application(oculusId, name, description, releaseDate, price, website, company,
+						picture, incomeEstimation, salesEstimation, totalReviews);
+				return this.saveApplication(app2);
 			}
 		}
-		return res;
+		return this.saveApplication(res);
 	}
 
-	private static Integer salesEstimatitonCalculator(Integer reviewCount) {
+	private static Integer salesEstimationCalculator(Integer reviewCount) {
 
-		Integer result;
+		int result;
 
 		if (reviewCount == 0) {
 			return 0;
 		}
 
-		Double aux = reviewCount / 0.05;
-		result = aux.intValue();
+		double aux = reviewCount / 0.05;
+		result = (int) aux;
 
 		return result;
 	}
@@ -147,7 +144,7 @@ public class ApplicationService {
 		String line = null;
 		try {
 			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
+				sb.append(line).append("\n");
 			}
 		}
 		catch (IOException e) {

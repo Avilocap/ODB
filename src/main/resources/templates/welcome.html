@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
-  <body>
-  <h1 style="text-align: center; font-size: 60px;" th:text="#{welcome}">Welcome to Oculus DB</h1>
-  <h2 style="text-align: center;">Explore all the applications</h2>
+<body>
+<h1 style="text-align: center; font-size: 60px;" th:text="#{welcome}">Welcome to Oculus DB</h1>
+<h2 style="text-align: center;">Explore all the applications</h2>
 
-  <div class="col-md-12">
-      <br />
-      <table id="app" class="table table-striped">
-          <thead>
-          </thead>
-          <tbody>
-          <tr th:each="app : ${applications}">
-              <div class="img-responsive">
-              <a th:class="imagebox" th:href="@{/applications/appInfo/__${app.id}__}">
-                <img th:src="${app.picture}" th:title="${app.name}" class="img-responsive" th:alt="${app.name}"/>
-                  <h2> </h2>
-              </a>
-              </div>
-          </tr>
-          </tbody>
-      </table>
-  </div>
-  </body>
-  </html>
+<div class="col-md-12">
+    <br/>
+    <table id="app" class="table table-striped">
+        <thead>
+        </thead>
+        <tbody>
+        <!--          <tr th:each="app : ${applications}">-->
+        <!--              <div class="img-responsive">-->
+        <!--              <a th:class="imagebox" th:href="@{/applications/appInfo/__${app.id}__}">-->
+        <!--                <img th:src="${app.picture}" th:title="${app.name}" class="img-responsive" th:alt="${app.name}"/>-->
+        <!--                  <h2> </h2>-->
+        <!--              </a>-->
+        <!--              </div>-->
+        <!--          </tr>-->
+
+        <tr th:each="app : ${applications}">
+                <div class="img-responsive">
+                <div th:id="containerboxed">
+                    <a th:href="@{/applications/appInfo/__${app.id}__}">
+                    <img th:src="${app.picture}" th:alt="${app.name}" th:class="img-responsive">
+                        <div th:id="backoftext">
+                        <h1 th:id="textboxed" th:text="${app.name}" style="color: white;"></h1>
+                        </div>
+                    </a>
+                    <h1> </h1>
+                </div>
+                </div>
+            <h2> </h2>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
