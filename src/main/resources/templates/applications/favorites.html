@@ -28,6 +28,9 @@
             <td th:text="${app.releaseDate}"></td>
             <td th:text="${app.price}"></td>
             <td th:text="${app.company}"></td>
+            <td>
+                <a th:href="@{favorites/delete(appId=${app.id})}">Delete</a>
+            </td>
 
         </tr>
         </tbody>
