@@ -40,28 +40,33 @@ public class CommentsController {
 		}
 
 		Comments comment = new Comments();
-		app.addComment(comment);
 		model.addAttribute("comment", comment);
+		model.addAttribute("app", app);
 		return "comments/newComment";
 
 	}
 
 	@PostMapping(value = "/appInfo/{appId}/comments/new")
-	public String guardarProducto(@PathVariable("appId") int appId, @Valid Comments comment, BindingResult result,
+	public String guardarProducto(@PathVariable("appId") String appId, @Valid Comments comment, BindingResult result,
 			Model model) {
+
+		Application app = new Application();
+		Integer appIdInt = new Integer(appId);
+		Optional<Application> ap = this.applicationService.findApplicationById(appIdInt);
+		if (ap.isPresent()) {
+			app = ap.get();
+		}
+
 		if (result.hasErrors()) {
 
-			Application app = new Application();
-			Optional<Application> ap = this.applicationService.findApplicationById(appId);
-			if (ap.isPresent()) {
-				app = ap.get();
-			}
-
+			model.addAttribute("app", app);
 			model.addAttribute("comment", comment);
 			return "comments/newComment";
 		}
 		else {
-			this.commentsService.saveComment(comment);
+			comment.setApplication(app);
+			Comments comment1 = this.commentsService.saveComment(comment);
+			app.getComments().add(comment1);
 			return "redirect:/applications/appInfo/{appId}";
 		}
 

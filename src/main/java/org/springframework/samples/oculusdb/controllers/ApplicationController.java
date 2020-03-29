@@ -1,12 +1,16 @@
 
 package org.springframework.samples.oculusdb.controllers;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
 import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.ApplicationService;
+import org.springframework.samples.oculusdb.services.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,9 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/applications")
@@ -25,6 +27,9 @@ public class ApplicationController {
 
 	@Autowired
 	private ApplicationService applicationService;
+
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
@@ -126,6 +131,53 @@ public class ApplicationController {
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
 		ap.ifPresent(application -> this.applicationService.deleteApplication(application));
 		return "applications/todoOk";
+	}
+
+	@GetMapping("/appInfo/{appId}/favorite")
+	public String addToFavorites(@PathVariable("appId") int appId, ModelMap model) {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+
+		Application app = new Application();
+		List<Application> favorites = new ArrayList<>();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		favorites = user.getFavorites();
+		Optional<Application> ap = this.applicationService.findApplicationById(appId);
+		if (ap.isPresent()) {
+			app = ap.get();
+		}
+		favorites.add(app);
+		user.setFavorites(favorites);
+		userService.saveUser(user);
+		model.addAttribute("favorites", favorites);
+		return "applications/favorites";
+	}
+
+	@RequestMapping("/favorites/delete")
+	public String deleteFavorite(@RequestParam("appId") int appId, ModelMap model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		List<Application> newList = new ArrayList<Application>(currentUser.getFavorites());
+		newList.removeIf(x -> x.getId() == appId);
+		currentUser.setFavorites(newList);
+		userService.saveUser(currentUser);
+		model.addAttribute("favorites", currentUser.getFavorites());
+		return "applications/favorites";
+
+	}
+
+	@GetMapping("/favorites")
+	public String favorites(final ModelMap modelMap) {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+
+		String vista = "applications/favorites";
+		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
+		modelMap.addAttribute("favorites", favorites);
+		return vista;
 	}
 
 }

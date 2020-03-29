@@ -21,8 +21,8 @@ public class CommentsService {
 	}
 
 	@Transactional
-	public void saveComment(Comments comment) {
-		commentsRepository.save(comment);
+	public Comments saveComment(Comments comment) {
+		return commentsRepository.save(comment);
 	}
 
 	@Transactional

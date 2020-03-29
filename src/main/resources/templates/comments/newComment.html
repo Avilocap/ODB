@@ -9,7 +9,7 @@
     New Comment
 </h2>
 
-<form th:object="${comment}" class="form-horizontal" method="post">
+<form th:object="${comment}" th:action="@{/appInfo/__${app.id}__/comments/new}" class="form-horizontal" method="post">
     <div class="form-group has-feedback">
         <input
                 th:replace="~{fragments/inputField :: input ('Title', 'title', 'text')}" />
