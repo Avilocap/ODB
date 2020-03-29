@@ -27,9 +27,7 @@ public class User extends Actor {
 
 	@Override
 	public String toString() {
-		return "User{" +
-				"favorites=" + favorites +
-				'}';
+		return "User{" + "favorites=" + favorites + '}';
 	}
 
 	public String getUsername() {
@@ -43,7 +41,5 @@ public class User extends Actor {
 	public String getGetPasswordConfirm() {
 		return super.getGetPasswordConfirm();
 	}
-
-
 
 }

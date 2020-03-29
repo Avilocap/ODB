@@ -18,12 +18,13 @@ public class UserService {
 	}
 
 	@Transactional
-	public User userByUsername(String username){
+	public User userByUsername(String username) {
 		return this.userRepository.findByUsername(username);
 	}
 
 	@Transactional
-	public void saveUser(User user){
+	public void saveUser(User user) {
 		this.userRepository.save(user);
 	}
+
 }
