@@ -1,10 +1,7 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity

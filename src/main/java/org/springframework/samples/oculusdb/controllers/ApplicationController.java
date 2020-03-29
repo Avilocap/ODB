@@ -154,6 +154,20 @@ public class ApplicationController {
 		return "applications/favorites";
 	}
 
+	@RequestMapping("/favorites/delete")
+	public String deleteFavorite(@RequestParam("appId") int appId, ModelMap model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		List<Application> newList = new ArrayList<Application>(currentUser.getFavorites());
+		newList.removeIf(x -> x.getId() == appId);
+		currentUser.setFavorites(newList);
+		userService.saveUser(currentUser);
+		model.addAttribute("favorites", currentUser.getFavorites());
+		return "applications/favorites";
+
+	}
+
 	@GetMapping("/favorites")
 	public String favorites(final ModelMap modelMap) {
 

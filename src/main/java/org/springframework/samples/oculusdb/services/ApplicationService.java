@@ -40,6 +40,11 @@ public class ApplicationService {
 	}
 
 	@Transactional
+	public Application getApplicationOfFavorites(int appId, int userId) {
+		return this.applicationRepository.applicationOfUserById(appId, userId);
+	}
+
+	@Transactional
 	public Iterable<Application> findAll() {
 		return this.applicationRepository.findAll();
 	}
