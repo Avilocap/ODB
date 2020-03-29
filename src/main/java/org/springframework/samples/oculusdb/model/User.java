@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "users")
 public class User extends Actor {
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Application> favorites;
 
 	public List<Application> getFavorites() {
