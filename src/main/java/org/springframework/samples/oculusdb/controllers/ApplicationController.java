@@ -31,8 +31,6 @@ public class ApplicationController {
 	@Autowired
 	private UserService userService;
 
-
-
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
 		String vista = "applications/listadoAplicaciones";
@@ -157,23 +155,15 @@ public class ApplicationController {
 	}
 
 	@RequestMapping("/favorites/delete")
-	public String deleteFavorite(@RequestParam("appId") int appId, ModelMap model){
+	public String deleteFavorite(@RequestParam("appId") int appId, ModelMap model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
-
-		Application app = new Application();
-		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
-		Optional<Application> ap = this.applicationService.findApplicationById(appId);
-		User user = this.userService.userByUsername(currentPrincipalName);
-
-		if(ap.isPresent()){
-			app = ap.get();
-		}
-
-		favorites.remove(app); //no funciona, asi no se puede borrar el la aplicacion de la lista
-		user.setFavorites(favorites);
-		userService.saveUser(user);
-		model.addAttribute("favorites", favorites);
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		List<Application> newList = new ArrayList<Application>(currentUser.getFavorites());
+		newList.removeIf(x -> x.getId() == appId);
+		currentUser.setFavorites(newList);
+		userService.saveUser(currentUser);
+		model.addAttribute("favorites", currentUser.getFavorites());
 		return "applications/favorites";
 
 	}
@@ -189,7 +179,5 @@ public class ApplicationController {
 		modelMap.addAttribute("favorites", favorites);
 		return vista;
 	}
-
-
 
 }

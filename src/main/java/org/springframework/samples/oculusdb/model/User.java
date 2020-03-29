@@ -1,17 +1,14 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User extends Actor {
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Application> favorites;
 
 	public List<Application> getFavorites() {
@@ -27,9 +24,7 @@ public class User extends Actor {
 
 	@Override
 	public String toString() {
-		return "User{" +
-				"favorites=" + favorites +
-				'}';
+		return "User{" + "favorites=" + favorites + '}';
 	}
 
 	public String getUsername() {
@@ -43,7 +38,5 @@ public class User extends Actor {
 	public String getGetPasswordConfirm() {
 		return super.getGetPasswordConfirm();
 	}
-
-
 
 }

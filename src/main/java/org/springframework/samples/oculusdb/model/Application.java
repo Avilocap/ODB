@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
@@ -245,17 +246,6 @@ public class Application extends BaseEntity {
 	public void addComment(Comments comments) {
 		getComments().add(comments);
 		comments.setApplication(this);
-	}
-
-	@Override
-	public String toString() {
-		return "Application{" + "oculusId=" + oculusId + ", name='" + name + '\'' + ", description='" + description
-				+ '\'' + ", releaseDate=" + releaseDate + ", price=" + price + ", website='" + website + '\''
-				+ ", company='" + company + '\'' + ", picture='" + picture + '\'' + ", typeOfGameplay=" + typeOfGameplay
-				+ ", salesEstimation=" + salesEstimation + ", incomeEstimation=" + incomeEstimation + ", totalReviews="
-				+ totalReviews + ", language='" + language + '\'' + ", typeOfApp=" + typeOfApp + ", platform="
-				+ platform + ", category=" + category + ", reviewsCollection=" + reviewsCollection + ", comments="
-				+ comments + '}';
 	}
 
 }
