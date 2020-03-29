@@ -16,33 +16,19 @@
 
 package org.springframework.samples.oculusdb.system;
 
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.samples.oculusdb.controllers.ApplicationController;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.mockito.BDDMockito.given;
-
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.lang.annotation.Inherited;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -50,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Miguel Ángel Antolín Bermúdez @mruwzum
  */
-// @WebMvcTest(controllers = ApplicationController.class)
+//@WebMvcTest(controllers = ApplicationController.class)
 // @AutoConfigureMockMvc
 // @EnableAutoConfiguration
 // @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -136,6 +122,81 @@ class ApplicationControllerTests {
 				.andExpect(model().attributeHasFieldErrors("application", "releaseDate"))
 				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
 	}
+
+	@Test
+	void testInitAddToFavorites() throws Exception{
+		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+				.andExpect(status().isOk())
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testAddToFavoritesSuccess() throws Exception{
+		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("Gravity Sketch"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testAddToFavoritesHasErrors() throws Exception{
+		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("FIFA 20"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("EA SPORTS"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testInitDeleteFavorite() throws Exception{
+		mockMvc.perform(get("/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk())
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testDeleteFavoriteSuccess() throws Exception{
+		mockMvc.perform(get("/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("Gravity Sketch"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testDeleteFavoriteHasErrors() throws Exception{
+		mockMvc.perform(get("/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("Fortnite"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("Epic Games"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testInitFavorites() throws Exception{
+		mockMvc.perform(get("/favorites"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testFavoritesSuccess() throws Exception{
+		mockMvc.perform(get("/favorites"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("app"))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	void testFavoritesHasErrors() throws Exception{
+		mockMvc.perform(get("/favorites"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("hola"))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+
 
 	// @Test
 	// void testShowOwner() throws Exception {
