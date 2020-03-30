@@ -20,12 +20,10 @@ INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (2, 'admin@gmail.com', 'Administrator', '$2a$10$RFEsdz1KtA8pbhUyyp1ahOEw050p0p3AMUf49v8KL68AzWpqvIdYO', 'of admins', 'administrator');
 
 --Users roles
 
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 2);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (2, 2);
 --Credit cards
 
 INSERT IGNORE INTO credit_cards VALUES (1, 123, 12, 2022, 'Pedro Rodríguez', 123456);
@@ -176,7 +174,7 @@ Key Jobbing Features:
 
 --Administrator
 
-INSERT IGNORE INTO oculusdb.administrator(id,username,password,name,surname,email) VALUES (1,'pedro','pedro','Pedro', 'Rodríguez', 'pedro@gmail.com');
+INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, username) VALUES (1, 'pedro_admin@gmail.com', 'Pedro', '$2a$10$RFEsdz1KtA8pbhUyyp1ahOEw050p0p3AMUf49v8KL68AzWpqvIdYO', 'Rodríguez', 'administrator');
 INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
 
