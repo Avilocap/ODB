@@ -4,70 +4,71 @@
       th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 
 <body>
-
-<div class="col-md-3"></div>
-<div class="col-md-6">
+<div class="col-md-12">
     <h2 class="form-signin-heading">Create your account</h2>
     <form method="POST" th:action="@{/registration}" th:object="${userForm}" class="form-signin">
 
         <table class="table-hover">
             <tr>
-                <td for="username">Username</td>
-                <td><input class="form-control" type="text" id="username" th:field="*{username}"></td>
-                <td>
+                <td for="username">Username
+                    <input class="form-control" type="text" id="username" th:field="*{username}">
                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">..</span>
                 </td>
+                <h1></h1>
             </tr>
 
             <tr>
-                <td for="name">Name</td>
-                <td><input class="form-control" type="text" id="name" th:field="*{name}"></td>
-                <td>
+                <td for="name">Name
+                    <input class="form-control" type="text" id="name" th:field="*{name}">
                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">..</span>
                 </td>
+                <h1></h1>
+
             </tr>
 
 
             <tr>
-                <td for="surname">Surname</td>
-                <td><input class="form-control" type="text" id="surname" th:field="*{surname}"></td>
-                <td>
+                <td for="surname">Surname
+                    <input class="form-control" type="text" id="surname" th:field="*{surname}">
                     <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">..</span>
                 </td>
+                <h1></h1>
+
             </tr>
 
 
             <tr>
-                <td for="email">Email</td>
-                <td><input class="form-control" type="email" id="email" th:field="*{email}"></td>
-                <td>
+                <td for="email">Email
+                    <input class="form-control" type="email" id="email" th:field="*{email}">
                     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">..</span>
                 </td>
+                <h1></h1>
+
             </tr>
 
             <tr>
-                <td for="password">Password</td>
-                <td><input class="form-control" type="password" id="password" th:field="*{password}"></td>
-                <td>
+                <td for="password">Password
+                    <input class="form-control" type="password" id="password" th:field="*{password}">
                     <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
                 </td>
+                <h1></h1>
+
             </tr>
 
             <tr>
-                <td for="getPasswordConfirm">Confirm your password</td>
-                <td><input class="form-control" type="password" id="getPasswordConfirm" th:field="*{getPasswordConfirm}"></td>
-                <td>
+                <td for="getPasswordConfirm">Confirm password
+               <input class="form-control" type="password" id="getPasswordConfirm" th:field="*{getPasswordConfirm}">
                     <span th:if="${#fields.hasErrors('getPasswordConfirm')}" th:errors="*{getPasswordConfirm}">..</span>
                 </td>
+                <h1></h1>
+
             </tr>
 
-
-
         </table>
-
-        <input class="btn btn-lg btn-primary btn-block" type="submit"></input>
     </form>
+        <h1></h1>
+        <div class="col-md-3"> <input class="btn btn-lg btn-primary btn-block" type="submit"/></div>
 </div>
-<div class="col-md-3"></div>
+
 </body>
 </html>
