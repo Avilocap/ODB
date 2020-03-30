@@ -16,6 +16,7 @@
 
 package org.springframework.samples.oculusdb.system;
 
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -197,6 +198,65 @@ class ApplicationControllerTests {
 	}
 
 
+	@Test
+	void testInitShowApp() throws Exception{
+		mockMvc.perform(get("/applications/appInfo/{appId}", TEST_APPLICATION_ID)).andExpect(status().isOk())
+				.andExpect(view().name("applications/applicationsDetails"));
+
+	}
+
+	@Test
+	void testShowAppSuccess() throws Exception {
+		mockMvc.perform(get("/applications/appInfo/{appId}", TEST_APPLICATION_ID)).andExpect(status().isOk())
+				.andExpect(model().attribute("application", hasProperty("picture", is("https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974705_1273531666148327_7602878707115491328_n.jpg?_nc_cat=100&_nc_sid=79b88e&_nc_ohc=R_T21J2icYIAX9etYM8&_nc_ht=scontent.oculuscdn.com&oh=f6fbb13ae8836df2838cd33f34265fe9&oe=5E9FBFCB"))))
+				.andExpect(model().attribute("application", hasProperty("name", is("Gravity Sketch"))))
+				.andExpect(model().attribute("application", hasProperty("description", is("Gravity Sketch is an intuitive sketching experience giving you extensive access to tools for creative exploration. You can fully express your ideas in real-time at any scale, from initial conception to model. Create loose free form sketches, detailed models, expansive scenes, and artwork unrestricted.\n" +
+						"\n" +
+						"Export your work as an image or model for use in other phases of your workflow. Gravity Sketch is a tool for the designer who makes every stroke count. Join the community of creatives defining new design workflows.\n" +
+						"\n" +
+						"“The ability to start in 3D and stay in 3D has been the most transformative aspect of the workflow provided by Gravity Sketch, allowing me to create a 3D “napkin sketch” straight from my brain.”\n" +
+						"\n" +
+						"      - Saiful Haque, Concept Artist, Avatar Sequels\n" +
+						"\n" +
+						"- 6 Creation Tools\n" +
+						"- 4 Creation Layers\n" +
+						"- 4 Environments\n" +
+						"- Image import (.jpg and .png)\n" +
+						"- Snapshot Tool for quick image capture\n" +
+						"- Export/Import .OBJ\n" +
+						"- Upload to Landing Pad (a 3D Cloud file management Platform)"))))
+				.andExpect(model().attribute("application", hasProperty("releaseDate", is("1970-01-18"))))
+				.andExpect(model().attribute("application", hasProperty("price", is("29.99"))))
+				.andExpect(model().attribute("application", hasProperty("typeOfGameplay", is("0"))))
+				.andExpect(model().attribute("application", hasProperty("typeOfApp", is("0"))))
+				.andExpect(model().attribute("application", hasProperty("platform", is("1"))))
+				.andExpect(model().attribute("application", hasProperty("category", is("1"))))
+				.andExpect(model().attribute("application", hasProperty("website", is("https://www.gravitysketch.com/"))))
+				.andExpect(model().attribute("application", hasProperty("company", is("Gravity Sketch"))))
+				.andExpect(model().attribute("application", hasProperty("incomeEstimation", is("57580, "))))
+				.andExpect(model().attribute("application", hasProperty("salesEstimation", is("1920"))))
+				.andExpect(model().attribute("application", hasProperty("totalReviews", is("96"))))
+				.andExpect(view().name("applications/applicationsDetails"));
+
+	}
+
+	@Test
+	void testInitShowApplications() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk())
+				.andExpect(view().name("applications/listadoAplicaciones"));
+	}
+
+	@Test
+	void testShowApplicationsSucces() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk()).andExpect(model().attributeExists("applications"))
+				.andExpect(view().name("applications/listadoAplicaciones"));
+	}
+
+	@Test
+	void testShowApplicationsHasErrors() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk()).andExpect(model().attributeExists("jjjj"))
+				.andExpect(view().name("applications/listadoAplicaciones"));
+	}
 
 	// @Test
 	// void testShowOwner() throws Exception {

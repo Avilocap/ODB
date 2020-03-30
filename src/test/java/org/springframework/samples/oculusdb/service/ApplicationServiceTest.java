@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @SpringBootTest
 @Transactional
@@ -118,5 +115,43 @@ public class ApplicationServiceTest {
 		});
 
 	}
+
+	@Test
+	void shouldFindAppsById() {
+		Application app = new Application();
+		Optional<Application> ap2 = this.applicationService.findApplicationById(2);
+		if(ap2.isPresent()){
+			app = ap2.get();
+		}
+		Assertions.assertNotNull(app);
+
+	}
+
+	@Test
+	void findAllApplicationsInitialData(){
+		Collection<Application> applications = new HashSet<>(
+				(Collection<? extends Application>) this.applicationService.findAll());
+		Assertions.assertEquals(13, applications.size());
+	}
+
+	 @Test
+	void shouldDeleteApp(){
+		 Collection<Application> applications = new HashSet<>(
+				 (Collection<? extends Application>) this.applicationService.findAll());
+
+		 Application app = new Application();
+		 Optional<Application> ap2 = this.applicationService.findApplicationById(2);
+		 if(ap2.isPresent()){
+			 app = ap2.get();
+		 }
+
+		 this.applicationService.deleteApplication(app);
+		 Collection<Application> applications2= new HashSet<>(
+				 (Collection<? extends Application>) this.applicationService.findAll());
+
+		 Assertions.assertEquals(applications.size()-1,applications2.size() );
+
+
+	 }
 
 }
