@@ -38,6 +38,7 @@ import static org.mockito.BDDMockito.given;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.lang.annotation.Inherited;
@@ -50,17 +51,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Miguel Ángel Antolín Bermúdez @mruwzum
  */
-// @WebMvcTest(controllers = ApplicationController.class)
-// @AutoConfigureMockMvc
-// @EnableAutoConfiguration
-// @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-// @SpringBootTest
-// @WebMvcTest
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:META-INF/resources")
-@Disabled
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@RunWith(SpringRunner.class)
 class ApplicationControllerTests {
 
+	@Autowired
 	private MockMvc mockMvc;
 
 	private ApplicationService applicationService;

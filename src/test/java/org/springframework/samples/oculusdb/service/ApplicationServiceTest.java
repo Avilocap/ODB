@@ -60,7 +60,7 @@ public class ApplicationServiceTest {
 		// Checking the pool size of apps after updating them.
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();
-		Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
+		Assertions.assertThrows(JSONException.class, () -> {
 			// Upgrade process
 			this.applicationService.getInfoOfOneApplication("2104963472963790");
 			// Checking the pool size of apps before updating them.
