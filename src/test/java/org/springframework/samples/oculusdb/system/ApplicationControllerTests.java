@@ -24,9 +24,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.samples.oculusdb.controllers.ApplicationController;
 import static org.hamcrest.Matchers.empty;
@@ -61,32 +64,37 @@ class ApplicationControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	@MockBean
 	private ApplicationService applicationService;
 
 	private static final int TEST_APPLICATION_ID = 8;
 
-	 @Test
-	 @WithMockUser("testuser")
-	 void testProcessCreationFormSuccess() throws Exception {
-	 mockMvc.perform(post("/applications/loadGet").param("id", "814885695293688"))
-	 .andExpect(view().name("/"));
-	 }
-
-	@WithMockUser("testuser")
 	@Test
-	void testProcessCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/application/new").param("erqwe", "app1").param("description", "lñsdkjfsadfsdfasdfasdf")
-				.param("company", "EA")).andExpect(status().isOk()).andExpect(model().attributeHasErrors("application"))
-				.andExpect(model().attributeHasFieldErrors("application", "name"))
-				.andExpect(model().attributeHasFieldErrors("application", "description"))
-				.andExpect(view().name("applications/createOrUpdateApplicationForm"));
+	@WithMockUser("testuser")
+	void listApps() throws Exception {
+		mockMvc.perform(get("/applications/list"))
+				.andExpect(status().isOk());
 	}
 
-	@WithMockUser("testuser")
 	@Test
+	@WithMockUser("testuser")
+	void listFavs() throws Exception {
+		mockMvc.perform(get("/applications/favorites"))
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void favApp() throws Exception {
+		mockMvc.perform(post("/applications/appInfo/{appId}/favorite", 9)
+		).andExpect(status().isOk());
+	}
+
+	@Test
+	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {
-		mockMvc.perform(post("/applications/get").param("id", "814885695293688"))
-				.andExpect(model().attributeExists("id")).andExpect(view().name("applications/getApplication"));
+		mockMvc.perform(post("/applications/appInfo/{appId}").param("appId", "814885695293688"))
+		.andExpect(status().is2xxSuccessful());
 	}
 
 	// @Test
@@ -109,7 +117,7 @@ class ApplicationControllerTests {
 		mockMvc.perform(get("/applications").param("lastName", "Unknown Surname")).andExpect(status().isOk())
 				.andExpect(model().attributeHasFieldErrors("application", "lastName"))
 				.andExpect(model().attributeHasFieldErrorCode("application", "lastName", "notFound"))
-				.andExpect(view().name("applications/findOwners"));
+				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
 	}
 
 	@WithMockUser("testuser")
@@ -135,10 +143,7 @@ class ApplicationControllerTests {
 	@Test
 	void testProcessUpdateAppFormHasErrors() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit", TEST_APPLICATION_ID).param("name", "")
-				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("application"))
-				.andExpect(model().attributeHasFieldErrors("application", "releaseDate"))
-				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
+				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().is4xxClientError());
 	}
 
 	// @Test
