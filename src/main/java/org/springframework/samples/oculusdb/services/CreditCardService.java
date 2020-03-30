@@ -24,8 +24,8 @@ public class CreditCardService {
 	public boolean checkCreditCard(String number, int expirationYear, int expirationMonth, int cvv) {
 		boolean res;
 		Assert.notNull(number);
-		Assert.isTrue(expirationMonth >=1);
-		Assert.isTrue(cvv >=1);
+		Assert.isTrue(expirationMonth >= 1);
+		Assert.isTrue(cvv >= 1);
 
 		int yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
 		String year = "20" + Integer.toString(yearAct0).substring(1);
@@ -33,7 +33,9 @@ public class CreditCardService {
 		int monthAct = new Date(System.currentTimeMillis()).getMonth();
 		if (expirationYear == yearAct) {
 			res = true;
-		}else res = expirationYear >= yearAct;
+		}
+		else
+			res = expirationYear >= yearAct;
 		return res;
 
 	}

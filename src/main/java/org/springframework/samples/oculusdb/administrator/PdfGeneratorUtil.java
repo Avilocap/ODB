@@ -37,7 +37,8 @@ public class PdfGeneratorUtil {
 		FileOutputStream os = null;
 		String fileName = UUID.randomUUID().toString();
 		try {
-			final File outputFile = File.createTempFile(appName, ".pdf");
+			final File outputFile2 = File.createTempFile(appName, ".pdf");
+			final File outputFile = new File(appName + ".pdf");
 			os = new FileOutputStream(outputFile);
 
 			ITextRenderer renderer = new ITextRenderer();

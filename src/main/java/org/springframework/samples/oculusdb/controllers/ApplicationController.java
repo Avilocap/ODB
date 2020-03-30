@@ -69,8 +69,8 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/pdf/{appId}")
-	public void appToPDF(@PathVariable("appId") int appId, HttpServletRequest request,
-								 HttpServletResponse response) throws Exception {
+	public void appToPDF(@PathVariable("appId") int appId, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		// https://www.oodlestechnologies.com/blogs/How-To-Create-PDF-through-HTML-Template-In-Spring-Boot/
 		ModelAndView vistaPDF = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
@@ -94,16 +94,16 @@ public class ApplicationController {
 		File outputPDF = pdfGenerator.createPdf("applications/applicationOnPDF", data, application.getName());
 
 		response.setContentType("application/pdf");
-		response.addHeader("Content-Disposition", "attachment; filename="+outputPDF);
+		response.addHeader("Content-Disposition", "attachment; filename=" + outputPDF);
 
 		try (OutputStream out = response.getOutputStream()) {
 			Path path = outputPDF.toPath();
 			Files.copy(path, out);
 			out.flush();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			// handle exception
 		}
-
 
 	}
 
