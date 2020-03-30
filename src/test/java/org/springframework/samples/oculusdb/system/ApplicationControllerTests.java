@@ -72,29 +72,26 @@ class ApplicationControllerTests {
 	@Test
 	@WithMockUser("testuser")
 	void listApps() throws Exception {
-		mockMvc.perform(get("/applications/list"))
-				.andExpect(status().isOk());
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk());
 	}
 
 	@Test
 	@WithMockUser("testuser")
 	void listFavs() throws Exception {
-		mockMvc.perform(get("/applications/favorites"))
-				.andExpect(status().isOk());
+		mockMvc.perform(get("/applications/favorites")).andExpect(status().isOk());
 	}
 
 	@Test
 	@WithMockUser("testuser")
 	void favApp() throws Exception {
-		mockMvc.perform(post("/applications/appInfo/{appId}/favorite", 9)
-		).andExpect(status().isOk());
+		mockMvc.perform(post("/applications/appInfo/{appId}/favorite", 9)).andExpect(status().isOk());
 	}
 
 	@Test
 	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/{appId}").param("appId", "814885695293688"))
-		.andExpect(status().is2xxSuccessful());
+				.andExpect(status().is2xxSuccessful());
 	}
 
 	// @Test
