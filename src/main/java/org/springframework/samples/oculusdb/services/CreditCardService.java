@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 import javax.transaction.Transactional;
 import java.util.Date;
 
+@SuppressWarnings("deprecation")
 @Service
 public class CreditCardService {
 
@@ -23,6 +24,7 @@ public class CreditCardService {
 	@Transactional
 	public boolean checkCreditCard(String number, int expirationYear, int expirationMonth, int cvv) {
 		boolean res;
+
 		Assert.notNull(number);
 		Assert.isTrue(expirationMonth >= 1);
 		Assert.isTrue(cvv >= 1);

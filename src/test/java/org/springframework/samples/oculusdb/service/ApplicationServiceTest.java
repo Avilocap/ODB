@@ -17,6 +17,7 @@ import java.util.*;
 
 @SpringBootTest
 @Transactional
+@SuppressWarnings("deprecation")
 public class ApplicationServiceTest {
 
 	@Autowired
