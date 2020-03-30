@@ -17,13 +17,22 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 @Controller
 @RequestMapping("/applications")
 public class ApplicationController {
+
+	@Autowired
+	PdfGeneratorUtil pdfGenerator;
 
 	@Autowired
 	private ApplicationService applicationService;
@@ -60,7 +69,8 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/pdf/{appId}")
-	public ModelAndView appToPDF(@PathVariable("appId") int appId) throws Exception {
+	public void appToPDF(@PathVariable("appId") int appId, HttpServletRequest request,
+								 HttpServletResponse response) throws Exception {
 		// https://www.oodlestechnologies.com/blogs/How-To-Create-PDF-through-HTML-Template-In-Spring-Boot/
 		ModelAndView vistaPDF = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
@@ -81,14 +91,20 @@ public class ApplicationController {
 		data.put("salesEstimation", application.getSalesEstimation().toString());
 		data.put("totalReviews", application.getTotalReviews().toString());
 
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-				"org.springframework.samples.oculusdb");
-		context.refresh();
-		PdfGeneratorUtil pdfGenerator = context.getBean(PdfGeneratorUtil.class);
+		File outputPDF = pdfGenerator.createPdf("applications/applicationOnPDF", data, application.getName());
 
-		pdfGenerator.createPdf("applications/applicationOnPDF", data);
-		vistaPDF.addObject("app", application);
-		return vistaPDF;
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "attachment; filename="+outputPDF);
+
+		try (OutputStream out = response.getOutputStream()) {
+			Path path = outputPDF.toPath();
+			Files.copy(path, out);
+			out.flush();
+		} catch (IOException e) {
+			// handle exception
+		}
+
+
 	}
 
 	@RequestMapping("/get")
