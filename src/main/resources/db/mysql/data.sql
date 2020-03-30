@@ -19,13 +19,11 @@ INSERT IGNORE INTO role VALUES (3,'SPONSOR');
 INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
-INSERT IGNORE INTO users(id,username,password,name,surname,email) VALUES (100,'pedro','pedro','Pedro', 'Rodríguez', 'pedro@gmail.com');
-INSERT IGNORE INTO users(id,username,password,name,surname,email) VALUES (200,'manu','manu','Manuel', 'Jiménez', 'manu@gmail.com');
-INSERT IGNORE INTO users(id,username,password,name,surname,email) VALUES (300,'antonio','antonio','Antonio', 'Ruiz', 'antonio@gmail.com');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser');
 
-INSERT IGNORE INTO users_roles(users_id,roles_id) VALUES (1,2);
-INSERT IGNORE INTO users_roles(users_id,roles_id) VALUES (2,2);
-INSERT IGNORE INTO users_roles(users_id,roles_id) VALUES (3,2);
+--Users roles
+
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 2);
 --Credit cards
 
 INSERT IGNORE INTO credit_cards VALUES (1, 123, 12, 2022, 'Pedro Rodríguez', 123456);
@@ -176,7 +174,7 @@ Key Jobbing Features:
 
 --Administrator
 
-INSERT IGNORE INTO oculusdb.administrator(id,username,password,name,surname,email) VALUES (1,'pedro','pedro','Pedro', 'Rodríguez', 'pedro@gmail.com');
+INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, username) VALUES (1, 'pedro_admin@gmail.com', 'Pedro', '$2a$10$J1Av8xN3HaF8KZxiYvmOXels/.CmzkntgCizGreqoRqvNNTJukiiu', 'Rodríguez', 'administrator');
 INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
 

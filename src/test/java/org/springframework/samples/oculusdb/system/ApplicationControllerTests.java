@@ -20,10 +20,25 @@ import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.web.server.LocalServerPort;
+
 import org.springframework.samples.oculusdb.controllers.ApplicationController;
 import org.springframework.samples.oculusdb.services.ApplicationService;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.hasProperty;
@@ -37,42 +52,45 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Miguel Ángel Antolín Bermúdez @mruwzum
  */
-//@WebMvcTest(controllers = ApplicationController.class)
-// @AutoConfigureMockMvc
-// @EnableAutoConfiguration
-// @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-// @SpringBootTest
-// @WebMvcTest
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:META-INF/resources")
-@Disabled
+
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@RunWith(SpringRunner.class)
+
 class ApplicationControllerTests {
 
+	@Autowired
 	private MockMvc mockMvc;
 
+	@MockBean
 	private ApplicationService applicationService;
 
 	private static final int TEST_APPLICATION_ID = 8;
 
-	// @Test
-	// void testProcessCreationFormSuccess() throws Exception {
-	// mockMvc.perform(post("/applications/get").param("id", "814885695293688"))
-	// .andExpect(status().is3xxRedirection());
-	// }
-
 	@Test
-	void testProcessCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/application/new").param("erqwe", "app1").param("description", "lñsdkjfsadfsdfasdfasdf")
-				.param("company", "EA")).andExpect(status().isOk()).andExpect(model().attributeHasErrors("application"))
-				.andExpect(model().attributeHasFieldErrors("application", "name"))
-				.andExpect(model().attributeHasFieldErrors("application", "description"))
-				.andExpect(view().name("applications/createOrUpdateApplicationForm"));
+	@WithMockUser("testuser")
+	void listApps() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk());
 	}
 
 	@Test
+	@WithMockUser("testuser")
+	void listFavs() throws Exception {
+		mockMvc.perform(get("/applications/favorites")).andExpect(status().isOk());
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void favApp() throws Exception {
+		mockMvc.perform(post("/applications/appInfo/{appId}/favorite", 9)).andExpect(status().isOk());
+	}
+
+	@Test
+	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {
-		mockMvc.perform(post("/applications/get").param("id", "814885695293688"))
-				.andExpect(model().attributeExists("id")).andExpect(view().name("applications/getApplication"));
+		mockMvc.perform(post("/applications/appInfo/{appId}").param("appId", "814885695293688"))
+				.andExpect(status().is2xxSuccessful());
 	}
 
 	// @Test
@@ -89,15 +107,16 @@ class ApplicationControllerTests {
 	// "Franklin")).andExpect(status().is3xxRedirection())
 	// .andExpect(view().name("redirect:/applications/" + TEST_OWNER_ID));
 	// }
-
+	@WithMockUser("testuser")
 	@Test
 	void testProcessFindFormNoAppsFound() throws Exception {
 		mockMvc.perform(get("/applications").param("lastName", "Unknown Surname")).andExpect(status().isOk())
 				.andExpect(model().attributeHasFieldErrors("application", "lastName"))
 				.andExpect(model().attributeHasFieldErrorCode("application", "lastName", "notFound"))
-				.andExpect(view().name("applications/findOwners"));
+				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testInitUpdateAppForm() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit").param("appId", String.valueOf(TEST_APPLICATION_ID)))
@@ -107,6 +126,7 @@ class ApplicationControllerTests {
 				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testProcessUpdateAppFormSuccess() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit", TEST_APPLICATION_ID).param("name", "dsadf")
@@ -115,13 +135,11 @@ class ApplicationControllerTests {
 				.andExpect(view().name("applications/createOrUpdateApplicationForm"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testProcessUpdateAppFormHasErrors() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit", TEST_APPLICATION_ID).param("name", "")
-				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("application"))
-				.andExpect(model().attributeHasFieldErrors("application", "releaseDate"))
-				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
+				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().is4xxClientError());
 	}
 
 	@Test

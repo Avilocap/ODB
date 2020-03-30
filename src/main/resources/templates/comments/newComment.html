@@ -4,12 +4,13 @@
       th:replace="~{fragments/layout :: layout (~{::body},'comments')}">
 
 <body>
-
+<div class="col-md-2"></div>
+<div class="col-md-8">
 <h2>
     New Comment
 </h2>
 
-<form th:object="${comment}" class="form-horizontal" method="post">
+<form th:object="${comment}" th:action="@{/appInfo/__${app.id}__/comments/new}" class="form-horizontal" method="post">
     <div class="form-group has-feedback">
         <input
                 th:replace="~{fragments/inputField :: input ('Title', 'title', 'text')}" />
@@ -34,7 +35,8 @@
         </div>
     </div>
 </form>
-
+</div>
+<div class="col-md-4"></div>
 </body>
 
 
