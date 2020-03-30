@@ -69,7 +69,7 @@ public class UserController {
 	@PostMapping("/login")
 	public String performLogin(@RequestParam String username, @RequestParam String password) {
 		securityServiceImpl.autoLogin(username, password);
-		return "redirect:/welcome";
+		return "redirect:/";
 	}
 
 	@GetMapping("/logout")
