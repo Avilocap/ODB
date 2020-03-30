@@ -22,11 +22,11 @@ INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (2, 'josema@gmail.com', 'josema', 'josema1234', 'josema', 'josema');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (2, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema');
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (3, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (4, 'adri@gmail.com', 'adri', 'adri1234', 'adri', 'adri');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (5, 'miguel@gmail.com', 'miguel', 'miguel1234', 'miguel', 'miguel');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (6, 'david@gmail.com', 'david', 'david1234', 'david', 'david');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (4, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (5, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (6, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david');
 
 --Users roles
 
