@@ -16,25 +16,24 @@
 
 package org.springframework.samples.oculusdb.system;
 
-import org.assertj.core.util.Lists;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.samples.oculusdb.controllers.ApplicationController;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.mockito.BDDMockito.given;
 
+import org.springframework.samples.oculusdb.controllers.ApplicationController;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
@@ -42,9 +41,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.lang.annotation.Inherited;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -53,40 +53,45 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Miguel Ángel Antolín Bermúdez @mruwzum
  */
 
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
+
 class ApplicationControllerTests {
 
 	@Autowired
 	private MockMvc mockMvc;
 
+	@MockBean
 	private ApplicationService applicationService;
 
 	private static final int TEST_APPLICATION_ID = 8;
 
-	 @Test
-	 @WithMockUser("testuser")
-	 void testProcessCreationFormSuccess() throws Exception {
-	 mockMvc.perform(post("/applications/loadGet").param("id", "814885695293688"))
-	 .andExpect(view().name("/"));
-	 }
-
-	@WithMockUser("testuser")
 	@Test
-	void testProcessCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/application/new").param("erqwe", "app1").param("description", "lñsdkjfsadfsdfasdfasdf")
-				.param("company", "EA")).andExpect(status().isOk()).andExpect(model().attributeHasErrors("application"))
-				.andExpect(model().attributeHasFieldErrors("application", "name"))
-				.andExpect(model().attributeHasFieldErrors("application", "description"))
-				.andExpect(view().name("applications/createOrUpdateApplicationForm"));
+	@WithMockUser("testuser")
+	void listApps() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk());
 	}
 
-	@WithMockUser("testuser")
 	@Test
+	@WithMockUser("testuser")
+	void listFavs() throws Exception {
+		mockMvc.perform(get("/applications/favorites")).andExpect(status().isOk());
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void favApp() throws Exception {
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", 9)
+		).andExpect(status().isOk());
+	}
+
+	@Test
+	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {
-		mockMvc.perform(post("/applications/get").param("id", "814885695293688"))
-				.andExpect(model().attributeExists("id")).andExpect(view().name("applications/getApplication"));
+		mockMvc.perform(get("/applications/appInfo/{appId}", 2)
+		).andExpect(status().isOk());
 	}
 
 	// @Test
@@ -109,13 +114,20 @@ class ApplicationControllerTests {
 		mockMvc.perform(get("/applications").param("lastName", "Unknown Surname")).andExpect(status().isOk())
 				.andExpect(model().attributeHasFieldErrors("application", "lastName"))
 				.andExpect(model().attributeHasFieldErrorCode("application", "lastName", "notFound"))
-				.andExpect(view().name("applications/findOwners"));
+				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
 	}
 
 	@WithMockUser("testuser")
 	@Test
+	void testGetApplication() throws Exception {
+		mockMvc.perform(get("/applications/get").param("id", "1368187813209608")).andExpect(status().isOk());
+	}
+
+
+	@WithMockUser("testuser")
+	@Test
 	void testInitUpdateAppForm() throws Exception {
-		mockMvc.perform(post("/applications/appInfo/edit").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+		mockMvc.perform(post("/applications/appInfo/edit").param("appId", "2"))
 				.andExpect(status().isOk()).andExpect(model().attributeExists("app"))
 				.andExpect(model().attribute("app", hasProperty("name", is(""))))
 				.andExpect(model().attribute("app", hasProperty("description", is(""))))
@@ -135,10 +147,155 @@ class ApplicationControllerTests {
 	@Test
 	void testProcessUpdateAppFormHasErrors() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit", TEST_APPLICATION_ID).param("name", "")
-				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("application"))
-				.andExpect(model().attributeHasFieldErrors("application", "releaseDate"))
-				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
+				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().is4xxClientError());
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testInitAddToFavorites() throws Exception{
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+				.andExpect(status().isOk())
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testAddToFavoritesSuccess() throws Exception{
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("Gravity Sketch"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testAddToFavoritesHasErrors() throws Exception{
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("FIFA 20"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("EA SPORTS"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testInitDeleteFavorite() throws Exception{
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk())
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testDeleteFavoriteSuccess() throws Exception{
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("Gravity Sketch"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testDeleteFavoriteHasErrors() throws Exception{
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("app", hasProperty("name", is("Fortnite"))))
+				.andExpect(model().attribute("app", hasProperty("company", is("Epic Games"))))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testInitFavorites() throws Exception{
+		mockMvc.perform(get("/applications/favorites"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testFavoritesSuccess() throws Exception{
+		mockMvc.perform(get("/applications/favorites"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("app"))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testFavoritesHasErrors() throws Exception{
+		mockMvc.perform(get("/applications/favorites"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("hola"))
+				.andExpect(view().name("applications/favorites"));
+	}
+
+
+	@Test
+	@WithMockUser("testuser")
+	void testInitShowApp() throws Exception{
+		mockMvc.perform(get("/applications/appInfo/{appId}", TEST_APPLICATION_ID)).andExpect(status().isOk())
+				.andExpect(view().name("applications/applicationsDetails"));
+
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testShowAppSuccess() throws Exception {
+		mockMvc.perform(get("/applications/appInfo/{appId}", TEST_APPLICATION_ID)).andExpect(status().isOk())
+				.andExpect(model().attribute("application", hasProperty("picture", is("https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974705_1273531666148327_7602878707115491328_n.jpg?_nc_cat=100&_nc_sid=79b88e&_nc_ohc=R_T21J2icYIAX9etYM8&_nc_ht=scontent.oculuscdn.com&oh=f6fbb13ae8836df2838cd33f34265fe9&oe=5E9FBFCB"))))
+				.andExpect(model().attribute("application", hasProperty("name", is("Gravity Sketch"))))
+				.andExpect(model().attribute("application", hasProperty("description", is("Gravity Sketch is an intuitive sketching experience giving you extensive access to tools for creative exploration. You can fully express your ideas in real-time at any scale, from initial conception to model. Create loose free form sketches, detailed models, expansive scenes, and artwork unrestricted.\n" +
+						"\n" +
+						"Export your work as an image or model for use in other phases of your workflow. Gravity Sketch is a tool for the designer who makes every stroke count. Join the community of creatives defining new design workflows.\n" +
+						"\n" +
+						"“The ability to start in 3D and stay in 3D has been the most transformative aspect of the workflow provided by Gravity Sketch, allowing me to create a 3D “napkin sketch” straight from my brain.”\n" +
+						"\n" +
+						"      - Saiful Haque, Concept Artist, Avatar Sequels\n" +
+						"\n" +
+						"- 6 Creation Tools\n" +
+						"- 4 Creation Layers\n" +
+						"- 4 Environments\n" +
+						"- Image import (.jpg and .png)\n" +
+						"- Snapshot Tool for quick image capture\n" +
+						"- Export/Import .OBJ\n" +
+						"- Upload to Landing Pad (a 3D Cloud file management Platform)"))))
+				.andExpect(model().attribute("application", hasProperty("releaseDate", is("1970-01-18"))))
+				.andExpect(model().attribute("application", hasProperty("price", is("29.99"))))
+				.andExpect(model().attribute("application", hasProperty("typeOfGameplay", is("0"))))
+				.andExpect(model().attribute("application", hasProperty("typeOfApp", is("0"))))
+				.andExpect(model().attribute("application", hasProperty("platform", is("1"))))
+				.andExpect(model().attribute("application", hasProperty("category", is("1"))))
+				.andExpect(model().attribute("application", hasProperty("website", is("https://www.gravitysketch.com/"))))
+				.andExpect(model().attribute("application", hasProperty("company", is("Gravity Sketch"))))
+				.andExpect(model().attribute("application", hasProperty("incomeEstimation", is("57580, "))))
+				.andExpect(model().attribute("application", hasProperty("salesEstimation", is("1920"))))
+				.andExpect(model().attribute("application", hasProperty("totalReviews", is("96"))))
+				.andExpect(view().name("applications/applicationsDetails"));
+
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testInitShowApplications() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk())
+				.andExpect(view().name("applications/listadoAplicaciones"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testShowApplicationsSucces() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk()).andExpect(model().attributeExists("applications"))
+				.andExpect(view().name("applications/listadoAplicaciones"));
+	}
+
+	@Test
+	@WithMockUser("testuser")
+	void testShowApplicationsHasErrors() throws Exception {
+		mockMvc.perform(get("/applications/list")).andExpect(status().isOk()).andExpect(model().attributeExists("jjjj"))
+				.andExpect(view().name("applications/listadoAplicaciones"));
 	}
 
 	// @Test
