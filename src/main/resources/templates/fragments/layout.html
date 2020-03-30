@@ -1,6 +1,6 @@
 <!doctype html>
 <html th:fragment="layout (template, menu)" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.w3.org/1999/xhtml" >
 
   <head>
 
@@ -66,16 +66,14 @@
                   </li>
 
                   <!-- Show login link only for anonymous users -->
-                  <div sec:authorize="isAnonymous()">
-                      <li class="nav-item">
-                          <a class="nav-link" th:href="@{/login}">Login</a>
+
+                      <li  class="nav-item">
+                          <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}">Login</a>
                       </li>
-                  </div>
-                  <div sec:authorize="isAuthenticated()">
-                      <li class="nav-item">
-                          <a class="nav-link" th:href="@{/logout}">Logout</a>
+
+                      <li  class="nav-item">
+                          <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
                       </li>
-                  </div>
 <!--                  <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','warning-sign','Error')">-->
 <!--                      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>-->
 <!--                      <span>Error</span>-->
