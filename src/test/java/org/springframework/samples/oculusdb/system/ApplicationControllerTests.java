@@ -83,14 +83,15 @@ class ApplicationControllerTests {
 	@Test
 	@WithMockUser("testuser")
 	void favApp() throws Exception {
-		mockMvc.perform(post("/applications/appInfo/{appId}/favorite", 9)).andExpect(status().isOk());
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", 9)
+		).andExpect(status().isOk());
 	}
 
 	@Test
 	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {
-		mockMvc.perform(post("/applications/appInfo/{appId}").param("appId", "814885695293688"))
-				.andExpect(status().is2xxSuccessful());
+		mockMvc.perform(get("/applications/appInfo/{appId}", 2)
+		).andExpect(status().isOk());
 	}
 
 	// @Test
@@ -118,8 +119,15 @@ class ApplicationControllerTests {
 
 	@WithMockUser("testuser")
 	@Test
+	void testGetApplication() throws Exception {
+		mockMvc.perform(get("/applications/get").param("id", "1368187813209608")).andExpect(status().isOk());
+	}
+
+
+	@WithMockUser("testuser")
+	@Test
 	void testInitUpdateAppForm() throws Exception {
-		mockMvc.perform(post("/applications/appInfo/edit").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+		mockMvc.perform(post("/applications/appInfo/edit").param("appId", "2"))
 				.andExpect(status().isOk()).andExpect(model().attributeExists("app"))
 				.andExpect(model().attribute("app", hasProperty("name", is(""))))
 				.andExpect(model().attribute("app", hasProperty("description", is(""))))
@@ -143,15 +151,17 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testInitAddToFavorites() throws Exception{
-		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
 				.andExpect(status().isOk())
 				.andExpect(view().name("applications/favorites"));
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testAddToFavoritesSuccess() throws Exception{
-		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
 				.andExpect(model().attribute("app", hasProperty("company", is("Gravity Sketch"))))
@@ -159,8 +169,9 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testAddToFavoritesHasErrors() throws Exception{
-		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APPLICATION_ID))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("app", hasProperty("name", is("FIFA 20"))))
 				.andExpect(model().attribute("app", hasProperty("company", is("EA SPORTS"))))
@@ -168,15 +179,17 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testInitDeleteFavorite() throws Exception{
-		mockMvc.perform(get("/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
 				.andExpect(status().isOk())
 				.andExpect(view().name("applications/favorites"));
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testDeleteFavoriteSuccess() throws Exception{
-		mockMvc.perform(get("/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
 				.andExpect(model().attribute("app", hasProperty("company", is("Gravity Sketch"))))
@@ -184,8 +197,9 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testDeleteFavoriteHasErrors() throws Exception{
-		mockMvc.perform(get("/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("app", hasProperty("name", is("Fortnite"))))
 				.andExpect(model().attribute("app", hasProperty("company", is("Epic Games"))))
@@ -193,23 +207,26 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testInitFavorites() throws Exception{
-		mockMvc.perform(get("/favorites"))
+		mockMvc.perform(get("/applications/favorites"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("applications/favorites"));
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testFavoritesSuccess() throws Exception{
-		mockMvc.perform(get("/favorites"))
+		mockMvc.perform(get("/applications/favorites"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeExists("app"))
 				.andExpect(view().name("applications/favorites"));
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testFavoritesHasErrors() throws Exception{
-		mockMvc.perform(get("/favorites"))
+		mockMvc.perform(get("/applications/favorites"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeExists("hola"))
 				.andExpect(view().name("applications/favorites"));
@@ -217,6 +234,7 @@ class ApplicationControllerTests {
 
 
 	@Test
+	@WithMockUser("testuser")
 	void testInitShowApp() throws Exception{
 		mockMvc.perform(get("/applications/appInfo/{appId}", TEST_APPLICATION_ID)).andExpect(status().isOk())
 				.andExpect(view().name("applications/applicationsDetails"));
@@ -224,6 +242,7 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testShowAppSuccess() throws Exception {
 		mockMvc.perform(get("/applications/appInfo/{appId}", TEST_APPLICATION_ID)).andExpect(status().isOk())
 				.andExpect(model().attribute("application", hasProperty("picture", is("https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974705_1273531666148327_7602878707115491328_n.jpg?_nc_cat=100&_nc_sid=79b88e&_nc_ohc=R_T21J2icYIAX9etYM8&_nc_ht=scontent.oculuscdn.com&oh=f6fbb13ae8836df2838cd33f34265fe9&oe=5E9FBFCB"))))
@@ -259,18 +278,21 @@ class ApplicationControllerTests {
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testInitShowApplications() throws Exception {
 		mockMvc.perform(get("/applications/list")).andExpect(status().isOk())
 				.andExpect(view().name("applications/listadoAplicaciones"));
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testShowApplicationsSucces() throws Exception {
 		mockMvc.perform(get("/applications/list")).andExpect(status().isOk()).andExpect(model().attributeExists("applications"))
 				.andExpect(view().name("applications/listadoAplicaciones"));
 	}
 
 	@Test
+	@WithMockUser("testuser")
 	void testShowApplicationsHasErrors() throws Exception {
 		mockMvc.perform(get("/applications/list")).andExpect(status().isOk()).andExpect(model().attributeExists("jjjj"))
 				.andExpect(view().name("applications/listadoAplicaciones"));
