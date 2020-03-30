@@ -42,7 +42,7 @@
                 <li th:fragment="menuItem (path,active,title,glyph,text)" class="active"
                     th:class="${active==menu ? 'active' : ''}">
                     <a th:href="@{__${path}__}" th:title="${title}">
-                        <span th:class="'glyphicon  glyphicon-'+${glyph}" class="glyphicon glyphicon-home"
+                        <span th:class="'glyphicon  glyphicon-'+${glyph}"
                               aria-hidden="true"></span>
                         <span th:text="${text}">Template</span>
                     </a>
@@ -55,27 +55,29 @@
 
 
                 <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link"
+                    <a sec:authorize="isAuthenticated()"
                        th:href="@{/applications/list}">Applications</a>
+
+                    <span>Home</span>
                 </li>
 
                 <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link"
+                    <a sec:authorize="isAuthenticated()"
                        th:href="@{/applications/favorites}">Favorites</a>
                 </li>
 
                 <li class="nav-item">
-                    <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/registration}">Sign up</a>
+                    <a sec:authorize="isAnonymous()" th:href="@{/registration}">Sign up</a>
                 </li>
 
                 <!-- Show login link only for anonymous users -->
 
                 <li class="nav-item">
-                    <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}">Log in</a>
+                    <a sec:authorize="isAnonymous()" th:href="@{/login}">Log in</a>
                 </li>
 
                 <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
         </div>
