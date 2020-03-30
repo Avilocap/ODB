@@ -36,6 +36,7 @@ import static org.hamcrest.Matchers.not;
 import static org.mockito.BDDMockito.given;
 
 import org.springframework.samples.oculusdb.services.ApplicationService;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -64,12 +65,14 @@ class ApplicationControllerTests {
 
 	private static final int TEST_APPLICATION_ID = 8;
 
-	// @Test
-	// void testProcessCreationFormSuccess() throws Exception {
-	// mockMvc.perform(post("/applications/get").param("id", "814885695293688"))
-	// .andExpect(status().is3xxRedirection());
-	// }
+	 @Test
+	 @WithMockUser("testuser")
+	 void testProcessCreationFormSuccess() throws Exception {
+	 mockMvc.perform(post("/applications/loadGet").param("id", "814885695293688"))
+	 .andExpect(view().name("/"));
+	 }
 
+	@WithMockUser("testuser")
 	@Test
 	void testProcessCreationFormHasErrors() throws Exception {
 		mockMvc.perform(post("/application/new").param("erqwe", "app1").param("description", "lñsdkjfsadfsdfasdfasdf")
@@ -79,6 +82,7 @@ class ApplicationControllerTests {
 				.andExpect(view().name("applications/createOrUpdateApplicationForm"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testInitFindForm() throws Exception {
 		mockMvc.perform(post("/applications/get").param("id", "814885695293688"))
@@ -99,7 +103,7 @@ class ApplicationControllerTests {
 	// "Franklin")).andExpect(status().is3xxRedirection())
 	// .andExpect(view().name("redirect:/applications/" + TEST_OWNER_ID));
 	// }
-
+	@WithMockUser("testuser")
 	@Test
 	void testProcessFindFormNoAppsFound() throws Exception {
 		mockMvc.perform(get("/applications").param("lastName", "Unknown Surname")).andExpect(status().isOk())
@@ -108,6 +112,7 @@ class ApplicationControllerTests {
 				.andExpect(view().name("applications/findOwners"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testInitUpdateAppForm() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit").param("appId", String.valueOf(TEST_APPLICATION_ID)))
@@ -117,6 +122,7 @@ class ApplicationControllerTests {
 				.andExpect(view().name("applications/createOrUpdateOwnerForm"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testProcessUpdateAppFormSuccess() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit", TEST_APPLICATION_ID).param("name", "dsadf")
@@ -125,6 +131,7 @@ class ApplicationControllerTests {
 				.andExpect(view().name("applications/createOrUpdateApplicationForm"));
 	}
 
+	@WithMockUser("testuser")
 	@Test
 	void testProcessUpdateAppFormHasErrors() throws Exception {
 		mockMvc.perform(post("/applications/appInfo/edit", TEST_APPLICATION_ID).param("name", "")
