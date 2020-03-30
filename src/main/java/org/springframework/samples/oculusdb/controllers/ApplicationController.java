@@ -42,6 +42,12 @@ public class ApplicationController {
 
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isAdmin(user)) {
+			modelMap.addAttribute("admin", true);
+		}
 		String vista = "applications/listadoAplicaciones";
 		Iterable<Application> applications = applicationService.findAll();
 		modelMap.addAttribute("applications", applications);
@@ -51,7 +57,16 @@ public class ApplicationController {
 
 	@GetMapping("/loadGet")
 	public String loadApplicationGet() {
-		return "applications/getApplication";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isAdmin(user)) {
+			return "applications/getApplication";
+		}
+		else {
+			return "security/login";
+		}
+
 	}
 
 	@GetMapping("/appInfo/{appId}")

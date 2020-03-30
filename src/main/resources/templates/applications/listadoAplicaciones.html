@@ -6,7 +6,7 @@
   <body>
     <div class="col-md-12">
         <h2>Applications</h2>
-        <button sec:authorize="hasRole('ADMINISTRATOR')" th:href="@{loadGet}" class="btn btn-default" type="submit">
+        <button th:if="${admin}" th:href="@{loadGet}" class="btn btn-default" type="submit">
             <a  th:href="@{loadGet}">Get New</a>
         </button>
         <h1></h1>
