@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+
 <body>
-<h1>Ha habido un error al procesar su pago</h1>
+<div class="col-md-4"></div>
+<div class="col-md-4">
+<h1>We're having some troubles processing your payment</h1>
+</div>
+<div class="col-md-4"></div>
 </body>
 </html>

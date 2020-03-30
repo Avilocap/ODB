@@ -18,12 +18,14 @@
             <h1></h1>
             <a th:href="@{/applications/appInfo/{appId}/favorite(appId=${app.id})}" class="btn btn-default">Add to
                 favorites</a>
-
             <h2></h2>
             <tr>
                 <b th:text="*{description}"></b>
                 <h1></h1>
             </tr>
+            <h2></h2>
+            <a th:href="@{/applications/pdf/__${app.id}__}" class="btn btn-default">Download info on PDF</a>
+            <h1></h1>
             <tr>
                 <th>Release date</th>
                 <td><b th:text="*{releaseDate}"></b></td>
