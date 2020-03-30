@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
 
   <body>
-
-    <h2>Applications</h2>
-    <button th:href="@{loadGet}" class="btn btn-default" type="submit">
-        <a th:href="@{loadGet}">Get New</a>
-    </button>
     <div class="col-md-12">
-        <br />
+        <h2>Applications</h2>
+        <button sec:authorize="hasRole('ADMINISTRATOR')" th:href="@{loadGet}" class="btn btn-default" type="submit">
+            <a  th:href="@{loadGet}">Get New</a>
+        </button>
+        <h1></h1>
         <table id="app" class="table table-striped">
         <thead>
         <tr>
@@ -19,7 +19,6 @@
             <th style="width: 150px;">Price (€)</th>
             <th style="width: 150px;">Company</th>
             <th style="width: 150px;">Get PDF</th>
-
         </tr>
         </thead>
         <tbody>

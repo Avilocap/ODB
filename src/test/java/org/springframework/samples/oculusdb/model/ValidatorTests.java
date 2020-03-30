@@ -10,6 +10,7 @@ import javax.validation.Validator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -37,5 +38,42 @@ class ValidatorTests {
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("oculusId");
 		assertThat(violation.getMessage()).isEqualTo("must not be empty");
 	}
+
+	@Test
+	void shouldNotValidateTitleEmpty() {
+		Comments comment = new Comments();
+		comment.setTitle("");
+		comment.setContent("good comment");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Comments>> constraintViolations =
+				validator.validate(comment);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Comments> violation =
+				constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString())
+				.isEqualTo("title");
+		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
+
+	}
+
+	@Test
+	void shouldNotValidateContentEmpty() {
+		Comments comment = new Comments();
+		comment.setTitle("koaoa");
+		comment.setContent("");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Comments>> constraintViolations =
+				validator.validate(comment);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Comments> violation =
+				constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString())
+				.isEqualTo("content");
+		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
+
+	}
+
 
 }
