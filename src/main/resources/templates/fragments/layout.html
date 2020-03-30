@@ -54,31 +54,26 @@
 
 
                   <li class="nav-item">
-                <a class="nav-link" th:href="@{/applications/list}">Applications</a>
+                <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/applications/list}">Applications</a>
             </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" th:href="@{/applications/favorites}">Favorites</a>
+                      <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/applications/favorites}">Favorites</a>
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" th:href="@{/registration}">Sign up</a>
+                      <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/registration}">Sign up</a>
                   </li>
 
                   <!-- Show login link only for anonymous users -->
 
-                      <li  class="nav-item">
-                          <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}">Login</a>
-                      </li>
+                  <li  class="nav-item">
+                      <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}">Log in</a>
+                  </li>
 
-                      <li  class="nav-item">
-                          <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
-                      </li>
-<!--                  <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','warning-sign','Error')">-->
-<!--                      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>-->
-<!--                      <span>Error</span>-->
-<!--                  </li>-->
-  
+                  <li  class="nav-item">
+                      <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
+                  </li>
               </ul>
           </div>
       </div>
