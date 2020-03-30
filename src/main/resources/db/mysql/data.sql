@@ -4,6 +4,8 @@
 INSERT IGNORE INTO platform VALUES (1, 'Wireless', 'Quest');
 INSERT IGNORE INTO platform VALUES (2, 'Power your dreams', 'Rift');
 INSERT IGNORE INTO platform VALUES (3, '4 the players', 'PS4');
+INSERT IGNORE INTO platform VALUES (4, 'Virtual reality only in one', 'Go');
+INSERT IGNORE INTO platform VALUES (5, 'Play VR on your computer', 'Rift S');
 
 --Category
 
@@ -20,10 +22,20 @@ INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (2, 'josema@gmail.com', 'josema', 'josema1234', 'josema', 'josema');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (3, 'manu@gmail.com', 'manu', 'manu1234', 'manu', 'manu');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (4, 'adri@gmail.com', 'adri', 'adri1234', 'adri', 'adri');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (5, 'miguel@gmail.com', 'miguel', 'miguel1234', 'miguel', 'miguel');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (6, 'david@gmail.com', 'david', 'david1234', 'david', 'david');
 
 --Users roles
 
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (2, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (3, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (4, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (5, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (6, 2);
 --Credit cards
 
 INSERT IGNORE INTO credit_cards VALUES (1, 123, 12, 2022, 'Pedro Rodríguez', 123456);
@@ -181,6 +193,17 @@ INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 INSERT IGNORE INTO comments VALUES (1, 'This game is awesome!', 'Perfect', 1);
 INSERT IGNORE INTO comments VALUES (2, 'This game is a shit', 'Bad', 3);
 INSERT IGNORE INTO comments VALUES (3, 'Best game in the world', 'Incredible', 2);
+INSERT IGNORE INTO comments VALUES (4, 'I think that is a very good game', 'Very good', 2);
+INSERT IGNORE INTO comments VALUES (5, 'I regret buying it', 'Bad', 3);
+INSERT IGNORE INTO comments VALUES (6, 'Very good game', 'Very good', 4);
+INSERT IGNORE INTO comments VALUES (7, 'I did not like it to much', 'Regular', 2);
+INSERT IGNORE INTO comments VALUES (8, 'The best game ever!', 'Perfect', 4);
+INSERT IGNORE INTO comments VALUES (9, 'What a scam', 'Very bad', 5);
+INSERT IGNORE INTO comments VALUES (10, 'Awesome!!', 'Incredible', 6);
+INSERT IGNORE INTO comments VALUES (11, 'Disappointing the truth', 'Bad', 5);
+INSERT IGNORE INTO comments VALUES (12, 'To play all day!', 'Perfect', 7);
+INSERT IGNORE INTO comments VALUES (13, 'I dont like', 'Bad', 8);
+INSERT IGNORE INTO comments VALUES (14, '...', 'Regular', 9);
 
 --Developer
 
@@ -201,3 +224,14 @@ INSERT IGNORE INTO sponsors_roles(sponsor_id,roles_id) VALUES (1,4);
 --Sponsorship
 
 INSERT IGNORE INTO sponsorship VALUES (1, 'http://www.miguel.com', 'miguel', 1);
+
+--Favorites
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 2);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 4);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 7);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 8);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (3, 3);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (3, 5);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (4, 9);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (5, 10);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (6, 11);

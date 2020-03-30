@@ -44,7 +44,6 @@ public class CommentsServiceTests {
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
-
 		ap2 = this.applicationService.findApplicationById(2);
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
@@ -53,7 +52,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void shouldAddCommentWithAppId(){
+	void shouldAddCommentWithAppId() {
 
 		Application app2 = new Application();
 		Optional<Application> ap2 = this.applicationService.findApplicationById(2);
@@ -71,7 +70,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void AddCommentWithRandomAppId(){
+	void AddCommentWithRandomAppId() {
 		Application app2 = new Application();
 		Optional<Application> ap2 = this.applicationService.findApplicationById(276);
 		if (ap2.isPresent()) {
@@ -81,7 +80,8 @@ public class CommentsServiceTests {
 			comment.setTitle("jajaaj");
 			comment.setContent("this is a new comment");
 			this.commentsService.saveComment(comment);
-		} else {
+		}
+		else {
 			app2 = null;
 		}
 		Assertions.assertNull(app2);
@@ -95,10 +95,9 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void FindCommentByRandomAppId(){
+	void FindCommentByRandomAppId() {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(276);
-		Assertions.assertEquals(0,comments.size());
+		Assertions.assertEquals(0, comments.size());
 	}
-
 
 }

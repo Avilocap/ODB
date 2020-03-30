@@ -46,13 +46,10 @@ class ValidatorTests {
 		comment.setContent("good comment");
 
 		Validator validator = createValidator();
-		Set<ConstraintViolation<Comments>> constraintViolations =
-				validator.validate(comment);
+		Set<ConstraintViolation<Comments>> constraintViolations = validator.validate(comment);
 		assertThat(constraintViolations.size()).isEqualTo(1);
-		ConstraintViolation<Comments> violation =
-				constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString())
-				.isEqualTo("title");
+		ConstraintViolation<Comments> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("title");
 		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
 
 	}
@@ -64,16 +61,12 @@ class ValidatorTests {
 		comment.setContent("");
 
 		Validator validator = createValidator();
-		Set<ConstraintViolation<Comments>> constraintViolations =
-				validator.validate(comment);
+		Set<ConstraintViolation<Comments>> constraintViolations = validator.validate(comment);
 		assertThat(constraintViolations.size()).isEqualTo(1);
-		ConstraintViolation<Comments> violation =
-				constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString())
-				.isEqualTo("content");
+		ConstraintViolation<Comments> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("content");
 		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
 
 	}
-
 
 }

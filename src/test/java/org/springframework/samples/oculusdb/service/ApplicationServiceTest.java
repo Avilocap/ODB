@@ -40,7 +40,6 @@ public class ApplicationServiceTest {
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();
 		// Upgrade process
-		// Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
 
 		this.applicationService.getInfoOfOneApplication("1320373124698683");
 		// Checking the pool size of apps before updating them.
@@ -49,7 +48,7 @@ public class ApplicationServiceTest {
 		// Let's make sure that they're different.
 		int sizeAfter = appsUpdated.size();
 		org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
-		// });
+
 	}
 
 	@Test
@@ -120,7 +119,7 @@ public class ApplicationServiceTest {
 	void shouldFindAppsById() {
 		Application app = new Application();
 		Optional<Application> ap2 = this.applicationService.findApplicationById(2);
-		if(ap2.isPresent()){
+		if (ap2.isPresent()) {
 			app = ap2.get();
 		}
 		Assertions.assertNotNull(app);
@@ -128,70 +127,67 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	void FindApplicationByRandomId(){
+	void FindApplicationByRandomId() {
 		Application app = new Application();
 		Optional<Application> ap2 = this.applicationService.findApplicationById(273);
-		if(ap2.isPresent()){
+		if (ap2.isPresent()) {
 			app = ap2.get();
-		} else {
+		}
+		else {
 			app = null;
 		}
 		org.junit.Assert.assertNull(app);
 	}
 
 	@Test
-	void findAllApplicationsInitialData(){
+	void findAllApplicationsInitialData() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertEquals(13, applications.size());
 	}
 
 	@Test
-	void findAllApplicationsHasErrors(){
+	void findAllApplicationsHasErrors() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertNotEquals(257, applications.size());
 	}
 
 	@Test
-	void shouldDeleteApp(){
-		 Collection<Application> applications = new HashSet<>(
-				 (Collection<? extends Application>) this.applicationService.findAll());
+	void shouldDeleteApp() {
+		Collection<Application> applications = new HashSet<>(
+				(Collection<? extends Application>) this.applicationService.findAll());
 
-		 Application app = new Application();
-		 Optional<Application> ap2 = this.applicationService.findApplicationById(2);
-		 if(ap2.isPresent()){
-			 app = ap2.get();
-		 }
+		Application app = new Application();
+		Optional<Application> ap2 = this.applicationService.findApplicationById(2);
+		if (ap2.isPresent()) {
+			app = ap2.get();
+		}
 
-		 this.applicationService.deleteApplication(app);
-		 Collection<Application> applications2= new HashSet<>(
-				 (Collection<? extends Application>) this.applicationService.findAll());
+		this.applicationService.deleteApplication(app);
+		Collection<Application> applications2 = new HashSet<>(
+				(Collection<? extends Application>) this.applicationService.findAll());
 
-		 Assertions.assertEquals(applications.size()-1,applications2.size() );
+		Assertions.assertEquals(applications.size() - 1, applications2.size());
 
-	 }
+	}
 
-	 @Test
-	 void deleteApplicationRandomId(){
-		 Collection<Application> applications = new HashSet<>(
-				 (Collection<? extends Application>) this.applicationService.findAll());
+	@Test
+	void deleteApplicationRandomId() {
+		Collection<Application> applications = new HashSet<>(
+				(Collection<? extends Application>) this.applicationService.findAll());
 
-		 Application app = new Application();
-		 Optional<Application> ap2 = this.applicationService.findApplicationById(273);
-		 if(ap2.isPresent()){
-			 app = ap2.get();
-		 }
+		Application app = new Application();
+		Optional<Application> ap2 = this.applicationService.findApplicationById(273);
+		if (ap2.isPresent()) {
+			app = ap2.get();
+		}
 
-		 this.applicationService.deleteApplication(app);
-		 Collection<Application> applications2= new HashSet<>(
-				 (Collection<? extends Application>) this.applicationService.findAll());
+		this.applicationService.deleteApplication(app);
+		Collection<Application> applications2 = new HashSet<>(
+				(Collection<? extends Application>) this.applicationService.findAll());
 
-		 Assertions.assertEquals(applications.size(),applications2.size() );
-	 }
-
-
-
-
+		Assertions.assertEquals(applications.size(), applications2.size());
+	}
 
 }
