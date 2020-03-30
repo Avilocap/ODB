@@ -63,7 +63,10 @@
                     <a sec:authorize="isAuthenticated()"
                        th:href="@{/applications/favorites}">Favorites</a>
                 </li>
-
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()"
+                       th:href="@{/creditCard/new}">Payment</a>
+                </li>
                 <li class="nav-item">
                     <a sec:authorize="isAnonymous()" th:href="@{/registration}">Sign up</a>
                 </li>
