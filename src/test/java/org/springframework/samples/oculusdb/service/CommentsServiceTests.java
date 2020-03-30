@@ -10,6 +10,7 @@ import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.services.CommentsService;
 
+import javax.validation.Validator;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -40,8 +41,10 @@ public class CommentsServiceTests {
 		int found = app2.getComments().size();
 		Comments comment = new Comments();
 		app2.addComment(comment);
+		comment.setTitle("jajaaj");
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
+
 
 		ap2 = this.applicationService.findApplicationById(2);
 		if (ap2.isPresent()) {
@@ -61,6 +64,7 @@ public class CommentsServiceTests {
 
 		Comments comment = new Comments();
 		app2.addComment(comment);
+		comment.setTitle("jajaaj");
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
@@ -69,12 +73,13 @@ public class CommentsServiceTests {
 
 	@Test
 	void shouldFindCommentByAppId() {
-		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(2);
+		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(3);
 		Assertions.assertEquals(1, comments.size());
 
 		comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(00);
-		Assertions.assertNull(comments);
+		Assertions.assertEquals(0,comments.size());
 
 	}
+
 
 }
