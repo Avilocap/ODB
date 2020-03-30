@@ -128,13 +128,32 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
+	void FindApplicationByRandomId(){
+		Application app = new Application();
+		Optional<Application> ap2 = this.applicationService.findApplicationById(273);
+		if(ap2.isPresent()){
+			app = ap2.get();
+		} else {
+			app = null;
+		}
+		org.junit.Assert.assertNull(app);
+	}
+
+	@Test
 	void findAllApplicationsInitialData(){
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertEquals(13, applications.size());
 	}
 
-	 @Test
+	@Test
+	void findAllApplicationsHasErrors(){
+		Collection<Application> applications = new HashSet<>(
+				(Collection<? extends Application>) this.applicationService.findAll());
+		Assertions.assertNotEquals(257, applications.size());
+	}
+
+	@Test
 	void shouldDeleteApp(){
 		 Collection<Application> applications = new HashSet<>(
 				 (Collection<? extends Application>) this.applicationService.findAll());
@@ -151,7 +170,28 @@ public class ApplicationServiceTest {
 
 		 Assertions.assertEquals(applications.size()-1,applications2.size() );
 
-
 	 }
+
+	 @Test
+	 void deleteApplicationRandomId(){
+		 Collection<Application> applications = new HashSet<>(
+				 (Collection<? extends Application>) this.applicationService.findAll());
+
+		 Application app = new Application();
+		 Optional<Application> ap2 = this.applicationService.findApplicationById(273);
+		 if(ap2.isPresent()){
+			 app = ap2.get();
+		 }
+
+		 this.applicationService.deleteApplication(app);
+		 Collection<Application> applications2= new HashSet<>(
+				 (Collection<? extends Application>) this.applicationService.findAll());
+
+		 Assertions.assertEquals(applications.size(),applications2.size() );
+	 }
+
+
+
+
 
 }
