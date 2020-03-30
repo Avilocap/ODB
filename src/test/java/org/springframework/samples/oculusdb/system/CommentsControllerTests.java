@@ -1,6 +1,5 @@
 package org.springframework.samples.oculusdb.system;
 
-
 import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -33,63 +32,53 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class CommentsControllerTests {
 
-    private static final int TEST_APP_ID = 2;
+	private static final int TEST_APP_ID = 102;
 
-    @Autowired
-    private CommentsController commentsController;
+	@Autowired
+	private CommentsController commentsController;
 
-    @MockBean
-    private CommentsService commentsService;
+	@MockBean
+	private CommentsService commentsService;
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @WithMockUser("testuser")
-    @Test
-    void testInitAddComment() throws Exception {
-        mockMvc.perform(get("/appInfo/{appId}/comments/new", TEST_APP_ID))
-                .andExpect(status().isOk())
-                .andExpect(view().name("comments/newComment"));
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testInitAddComment() throws Exception {
+		mockMvc.perform(get("/appInfo/{appId}/comments/new", TEST_APP_ID)).andExpect(status().isOk())
+				.andExpect(view().name("comments/newComment"));
+	}
 
-    @WithMockUser("testuser")
-    @Test
-    void testAddCommentSuccess() throws Exception {
-        mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID)
-                .param("title", "Comment1")
-                .param("content", "This is a new comment"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/applications/appInfo/{appId}"));
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testAddCommentSuccess() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).param("title", "Comment1").param("content",
+				"This is a new comment")).andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/applications/appInfo/{appId}"));
+	}
 
-    @WithMockUser("testuser")
-    @Test
-    void testAddCommentHasErrors() throws Exception {
-        mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).with(csrf()).param("title", "Comment1"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeHasErrors("comments"))
-                .andExpect(model().attributeHasFieldErrors("comments", "content"))
-                .andExpect(view().name("comments/newComment"));
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testAddCommentHasErrors() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).with(csrf()).param("title", "Comment1"))
+				.andExpect(status().isOk()).andExpect(model().attributeHasErrors("comments"))
+				.andExpect(model().attributeHasFieldErrors("comments", "content"))
+				.andExpect(view().name("comments/newComment"));
+	}
 
-    @WithMockUser("testuser")
-    @Test
-    void testShowCommentsList() throws Exception {
-        mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID))
-                .andExpect(status().isOk())
-                .andExpect(view().name("comments/listComments"));
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testShowCommentsList() throws Exception {
+		mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID)).andExpect(status().isOk())
+				.andExpect(view().name("comments/listComments"));
+	}
 
-    @WithMockUser("testuser")
-    @Test
-    void testShowCommentsListHasErrors() throws Exception {
-        mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeDoesNotExist("commentss"))
-                .andExpect(view().name("comments/listComments"));
-    }
-
-
+	@WithMockUser("testuser")
+	@Test
+	void testShowCommentsListHasErrors() throws Exception {
+		mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID)).andExpect(status().isOk())
+				.andExpect(model().attributeDoesNotExist("commentss")).andExpect(view().name("comments/listComments"));
+	}
 
 }
-
