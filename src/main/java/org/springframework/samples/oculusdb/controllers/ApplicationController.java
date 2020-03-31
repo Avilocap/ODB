@@ -3,7 +3,6 @@ package org.springframework.samples.oculusdb.controllers;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
@@ -171,17 +170,15 @@ public class ApplicationController {
 		String currentPrincipalName = authentication.getName();
 
 		Application app = new Application();
-		List<Application> favorites = new ArrayList<>();
 		User user = this.userService.userByUsername(currentPrincipalName);
-		favorites = user.getFavorites();
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
 		if (ap.isPresent()) {
 			app = ap.get();
 		}
-		favorites.add(app);
-		user.setFavorites(favorites);
+		user.getFavorites().add(app);
 		userService.saveUser(user);
-		model.addAttribute("favorites", favorites);
+
+		model.addAttribute("favorites", user.getFavorites());
 		return "applications/favorites";
 	}
 

@@ -16,6 +16,7 @@
 
 package org.springframework.samples.oculusdb.system;
 
+import org.assertj.core.util.Lists;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -40,6 +41,7 @@ import org.springframework.samples.oculusdb.controllers.ApplicationController;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.TypeOfApp;
 import org.springframework.samples.oculusdb.model.TypeOfGameplay;
+import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.platform.Platform;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -76,7 +78,7 @@ class ApplicationControllerTests {
 	@MockBean
 	private ApplicationService applicationService;
 
-	private static final int TEST_APPLICATION_ID = 2;
+	private static final int TEST_APPLICATION_ID = 102;
 
 	private Application application1;
 
@@ -86,39 +88,25 @@ class ApplicationControllerTests {
 		mockMvc.perform(get("/applications/list")).andExpect(status().isOk());
 	}
 
-	// @Test
-	// @WithMockUser("testuser")
-	// void listFavs() throws Exception {
-	// mockMvc.perform(get("/applications/favorites")).andExpect(status().isOk());
-	// }
-	//
+	@Test
+	@WithMockUser("testuser")
+	void listFavs() throws Exception {
+		mockMvc.perform(get("/applications/favorites")).andExpect(status().isOk());
+	}
+
 	// @Test
 	// @WithMockUser("testuser")
 	// void favApp() throws Exception {
 	// mockMvc.perform(get("/applications/appInfo/{appId}/favorite",
 	// 9)).andExpect(status().isOk());
 	// }
-	//
+
 	@Test
 	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {
 		mockMvc.perform(get("/applications/appInfo/{appId}", 2)).andExpect(status().isOk());
 	}
 
-	// @Test
-	// void testProcessFindFormSuccess() throws Exception {
-	// given(this.application.findByLastName("")).willReturn(Lists.newArrayList(george,
-	// new User()));
-	// mockMvc.perform(get("/applications")).andExpect(status().isOk()).andExpect(view().name("applications/applicationsList"));
-	// }
-	//
-	// @Test
-	// void testProcessFindFormByLastName() throws Exception {
-	// given(this.applications.findByLastName(george.getLastName())).willReturn(Lists.newArrayList(george));
-	// mockMvc.perform(get("/applications").param("lastName",
-	// "Franklin")).andExpect(status().is3xxRedirection())
-	// .andExpect(view().name("redirect:/applications/" + TEST_OWNER_ID));
-	// }
 	@WithMockUser("testuser")
 	@Test
 	void testProcessFindFormNoAppsFound() throws Exception {
@@ -126,24 +114,13 @@ class ApplicationControllerTests {
 				.andExpect(status().is4xxClientError());
 	}
 
-	// @WithMockUser("testuser")
-	// @Test
-	// void testGetApplication() throws Exception {
-	// mockMvc.perform(get("/applications/get").param("id",
-	// "1368187813209608")).andExpect(status().isOk());
-	// }
+	@WithMockUser("testuser")
+	@Test
+	void testGetApplication() throws Exception {
+		mockMvc.perform(get("/applications/loadGet")
+		).andExpect(view().name("applications/getApplication"));
+	}
 
-	// @WithMockUser("testuser")
-	// @Test
-	// void testInitUpdateAppForm() throws Exception {
-	// mockMvc.perform(get("/applications/appInfo/edit",
-	// TEST_APPLICATION_ID)).andExpect(status().is4xxClientError())
-	// .andExpect(model().attributeExists("application"))
-	// .andExpect(model().attribute("app", hasProperty("name", is("Gravity Sketch"))))
-	// // .andExpect(model().attribute("app", hasProperty("description",
-	// // is(""))))
-	// .andExpect(view().name("applications/createOrUpdateApplicationForm"));
-	// }
 
 	@WithMockUser("testuser")
 	@Test
@@ -161,37 +138,14 @@ class ApplicationControllerTests {
 				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().is2xxSuccessful());
 	}
 
-	// @Test
-	// @WithMockUser("testuser")
-	//
-	// void testInitAddToFavorites() throws Exception {
-	// mockMvc.perform(get("/applications/appInfo/{appId}/favorite",
-	// TEST_APPLICATION_ID)).andExpect(status().isOk())
-	// .andExpect(view().name("applications/favorites"));
-	// }
+	 @Test
+	 @WithMockUser("testuser")
+	 void testPDFexport() throws Exception {
+	 mockMvc.perform(post("/applications/pdf/{appId}",
+	 TEST_APPLICATION_ID)).andExpect(status().is4xxClientError());
+	 }
 
-	// @Test
-	// @WithMockUser("testuser")
-	// void testAddToFavoritesSuccess() throws Exception {
-	// mockMvc.perform(get("/applications/appInfo/{appId}/favorite",
-	// TEST_APPLICATION_ID)).andExpect(status().isOk())
-	// // .andExpect(model().attribute("app", hasProperty("name", is("Gravity
-	// // Sketch"))))
-	// // .andExpect(model().attribute("app", hasProperty("company", is("Gravity
-	// // Sketch"))))
-	// .andExpect(view().name("applications/favorites"));
-	// }
-	//
-	// @Test
-	// @WithMockUser("testuser")
-	// void testAddToFavoritesHasErrors() throws Exception {
-	// mockMvc.perform(get("/applications/appInfo/{appId}/favorite",
-	// TEST_APPLICATION_ID)).andExpect(status().isOk())
-	// .andExpect(model().attribute("app", hasProperty("name", is("FIFA 20"))))
-	// .andExpect(model().attribute("app", hasProperty("company", is("EA SPORTS"))))
-	// .andExpect(view().name("applications/favorites"));
-	// }
-	//
+
 	@Test
 	@WithMockUser("testuser")
 	void testInitDeleteFavorite() throws Exception {
@@ -199,18 +153,14 @@ class ApplicationControllerTests {
 				.andExpect(status().isOk()).andExpect(view().name("applications/favorites"));
 	}
 
-	// @Test
-	// @WithMockUser("testuser")
-	// void testDeleteFavoriteSuccess() throws Exception {
-	// mockMvc.perform(get("/applications/favorites/delete").param("appId",
-	// String.valueOf(TEST_APPLICATION_ID)))
-	// .andExpect(status().isOk())
-	// .andExpect(model().attribute("application", hasProperty("name", is("Gravity
-	// Sketch"))))
-	// .andExpect(model().attribute("application", hasProperty("company", is("Gravity
-	// Sketch"))))
-	// .andExpect(view().name("applications/favorites"));
-	// }
+	 @Test
+	 @WithMockUser("testuser")
+	 void testDeleteFavoriteSuccess() throws Exception {
+	 mockMvc.perform(get("/applications/favorites/delete").param("appId",
+	 String.valueOf(TEST_APPLICATION_ID)))
+	 .andExpect(status().isOk())
+	 .andExpect(view().name("applications/favorites"));
+	 }
 
 	@Test
 	@WithMockUser("testuser")

@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <table class="table table-striped" th:object="${app}">
 
-            <img th:src="*{picture}" th:title="*{name}" class="img-responsive"/>
+            <img alt="header_img" class="img-responsive" th:src="*{picture}" th:title="*{name}"/>
             <h2></h2>
             <h1 style="font-weight: bold; font-size: 3em;" th:text="*{name}"></h1>
 
