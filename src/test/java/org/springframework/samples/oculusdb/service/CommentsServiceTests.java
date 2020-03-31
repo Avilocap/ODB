@@ -99,5 +99,6 @@ public class CommentsServiceTests {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(276);
 		Assertions.assertEquals(0, comments.size());
 	}
+	// TODO Añadir casos negativos
 
 }
