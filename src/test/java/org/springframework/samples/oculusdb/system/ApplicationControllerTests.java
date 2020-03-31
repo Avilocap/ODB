@@ -117,10 +117,8 @@ class ApplicationControllerTests {
 	@WithMockUser("testuser")
 	@Test
 	void testGetApplication() throws Exception {
-		mockMvc.perform(get("/applications/loadGet")
-		).andExpect(view().name("applications/getApplication"));
+		mockMvc.perform(get("/applications/loadGet")).andExpect(view().name("applications/getApplication"));
 	}
-
 
 	@WithMockUser("testuser")
 	@Test
@@ -138,13 +136,11 @@ class ApplicationControllerTests {
 				.param("description", "sadfsdfdsf").param("picture", "3")).andExpect(status().is2xxSuccessful());
 	}
 
-	 @Test
-	 @WithMockUser("testuser")
-	 void testPDFexport() throws Exception {
-	 mockMvc.perform(post("/applications/pdf/{appId}",
-	 TEST_APPLICATION_ID)).andExpect(status().is4xxClientError());
-	 }
-
+	@Test
+	@WithMockUser("testuser")
+	void testPDFexport() throws Exception {
+		mockMvc.perform(post("/applications/pdf/{appId}", TEST_APPLICATION_ID)).andExpect(status().is4xxClientError());
+	}
 
 	@Test
 	@WithMockUser("testuser")
@@ -153,14 +149,12 @@ class ApplicationControllerTests {
 				.andExpect(status().isOk()).andExpect(view().name("applications/favorites"));
 	}
 
-	 @Test
-	 @WithMockUser("testuser")
-	 void testDeleteFavoriteSuccess() throws Exception {
-	 mockMvc.perform(get("/applications/favorites/delete").param("appId",
-	 String.valueOf(TEST_APPLICATION_ID)))
-	 .andExpect(status().isOk())
-	 .andExpect(view().name("applications/favorites"));
-	 }
+	@Test
+	@WithMockUser("testuser")
+	void testDeleteFavoriteSuccess() throws Exception {
+		mockMvc.perform(get("/applications/favorites/delete").param("appId", String.valueOf(TEST_APPLICATION_ID)))
+				.andExpect(status().isOk()).andExpect(view().name("applications/favorites"));
+	}
 
 	@Test
 	@WithMockUser("testuser")
