@@ -60,7 +60,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: dp2
+        ECR_REPOSITORY: Avilocap/ODB
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
