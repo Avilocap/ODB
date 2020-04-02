@@ -52,6 +52,13 @@ public class CommentsControllerTests {
 
 	@WithMockUser("testuser")
 	@Test
+	void testInitAddCommentHasErrors() throws Exception {
+		mockMvc.perform(get("/appInfo/{appId}/commentss/new", TEST_APP_ID))
+				.andExpect(status().is4xxClientError());
+	}
+
+	@WithMockUser("testuser")
+	@Test
 	void testAddCommentSuccess() throws Exception {
 		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).param("title", "Comment1").param("content",
 				"This is a new comment")).andExpect(status().is3xxRedirection())
@@ -69,6 +76,32 @@ public class CommentsControllerTests {
 
 	@WithMockUser("testuser")
 	@Test
+	void testAddCommentHasErrors2() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).with(csrf()).param("content", "New comment"))
+				.andExpect(status().isOk()).andExpect(model().attributeHasErrors("comments"))
+				.andExpect(model().attributeHasFieldErrors("comments", "title"))
+				.andExpect(view().name("comments/newComment"));
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testAddCommentHasErrors3() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID))
+				.andExpect(status().isOk()).andExpect(model().attributeHasErrors("comments"))
+				.andExpect(model().attributeHasFieldErrors("comments", "title"))
+				.andExpect(model().attributeHasFieldErrors("comments", "content"))
+				.andExpect(view().name("comments/newComment"));
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testAddCommentHasErrors4() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", 0))
+				.andExpect(view().name("comments/newComment"));
+	}
+
+	@WithMockUser("testuser")
+	@Test
 	void testShowCommentsList() throws Exception {
 		mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID)).andExpect(status().isOk())
 				.andExpect(view().name("comments/listComments"));
@@ -78,7 +111,17 @@ public class CommentsControllerTests {
 	@Test
 	void testShowCommentsListHasErrors() throws Exception {
 		mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID)).andExpect(status().isOk())
-				.andExpect(model().attributeDoesNotExist("commentss")).andExpect(view().name("comments/listComments"));
+				.andExpect(model().attributeDoesNotExist("commentss"))
+				.andExpect(view().name("comments/listComments"));
 	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testShowCommentsListHasErrors2() throws Exception {
+		mockMvc.perform(get("/appInfo/{appId}/comments/lists", TEST_APP_ID))
+				.andExpect(status().is4xxClientError());
+	}
+
+
 
 }
