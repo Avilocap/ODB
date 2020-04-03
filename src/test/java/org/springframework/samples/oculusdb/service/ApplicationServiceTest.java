@@ -17,6 +17,7 @@ import java.util.*;
 
 @SpringBootTest
 @Transactional
+@SuppressWarnings("deprecation")
 public class ApplicationServiceTest {
 
 	@Autowired
@@ -159,7 +160,7 @@ public class ApplicationServiceTest {
 				(Collection<? extends Application>) this.applicationService.findAll());
 
 		Application app = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(2);
+		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
 		if (ap2.isPresent()) {
 			app = ap2.get();
 		}

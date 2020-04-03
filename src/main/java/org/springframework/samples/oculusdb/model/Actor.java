@@ -17,7 +17,7 @@ public class Actor extends BaseEntity {
 	@Transient
 	private String getPasswordConfirm;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Column(name = "roles")
 	private Set<Role> roles;
 

@@ -27,4 +27,9 @@ public class UserService {
 		this.userRepository.save(user);
 	}
 
+	@Transactional
+	public boolean isAdmin(User user) {
+		return user.getRoles().stream().filter(o -> o.getName().equals("ADMIN")).findFirst().isPresent();
+	}
+
 }

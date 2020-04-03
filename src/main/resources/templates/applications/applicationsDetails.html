@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <table class="table table-striped" th:object="${app}">
 
-            <img th:src="*{picture}" th:title="*{name}" class="img-responsive"/>
+            <img alt="header_img" class="img-responsive" th:src="*{picture}" th:title="*{name}"/>
             <h2></h2>
             <h1 style="font-weight: bold; font-size: 3em;" th:text="*{name}"></h1>
 
@@ -18,12 +18,14 @@
             <h1></h1>
             <a th:href="@{/applications/appInfo/{appId}/favorite(appId=${app.id})}" class="btn btn-default">Add to
                 favorites</a>
-
             <h2></h2>
             <tr>
                 <b th:text="*{description}"></b>
                 <h1></h1>
             </tr>
+            <h2></h2>
+            <a th:href="@{/applications/pdf/__${app.id}__}" class="btn btn-default">Download info on PDF</a>
+            <h1></h1>
             <tr>
                 <th>Release date</th>
                 <td><b th:text="*{releaseDate}"></b></td>

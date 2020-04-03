@@ -36,7 +36,6 @@ class ValidatorTests {
 		assertThat(constraintViolations.size()).isEqualTo(1);
 		ConstraintViolation<Application> violation = constraintViolations.iterator().next();
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("oculusId");
-		assertThat(violation.getMessage()).isEqualTo("must not be empty");
 	}
 
 	@Test
@@ -50,8 +49,6 @@ class ValidatorTests {
 		assertThat(constraintViolations.size()).isEqualTo(1);
 		ConstraintViolation<Comments> violation = constraintViolations.iterator().next();
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("title");
-		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
-
 	}
 
 	@Test
@@ -65,8 +62,6 @@ class ValidatorTests {
 		assertThat(constraintViolations.size()).isEqualTo(1);
 		ConstraintViolation<Comments> violation = constraintViolations.iterator().next();
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("content");
-		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
-
 	}
 
 }

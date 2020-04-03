@@ -16,9 +16,6 @@ public class SponsorServiceTests {
 	@Autowired
 	private SponsorService sponsorService;
 
-	@Autowired
-	private WelcomeController welcomeController;
-
 	@Test
 	public void testId() {
 		int id = 1;
