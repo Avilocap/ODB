@@ -16,7 +16,7 @@
           "containerPort": 80
         }
       ],
-      "command": ["/bin/sh -c “spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar”"],
+      "command": ["/bin/sh -c “sudo docker run -p 80:8080 fargate-app”"],
       "linuxParameters": null,
       "cpu": 0,
       "environment": [],
