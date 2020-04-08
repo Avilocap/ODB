@@ -198,8 +198,4 @@ class ValidatorTests {
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("CVV");
 	}
 
-
-
-
-
 }
