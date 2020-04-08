@@ -4,6 +4,7 @@ package org.springframework.samples.oculusdb.controllers;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
+import org.springframework.samples.oculusdb.category.Category;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.ApplicationService;
@@ -50,6 +51,24 @@ public class ApplicationController {
 		String vista = "applications/listadoAplicaciones";
 		Iterable<Application> applications = applicationService.findAll();
 		modelMap.addAttribute("applications", applications);
+		return vista;
+
+	}
+
+	@GetMapping("/listOrd")
+	public String listadoAplicacionesOrd(final ModelMap modelMap) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isAdmin(user)) {
+			modelMap.addAttribute("admin", true);
+		}
+		String vista = "applications/listadoAplicaciones";
+		Iterable<Application> applications = applicationService.findAll();
+		List<Application> applications3 = (List<Application>) applications;
+
+		Collections.sort(applications3, (a1, a2) -> a1.getCategory().getId().compareTo(a2.getCategory().getId()));
+		modelMap.addAttribute("applications", applications3);
 		return vista;
 
 	}
