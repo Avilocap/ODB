@@ -10,6 +10,7 @@
             <a  th:href="@{loadGet}">Get New</a>
         </button>
         <h1></h1>
+        <a th:href="@{/applications/listOrd}" class="btn btn-default">Sort by Category</a>
         <table id="app" class="table table-striped">
         <thead>
         <tr>
@@ -17,6 +18,7 @@
             <th style="width: 150px;">Picture</th>
             <th style="width: 150px;">Release date</th>
             <th style="width: 150px;">Price (€)</th>
+            <th style="width: 150px;">Category</th>
             <th style="width: 150px;">Company</th>
             <th style="width: 150px;">Get PDF</th>
         </tr>
@@ -29,6 +31,7 @@
               <td><img th:src="${app.picture}" title="app_img" class="img-responsive"/></td>
               <td th:text="${app.releaseDate}"></td>
               <td th:text="${app.price}"></td>
+              <td th:text="${app.category}"></td>
               <td th:text="${app.company}"></td>
               <td text="Export">
                   <a th:href="@{/applications/pdf/__${app.id}__}">Download</a>
