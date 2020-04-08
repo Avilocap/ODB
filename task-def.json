@@ -16,7 +16,7 @@
           "containerPort": 80
         }
       ],
-      "command": [],
+      "command": ["/bin/sh -c “java -jar oculusdb-2.2.0.jar”"],
       "linuxParameters": null,
       "cpu": 0,
       "environment": [],
