@@ -13,7 +13,7 @@
         {
           "hostPort": 80,
           "protocol": "tcp",
-          "containerPort": 80
+          "containerPort": 8080
         }
       ],
       "command": [" /bin/sh -c “java -jar spring-oculusdb-2.2.0.BUILD-SNAPSHOT.jar”"],
