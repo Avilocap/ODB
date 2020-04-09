@@ -11,6 +11,9 @@ public class User extends Actor {
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Application> favorites;
 
+	@Column(name = "premium")
+	private boolean premium;
+
 	public List<Application> getFavorites() {
 		return favorites;
 	}
@@ -37,6 +40,14 @@ public class User extends Actor {
 
 	public String getGetPasswordConfirm() {
 		return super.getGetPasswordConfirm();
+	}
+
+	public boolean isPremium() {
+		return premium;
+	}
+
+	public void setPremium(boolean premium) {
+		this.premium = premium;
 	}
 
 }
