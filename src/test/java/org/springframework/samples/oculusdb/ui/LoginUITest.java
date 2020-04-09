@@ -46,16 +46,16 @@ public class LoginUITest {
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
 
-//	@Test
-//	public void testLogin() throws Exception {
-//		driver.get("http://localhost:8080/login");
-//		driver.findElement(By.name("username")).clear();
-//		driver.findElement(By.name("username")).sendKeys("testuser");
-//		driver.findElement(By.name("password")).click();
-//		driver.findElement(By.name("password")).clear();
-//		driver.findElement(By.name("password")).sendKeys("testuser");
-//		driver.findElement(By.xpath("//input[@type='submit']")).click();
-//	}
+	// @Test
+	// public void testLogin() throws Exception {
+	// driver.get("http://localhost:8080/login");
+	// driver.findElement(By.name("username")).clear();
+	// driver.findElement(By.name("username")).sendKeys("testuser");
+	// driver.findElement(By.name("password")).click();
+	// driver.findElement(By.name("password")).clear();
+	// driver.findElement(By.name("password")).sendKeys("testuser");
+	// driver.findElement(By.xpath("//input[@type='submit']")).click();
+	// }
 
 	@Test
 	public void testListApplicationsUI() throws Exception {
@@ -71,7 +71,7 @@ public class LoginUITest {
 	}
 
 	@Test
-	public void testPaymentUI(){
+	public void testPaymentUI() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
 		driver.findElement(By.name("number")).sendKeys("4766649212071864");
@@ -86,7 +86,7 @@ public class LoginUITest {
 	}
 
 	@Test
-	public void testAddCommentUI(){
+	public void testAddCommentUI() {
 		driver.get("http://localhost:8080/applications/appInfo/100");
 		driver.findElement(By.id("addCom")).click();
 		driver.findElement(By.name("title")).clear();
@@ -97,8 +97,6 @@ public class LoginUITest {
 		Assert.assertTrue(driver.findElement(By.xpath("/html/body/div/div/div[3]/table/tbody/tr/td[1]")).isDisplayed());
 
 	}
-
-
 
 	@AfterEach
 	public void tearDown() throws Exception {
