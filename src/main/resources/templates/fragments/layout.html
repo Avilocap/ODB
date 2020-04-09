@@ -55,7 +55,7 @@
 
 
                 <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()"
+                    <a sec:authorize="isAuthenticated()" id="appList"
                        th:href="@{/applications/list}">Applications</a>
                 </li>
 
@@ -64,7 +64,7 @@
                        th:href="@{/applications/favorites}">Favorites</a>
                 </li>
                 <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()"
+                    <a sec:authorize="isAuthenticated()" id="paym"
                        th:href="@{/creditCard/new}">Payment</a>
                 </li>
                 <li class="nav-item">
