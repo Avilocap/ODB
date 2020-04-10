@@ -65,7 +65,10 @@
                     <a sec:authorize="isAuthenticated()"
                        th:href="@{/applications/favorites}">Favorites</a>
                 </li>
-
+                <li class="nav-item">
+                    <a sec:authorize="hasRole('ADMIN')" id="userList"
+                       th:href="@{/users/list}">User list</a>
+                </li>
 <!--                <th:block th:with="auth=${#authentication.getPrincipal()}">-->
 <!--                    <p th:text="${auth ? auth.premium : 'false'}">Phone</p>-->
 <!--                </th:block>-->
