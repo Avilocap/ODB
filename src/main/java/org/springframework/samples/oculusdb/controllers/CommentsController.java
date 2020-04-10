@@ -1,9 +1,5 @@
 package org.springframework.samples.oculusdb.controllers;
 
-import java.util.Optional;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.model.Application;
@@ -12,10 +8,10 @@ import org.springframework.samples.oculusdb.services.CommentsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class CommentsController {
@@ -69,6 +65,17 @@ public class CommentsController {
 			app.getComments().add(comment1);
 			return "redirect:/applications/appInfo/{appId}";
 		}
+
+	}
+
+	@RequestMapping(value = "/comments/delete")
+	public String borrarComentario(@RequestParam("commentId") int commentId) {
+		Comments c = this.commentsService.findCommentById(commentId).get();
+		Application a = c.getApplication();
+		a.getComments().removeIf(x -> c.getId() == commentId);
+		this.applicationService.saveApplication(a);
+		this.commentsService.deleteComment(c);
+		return "applications/todoOk";
 
 	}
 

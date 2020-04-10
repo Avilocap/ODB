@@ -101,6 +101,9 @@
         <tr th:each="comments : ${app.comments}">
             <td th:text="${comments.title}"></td>
             <td th:text="${comments.content}"></td>
+            <td>
+                <a th:href="@{/comments/delete(commentId=${comments.id})}">Delete comment</a>
+            </td>
         </tr>
         </tbody>
     </table>
