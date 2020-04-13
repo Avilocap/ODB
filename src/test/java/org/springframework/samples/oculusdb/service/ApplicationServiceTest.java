@@ -157,17 +157,18 @@ public class ApplicationServiceTest {
 
 	@Test
 	void shouldDeleteApp() {
-		Collection<Application> applications = new HashSet<>(
+		List<Application> applications = new ArrayList<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 
 		Application app = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(113);
+		Optional<Application> ap2 = this.applicationService.findApplicationById(applications.get(0).getId());
 		if (ap2.isPresent()) {
 			app = ap2.get();
 		}
 
 		this.applicationService.deleteApplication(app);
-		Assertions.assertSame(this.applicationService.findApplicationById(113), Optional.empty());
+		Assertions.assertSame(this.applicationService.findApplicationById(applications.get(0).getId()),
+				Optional.empty());
 
 	}
 

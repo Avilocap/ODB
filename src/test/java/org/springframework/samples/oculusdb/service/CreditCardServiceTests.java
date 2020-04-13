@@ -22,9 +22,6 @@ public class CreditCardServiceTests {
 	@Autowired
 	private CreditCardService creditCardService;
 
-	@Autowired
-	private UserService userService;
-
 	int randomCreditCardNumber = (int) 5489018195186573L;
 
 	@Test
@@ -67,10 +64,36 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
+	public void createCreditCardBadYearPastToActual() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(123);
+		creditCard.setExpirationMonth(12);
+		creditCard.setExpirationYear(new Date(System.currentTimeMillis() - 100).getYear() - 5);
+		creditCard.setNumber(randomCreditCardNumber + 2);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(!res);
+	}
+
+	@Test
 	public void createCreditCardBadMonth() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth() + 33);
+		creditCard.setExpirationYear(new Date(System.currentTimeMillis() - 100).getYear());
+		creditCard.setNumber(randomCreditCardNumber + 3);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void createCreditCardBadMonthCloseToActual() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(123);
+		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth() - 1);
 		creditCard.setExpirationYear(new Date(System.currentTimeMillis() - 100).getYear());
 		creditCard.setNumber(randomCreditCardNumber + 3);
 		creditCard.setHolderName("Pepito el de los palotes");
