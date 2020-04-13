@@ -5,18 +5,91 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.samples.oculusdb.model.CreditCard;
+import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.CreditCardService;
+import org.springframework.samples.oculusdb.services.UserService;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import javax.xml.crypto.Data;
+import java.util.*;
 
 @SpringBootTest
+@Transactional
 public class CreditCardServiceTests {
 
 	@Autowired
 	private CreditCardService creditCardService;
 
+	@Autowired
+	private UserService userService;
+
+	int randomCreditCardNumber = (int) 5489018195186573L;
+
 	@Test
-	public void testCount() {
-		int count = this.creditCardService.creditCardCount();
-		Assertions.assertTrue(count > 0);
+	public void createCreditCardOk0() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(123);
+		creditCard.setExpirationMonth(12);
+		creditCard.setExpirationYear(2022);
+		creditCard.setNumber(randomCreditCardNumber);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(res);
+	}
+
+	@Test
+	public void createCreditCardOk1() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(452);
+		creditCard.setExpirationMonth(4);
+		creditCard.setExpirationYear(2050);
+		creditCard.setNumber(randomCreditCardNumber + 1);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(res);
+	}
+
+	@Test
+	public void createCreditCardBadYear() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(123);
+		creditCard.setExpirationMonth(12);
+		creditCard.setExpirationYear(1976);
+		creditCard.setNumber(randomCreditCardNumber + 2);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void createCreditCardBadMonth() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(123);
+		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth() + 33);
+		creditCard.setExpirationYear(new Date(System.currentTimeMillis() - 100).getYear());
+		creditCard.setNumber(randomCreditCardNumber + 3);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void createCreditCardAboutToExpire() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCVV(123);
+		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth());
+		creditCard.setExpirationYear(new Date(System.currentTimeMillis() - 100).getYear());
+		creditCard.setNumber(randomCreditCardNumber + 4);
+		creditCard.setHolderName("Pepito el de los palotes");
+		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
+				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		Assert.isTrue(!res);
 	}
 
 }

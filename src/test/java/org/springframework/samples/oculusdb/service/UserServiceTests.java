@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.UserService;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
+@Transactional
 public class UserServiceTests {
 
 	@Autowired

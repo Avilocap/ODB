@@ -8,9 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.samples.oculusdb.services.SponsorService;
 import org.springframework.samples.oculusdb.sponsor.Sponsor;
 import org.springframework.samples.oculusdb.system.WelcomeController;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-
+@Transactional
 public class SponsorServiceTests {
 
 	@Autowired
