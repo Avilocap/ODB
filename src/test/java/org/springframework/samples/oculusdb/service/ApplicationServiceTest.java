@@ -12,6 +12,7 @@ import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.*;
 
@@ -160,16 +161,13 @@ public class ApplicationServiceTest {
 				(Collection<? extends Application>) this.applicationService.findAll());
 
 		Application app = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
+		Optional<Application> ap2 = this.applicationService.findApplicationById(113);
 		if (ap2.isPresent()) {
 			app = ap2.get();
 		}
 
 		this.applicationService.deleteApplication(app);
-		Collection<Application> applications2 = new HashSet<>(
-				(Collection<? extends Application>) this.applicationService.findAll());
-
-		Assertions.assertEquals(applications.size() - 1, applications2.size());
+		Assertions.assertSame(this.applicationService.findApplicationById(113), Optional.empty());
 
 	}
 
