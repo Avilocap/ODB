@@ -220,7 +220,7 @@ INSERT IGNORE INTO reviews VALUES (3, 'incredible videogame', 207, '17/01/2020',
 
 --Sponsor
 
-INSERT IGNORE INTO oculusdb.sponsors(id,username,password,name,surname,email) VALUES (1,'miguel','miguel','Miguel', 'López', 'miguel1@Miguel');
+INSERT IGNORE INTO oculusdb.sponsors (id, email, name, password, surname, username, premium, credit_card_id) values (1, 'miguel1@Miguel', 'Miguel', 'miguel', 'López', 'miguel', 'true', 3);
 -- INSERT IGNORE INTO sponsors_roles(sponsor_id,roles_id) VALUES (1,4);
 
 --Sponsorship
