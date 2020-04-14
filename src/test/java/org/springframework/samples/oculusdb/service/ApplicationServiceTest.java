@@ -12,6 +12,7 @@ import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.*;
 
@@ -144,32 +145,47 @@ public class ApplicationServiceTest {
 	void findAllApplicationsInitialData() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
-		Assertions.assertEquals(13, applications.size());
+		Assertions.assertTrue(applications.size() >= 1);
 	}
 
 	@Test
 	void findAllApplicationsHasErrors() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
-		Assertions.assertNotEquals(257, applications.size());
+		Assertions.assertNotEquals(23457, applications.size());
 	}
 
 	@Test
 	void shouldDeleteApp() {
-		Collection<Application> applications = new HashSet<>(
+		List<Application> applications = new ArrayList<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 
 		Application app = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
+		Optional<Application> ap2 = this.applicationService.findApplicationById(applications.get(0).getId());
 		if (ap2.isPresent()) {
 			app = ap2.get();
 		}
 
 		this.applicationService.deleteApplication(app);
-		Collection<Application> applications2 = new HashSet<>(
-				(Collection<? extends Application>) this.applicationService.findAll());
+		Assertions.assertSame(this.applicationService.findApplicationById(applications.get(0).getId()),
+				Optional.empty());
 
-		Assertions.assertEquals(applications.size() - 1, applications2.size());
+	}
+
+	@Test
+	void shouldDeleteMultipleApps() {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+
+		Application app0 = apps.get(0);
+		int idOfApp0 = app0.getId();
+		Application app1 = apps.get(1);
+		int idOfApp1 = app1.getId();
+
+		this.applicationService.deleteApplication(app0);
+		this.applicationService.deleteApplication(app1);
+
+		Assertions.assertSame(this.applicationService.findApplicationById(idOfApp0), Optional.empty());
+		Assertions.assertSame(this.applicationService.findApplicationById(idOfApp1), Optional.empty());
 
 	}
 

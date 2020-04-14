@@ -1,20 +1,16 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.application.Reviews;
 import org.springframework.samples.oculusdb.category.Category;
 import org.springframework.samples.oculusdb.platform.Platform;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Collection;
-
-import javax.persistence.*;
-import javax.transaction.Transactional;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "application")
@@ -96,7 +92,7 @@ public class Application extends BaseEntity {
 	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
 	private Collection<Reviews> reviewsCollection;
 
-	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "application", fetch = FetchType.EAGER)
 	private Collection<Comments> comments;
 
 	public String getOculusId() {

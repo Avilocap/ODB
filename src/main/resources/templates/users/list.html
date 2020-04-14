@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+
+  <body>
+    <div class="col-md-12">
+        <h2>Applications</h2>
+        <table id="app" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 200px;">Name</th>
+            <th style="width: 150px;">Surname</th>
+            <th style="width: 150px;">Set as Sponsor</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="user : ${users}">
+              <td th:text="${user.name}"></td>
+              <td th:text="${user.surname}"></td>
+              <td text="Set as Sponsor">
+                  <a th:href="@{/users/setSponsor/__${user.username}__}">Set as Sponsor</a>
+                  <span th:if="${users.roles != SPONSOR}" >Static summary</span>
+
+              </td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+  </body>
+</html>
+
+

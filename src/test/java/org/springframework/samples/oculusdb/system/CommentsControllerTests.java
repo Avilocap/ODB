@@ -53,8 +53,7 @@ public class CommentsControllerTests {
 	@WithMockUser("testuser")
 	@Test
 	void testInitAddCommentHasErrors() throws Exception {
-		mockMvc.perform(get("/appInfo/{appId}/commentss/new", TEST_APP_ID))
-				.andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/appInfo/{appId}/commentss/new", TEST_APP_ID)).andExpect(status().is4xxClientError());
 	}
 
 	@WithMockUser("testuser")
@@ -86,8 +85,8 @@ public class CommentsControllerTests {
 	@WithMockUser("testuser")
 	@Test
 	void testAddCommentHasErrors3() throws Exception {
-		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID))
-				.andExpect(status().isOk()).andExpect(model().attributeHasErrors("comments"))
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID)).andExpect(status().isOk())
+				.andExpect(model().attributeHasErrors("comments"))
 				.andExpect(model().attributeHasFieldErrors("comments", "title"))
 				.andExpect(model().attributeHasFieldErrors("comments", "content"))
 				.andExpect(view().name("comments/newComment"));
@@ -96,8 +95,7 @@ public class CommentsControllerTests {
 	@WithMockUser("testuser")
 	@Test
 	void testAddCommentHasErrors4() throws Exception {
-		mockMvc.perform(post("/appInfo/{appId}/comments/new", 0))
-				.andExpect(view().name("comments/newComment"));
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", 0)).andExpect(view().name("comments/newComment"));
 	}
 
 	@WithMockUser("testuser")
@@ -111,17 +109,13 @@ public class CommentsControllerTests {
 	@Test
 	void testShowCommentsListHasErrors() throws Exception {
 		mockMvc.perform(get("/appInfo/{appId}/comments/list", TEST_APP_ID)).andExpect(status().isOk())
-				.andExpect(model().attributeDoesNotExist("commentss"))
-				.andExpect(view().name("comments/listComments"));
+				.andExpect(model().attributeDoesNotExist("commentss")).andExpect(view().name("comments/listComments"));
 	}
 
 	@WithMockUser("testuser")
 	@Test
 	void testShowCommentsListHasErrors2() throws Exception {
-		mockMvc.perform(get("/appInfo/{appId}/comments/lists", TEST_APP_ID))
-				.andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/appInfo/{appId}/comments/lists", TEST_APP_ID)).andExpect(status().is4xxClientError());
 	}
-
-
 
 }

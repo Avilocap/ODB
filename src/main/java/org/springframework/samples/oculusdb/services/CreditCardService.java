@@ -13,7 +13,6 @@ import java.util.Date;
 @Service
 public class CreditCardService {
 
-	@Autowired
 	private CreditCardRepository creditCardRepository;
 
 	@Transactional
@@ -35,6 +34,9 @@ public class CreditCardService {
 		int monthAct = new Date(System.currentTimeMillis()).getMonth();
 		if (expirationYear == yearAct) {
 			res = true;
+		}
+		else if (expirationMonth >= 13) {
+			res = false;
 		}
 		else
 			res = expirationYear >= yearAct;

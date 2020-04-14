@@ -18,6 +18,9 @@ public class Sponsor extends Actor {
 	@OneToOne
 	private CreditCard creditCard;
 
+	@Column(name = "premium")
+	private boolean premium;
+
 	public Collection<Sponsorship> getSponsorships() {
 		return sponsorships;
 	}
@@ -37,6 +40,14 @@ public class Sponsor extends Actor {
 	@Override
 	public String toString() {
 		return "Sponsor{" + "sponsorships=" + sponsorships + ", creditCard=" + creditCard + '}';
+	}
+
+	public boolean isPremium() {
+		return premium;
+	}
+
+	public void setPremium(boolean premium) {
+		this.premium = premium;
 	}
 
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'applications')}">
+
+  <body>
+    <div class="col-md-12">
+        <h2>Applications</h2>
+        <table id="app" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 200px;">Title</th>
+            <th style="width: 150px;">AttachmentURL</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="sponsorship : ${sponsorships}">
+              <td th:text="${sponsorship.title}"></td>
+              <td th:text="${sponsorship.attachmentURL}"></td>
+<!--              <td text="Set as Sponsor">-->
+<!--                  <a th:href="@{/users/setSponsor/__${user.username}__}">Set as Sponsor</a>-->
+<!--              </td>-->
+          </tr>
+        </tbody>
+    </table>
+    </div>
+  </body>
+</html>
+
+

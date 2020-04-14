@@ -21,12 +21,12 @@ INSERT IGNORE INTO role VALUES (3,'SPONSOR');
 INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (2, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (3, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (4, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (5, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel');
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username) VALUES (6, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david');
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (2, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (3, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (4, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (5, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (6, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david',false);
 
 --Users roles
 
@@ -191,25 +191,26 @@ INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, u
 INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
 
-INSERT IGNORE INTO comments VALUES (1, 'This game is awesome!', 'Perfect', 1);
-INSERT IGNORE INTO comments VALUES (2, 'This game is a shit', 'Bad', 3);
-INSERT IGNORE INTO comments VALUES (3, 'Best game in the world', 'Incredible', 2);
-INSERT IGNORE INTO comments VALUES (4, 'I think that is a very good game', 'Very good', 2);
-INSERT IGNORE INTO comments VALUES (5, 'I regret buying it', 'Bad', 3);
-INSERT IGNORE INTO comments VALUES (6, 'Very good game', 'Very good', 4);
-INSERT IGNORE INTO comments VALUES (7, 'I did not like it to much', 'Regular', 2);
-INSERT IGNORE INTO comments VALUES (8, 'The best game ever!', 'Perfect', 4);
-INSERT IGNORE INTO comments VALUES (9, 'What a scam', 'Very bad', 5);
-INSERT IGNORE INTO comments VALUES (10, 'Awesome!!', 'Incredible', 6);
-INSERT IGNORE INTO comments VALUES (11, 'Disappointing the truth', 'Bad', 5);
-INSERT IGNORE INTO comments VALUES (12, 'To play all day!', 'Perfect', 7);
-INSERT IGNORE INTO comments VALUES (13, 'I dont like', 'Bad', 8);
-INSERT IGNORE INTO comments VALUES (14, '...', 'Regular', 9);
+INSERT IGNORE INTO comments VALUES (1001, 'This game is awesome!', 'Perfect', 100, 1);
+INSERT IGNORE INTO comments VALUES (1002, 'This game is a shit', 'Bad', 101, 1);
+INSERT IGNORE INTO comments VALUES (1003, 'Best game in the world', 'Incredible', 102, 2);
+INSERT IGNORE INTO comments VALUES (1004, 'I think that is a very good game', 'Very good', 103, 3);
+INSERT IGNORE INTO comments VALUES (1005, 'I regret buying it', 'Bad', 104, 4);
+INSERT IGNORE INTO comments VALUES (1006, 'Very good game', 'Very good', 105, 5);
+INSERT IGNORE INTO comments VALUES (1007, 'I did not like it to much', 'Regular', 106, 6);
+INSERT IGNORE INTO comments VALUES (1008, 'The best game ever!', 'Perfect', 107, 1);
+INSERT IGNORE INTO comments VALUES (1009, 'What a scam', 'Very bad', 108, 2);
+INSERT IGNORE INTO comments VALUES (10010, 'Awesome!!', 'Incredible', 109, 3);
+INSERT IGNORE INTO comments VALUES (10011, 'Disappointing the truth', 'Bad', 110, 4);
+INSERT IGNORE INTO comments VALUES (10012, 'To play all day!', 'Perfect', 111, 5);
+INSERT IGNORE INTO comments VALUES (10013, 'I dont like', 'Bad', 112, 6);
+INSERT IGNORE INTO comments VALUES (10014, '...', 'Regular', 113, 1);
+
 
 --Developer
 
 INSERT IGNORE INTO oculusdb.developer(id,username,password,name,surname,email,company,webpage,company_description) VALUES (1,'miguel','miguel','Miguel', 'López', 'miguel1@Miguel','Microsoft','http://www.microsoft.com','Be whats next');
-INSERT IGNORE INTO developer_roles(developer_id,roles_id) VALUES (1,3);
+-- INSERT IGNORE INTO developer_roles(developer_id,roles_id) VALUES (1,3);
 
 --Reviews
 
@@ -219,8 +220,8 @@ INSERT IGNORE INTO reviews VALUES (3, 'incredible videogame', 207, '17/01/2020',
 
 --Sponsor
 
-INSERT IGNORE INTO oculusdb.sponsors(id,username,password,name,surname,email) VALUES (1,'miguel','miguel','Miguel', 'López', 'miguel1@Miguel');
-INSERT IGNORE INTO sponsors_roles(sponsor_id,roles_id) VALUES (1,4);
+INSERT IGNORE INTO oculusdb.sponsors (id, email, name, password, surname, username, premium, credit_card_id) values (1, 'miguel1@Miguel', 'Miguel', 'miguel', 'López', 'miguel', 'true', 3);
+-- INSERT IGNORE INTO sponsors_roles(sponsor_id,roles_id) VALUES (1,4);
 
 --Sponsorship
 
