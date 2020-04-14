@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.samples.oculusdb.services.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
+@Transactional
 public class CategoryServiceTests {
 
 	@Autowired
@@ -16,7 +18,7 @@ public class CategoryServiceTests {
 	@Test
 	public void testCount() {
 		int count = this.categoryService.categoryCount();
-		Assertions.assertTrue(count > 0);
+		Assertions.assertTrue(count >= 1);
 	}
 
 }

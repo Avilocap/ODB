@@ -1,6 +1,8 @@
 
 package org.springframework.samples.oculusdb.service;
 
+import org.json.JSONException;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +11,15 @@ import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.services.CommentsService;
-import org.w3c.dom.Comment;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
+@Transactional
 public class CommentsServiceTests {
 
 	@Autowired
@@ -26,19 +31,22 @@ public class CommentsServiceTests {
 	@Test
 	public void testCount() {
 		int count = this.commentsService.commentsCount();
-		Assertions.assertTrue(count >= 0);
+		Assertions.assertTrue(count >= 1);
 	}
+
+	int randomIdAppendix = 425245;
 
 	@Test
 	public void shouldAddNewCommentForApplication() {
 
 		Application app2 = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
+		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
+		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId());
+
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
 		}
 
-		int found = app2.getComments().size();
 		Comments comment = new Comments();
 		app2.addComment(comment);
 		comment.setTitle("jajaaj");
@@ -49,14 +57,15 @@ public class CommentsServiceTests {
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
 		}
-		Assertions.assertEquals(found + 1, app2.getComments().size());
+		Assertions.assertEquals(1, app2.getComments().size());
 	}
 
 	@Test
 	void shouldAddCommentWithAppId() {
 
 		Application app2 = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
+		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
+		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId());
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
 		}
@@ -67,13 +76,109 @@ public class CommentsServiceTests {
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
-		Assertions.assertEquals(101, comment.getApplication().getId());
+		Assertions.assertEquals(apps.get(2).getId(), comment.getApplication().getId());
 	}
 
 	@Test
 	void AddCommentWithRandomAppId() {
 		Application app2 = new Application();
-		Optional<Application> ap2 = this.applicationService.findApplicationById(276);
+		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
+		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId());
+		if (ap2.isPresent()) {
+			app2 = ap2.get();
+			Comments comment = new Comments();
+			app2.addComment(comment);
+			comment.setTitle("jajaaj");
+			comment.setContent("this is a new comment");
+			this.commentsService.saveComment(comment);
+		}
+		else {
+			app2 = null;
+		}
+		Assertions.assertNotNull(app2);
+	}
+
+	@Test
+	void shouldFindCommentByAppId() {
+		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(101);
+		Assertions.assertTrue(comments.size() >= 1);
+	}
+
+	@Test
+	void FindCommentByRandomAppId() {
+		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
+		Collection<Comments> comments = (Collection<Comments>) this.commentsService
+				.findAllByAplicationId(apps.get(0).getId());
+		Assertions.assertTrue(comments.size() >= 1);
+	}
+
+	@Test
+	void FindCommentByRandomAppIdNegative() {
+		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
+		Application app = apps.get(0);
+		Collection<Comments> comments = app.getComments();
+		app.getComments().removeAll(comments);
+		this.applicationService.saveApplication(app);
+		Collection<Comments> commentsFinal = (Collection<Comments>) this.commentsService
+				.findAllByAplicationId(app.getId() + randomIdAppendix);
+		Assert.assertEquals(0, commentsFinal.size());
+
+	}
+
+	@Test
+	public void shouldAddNewCommentForApplicationNegative() {
+		Assertions.assertThrows(NullPointerException.class, () -> {
+
+			Application app2 = new Application();
+			List<Application> apps = new ArrayList<>(
+					(Collection<? extends Application>) this.applicationService.findAll());
+			Optional<Application> ap2 = this.applicationService
+					.findApplicationById(apps.get(2).getId() + randomIdAppendix);
+			if (ap2.isPresent()) {
+				app2 = ap2.get();
+			}
+
+			Comments comment = new Comments();
+			app2.addComment(comment);
+			comment.setTitle("jajaaj");
+			comment.setContent("this is a new comment");
+			this.commentsService.saveComment(comment);
+
+			ap2 = this.applicationService.findApplicationById(apps.get(2).getId() + randomIdAppendix);
+			if (ap2.isPresent()) {
+				ap2.get();
+			}
+		});
+	}
+
+	@Test
+	void shouldAddCommentWithAppIdNegative() {
+		Assertions.assertThrows(NullPointerException.class, () -> {
+
+			Application app2 = new Application();
+			List<Application> apps = new ArrayList<>(
+					(Collection<? extends Application>) this.applicationService.findAll());
+			Optional<Application> ap2 = this.applicationService
+					.findApplicationById(apps.get(2).getId() + randomIdAppendix);
+			if (ap2.isPresent()) {
+				app2 = ap2.get();
+			}
+
+			Comments comment = new Comments();
+			app2.addComment(comment);
+			comment.setTitle("jajaaj");
+			comment.setContent("this is a new comment");
+			this.commentsService.saveComment(comment);
+
+		});
+
+	}
+
+	@Test
+	void AddCommentWithRandomAppIdNegative() {
+		Application app2 = new Application();
+		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
+		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId() + randomIdAppendix);
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
 			Comments comment = new Comments();
@@ -87,20 +192,6 @@ public class CommentsServiceTests {
 		}
 		Assertions.assertNull(app2);
 	}
-
-	@Test
-	void shouldFindCommentByAppId() {
-		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(101);
-		Assertions.assertEquals(2, comments.size());
-
-	}
-
-	@Test
-	void FindCommentByRandomAppId() {
-		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(276);
-		Assertions.assertEquals(0, comments.size());
-	}
-	// TODO Añadir casos negativos
 
 	/*
 	@Test
