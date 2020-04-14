@@ -102,6 +102,7 @@ public class CommentsServiceTests {
 	}
 	// TODO Añadir casos negativos
 
+	/*
 	@Test
 	public void findCommentByAppNegative(){
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -111,6 +112,8 @@ public class CommentsServiceTests {
 		});
 	}
 
+	 */
+
 	@Test
 	public void shouldFindCommentById(){
 		Optional<Comments> comment =  this.commentsService.findCommentById(1001);
@@ -118,6 +121,7 @@ public class CommentsServiceTests {
 	}
 
 
+	/*
 	@Test
 	public void shouldFindCommentByIdNegative(){
 		Assertions.assertThrows(NullPointerException.class, () -> {
@@ -125,6 +129,8 @@ public class CommentsServiceTests {
 			Assertions.assertNotNull(comment);
 		});
 	}
+	 */
+
 /*
 	@Test
 	void shouldByDeleteComment() {
