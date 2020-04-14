@@ -103,6 +103,11 @@ public class CommentsServiceTests {
 		Assertions.assertTrue(comments.size() >= 1);
 	}
 
+	@Test public void findCommentByAppIdNegative(){
+		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(38282383);
+		Assertions.assertTrue(comments.isEmpty());
+	}
+
 	@Test
 	void FindCommentByRandomAppId() {
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
@@ -193,10 +198,7 @@ public class CommentsServiceTests {
 	}
 
 
-	 @Test public void findCommentByAppNegative(){
-	 Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(38282383);
-	 Assertions.assertTrue(comments.isEmpty());
-	 }
+
 
 
 
@@ -225,6 +227,21 @@ public class CommentsServiceTests {
 
 		Collection<Comments> comments2 = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
 		Assertions.assertEquals(comments.size() - 1, comments2.size());
+	}
+
+	@Test
+	void shouldByDeleteCommentNegative() {
+		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
+		Optional<Comments> comment = this.commentsService.findCommentById(100000000);
+
+		Comments comment1 = new Comments();
+		if (comment.isPresent()) {
+			comment1 = comment.get();
+		}
+		this.commentsService.deleteComment(comment1);
+
+		Collection<Comments> comments2 = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
+		Assertions.assertNotEquals(comments.size() - 1, comments2.size());
 	}
 
 }
