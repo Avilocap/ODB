@@ -1,7 +1,6 @@
 
 package org.springframework.samples.oculusdb.service;
 
-import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -193,50 +192,39 @@ public class CommentsServiceTests {
 		Assertions.assertNull(app2);
 	}
 
-	/*
-	@Test
-	public void findCommentByAppNegative(){
-		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(38282383);
-			Assertions.assertNotNull(comments);
 
-		});
-	}
+	 @Test public void findCommentByAppNegative(){
+	 Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(38282383);
+	 Assertions.assertTrue(comments.isEmpty());
+	 }
 
-	 */
+
 
 	@Test
-	public void shouldFindCommentById(){
-		Optional<Comments> comment =  this.commentsService.findCommentById(1001);
+	public void shouldFindCommentById() {
+		Optional<Comments> comment = this.commentsService.findCommentById(1001);
 		Assertions.assertNotNull(comment);
 	}
 
-
-	/*
 	@Test
-	public void shouldFindCommentByIdNegative(){
-		Assertions.assertThrows(NullPointerException.class, () -> {
-			Optional<Comments> comment = this.commentsService.findCommentById(100001);
-			Assertions.assertNotNull(comment);
-		});
+	public void shouldFindCommentByIdNegative() {
+		Optional<Comments> comment = this.commentsService.findCommentById(100001);
+		Assertions.assertFalse(comment.isPresent());
 	}
-	 */
 
-/*
 	@Test
 	void shouldByDeleteComment() {
-		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(101);
-		Optional<Comments> comment = this.commentsService.findCommentById(101);
+		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
+		Optional<Comments> comment = this.commentsService.findCommentById(1001);
 
 		Comments comment1 = new Comments();
 		if (comment.isPresent()) {
-			comment1= comment.get();
+			comment1 = comment.get();
 		}
 		this.commentsService.deleteComment(comment1);
 
-		Collection<Comments> comments2 = (Collection<Comments>) this.commentsService.findAllByAplicationId(101);
-		Assertions.assertEquals(comments.size()-1, comments2.size());
+		Collection<Comments> comments2 = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
+		Assertions.assertEquals(comments.size() - 1, comments2.size());
 	}
 
- */
 }
