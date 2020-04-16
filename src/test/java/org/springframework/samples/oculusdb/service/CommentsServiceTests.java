@@ -103,7 +103,8 @@ public class CommentsServiceTests {
 		Assertions.assertTrue(comments.size() >= 1);
 	}
 
-	@Test public void findCommentByAppIdNegative(){
+	@Test
+	public void findCommentByAppIdNegative() {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(38282383);
 		Assertions.assertTrue(comments.isEmpty());
 	}
@@ -196,11 +197,6 @@ public class CommentsServiceTests {
 		}
 		Assertions.assertNull(app2);
 	}
-
-
-
-
-
 
 	@Test
 	public void shouldFindCommentById() {
