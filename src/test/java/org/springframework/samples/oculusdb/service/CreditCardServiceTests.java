@@ -17,6 +17,7 @@ import java.util.*;
 
 @SpringBootTest
 @Transactional
+@Deprecated
 public class CreditCardServiceTests {
 
 	@Autowired
