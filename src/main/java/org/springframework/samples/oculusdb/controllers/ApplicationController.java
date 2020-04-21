@@ -4,7 +4,6 @@ package org.springframework.samples.oculusdb.controllers;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
-import org.springframework.samples.oculusdb.category.Category;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.ApplicationService;
@@ -16,7 +15,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -104,7 +102,6 @@ public class ApplicationController {
 	@GetMapping("/pdf/{appId}")
 	public void appToPDF(@PathVariable("appId") int appId, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// https://www.oodlestechnologies.com/blogs/How-To-Create-PDF-through-HTML-Template-In-Spring-Boot/
 		ModelAndView vistaPDF = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);

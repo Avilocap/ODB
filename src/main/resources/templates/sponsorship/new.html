@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'sponsorship')}">
+
+<body>
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <h2>
+        New Sponsorship
+    </h2>
+
+    <form th:object="${sponsorship}" th:action="@{/sponsorship/new}" class="form-horizontal" method="post">
+        <div class="form-group has-feedback">
+            <input
+                    th:replace="~{fragments/inputField :: input ('Title', 'title', 'text')}" />
+            <input
+                    th:replace="~{fragments/inputField :: input ('Atrachment', 'attachmentUrl', 'text')}" />
+        </div>
+
+        <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="sub"
+                    th:with="text=${sponsorship['new']} ? 'Add Sponsorhip'"
+                    class="btn btn-default" type="submit" th:text="${text}">Add Sponsorhip</button>
+        </div>
+    </div>
+
+
+    </form>
+</div>
+<div class="col-md-4"></div>
+</body>
+
+
+</html>

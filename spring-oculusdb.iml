@@ -35,6 +35,22 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-java:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-core:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin-vintage:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:tag-expressions:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-expressions:8.3.1" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:datatable:3.3.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-plugin:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:docstring:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-junit:5.5.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-spring:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-junit-platform-engine:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-engine:1.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:3.141.59" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-api:3.141.59" level="project" />
     <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.10.6" level="project" />
@@ -162,10 +178,6 @@
     <orderEntry type="library" name="Maven: org.webjars:jquery-ui:1.11.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.5.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.5.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-devtools:2.2.4.RELEASE" level="project" />
