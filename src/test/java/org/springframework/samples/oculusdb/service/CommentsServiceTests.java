@@ -48,7 +48,7 @@ public class CommentsServiceTests {
 
 		Comments comment = new Comments();
 		app2.addComment(comment);
-		comment.setTitle("jajaaj");
+		comment.setTitle("Title");
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
@@ -71,7 +71,7 @@ public class CommentsServiceTests {
 
 		Comments comment = new Comments();
 		app2.addComment(comment);
-		comment.setTitle("jajaaj");
+		comment.setTitle("Title");
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
@@ -87,7 +87,7 @@ public class CommentsServiceTests {
 			app2 = ap2.get();
 			Comments comment = new Comments();
 			app2.addComment(comment);
-			comment.setTitle("jajaaj");
+			comment.setTitle("Title");
 			comment.setContent("this is a new comment");
 			this.commentsService.saveComment(comment);
 		}
@@ -145,7 +145,7 @@ public class CommentsServiceTests {
 
 			Comments comment = new Comments();
 			app2.addComment(comment);
-			comment.setTitle("jajaaj");
+			comment.setTitle("Title");
 			comment.setContent("this is a new comment");
 			this.commentsService.saveComment(comment);
 
@@ -171,7 +171,7 @@ public class CommentsServiceTests {
 
 			Comments comment = new Comments();
 			app2.addComment(comment);
-			comment.setTitle("jajaaj");
+			comment.setTitle("Title");
 			comment.setContent("this is a new comment");
 			this.commentsService.saveComment(comment);
 
@@ -188,7 +188,7 @@ public class CommentsServiceTests {
 			app2 = ap2.get();
 			Comments comment = new Comments();
 			app2.addComment(comment);
-			comment.setTitle("jajaaj");
+			comment.setTitle("Title");
 			comment.setContent("this is a new comment");
 			this.commentsService.saveComment(comment);
 		}

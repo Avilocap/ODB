@@ -9,6 +9,8 @@ import org.springframework.samples.oculusdb.model.CreditCard;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.CreditCardService;
 import org.springframework.samples.oculusdb.services.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -22,6 +24,9 @@ public class CreditCardServiceTests {
 
 	@Autowired
 	private CreditCardService creditCardService;
+
+	@Autowired
+	private UserService userService;
 
 	int randomCreditCardNumber = (int) 5489018195186573L;
 
@@ -114,6 +119,25 @@ public class CreditCardServiceTests {
 		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
 				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
 		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void paymentProcessing() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(4);
+		String currentPrincipalName = userAux.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		boolean res;
+		if (this.creditCardService.checkCreditCard("5489018195186573", 2028,
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+			currentUser.setPremium(true);
+			userService.saveUser(currentUser);
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		Assert.isTrue(res);
 	}
 
 }

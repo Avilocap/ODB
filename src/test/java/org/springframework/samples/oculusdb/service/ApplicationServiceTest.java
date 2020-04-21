@@ -7,12 +7,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
+import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.samples.oculusdb.services.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import javax.swing.text.html.Option;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -23,6 +29,12 @@ public class ApplicationServiceTest {
 
 	@Autowired
 	private ApplicationService applicationService;
+
+	@Autowired
+	private PdfGeneratorUtil pdfGenerator;
+
+	@Autowired
+	private UserService userService;
 
 	@Test
 	public void testCountWithInitialData() {
@@ -205,6 +217,185 @@ public class ApplicationServiceTest {
 				(Collection<? extends Application>) this.applicationService.findAll());
 
 		Assertions.assertEquals(applications.size(), applications2.size());
+	}
+
+	@Test
+	void applicationToPDF_case0_OK() throws Exception {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Application application = apps.get(0);
+
+		Map<String, String> data = new HashMap<String, String>();
+		data.put("name", application.getName());
+		data.put("description", application.getDescription());
+		data.put("picture", application.getPicture());
+		data.put("releaseDate", application.getReleaseDate().toString());
+		data.put("price", application.getPrice().toString());
+		data.put("website", application.getWebsite());
+		data.put("company", application.getCompany());
+		data.put("incomeEstimation", application.getIncomeEstimation().toString());
+		data.put("salesEstimation", application.getSalesEstimation().toString());
+		data.put("totalReviews", application.getTotalReviews().toString());
+
+		File outputPDF = pdfGenerator.createPdf("applications/applicationOnPDF", data, application.getName());
+		Assert.notNull(outputPDF);
+	}
+
+	@Test
+	void applicationToPDF_case1_OK() throws Exception {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Application appAux = apps.get(4);
+
+		Application application = new Application();
+		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
+		if (ap.isPresent()) {
+			application = ap.get();
+		}
+
+		Map<String, String> data = new HashMap<String, String>();
+		data.put("name", application.getName());
+		data.put("description", application.getDescription());
+		data.put("picture", application.getPicture());
+		data.put("releaseDate", application.getReleaseDate().toString());
+		data.put("price", application.getPrice().toString());
+		data.put("website", application.getWebsite());
+		data.put("company", application.getCompany());
+		data.put("incomeEstimation", application.getIncomeEstimation().toString());
+		data.put("salesEstimation", application.getSalesEstimation().toString());
+		data.put("totalReviews", application.getTotalReviews().toString());
+
+		File outputPDF = pdfGenerator.createPdf("applications/applicationOnPDF", data, application.getName());
+		Assert.notNull(outputPDF);
+	}
+
+	@Test
+	void applicationToPDF_NotOK() throws Exception {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+			Application application = apps.get(7652);
+			Map<String, String> data = new HashMap<String, String>();
+			data.put("name", application.getName());
+			data.put("description", application.getDescription());
+			data.put("picture", application.getPicture());
+			data.put("releaseDate", application.getReleaseDate().toString());
+			data.put("price", application.getPrice().toString());
+			data.put("website", application.getWebsite());
+			data.put("company", application.getCompany());
+			data.put("incomeEstimation", application.getIncomeEstimation().toString());
+			data.put("salesEstimation", application.getSalesEstimation().toString());
+			data.put("totalReviews", application.getTotalReviews().toString());
+
+			File outputPDF = pdfGenerator.createPdf("applications/applicationOnPDF", data, application.getName());
+			Assert.notNull(outputPDF);
+		});
+	}
+
+	@Test
+	void addToFavourites_case0() {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Application appAux = apps.get(4);
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(2);
+		String currentPrincipalName = userAux.getName();
+		Application app = new Application();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
+		if (ap.isPresent()) {
+			app = ap.get();
+		}
+		user.getFavorites().add(app);
+		userService.saveUser(user);
+	}
+
+	@Test
+	void addToFavourites_case1() {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Application appAux = apps.get(2);
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(1);
+		String currentPrincipalName = userAux.getName();
+		Application app = new Application();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
+		if (ap.isPresent()) {
+			app = ap.get();
+		}
+		user.getFavorites().add(app);
+		userService.saveUser(user);
+	}
+
+	@Test
+	void addToFavourites_addingAnAlreadyAddedFavFromCase1() {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Application appAux = apps.get(2);
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(1);
+		String currentPrincipalName = userAux.getName();
+		Application app = new Application();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
+		if (ap.isPresent()) {
+			app = ap.get();
+		}
+		user.getFavorites().add(app);
+		userService.saveUser(user);
+	}
+
+	@Test
+	void addToFavourites_ofNotExistentUser() {
+		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+		Application appAux = apps.get(2);
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+			User userAux = users.get(1324);
+			String currentPrincipalName = userAux.getName();
+			Application app = new Application();
+			User user = this.userService.userByUsername(currentPrincipalName);
+			Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
+			if (ap.isPresent()) {
+				app = ap.get();
+			}
+			user.getFavorites().add(app);
+			userService.saveUser(user);
+		});
+	}
+
+	@Test
+	void addToFavourites_ofNotExistentApp() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+			List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
+			Application appAux = apps.get(23546476);
+			User userAux = users.get(3);
+			String currentPrincipalName = userAux.getName();
+			Application app = new Application();
+			User user = this.userService.userByUsername(currentPrincipalName);
+			Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
+			if (ap.isPresent()) {
+				app = ap.get();
+			}
+			user.getFavorites().add(app);
+			userService.saveUser(user);
+		});
+	}
+
+	@Test
+	void listingFavouriteApps() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(1);
+		String currentPrincipalName = userAux.getName();
+		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
+		Assert.notNull(favorites);
+	}
+
+	@Test
+	void listingFavouriteAppsOfNoExistentUser() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+			User userAux = users.get(142344);
+			String currentPrincipalName = userAux.getName();
+			List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
+			Assert.notNull(favorites);
+		});
 	}
 
 }
