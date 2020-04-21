@@ -1,4 +1,4 @@
-package org.springframework.samples.oculusdb.ui;
+/* package org.springframework.samples.oculusdb.ui;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -144,4 +144,4 @@ public class LoginUITest {
 		}
 	}
 
-}
+} */
