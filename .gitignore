@@ -39,7 +39,8 @@ local.properties
 
 # Tern plugin
 .tern-project
-
+.classpath
+.project
 # TeXlipse plugin
 .texlipse
 

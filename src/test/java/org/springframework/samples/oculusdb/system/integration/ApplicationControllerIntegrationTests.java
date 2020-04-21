@@ -16,28 +16,26 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApplicationControllerIntegrationTests {
 
-    private static final int TEST_APPLICATION_ID = 102;
+	private static final int TEST_APPLICATION_ID = 102;
 
-    @Autowired
-    private ApplicationController applicationController;
+	@Autowired
+	private ApplicationController applicationController;
 
-    @Autowired
-    private ApplicationService applicationService;
+	@Autowired
+	private ApplicationService applicationService;
 
-    @Test
-    void testShowAppSuccess() throws Exception {
-        ModelAndView view = applicationController.showOwner2(TEST_APPLICATION_ID);
-        assertEquals(view.getViewName(), "applications/applicationsDetails");
-        assertNotNull(view.getModel().get("app"));
-    }
+	@Test
+	void testShowAppSuccess() throws Exception {
+		ModelAndView view = applicationController.showOwner2(TEST_APPLICATION_ID);
+		assertEquals(view.getViewName(), "applications/applicationsDetails");
+		assertNotNull(view.getModel().get("app"));
+	}
 
-    @Test
-    void testShowAppHasErrors() throws Exception {
-        ModelAndView view = applicationController.showOwner2(TEST_APPLICATION_ID);
-        assertNotEquals(view.getViewName(), "applications/applicationsDetailss");
-        assertNotNull(view.getModel().get("app"));
-    }
-
-
+	@Test
+	void testShowAppHasErrors() throws Exception {
+		ModelAndView view = applicationController.showOwner2(TEST_APPLICATION_ID);
+		assertNotEquals(view.getViewName(), "applications/applicationsDetailss");
+		assertNotNull(view.getModel().get("app"));
+	}
 
 }

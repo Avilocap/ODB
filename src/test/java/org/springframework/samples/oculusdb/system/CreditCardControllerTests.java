@@ -19,26 +19,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class CreditCardControllerTests {
 
-    @Autowired
-    private CreditCardController creditCardController;
+	@Autowired
+	private CreditCardController creditCardController;
 
-    @MockBean
-    private CreditCardService creditCardService;
+	@MockBean
+	private CreditCardService creditCardService;
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @WithMockUser("testuser")
-    @Test
-    void testInitCreditCardForm() throws Exception {
-        mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
-                .andExpect(view().name("creditCard/creditCardForm.html"));
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testInitCreditCardForm() throws Exception {
+		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
+				.andExpect(view().name("creditCard/creditCardForm.html"));
+	}
 
-    @WithMockUser("testuser")
-    @Test
-    void testInitCreditCardFormHasErrors() throws Exception {
-        mockMvc.perform(get("/creditCard/neww")).andExpect(status().is4xxClientError());
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testInitCreditCardFormHasErrors() throws Exception {
+		mockMvc.perform(get("/creditCard/neww")).andExpect(status().is4xxClientError());
+	}
 
 }
