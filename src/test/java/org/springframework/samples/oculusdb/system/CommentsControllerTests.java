@@ -33,6 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CommentsControllerTests {
 
 	private static final int TEST_APP_ID = 102;
+	private static final int TEST_COMMENT_ID = 1;
 
 	@Autowired
 	private CommentsController commentsController;
@@ -117,5 +118,14 @@ public class CommentsControllerTests {
 	void testShowCommentsListHasErrors2() throws Exception {
 		mockMvc.perform(get("/appInfo/{appId}/comments/lists", TEST_APP_ID)).andExpect(status().is4xxClientError());
 	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testInitDeleteComment() throws Exception {
+		mockMvc.perform(get("/comments/delete", TEST_COMMENT_ID))
+				.andExpect(status().isOk()).andExpect(view().name("applications/todoOk"));
+	}
+
+
 
 }
