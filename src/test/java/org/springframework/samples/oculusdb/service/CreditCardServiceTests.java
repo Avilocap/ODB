@@ -140,4 +140,83 @@ public class CreditCardServiceTests {
 		Assert.isTrue(res);
 	}
 
+	@Test
+	public void badPaymentProcessing0() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(4);
+		String currentPrincipalName = userAux.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		boolean res;
+		if (this.creditCardService.checkCreditCard("5489018195186573",
+				new Date(System.currentTimeMillis() - 100).getYear(),
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+			currentUser.setPremium(true);
+			userService.saveUser(currentUser);
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void badPaymentProcessing1() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(4);
+		String currentPrincipalName = userAux.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		boolean res;
+		if (this.creditCardService.checkCreditCard("", new Date(System.currentTimeMillis() - 100).getYear(),
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+			currentUser.setPremium(true);
+			userService.saveUser(currentUser);
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void badPaymentProcessing2() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(4);
+		String currentPrincipalName = userAux.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		boolean res;
+		if (this.creditCardService.checkCreditCard("5489018195186573",
+				new Date(System.currentTimeMillis() - 100).getYear(),
+				new Date(System.currentTimeMillis() - 100).getMonth(), 242) == true) {
+			currentUser.setPremium(true);
+			userService.saveUser(currentUser);
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void badPaymentProcessing3() {
+		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
+		User userAux = users.get(4);
+		String currentPrincipalName = userAux.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+		boolean res;
+		if (this.creditCardService.checkCreditCard("5489018195186573",
+				new Date(System.currentTimeMillis() - 100).getYear() - 100,
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+			currentUser.setPremium(true);
+			userService.saveUser(currentUser);
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		Assert.isTrue(!res);
+	}
+
 }
