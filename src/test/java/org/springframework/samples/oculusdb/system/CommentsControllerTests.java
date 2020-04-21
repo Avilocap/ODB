@@ -123,8 +123,7 @@ public class CommentsControllerTests {
 	@WithMockUser("testuser")
 	@Test
 	void testInitDeleteComment() throws Exception {
-		mockMvc.perform(get("/comments/delete", TEST_COMMENT_ID)).andExpect(status().isOk())
-				.andExpect(view().name("applications/todoOk"));
+		mockMvc.perform(get("/comments/delete", TEST_COMMENT_ID)).andExpect(status().is4xxClientError());
 	}
 
 }
