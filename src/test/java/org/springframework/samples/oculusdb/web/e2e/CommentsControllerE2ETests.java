@@ -61,6 +61,8 @@ public class CommentsControllerE2ETests {
 				.andExpect(view().name("comments/newComment"));
 	}
 
+	//deberia funcionar, no se porque da error 404 al borrar
+
 	@WithMockUser(username = "testuser")
 	@Test
 	void testBorrarComentarioSuccess() throws Exception {

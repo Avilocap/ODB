@@ -62,12 +62,28 @@ public class ApplicationControllerE2ETests {
 
     @WithMockUser(username = "testuser")
     @Test
+    void testAppToPDFSuccess() throws Exception {
+        mockMvc.perform(get("/applications/pdf/{appId}", TEST_APP_ID))
+                .andExpect(status().isOk());
+    }
+
+    @WithMockUser(username = "testuser")
+    @Test
+    void testAppToPDFHasErrors() throws Exception {
+        mockMvc.perform(get("/applicationss/pdf/{appId}", TEST_APP_ID))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @WithMockUser(username = "testuser")
+    @Test
     void testUpdateFormSuccess() throws Exception {
         mockMvc.perform(post("/applications/appInfo/edit", TEST_APP_ID)
         .param("name", "Nombre de prueba"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("applications/createOrUpdateApplicationForm"));
     }
+
+    //deberia dar error, ya que el nombre de la aplicacion no puede ser vacio
 
     @WithMockUser(username = "testuser")
     @Test
@@ -76,6 +92,16 @@ public class ApplicationControllerE2ETests {
                 .param("name",""))
                 .andExpect(status().is2xxSuccessful());
     }
+
+    @WithMockUser(username = "testuser")
+    @Test
+    void testListarFavoritosSuccess() throws Exception {
+        mockMvc.perform(get("/applications/favorites"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("applications/favorites"));
+    }
+
+    //no se si esta bien, da error 404 al añadir a favoritos
 
     @WithMockUser(username = "testuser")
     @Test
@@ -91,6 +117,8 @@ public class ApplicationControllerE2ETests {
         mockMvc.perform(get("/appInfoss/{appId}/favorite", TEST_APP_ID))
                 .andExpect(status().is4xxClientError());
     }
+
+    //no se si esta bien, da error 404 al borrar
 
     @WithMockUser(username = "testuser")
     @Test
