@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "sponsors")
-public class Sponsor extends User {
+public class Sponsor extends Actor {
 
 	@OneToMany(mappedBy = "sponsor")
 	private Collection<Sponsorship> sponsorships;
