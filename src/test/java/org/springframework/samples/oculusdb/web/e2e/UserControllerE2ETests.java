@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -22,6 +23,8 @@ public class UserControllerE2ETests {
     @Autowired
     private MockMvc mockMvc;
 
+    private static String TEST_USERNAME_1 = "testuser";
+    private static String TEST_USERNAME_2 = "manu";
 
     @Test
     void testInitRegistration() throws Exception {
@@ -84,6 +87,55 @@ public class UserControllerE2ETests {
                 .param("password", ""))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/login"));
+    }
+
+    @Test
+    @WithMockUser(username = "testuser")
+    void testLogoutSuccess() throws Exception {
+        mockMvc.perform(get("/logout"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/login?logout"));
+    }
+
+    @Test
+    @WithMockUser(username = "testuser")
+    void testLogoutHasErrors() throws Exception {
+        mockMvc.perform(get("/logoutss"))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    @WithMockUser(username = "testuser")
+    void testListUsersSuccess() throws Exception {
+        mockMvc.perform(get("/users/list"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("users/list"));
+    }
+
+    @Test
+    @WithMockUser(username = "manu")
+    void testListUsersHasErrors() throws Exception {
+        mockMvc.perform(get("/users/list"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error"));
+    }
+
+    //falla porque dice que el usuario testuser ya tiene el rol de SPONSOR, aunque solo tiene el de ADMIN
+
+    @Test
+    @WithMockUser(username = "testuser")
+    void testSetSponsorSuccess() throws Exception {
+        mockMvc.perform(get("/users/setSponsor/{username}", TEST_USERNAME_1))
+                .andExpect(status().isOk())
+                .andExpect(view().name("users/sponsorSet"));
+    }
+
+    @Test
+    @WithMockUser(username = "manu")
+    void testSetSponsorHasErrors() throws Exception {
+        mockMvc.perform(get("/users/setSponsor/{username}", TEST_USERNAME_2))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error"));
     }
 
 }
