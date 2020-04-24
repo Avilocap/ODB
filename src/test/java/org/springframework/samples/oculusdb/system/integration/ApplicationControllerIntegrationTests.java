@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApplicationControllerIntegrationTests {
 
-	private static final int TEST_APPLICATION_ID = 102;
+	private static final int TEST_APPLICATION_ID = 108;
 
 	@Autowired
 	private ApplicationController applicationController;
