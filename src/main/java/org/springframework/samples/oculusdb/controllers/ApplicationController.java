@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -87,6 +88,8 @@ public class ApplicationController {
 
 	@GetMapping("/appInfo/{appId}")
 	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Boolean isAdmin = authentication.getAuthorities().stream().filter(o -> o.getAuthority().equals("ADMIN")).findFirst().isPresent();
 
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
@@ -96,6 +99,7 @@ public class ApplicationController {
 		}
 		// Esto es una prueba
 		vista.addObject("app", application);
+		vista.addObject("isAdmin", isAdmin);
 		return vista;
 	}
 
