@@ -1,0 +1,95 @@
+{
+  "data": {
+    "node": {
+      "reviewInfo": {
+        "count": 8,
+        "orderings": [
+          {
+            "label": "Most Relevant",
+            "key": "top"
+          },
+          {
+            "label": "Most Recent",
+            "key": "most_recent"
+          }
+        ]
+      },
+      "quality_ratings_by_viewer": [],
+      "support_website_url": "https:\/\/discordapp.com\/invite\/6JNVSn9",
+      "firstQualityRatings": {
+        "page_info": {
+          "end_cursor": "AQHRiwGRzs5cdsBq54SioFeRH2ZdgD5gKpQHPlVyuni0aErwoKWAr-ikP6s_yDUG18SwJ6OaIFRfmMp6lThZ2Jz3gg",
+          "start_cursor": "AQHRMhdcqi5JSpFqXLTJNZ9CCUsfd-i70DaIKd98MU4IOjFAwJKR8C0dyGFEXuXvnUIOcDymk4Hw1NAqYuzqnpSFiQ"
+        },
+        "count": 8,
+        "edges": [
+          {
+            "node": {
+              "review_rank_by_viewer": null,
+              "date": 1587704006,
+              "score": 3,
+              "developerResponse": null,
+              "reviewDescription": "The whole game was really fun! The story was good, they gamplay was fun, and the graphics are great! The only issue I had was that sometimes they sounds and voices didn't match with where they were. for example: in the beginning of level 6, I noticed that the Sounds from the TV were behind me instead of coming from the TV. I also noticed that some animations in the game are kind of glitchy. for example: In the the arcade the little girl was walking into the Arcade machine and they older girl was floating behind the stool she was sitting on. But beside all of that, it was a fantastic game and I would recomend it to my friends! I just hope some of those things get fixed.",
+              "author": {
+                "profile_photo": {
+                  "uri": "https:\/\/scontent.oculuscdn.com\/v\/t64.5771-25\/q92\/c387.0.665.665a\/s160x160\/38984439_133509768188721_6006920051637092352_n.jpg?_nc_cat=103&_nc_sid=79b88e&_nc_oc=AQk1TDCCd0Pvfzeavvc7XXtyGNeT640D8FYcYlODzh_0nydWLjyoDnrf1lsqGc5m_5k&_nc_ht=scontent.oculuscdn.com&oh=4937f657f39ffa6401cf066d20dea3dd&oe=5EC84627"
+                },
+                "id": "108108987395466",
+                "display_name": "Thigama"
+              },
+              "review_helpful_count": 0,
+              "id": "157064512499913",
+              "reviewTitle": "Great Game!"
+            }
+          },
+          {
+            "node": {
+              "review_rank_by_viewer": null,
+              "date": 1587699112,
+              "score": 5,
+              "developerResponse": null,
+              "reviewDescription": "The only thing I need is a game genie! I love this whole series.  Please make more. Must buy!!!! Great gameplay and style.  Keep it up!!!",
+              "author": {
+                "profile_photo": {
+                  "uri": "https:\/\/scontent.oculuscdn.com\/v\/t64.5771-25\/q92\/c0.0.304.304a\/s160x160\/11162730_1959133384325940_1042634801804214272_n.jpg?_nc_cat=100&_nc_sid=79b88e&_nc_oc=AQls3pTa6h5tMq6tiMVaUL-keaIswB8esY6-OsVRCLe6GSZv3cyoAblrMqVvclVnv2M&_nc_ht=scontent.oculuscdn.com&oh=81ff24d01b0074420d69f44538334ae1&oe=5EC7A15E"
+                },
+                "id": "1959133144325964",
+                "display_name": "ChadbaccaVR"
+              },
+              "review_helpful_count": 1,
+              "id": "2592573950981877",
+              "reviewTitle": "Must buy!!!!!"
+            }
+          },
+          {
+            "node": {
+              "review_rank_by_viewer": null,
+              "date": 1587672185,
+              "score": 1,
+              "developerResponse": {
+                "date": 1587684473,
+                "id": "236986224208776",
+                "body": "Hello friend!\n\nWe're sorry you feel that way! We tried our best to capture a little bit of all our childhoods and our love for classic games in Pixel Ripped 1995, and transport people to that time period. The average gameplay length for a first playthrough of the campaign is actually anywhere between 3-5 hours from all our user tests, and more if you look for all the easter eggs. That said, like any classic game, you can rush it if you want to do a speed run. ;-)\n\nWe are also working to add more features and modes to extend the replayability and play time, so stay tuned!"
+              },
+              "reviewDescription": "I have been waiting ages for this to finally get realeased.\nPlayed a bit and after reading some reviews,saying how short it is and no reply value,has put me right off.\nCould have been great but it's a disappointment for me.I love retro classic games,as I owed a commodore 64,NES,Sega,the lot.This don't compare,sorry Dev.Asking for my refund,less than 2 hours gameplay.",
+              "author": {
+                "profile_photo": {
+                  "uri": "https:\/\/scontent.oculuscdn.com\/v\/t64.5771-25\/q92\/c0.0.304.304a\/s160x160\/39001687_136152060958860_6510601938864701440_n.jpg?_nc_cat=111&_nc_sid=79b88e&_nc_oc=AQksTrqUEjmHJHd9zVyo8l680rCP1oN_zefOyBfqrZfyUzdV3rncq5oBMcY3ZgBqPtM&_nc_ht=scontent.oculuscdn.com&oh=5066a0f126175fff48aa91525e614042&oe=5EC827BC"
+                },
+                "id": "100209901219743",
+                "display_name": "Greekspartan121"
+              },
+              "review_helpful_count": 1,
+              "id": "236896767551055",
+              "reviewTitle": "Very disappointed"
+            }
+          }
+        ]
+      },
+      "__typename": "Application",
+      "id": "2683538418374043",
+      "display_name": "Pixel Ripped 1995",
+      "canonicalName": "arvore-immersive-experiences-pixel-ripped-1995"
+    }
+  }
+}
