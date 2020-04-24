@@ -73,6 +73,7 @@
 <!--                    <p th:text="${auth ? auth.premium : 'false'}">Phone</p>-->
 <!--                </th:block>-->
                 <li class="nav-item">
+
                     <a sec:authorize="isAuthenticated()" id="paym"
                        th:href="@{/creditCard/new}">Payment</a>
                 </li>
@@ -111,6 +112,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <!--<div sec:authorize="isAuthenticated()">-->

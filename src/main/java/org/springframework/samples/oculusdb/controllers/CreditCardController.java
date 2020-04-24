@@ -32,8 +32,19 @@ public class CreditCardController {
 
 	@GetMapping("/new")
 	public String loadCreditCardForm() {
-		String vista = "creditCard/creditCardForm.html";
-		return vista;
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User currentUser = userService.userByUsername(currentPrincipalName);
+
+		if(!currentUser.isPremium()){
+			String vista = "creditCard/creditCardForm.html";
+			return vista;
+		}else {
+			String vista = "creditCard/yaPremium.html";
+			return vista;
+		}
+
 	}
 
 	@RequestMapping("/pay")
