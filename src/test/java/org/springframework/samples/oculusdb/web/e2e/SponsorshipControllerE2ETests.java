@@ -1,6 +1,5 @@
 package org.springframework.samples.oculusdb.web.e2e;
 
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,40 +18,34 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class SponsorshipControllerE2ETests {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    //el test no funciona porque no funciona el listar sponsor, por la etiqueta de seguridad del html
+	// el test no funciona porque no funciona el listar sponsor, por la etiqueta de
+	// seguridad del html
 
-    @WithMockUser(username = "testuser")
-    @Test
-    void testListSponsorshipsSuccess() throws Exception {
-        mockMvc.perform(get("/sponsorship/list"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("sponsorship/list"));
-    }
+	@WithMockUser(username = "testuser")
+	@Test
+	void testListSponsorshipsSuccess() throws Exception {
+		mockMvc.perform(get("/sponsorship/list")).andExpect(status().isOk()).andExpect(view().name("sponsorship/list"));
+	}
 
-    @WithMockUser(username = "testuser")
-    @Test
-    void testListSponsorshipsHasErrors() throws Exception {
-        mockMvc.perform(get("/sponsorshipsss/list"))
-                .andExpect(status().is4xxClientError());
-    }
+	@WithMockUser(username = "testuser")
+	@Test
+	void testListSponsorshipsHasErrors() throws Exception {
+		mockMvc.perform(get("/sponsorshipsss/list")).andExpect(status().is4xxClientError());
+	}
 
-    @WithMockUser(username = "testuser")
-    @Test
-    void testAddSponsorshipSuccess() throws Exception {
-        mockMvc.perform(get("/sponsorship/new"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("sponsorship/new"));
-    }
+	@WithMockUser(username = "testuser")
+	@Test
+	void testAddSponsorshipSuccess() throws Exception {
+		mockMvc.perform(get("/sponsorship/new")).andExpect(status().isOk()).andExpect(view().name("sponsorship/new"));
+	}
 
-    @WithMockUser(username = "testuser")
-    @Test
-    void testAddSponsorshipHasErrors() throws Exception {
-        mockMvc.perform(get("/sponsorshipsss/new"))
-                .andExpect(status().is4xxClientError());
-    }
-
+	@WithMockUser(username = "testuser")
+	@Test
+	void testAddSponsorshipHasErrors() throws Exception {
+		mockMvc.perform(get("/sponsorshipsss/new")).andExpect(status().is4xxClientError());
+	}
 
 }

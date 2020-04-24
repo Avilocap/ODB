@@ -29,16 +29,14 @@ public class CommentsControllerE2ETests {
 	@WithMockUser(username = "testuser")
 	@Test
 	void testInitAñadirComentarioSuccess() throws Exception {
-		mockMvc.perform(get("/appInfo/{appId}/comments/new", TEST_APP_ID))
-				.andExpect(status().isOk())
+		mockMvc.perform(get("/appInfo/{appId}/comments/new", TEST_APP_ID)).andExpect(status().isOk())
 				.andExpect(view().name("comments/newComment"));
 	}
 
 	@WithMockUser(username = "testuser")
 	@Test
 	void testInitAñadirComentarioHasErrors() throws Exception {
-		mockMvc.perform(get("/appInfo/{appId}/commentss/new", TEST_APP_ID))
-				.andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/appInfo/{appId}/commentss/new", TEST_APP_ID)).andExpect(status().is4xxClientError());
 	}
 
 	@WithMockUser(username = "testuser")
@@ -61,7 +59,7 @@ public class CommentsControllerE2ETests {
 				.andExpect(view().name("comments/newComment"));
 	}
 
-	//deberia funcionar, no se porque da error 404 al borrar
+	// deberia funcionar, no se porque da error 404 al borrar
 
 	@WithMockUser(username = "testuser")
 	@Test

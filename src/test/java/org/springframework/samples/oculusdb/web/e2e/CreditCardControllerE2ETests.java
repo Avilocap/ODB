@@ -1,6 +1,5 @@
 package org.springframework.samples.oculusdb.web.e2e;
 
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +18,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class CreditCardControllerE2ETests {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @WithMockUser("testuser")
-    @Test
-    void testLoadCreditCardFormSuccess() throws Exception {
-        mockMvc.perform(get("/creditCard/new"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("creditCard/creditCardForm.html"));
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testLoadCreditCardFormSuccess() throws Exception {
+		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
+				.andExpect(view().name("creditCard/creditCardForm.html"));
+	}
 
-    @WithMockUser("testuser")
-    @Test
-    void testLoadCreditCardFormHasErrors() throws Exception {
-        mockMvc.perform(get("/creditCardsss/new"))
-                .andExpect(status().is4xxClientError());
-    }
+	@WithMockUser("testuser")
+	@Test
+	void testLoadCreditCardFormHasErrors() throws Exception {
+		mockMvc.perform(get("/creditCardsss/new")).andExpect(status().is4xxClientError());
+	}
 
 }

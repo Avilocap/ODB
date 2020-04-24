@@ -32,6 +32,7 @@ INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,
 
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 2);
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 1);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 3);
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (2, 2);
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (3, 2);
 INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (4, 2);
@@ -219,9 +220,6 @@ INSERT IGNORE INTO reviews VALUES (2, 'could be better', 16, '27/01/2020', 'revi
 INSERT IGNORE INTO reviews VALUES (3, 'incredible videogame', 207, '17/01/2020', 'review 3', TRUE, 3);
 
 --Sponsor
-
-INSERT IGNORE INTO oculusdb.sponsors (id, email, name, password, surname, username, premium, credit_card_id) values (1, 'miguel1@Miguel', 'Miguel', 'miguel', 'López', 'miguel', 'true', 3);
--- INSERT IGNORE INTO sponsors_roles(sponsor_id,roles_id) VALUES (1,4);
 
 --Sponsorship
 
