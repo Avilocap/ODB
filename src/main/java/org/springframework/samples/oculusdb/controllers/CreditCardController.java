@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/creditCard")
-public class CreditCardController {
+public class
+CreditCardController {
 
 	@Autowired
 	private CreditCardService creditCardService;
