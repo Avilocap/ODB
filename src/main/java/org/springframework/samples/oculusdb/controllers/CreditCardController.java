@@ -37,10 +37,11 @@ public class CreditCardController {
 		String currentPrincipalName = authentication.getName();
 		User currentUser = userService.userByUsername(currentPrincipalName);
 
-		if(!currentUser.isPremium()){
+		if (!currentUser.isPremium()) {
 			String vista = "creditCard/creditCardForm.html";
 			return vista;
-		}else {
+		}
+		else {
 			String vista = "creditCard/yaPremium.html";
 			return vista;
 		}

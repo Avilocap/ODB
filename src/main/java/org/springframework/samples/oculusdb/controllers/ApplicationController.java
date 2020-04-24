@@ -89,7 +89,8 @@ public class ApplicationController {
 	@GetMapping("/appInfo/{appId}")
 	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Boolean isAdmin = authentication.getAuthorities().stream().filter(o -> o.getAuthority().equals("ADMIN")).findFirst().isPresent();
+		Boolean isAdmin = authentication.getAuthorities().stream().filter(o -> o.getAuthority().equals("ADMIN"))
+				.findFirst().isPresent();
 
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
