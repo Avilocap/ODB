@@ -1,28 +1,21 @@
 
 package org.springframework.samples.oculusdb.controllers;
 
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.CreditCardService;
 import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
-import java.io.IOException;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/creditCard")
-public class CreditCardController {
+public class
+CreditCardController {
 
 	@Autowired
 	private CreditCardService creditCardService;
