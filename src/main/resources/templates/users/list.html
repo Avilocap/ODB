@@ -20,7 +20,7 @@
               <td th:text="${user.surname}"></td>
               <td text="Set as Sponsor">
                   <a th:href="@{/users/setSponsor/__${user.username}__}">Set as Sponsor</a>
-                  <span th:if="${users.roles != SPONSOR}" >Static summary</span>
+                  <span th:if="${user.roles != SPONSOR}" >Static summary</span>
 
               </td>
           </tr>
