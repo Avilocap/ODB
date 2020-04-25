@@ -57,6 +57,31 @@ create table application
 		foreign key (platform_id) references platform (id)
 );
 
+create table application_positive_words
+(
+    application_id    int not null,
+    positive_words_id int not null,
+    constraint UK_pa7707fcm9aklhpntk8wn813v
+        unique (positive_words_id),
+    constraint FKi2n247f4d1sl9yk44cfk2s25a
+        foreign key (positive_words_id) references word (id),
+    constraint FKi9t69axs2s45u5xp7jn7tqn5b
+        foreign key (application_id) references application (id)
+);
+
+create table application_negative_words
+(
+    application_id    int not null,
+    negative_words_id int not null,
+    constraint UK_l0xn0t3ljmpnhbvxkkco45576
+        unique (negative_words_id),
+    constraint FK86fagjh5ghj2meoq9hywesu48
+        foreign key (negative_words_id) references word (id),
+    constraint FKgm7e81ij0xt2hoew3wn6w34e7
+        foreign key (application_id) references application (id)
+);
+
+
 create table comments
 (
 	id int not null
@@ -72,10 +97,10 @@ create table reviews
 (
 	id int not null
 		primary key,
-	content varchar(255) null,
-	oculus_id int null,
-	publish_date varchar(255) null,
-	title varchar(255) null,
+	content longtext null,
+	oculus_id varchar(255) null,
+	publish_date date null,
+	title longtext null,
 	usefull bit null,
 	application_id int null,
 	constraint FKcotkguh4ah4b47qovldy4j307
@@ -158,4 +183,14 @@ create table users
 	constraint FK7fjlofg8j4fuptxo1fywusqaq
 		foreign key (user_account_id) references user_account (id)
 );
+
+create table word
+(
+    id int not null
+        primary key,
+    letters varchar(255) null,
+    repeats int          not null
+);
+
+
 

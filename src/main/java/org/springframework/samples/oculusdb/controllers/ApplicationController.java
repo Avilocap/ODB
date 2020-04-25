@@ -101,6 +101,9 @@ public class ApplicationController {
 		// Esto es una prueba
 		vista.addObject("app", application);
 		vista.addObject("isAdmin", isAdmin);
+		vista.addObject("positiveWords", applicationService.getPositiveWords(application));
+		vista.addObject("negativeWords", applicationService.getNegativeWords(application));
+
 		return vista;
 	}
 
@@ -145,8 +148,15 @@ public class ApplicationController {
 	@RequestMapping("/get")
 	public ModelAndView getApplication(@RequestParam String id) throws IOException, JSONException {
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
-		Application application = this.applicationService.getInfoOfOneApplication(id);
-		vista.addObject("app", application);
+		Boolean applicationExists = applicationService.applicationExists(id);
+		if (!applicationExists) {
+			Application application = this.applicationService.getInfoOfOneApplication(id);
+			vista.addObject("app", application);
+		}
+		else {
+			vista = new ModelAndView("applications/appexists");
+		}
+
 		return vista;
 	}
 

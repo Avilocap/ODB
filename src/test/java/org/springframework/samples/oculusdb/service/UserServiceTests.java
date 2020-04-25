@@ -32,7 +32,7 @@ public class UserServiceTests {
 
 	@Test
 	public void testIdSponsor() {
-		int id = 1;
+		int id = 0;
 		Sponsor s = this.sponsorService.sponsorById(id);
 		Sponsor s2 = this.sponsorService.sponsorById(id);
 		Assertions.assertEquals(s.getName(), s2.getName());
@@ -120,7 +120,7 @@ public class UserServiceTests {
 	@Test
 	public void setSponsorRole() {
 		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(0);
+		User user = userList.get(1);
 		int sizeOfRoles = user.getRoles().size();
 		userService.setSponsorRole(user.getUsername());
 		userService.saveUser(user);
@@ -131,7 +131,6 @@ public class UserServiceTests {
 	public void setSponsorRoleWithRoleAlreadyAssigned() {
 		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
 		User user = userList.get(0);
-		userService.setSponsorRole(user.getUsername());
 		userService.saveUser(user);
 		Assertions.assertThrows(UnsupportedOperationException.class, () -> {
 			userService.setSponsorRole(user.getUsername());
@@ -155,7 +154,7 @@ public class UserServiceTests {
 	@Test
 	public void isSponsor() {
 		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(0);
+		User user = userList.get(2);
 		userService.setSponsorRole(user.getUsername());
 		Assert.assertTrue(userService.isSponsor(user));
 	}
@@ -163,7 +162,7 @@ public class UserServiceTests {
 	@Test
 	public void isNotSponsor() {
 		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(0);
+		User user = userList.get(1);
 		Assert.assertFalse(userService.isSponsor(user));
 	}
 

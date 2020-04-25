@@ -213,12 +213,6 @@ INSERT IGNORE INTO comments VALUES (10014, '...', 'Regular', 113, 1);
 INSERT IGNORE INTO oculusdb.developer(id,username,password,name,surname,email,company,webpage,company_description) VALUES (1,'miguel','miguel','Miguel', 'López', 'miguel1@Miguel','Microsoft','http://www.microsoft.com','Be whats next');
 -- INSERT IGNORE INTO developer_roles(developer_id,roles_id) VALUES (1,3);
 
---Reviews
-
-INSERT IGNORE INTO reviews VALUES (1, 'perfect videogame', 170, '17/02/2020', 'review 1', TRUE, 1);
-INSERT IGNORE INTO reviews VALUES (2, 'could be better', 16, '27/01/2020', 'review 2', TRUE, 2);
-INSERT IGNORE INTO reviews VALUES (3, 'incredible videogame', 207, '17/01/2020', 'review 3', TRUE, 3);
-
 --Sponsor
 
 --Sponsorship

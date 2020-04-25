@@ -7,6 +7,7 @@ import org.springframework.samples.oculusdb.model.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 import java.util.Collection;
 
 @Entity
@@ -15,32 +16,30 @@ public class Reviews extends BaseEntity {
 
 	@Column(name = "oculusId")
 	@NotEmpty
-	private Integer oculusId;
+	private String oculusId;
 
-	@Column(name = "title")
+	@Lob
+	@Column(name = "title", columnDefinition = "LONGTEXT")
 	@NotEmpty
 	private String title;
 
-	@Column(name = "content")
+	@Lob
+	@Column(name = "content", columnDefinition = "LONGTEXT")
 	@NotEmpty
 	private String content;
 
 	@Column(name = "publishDate")
-	@NotEmpty
 	@DateTimeFormat(pattern = "dd-mm-yyyy")
-	private String publishDate;
-
-	@Column(name = "usefull")
-	private Boolean usefull;
+	private LocalDate publishDate;
 
 	@ManyToOne
 	private Application application;
 
-	public Integer getOculusId() {
+	public String getOculusId() {
 		return this.oculusId;
 	}
 
-	public void setOculusId(final Integer oculusId) {
+	public void setOculusId(final String oculusId) {
 		this.oculusId = oculusId;
 	}
 
@@ -60,20 +59,12 @@ public class Reviews extends BaseEntity {
 		this.content = content;
 	}
 
-	public String getPublishDate() {
+	public LocalDate getPublishDate() {
 		return this.publishDate;
 	}
 
-	public void setPublishDate(final String publishDate) {
+	public void setPublishDate(final LocalDate publishDate) {
 		this.publishDate = publishDate;
-	}
-
-	public Boolean getUsefull() {
-		return this.usefull;
-	}
-
-	public void setUsefull(final Boolean usefull) {
-		this.usefull = usefull;
 	}
 
 	public Application getApplication() {
@@ -87,8 +78,7 @@ public class Reviews extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Reviews{" + "oculusId=" + oculusId + ", title='" + title + '\'' + ", content='" + content + '\''
-				+ ", publishDate='" + publishDate + '\'' + ", usefull=" + usefull + ", application=" + application
-				+ '}';
+				+ ", publishDate='" + publishDate + '\'' + ", application=" + application + '}';
 	}
 
 }

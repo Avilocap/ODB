@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Map;
 
 @Entity
 @Table(name = "application")
@@ -83,6 +84,12 @@ public class Application extends BaseEntity {
 	@Column(name = "typeOfApp")
 	private TypeOfApp typeOfApp;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	private Collection<Word> positiveWords;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private Collection<Word> negativeWords;
+
 	@ManyToOne
 	private Platform platform;
 
@@ -94,6 +101,22 @@ public class Application extends BaseEntity {
 
 	@OneToMany(mappedBy = "application", fetch = FetchType.EAGER)
 	private Collection<Comments> comments;
+
+	public Collection<Word> getPositiveWords() {
+		return positiveWords;
+	}
+
+	public void setPositiveWords(Collection<Word> positiveWords) {
+		this.positiveWords = positiveWords;
+	}
+
+	public Collection<Word> getNegativeWords() {
+		return negativeWords;
+	}
+
+	public void setNegativeWords(Collection<Word> negativeWords) {
+		this.negativeWords = negativeWords;
+	}
 
 	public String getOculusId() {
 		return this.oculusId;

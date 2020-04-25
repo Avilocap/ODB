@@ -86,35 +86,69 @@
     </div>
     </table>
 </div>
-<div class="col-md-2"></div>
-<div class="col-md-8">
-    <h1 style="font-weight: bold; font-size: 1.5em;">Comments</h1>
-    <h1></h1>
-    <table id="app" class="table table-striped">
-        <thead>
-        <tr>
-            <th style="width: 200px;">Title</th>
-            <th style="width: 150px;">Content</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="comments : ${app.comments}">
-            <td th:text="${comments.title}"></td>
-            <td th:text="${comments.content}"></td>
 
-            <td th:if="${isAdmin}">
-                <a th:href="@{/comments/delete(commentId=${comments.id})}">Delete comment</a>
-            </td>
+<div class="row">
+    <div class="col-sm-4">
+        <h1>Positive Words</h1>
+        <table id="words" class="table table-striped">
+            <thead>
+            <tr>
+                <th style="width: 50px;">Word</th>
+                <th style="width: 30px;">Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="word : ${positiveWords}">
+                <td th:text="${word.letters}"></td>
+                <td th:text="${word.repeats}"></td>
+            </tr>
+            </tbody>
+        </table>
 
-        </tr>
-        </tbody>
-    </table>
-    <h1></h1>
-    <a id="addCom" th:href="@{/appInfo/{appId}/comments/new(appId=${app.id})}" class="btn btn-default">Add
-        comment</a>
+        <h1>Negative Words</h1>
+        <table id="words2" class="table table-striped">
+            <thead>
+            <tr>
+                <th style="width: 50px;">Word</th>
+                <th style="width: 30px;">Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="word2 : ${negativeWords}">
+                <td th:text="${word2.letters}"></td>
+                <td th:text="${word2.repeats}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-8">
+        <h1 style="font-weight: bold; font-size: 1.5em;">Comments</h1>
+        <h1></h1>
+        <table id="app" class="table table-striped">
+            <thead>
+            <tr>
+                <th style="width: 200px;">Title</th>
+                <th style="width: 150px;">Content</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="comments : ${app.comments}">
+                <td th:text="${comments.title}"></td>
+                <td th:text="${comments.content}"></td>
+
+                <td th:if="${isAdmin}">
+                    <a th:href="@{/comments/delete(commentId=${comments.id})}">Delete comment</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <h1></h1>
+        <a id="addCom" th:href="@{/appInfo/{appId}/comments/new(appId=${app.id})}" class="btn btn-default">Add
+            comment</a>
+    </div>
 </div>
-<div class="col-md-2"></div>
-
 <br/>
 <br/>
 <br/>
