@@ -2,7 +2,6 @@ package org.springframework.samples.oculusdb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.User;
-import org.springframework.samples.oculusdb.services.SecurityService;
 import org.springframework.samples.oculusdb.services.SecurityServiceImpl;
 import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.samples.oculusdb.services.UserServiceImpl;
@@ -11,13 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
-import javax.naming.OperationNotSupportedException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,7 +33,7 @@ public class UserController {
 	private UserValidator userValidator;
 
 	@GetMapping("/registration")
-	public String registration(Model model) {
+	public String registration(ModelMap model) {
 		model.addAttribute("userForm", new User());
 
 		return "security/registration";
@@ -59,7 +55,7 @@ public class UserController {
 	}
 
 	@GetMapping("/login")
-	public String login(Model model, String error, String logout) {
+	public String login(ModelMap model, String error, String logout) {
 		if (error != null)
 			model.addAttribute("error", "Your username and password is invalid.");
 
