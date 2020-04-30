@@ -81,7 +81,7 @@ public class CommentsController {
 	}
 
 	@GetMapping(value = "/appInfo/{appId}/comments/list")
-	public String listarComentarios(@PathVariable("appId") int appId, Model model) {
+	public String listarComentarios(@PathVariable("appId") int appId, ModelMap model) {
 		Iterable<Comments> comments = this.commentsService.findAllByAplicationId(appId);
 		model.addAttribute("comments", comments);
 

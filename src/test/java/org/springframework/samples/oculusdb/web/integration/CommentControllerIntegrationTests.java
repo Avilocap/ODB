@@ -29,7 +29,7 @@ public class CommentControllerIntegrationTests {
 
     private static final int TEST_APPLICATION_ID = 102;
 
-    private static final int TEST_COMMENT_ID = 1;
+    private static final int TEST_COMMENT_ID = 1001;
 
     @Autowired
     private CommentsController commentsController;
@@ -104,6 +104,16 @@ public class CommentControllerIntegrationTests {
 
     @Test
     void testInitDeleteComment() throws Exception {
+        String view = commentsController.borrarComentario(TEST_COMMENT_ID);
+        Assertions.assertEquals(view, "applications/todoOk");
+        Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
+    }
 
+    @Test
+    void showCommentsSucces() throws Exception {
+        ModelMap model = new ModelMap();
+        String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
+        Assertions.assertEquals(view, "comments/listComments");
+        Assertions.assertNotNull(model.getAttribute("comments"));
     }
 }
