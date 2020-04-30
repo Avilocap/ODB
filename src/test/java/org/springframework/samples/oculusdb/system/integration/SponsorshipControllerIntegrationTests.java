@@ -29,7 +29,18 @@ public class SponsorshipControllerIntegrationTests {
 
         String view = sponsoshipController.listSponsorships(model);
 
-        Assertions.assertEquals(view, "error");
+        Assertions.assertEquals(view, "sponsorship/list");
+        Assertions.assertNotNull(model.getAttribute("sponsorships"));
+    }
+
+    @Test
+    void testAddSponsorSuccess() throws Exception {
+        ModelMap model = new ModelMap();
+
+        String view = sponsoshipController.addSponsorship(model);
+
+        Assertions.assertEquals(view, "sponsorship/new");
+        Assertions.assertNotNull(model.getAttribute("sponsorship"));
     }
 
 }
