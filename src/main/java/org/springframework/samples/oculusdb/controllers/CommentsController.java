@@ -7,6 +7,7 @@ import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.services.CommentsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class CommentsController {
 	}
 
 	@GetMapping(value = "/appInfo/{appId}/comments/new")
-	public String agregarProducto(@PathVariable("appId") int appId, Model model) {
+	public String agregarProducto(@PathVariable("appId") int appId, ModelMap model) {
 
 		Application app = new Application();
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
@@ -44,7 +45,7 @@ public class CommentsController {
 
 	@PostMapping(value = "/appInfo/{appId}/comments/new")
 	public String guardarProducto(@PathVariable("appId") String appId, @Valid Comments comment, BindingResult result,
-			Model model) {
+			ModelMap model) {
 
 		Application app = new Application();
 		Integer appIdInt = new Integer(appId);
@@ -80,7 +81,7 @@ public class CommentsController {
 	}
 
 	@GetMapping(value = "/appInfo/{appId}/comments/list")
-	public String listarComentarios(@PathVariable("appId") int appId, Model model) {
+	public String listarComentarios(@PathVariable("appId") int appId, ModelMap model) {
 		Iterable<Comments> comments = this.commentsService.findAllByAplicationId(appId);
 		model.addAttribute("comments", comments);
 
