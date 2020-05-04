@@ -27,93 +27,90 @@ import java.util.Optional;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CommentControllerIntegrationTests {
 
-    private static final int TEST_APPLICATION_ID = 102;
+	private static final int TEST_APPLICATION_ID = 102;
 
-    private static final int TEST_COMMENT_ID = 1001;
+	private static final int TEST_COMMENT_ID = 1001;
 
-    @Autowired
-    private CommentsController commentsController;
+	@Autowired
+	private CommentsController commentsController;
 
-    @Autowired
-    private CommentsService commentsService;
+	@Autowired
+	private CommentsService commentsService;
 
-    @Autowired
-    private ApplicationService applicationService;
+	@Autowired
+	private ApplicationService applicationService;
 
+	@Test
+	void testInitAddComment() throws Exception {
 
-    @Test
-    void testInitAddComment() throws Exception {
+		ModelMap model = new ModelMap();
 
-        ModelMap model = new ModelMap();
+		String view = commentsController.agregarProducto(TEST_APPLICATION_ID, model);
+		Assertions.assertEquals(view, "comments/newComment");
+		Assertions.assertNotNull(model.getAttribute("comment"));
 
-        String view = commentsController.agregarProducto(TEST_APPLICATION_ID, model);
-        Assertions.assertEquals(view,"comments/newComment");
-        Assertions.assertNotNull(model.getAttribute("comment"));
+	}
 
-    }
+	@Test
+	void testAddCommentSuccess() throws Exception {
+		ModelMap model = new ModelMap();
+		String app = "102";
+		Comments comment = new Comments();
+		comment.setTitle("comment");
+		comment.setContent("a new comment for app");
+		BindingResult bindingResult = new MapBindingResult(Collections.emptyMap(), "");
 
-    @Test
-    void testAddCommentSuccess() throws Exception {
-        ModelMap model = new ModelMap();
-        String app = "102";
-        Comments comment = new Comments();
-        comment.setTitle("comment");
-        comment.setContent("a new comment for app");
-        BindingResult bindingResult=new MapBindingResult(Collections.emptyMap(),"");
+		String view = commentsController.guardarProducto(app, comment, bindingResult, model);
 
-        String view = commentsController.guardarProducto(app, comment, bindingResult, model);
+		Assertions.assertEquals(view, "redirect:/applications/appInfo/{appId}");
 
-        Assertions.assertEquals(view, "redirect:/applications/appInfo/{appId}");
+	}
 
+	@Test
+	void testAddCommentHasErrors1() throws Exception {
 
-    }
+		ModelMap model = new ModelMap();
+		String app = "102";
+		Comments comment = new Comments();
+		comment.setTitle("comment");
+		BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
+		bindingResult.reject("content", "Required");
 
-    @Test
-    void testAddCommentHasErrors1() throws Exception {
+		String view = commentsController.guardarProducto(app, comment, bindingResult, model);
 
-        ModelMap model = new ModelMap();
-        String app = "102";
-        Comments comment = new Comments();
-        comment.setTitle("comment");
-        BindingResult bindingResult=new MapBindingResult(new HashMap<>(),"");
-        bindingResult.reject("content", "Required");
+		Assertions.assertEquals(view, "comments/newComment");
 
-        String view = commentsController.guardarProducto(app, comment, bindingResult, model);
+	}
 
-        Assertions.assertEquals(view, "comments/newComment");
+	@Test
+	void testAddCommentHasErrors2() throws Exception {
 
+		ModelMap model = new ModelMap();
+		String app = "102";
+		Comments comment = new Comments();
+		comment.setContent("a new comment for app");
+		BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
+		bindingResult.reject("title", "Required");
 
+		String view = commentsController.guardarProducto(app, comment, bindingResult, model);
 
-    }
+		Assertions.assertEquals(view, "comments/newComment");
 
-    @Test
-    void testAddCommentHasErrors2() throws Exception {
+	}
 
-        ModelMap model = new ModelMap();
-        String app = "102";
-        Comments comment = new Comments();
-        comment.setContent("a new comment for app");
-        BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
-        bindingResult.reject("title", "Required");
+	@Test
+	void testInitDeleteComment() throws Exception {
+		String view = commentsController.borrarComentario(TEST_COMMENT_ID);
+		Assertions.assertEquals(view, "applications/todoOk");
+		Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
+	}
 
-        String view = commentsController.guardarProducto(app, comment, bindingResult, model);
+	@Test
+	void showCommentsSucces() throws Exception {
+		ModelMap model = new ModelMap();
+		String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
+		Assertions.assertEquals(view, "comments/listComments");
+		Assertions.assertNotNull(model.getAttribute("comments"));
+	}
 
-        Assertions.assertEquals(view, "comments/newComment");
-
-    }
-
-    @Test
-    void testInitDeleteComment() throws Exception {
-        String view = commentsController.borrarComentario(TEST_COMMENT_ID);
-        Assertions.assertEquals(view, "applications/todoOk");
-        Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
-    }
-
-    @Test
-    void showCommentsSucces() throws Exception {
-        ModelMap model = new ModelMap();
-        String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
-        Assertions.assertEquals(view, "comments/listComments");
-        Assertions.assertNotNull(model.getAttribute("comments"));
-    }
 }

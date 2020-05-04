@@ -20,12 +20,10 @@ public class Reviews extends BaseEntity {
 
 	@Lob
 	@Column(name = "title", columnDefinition = "LONGTEXT")
-	@NotEmpty
 	private String title;
 
 	@Lob
 	@Column(name = "content", columnDefinition = "LONGTEXT")
-	@NotEmpty
 	private String content;
 
 	@Column(name = "publishDate")

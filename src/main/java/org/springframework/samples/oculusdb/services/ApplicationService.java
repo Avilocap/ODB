@@ -68,11 +68,11 @@ public class ApplicationService {
 	}
 
 	@Transactional
-	public Collection<Word> getPositiveWords(Application application){
+	public Collection<Word> getPositiveWords(Application application) {
 		return this.applicationRepository.getApplicationPositiveWord(application.getOculusId());
 	}
 
-	public Collection<Word> getNegativeWords(Application application){
+	public Collection<Word> getNegativeWords(Application application) {
 		return this.applicationRepository.getApplicationNegativeWord(application.getOculusId());
 	}
 
