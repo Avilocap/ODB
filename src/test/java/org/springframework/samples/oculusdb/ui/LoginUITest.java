@@ -50,6 +50,36 @@ public class LoginUITest {
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
 
+	@Test
+	public void testRegister() throws Exception {
+		driver.get("http://localhost:8080/registration");
+		driver.findElement(By.name("username")).clear();
+		driver.findElement(By.name("username")).sendKeys("testregister");
+
+		driver.findElement(By.name("name")).click();
+		driver.findElement(By.name("name")).clear();
+		driver.findElement(By.name("name")).sendKeys("Test");
+
+		driver.findElement(By.name("surname")).click();
+		driver.findElement(By.name("surname")).clear();
+		driver.findElement(By.name("surname")).sendKeys("Register");
+
+		driver.findElement(By.name("email")).click();
+		driver.findElement(By.name("email")).clear();
+		driver.findElement(By.name("email")).sendKeys("testregister@testregister.com");
+
+		driver.findElement(By.name("password")).click();
+		driver.findElement(By.name("password")).clear();
+		driver.findElement(By.name("password")).sendKeys("TestRegister1");
+
+		driver.findElement(By.name("getPasswordConfirm")).click();
+		driver.findElement(By.name("getPasswordConfirm")).clear();
+		driver.findElement(By.name("getPasswordConfirm")).sendKeys("TestRegister1");
+		driver.findElement(By.xpath("/html/body/div/div/div[1]/form/input")).click();
+
+		Assert.assertTrue(driver.getPageSource().contains("Welcome"));
+	}
+
 	@AfterEach
 	public void tearDown() throws Exception {
 		driver.quit();

@@ -104,13 +104,23 @@ public class GeneralUITest {
 	}
 
 	@Test
+	public void getNewApplicationExits() {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Get New")).click();
+		driver.findElement(By.name("id")).clear();
+		driver.findElement(By.name("id")).sendKeys("1368187813209608");
+		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+		Assert.assertTrue(driver.getPageSource().contains("already"));
+	}
+
+	@Test
 	public void getNewApplication() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Get New")).click();
 		driver.findElement(By.name("id")).clear();
-		driver.findElement(By.name("id")).sendKeys("922076897882360");
-		driver.findElement(By.linkText("Submit")).click();
-
+		driver.findElement(By.name("id")).sendKeys("1141678862547889");
+		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+		Assert.assertTrue(driver.getPageSource().contains("Evil"));
 	}
 
 	@AfterEach
