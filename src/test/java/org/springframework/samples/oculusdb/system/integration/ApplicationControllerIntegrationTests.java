@@ -23,13 +23,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApplicationControllerIntegrationTests {
 
-	private static final int TEST_APPLICATION_ID =100;
+	private static final int TEST_APPLICATION_ID = 100;
 
 	@Autowired
 	private ApplicationController applicationController;
-
-	@Autowired
-	private ApplicationService applicationService;
 
 	@WithMockUser("testuser")
 	@Test
@@ -72,7 +69,6 @@ public class ApplicationControllerIntegrationTests {
 		assertNotEquals(view.getViewName(), "applications/applicationsDetailss");
 	}
 
-	@WithMockUser("testuser")
 	@Test
 	void testInitUpdateFormSuccess() throws Exception {
 		ModelMap model = new ModelMap();
@@ -81,7 +77,6 @@ public class ApplicationControllerIntegrationTests {
 		assertEquals(view, "applications/createOrUpdateApplicationForm");
 	}
 
-	@WithMockUser("testuser")
 	@Test
 	void testInitUpdateFormHasErrors() throws Exception {
 		ModelMap model = new ModelMap();
@@ -90,7 +85,6 @@ public class ApplicationControllerIntegrationTests {
 		assertNotEquals(view, "applications/createOrUpdateApplicationFormm");
 	}
 
-	@WithMockUser("testuser")
 	@Test
 	void testProcessUpdateFormSuccess() throws Exception {
 		Application application = new Application();
@@ -102,7 +96,6 @@ public class ApplicationControllerIntegrationTests {
 		assertEquals(vista, "applications/applicationsDetails");
 	}
 
-	@WithMockUser("testuser")
 	@Test
 	void testProcessUpdateHasErrors() throws Exception {
 		Application application = new Application();
@@ -117,7 +110,6 @@ public class ApplicationControllerIntegrationTests {
 		assertEquals(vista, "applications/createOrUpdateApplicationForm");
 	}
 
-	@WithMockUser("testuser")
 	@Test
 	void testDeleteAppSuccess() throws Exception {
 		int app_ID = 200;
@@ -125,12 +117,65 @@ public class ApplicationControllerIntegrationTests {
 		assertEquals(vista, "applications/todoOk");
 	}
 
-	@WithMockUser("testuser")
 	@Test
 	void testDeleteAppHasErrors() throws Exception {
 		int app_ID = 200;
 		String vista = applicationController.deleteApp(app_ID);
 		assertNotEquals(vista, "applications/todoOkk");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testAddToFavoritesSuccess() throws Exception {
+		ModelMap model = new ModelMap();
+		applicationController.deleteFavorite(TEST_APPLICATION_ID, model);
+		ModelMap model2 = new ModelMap();
+		String vista = applicationController.addToFavorites(TEST_APPLICATION_ID, model2);
+		assertNotNull(model.getAttribute("favorites"));
+		assertEquals(vista, "applications/favorites");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testAddToFavoritesHasErrors() throws Exception {
+		ModelMap model = new ModelMap();
+		applicationController.deleteFavorite(TEST_APPLICATION_ID, model);
+		ModelMap model2 = new ModelMap();
+		String vista = applicationController.addToFavorites(TEST_APPLICATION_ID, model2);
+		assertNotEquals(vista, "applications/favoritess");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testDeleteFavoriteSuccess() throws Exception {
+		ModelMap model = new ModelMap();
+		String vista = applicationController.deleteFavorite(TEST_APPLICATION_ID, model);
+		assertEquals(vista, "applications/favorites");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testDeleteFavoriteHasErrors() throws Exception {
+		ModelMap model = new ModelMap();
+		String vista = applicationController.deleteFavorite(TEST_APPLICATION_ID, model);
+		assertNotEquals(vista, "applications/favoritess");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testFavoritesSuccess() throws Exception {
+		ModelMap modelMap = new ModelMap();
+		String vista = applicationController.favorites(modelMap);
+		assertNotNull(modelMap.getAttribute("favorites"));
+		assertEquals(vista, "applications/favorites");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testFavoritesHasErrors() throws Exception {
+		ModelMap modelMap = new ModelMap();
+		String vista = applicationController.favorites(modelMap);
+		assertNotEquals(vista, "applications/favoritess");
 	}
 
 }
