@@ -35,6 +35,7 @@ public class SponsorshipControllerIntegrationTests {
         Assertions.assertEquals(view, "sponsorship/list");
         Assertions.assertNotNull(model.getAttribute("sponsorships"));
     }
+
  */
 
 
