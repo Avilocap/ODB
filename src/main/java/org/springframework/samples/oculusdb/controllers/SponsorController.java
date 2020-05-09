@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class UserController {
+@RequestMapping("/sponsor")
+public class SponsorController {
 
 	@Autowired
 	private UserServiceImpl userServiceImpl;
@@ -36,7 +37,7 @@ public class UserController {
 	public String registration(ModelMap model) {
 		model.addAttribute("userForm", new User());
 
-		return "security/registration";
+		return "sponsor/SponsorRegistration";
 	}
 
 	@PostMapping("/registration")
@@ -47,7 +48,7 @@ public class UserController {
 			return "security/registration";
 		}
 
-		userServiceImpl.save(userForm);
+		userServiceImpl.saveSponsor(userForm);
 
 		securityServiceImpl.autoLogin(userForm.getUsername(), userForm.getGetPasswordConfirm());
 
@@ -118,23 +119,5 @@ public class UserController {
 	// public String welcome(Model model) {
 	// return "welcome";
 	// }
-
-	@GetMapping("/tools")
-	public String toolsList(final ModelMap modelMap) {
-		String vista;
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
-		User user = this.userService.userByUsername(currentPrincipalName);
-		vista = "security/tools";
-
-		if (userService.isAdmin(user)) {
-			modelMap.addAttribute("admin", true);
-		}
-		if (userService.isSponsor(user)) {
-			modelMap.addAttribute("sponsor", true);
-		}
-
-		return vista;
-	}
 
 }

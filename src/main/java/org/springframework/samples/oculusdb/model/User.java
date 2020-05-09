@@ -1,6 +1,10 @@
 
 package org.springframework.samples.oculusdb.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.samples.oculusdb.sponsor.Sponsorship;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +18,10 @@ public class User extends Actor {
 	@Column(name = "premium")
 	private boolean premium;
 
+	@OneToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Sponsorship> sponsorships;
+
 	public List<Application> getFavorites() {
 		return favorites;
 	}
@@ -23,6 +31,14 @@ public class User extends Actor {
 	}
 
 	public User() {
+	}
+
+	public List<Sponsorship> getSponsorships() {
+		return sponsorships;
+	}
+
+	public void setSponsorships(List<Sponsorship> sponsorships) {
+		this.sponsorships = sponsorships;
 	}
 
 	@Override

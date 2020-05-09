@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="col-md-12">
+    <h2 class="form-signin-heading">Create your account</h2>
+    <form method="POST" th:action="@{/sponsor/registration}" th:object="${userForm}" class="form-signin">
+
+        <table class="table-hover">
+            <tr>
+                <td for="username">Username
+                    <input class="form-control" type="text" id="username" th:field="*{username}">
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">..</span>
+                </td>
+                <h1></h1>
+            </tr>
+
+            <tr>
+                <td for="name">Name
+                    <input class="form-control" type="text" id="name" th:field="*{name}">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">..</span>
+                </td>
+                <h1></h1>
+
+            </tr>
+
+
+            <tr>
+                <td for="surname">Surname
+                    <input class="form-control" type="text" id="surname" th:field="*{surname}">
+                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">..</span>
+                </td>
+                <h1></h1>
+
+            </tr>
+
+
+            <tr>
+                <td for="email">Email
+                    <input class="form-control" type="email" id="email" th:field="*{email}">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">..</span>
+                </td>
+                <h1></h1>
+
+            </tr>
+
+            <tr>
+                <td for="password">Password
+                    <input class="form-control" type="password" id="password" th:field="*{password}">
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
+                </td>
+                <h1></h1>
+
+            </tr>
+
+            <tr>
+                <td for="getPasswordConfirm">Confirm password
+               <input class="form-control" type="password" id="getPasswordConfirm" th:field="*{getPasswordConfirm}">
+                    <span th:if="${#fields.hasErrors('getPasswordConfirm')}" th:errors="*{getPasswordConfirm}">..</span>
+                </td>
+                <h1></h1>
+
+            </tr>
+
+        </table>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit">
+
+    </form>
+
+</div>
+
+</body>
+</html>

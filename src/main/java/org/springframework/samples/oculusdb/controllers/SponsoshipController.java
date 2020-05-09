@@ -2,6 +2,8 @@
 package org.springframework.samples.oculusdb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.oculusdb.application.Comments;
+import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.SponsorService;
 import org.springframework.samples.oculusdb.services.SponsorShipService;
@@ -12,8 +14,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/sponsorship")
@@ -36,8 +44,7 @@ public class SponsoshipController {
 		User user = this.userService.userByUsername(currentPrincipalName);
 		if (userService.isSponsor(user)) {
 			vista = "sponsorship/list";
-			Sponsor sponsor = sponsorService.sponsorByUsername(user.getUsername());
-			Iterable<Sponsorship> sponsorships = sponsor.getSponsorships();
+			Iterable<Sponsorship> sponsorships = userService.sponsorshipsOfUser(user);
 			modelMap.addAttribute("sponsorships", sponsorships);
 		}
 		else {
@@ -53,6 +60,23 @@ public class SponsoshipController {
 		modelMap.addAttribute("sponsorship", sponsorship);
 		return "sponsorship/new";
 
+	}
+
+	@PostMapping(value = "/new")
+	public String newSponsorhip(@Valid Sponsorship sponsorship, BindingResult result,
+								  ModelMap model) {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isSponsor(user)) {
+			sponsorship.setUser(user);
+			sponsorShipService.saveSponsorship(sponsorship);
+			user.getSponsorships().add(sponsorship);
+			userService.saveUser(user);
+		}
+
+		return "sponsorship/creacion";
 	}
 
 }

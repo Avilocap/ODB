@@ -90,7 +90,7 @@ public class ApplicationControllerIntegrationTests {
 		Application application = new Application();
 		application.setOculusId("200");
 		application.setName("App1");
-		BindingResult result = new MapBindingResult(Collections.emptyMap(),"");
+		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
 		ModelMap model = new ModelMap();
 		String vista = applicationController.processUpdateForm(application, result, model);
 		assertEquals(vista, "applications/applicationsDetails");
@@ -103,7 +103,7 @@ public class ApplicationControllerIntegrationTests {
 		application.setName("App1");
 		ModelMap model = new ModelMap();
 		model.addAttribute("app", null);
-		BindingResult result = new MapBindingResult(Collections.emptyMap(),"");
+		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
 		ObjectError error = new ObjectError("app", "This is a error");
 		result.addError(error);
 		String vista = applicationController.processUpdateForm(application, result, model);

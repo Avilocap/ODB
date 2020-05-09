@@ -7,8 +7,11 @@ import org.springframework.samples.oculusdb.model.Role;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.repositories.RoleRepository;
 import org.springframework.samples.oculusdb.repositories.UserRepository;
+import org.springframework.samples.oculusdb.sponsor.Sponsor;
+import org.springframework.samples.oculusdb.sponsor.Sponsorship;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public class UserService {
 
@@ -45,6 +48,10 @@ public class UserService {
 
 	public boolean isSponsor(User user) {
 		return user.getRoles().stream().filter(o -> o.getName().equals("SPONSOR")).findFirst().isPresent();
+	}
+
+	public List<Sponsorship> sponsorshipsOfUser(User user){
+		return userRepository.sponoshorShipOfUser(user);
 	}
 
 	public void setSponsorRole(String username) {

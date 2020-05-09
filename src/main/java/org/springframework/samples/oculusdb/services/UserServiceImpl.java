@@ -37,6 +37,19 @@ public class UserServiceImpl extends UserService {
 		userRepository.save(user);
 	}
 
+	public void saveSponsor(User user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		Random random = new Random();
+		user.setId(random.nextInt());
+		Role userRole = roleRepository.findRoleByName("USER");
+		Role sponsorRole = roleRepository.findRoleByName("SPONSOR");
+		Set<Role> userRoles = new HashSet<Role>();
+		userRoles.add(userRole);
+		userRoles.add(sponsorRole);
+		user.setRoles(userRoles);
+		userRepository.save(user);
+	}
+
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}

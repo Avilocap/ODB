@@ -13,22 +13,8 @@ import java.util.Collection;
 @Table(name = "sponsors")
 public class Sponsor extends Actor {
 
-	@OneToMany(mappedBy = "sponsor")
-	private Collection<Sponsorship> sponsorships;
-
 	@OneToOne
 	private CreditCard creditCard;
-
-	@Column(name = "premium")
-	private boolean premium;
-
-	public Collection<Sponsorship> getSponsorships() {
-		return sponsorships;
-	}
-
-	public void setSponsorships(Collection<Sponsorship> sponsorships) {
-		this.sponsorships = sponsorships;
-	}
 
 	public CreditCard getCreditCard() {
 		return creditCard;
@@ -40,15 +26,7 @@ public class Sponsor extends Actor {
 
 	@Override
 	public String toString() {
-		return "Sponsor{" + "sponsorships=" + sponsorships + ", creditCard=" + creditCard + '}';
-	}
-
-	public boolean isPremium() {
-		return premium;
-	}
-
-	public void setPremium(boolean premium) {
-		this.premium = premium;
+		return "Sponsor{" + "sponsorships=" + ", creditCard=" + creditCard + '}';
 	}
 
 }

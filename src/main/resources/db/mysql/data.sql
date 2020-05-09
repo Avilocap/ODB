@@ -21,23 +21,23 @@ INSERT IGNORE INTO role VALUES (3,'SPONSOR');
 INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (1, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (2, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (3, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (4, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (5, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (6, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (100, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (102, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (103, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (104, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (105, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (106, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david',false);
 
 --Users roles
 
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 2);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 1);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (1, 3);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (2, 2);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (3, 2);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (4, 2);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (5, 2);
-INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (6, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (100, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (100, 1);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (100, 3);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (102, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (103, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (104, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (105, 2);
+INSERT IGNORE INTO oculusdb.users_roles (users_id, roles_id) VALUES (106, 2);
 --Credit cards
 
 INSERT IGNORE INTO credit_cards VALUES (1, 123, 12, 2022, 'Pedro Rodríguez', 123456);
@@ -217,15 +217,17 @@ INSERT IGNORE INTO oculusdb.developer(id,username,password,name,surname,email,co
 
 --Sponsorship
 
-INSERT IGNORE INTO sponsorship VALUES (1, 'http://www.miguel.com', 'miguel', 1);
+INSERT IGNORE INTO sponsorship VALUES (115, 'http://www.miguel.com', 'miguel', 100);
+
+INSERT IGNORE INTO oculusdb.users_sponsorships (user_id, sponsorships_id) VALUES (100, 115);
 
 --Favorites
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 2);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 4);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 7);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (2, 8);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (3, 3);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (3, 5);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (4, 9);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (5, 10);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (6, 11);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 2);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 4);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 7);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 8);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 3);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 5);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (104, 9);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (105, 10);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (106, 11);

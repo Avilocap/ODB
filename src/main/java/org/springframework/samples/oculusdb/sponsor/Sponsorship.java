@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.samples.oculusdb.model.BaseEntity;
+import org.springframework.samples.oculusdb.model.User;
 
 @Entity
 @Table(name = "sponsorship")
@@ -22,7 +23,7 @@ public class Sponsorship extends BaseEntity {
 	private String attachmentUrl;
 
 	@ManyToOne
-	private Sponsor sponsor;
+	private User user;
 
 	public String getTitle() {
 		return this.title;
@@ -40,12 +41,12 @@ public class Sponsorship extends BaseEntity {
 		this.attachmentUrl = attachmentUrl;
 	}
 
-	public Sponsor getSponsor() {
-		return this.sponsor;
+	public User getUser() {
+		return user;
 	}
 
-	public void setSponsor(final Sponsor sponsor) {
-		this.sponsor = sponsor;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

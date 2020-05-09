@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="col-md-12">
+    <h1 class="panel-heading">Tools</h1>
+
+    <div th:if="${sponsor}">
+        <h2>Sponsorhips</h2>
+        <a class="btn-link" href="/sponsorship/list">List Sponsorhips</a>
+        <br>
+        <a class="btn-link" href="/sponsorship/new">New Sponsorhips</a>
+    </div>
+
+    <div th:if="${admin}">
+        <h2>Admin tools</h2>
+         <a class="btn-link" href="/users/list">User List</a>
+    </div>
+
+</div>
+
+</body>
+</html>

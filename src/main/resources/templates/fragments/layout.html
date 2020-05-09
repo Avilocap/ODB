@@ -68,18 +68,27 @@
                 <li class="nav-item">
                     <a sec:authorize="hasRole('ADMIN')" id="userList"
                        th:href="@{/users/list}">User list</a>
-                </li>
+
+
 <!--                <th:block th:with="auth=${#authentication.getPrincipal()}">-->
 <!--                    <p th:text="${auth ? auth.premium : 'false'}">Phone</p>-->
 <!--                </th:block>-->
                 <li class="nav-item">
-
                     <a sec:authorize="isAuthenticated()" id="paym"
                        th:href="@{/creditCard/new}">Payment</a>
                 </li>
 
                 <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" id="paym"
+                       th:href="@{/tools}">Tools</a>
+                </li>
+
+                <li class="nav-item">
                     <a sec:authorize="isAnonymous()" th:href="@{/registration}">Sign up</a>
+                </li>
+
+                <li class="nav-item">
+                    <a sec:authorize="isAnonymous()" th:href="@{sponsor/registration}">Sign up as Sponsor</a>
                 </li>
 
                 <!-- Show login link only for anonymous users -->
