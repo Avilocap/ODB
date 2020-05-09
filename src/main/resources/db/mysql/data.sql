@@ -222,12 +222,12 @@ INSERT IGNORE INTO sponsorship(id, attachmenturl, title, user_id) VALUES (115, '
 INSERT IGNORE INTO oculusdb.users_sponsorships (user_id, sponsorships_id) VALUES (100, 115);
 
 --Favorites
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 2);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 4);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 7);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 8);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 3);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 5);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (104, 9);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (105, 10);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (106, 11);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (100, 100);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 104);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 107);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 108);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 103);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 105);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (104, 109);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (105, 112);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (106, 113);
