@@ -84,9 +84,7 @@ public class CommentsController {
 	public String listarComentarios(@PathVariable("appId") int appId, ModelMap model) {
 		Iterable<Comments> comments = this.commentsService.findAllByAplicationId(appId);
 		model.addAttribute("comments", comments);
-
 		return "comments/listComments";
 	}
-	// ------
 
 }
