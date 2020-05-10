@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.oculusdb.model.Role;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.SponsorService;
 import org.springframework.samples.oculusdb.services.UserService;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootTest
 @Transactional
@@ -32,7 +30,7 @@ public class UserServiceTests {
 
 	@Test
 	public void testIdSponsor() {
-		int id = 0;
+		int id = 100;
 		Sponsor s = this.sponsorService.sponsorById(id);
 		Sponsor s2 = this.sponsorService.sponsorById(id);
 		Assertions.assertEquals(s.getName(), s2.getName());
@@ -119,8 +117,7 @@ public class UserServiceTests {
 
 	@Test
 	public void setSponsorRole() {
-		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(1);
+		User user = this.userService.userById(103);
 		int sizeOfRoles = user.getRoles().size();
 		userService.setSponsorRole(user.getUsername());
 		userService.saveUser(user);
@@ -129,8 +126,7 @@ public class UserServiceTests {
 
 	@Test
 	public void setSponsorRoleWithRoleAlreadyAssigned() {
-		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(0);
+		User user = this.userService.userById(100);
 		userService.saveUser(user);
 		Assertions.assertThrows(UnsupportedOperationException.class, () -> {
 			userService.setSponsorRole(user.getUsername());
@@ -139,8 +135,7 @@ public class UserServiceTests {
 
 	@Test
 	public void isAdmin() {
-		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(0);
+		User user = this.userService.userById(100);
 		Assert.assertTrue(userService.isAdmin(user));
 	}
 
@@ -161,8 +156,7 @@ public class UserServiceTests {
 
 	@Test
 	public void isNotSponsor() {
-		List<User> userList = new ArrayList<>((Collection<? extends User>) userService.findAll());
-		User user = userList.get(1);
+		User user = this.userService.userById(103);
 		Assert.assertFalse(userService.isSponsor(user));
 	}
 

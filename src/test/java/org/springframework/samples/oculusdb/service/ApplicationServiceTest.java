@@ -6,18 +6,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
+import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.ApplicationService;
-import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.services.UserService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import javax.swing.text.html.Option;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -221,8 +217,8 @@ public class ApplicationServiceTest {
 
 	@Test
 	void applicationToPDF_case0_OK() throws Exception {
-		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
-		Application application = apps.get(0);
+		Optional<Application> app = this.applicationService.findApplicationById(100);
+		Application application = app.get();
 
 		Map<String, String> data = new HashMap<String, String>();
 		data.put("name", application.getName());
@@ -295,7 +291,7 @@ public class ApplicationServiceTest {
 		Application appAux = apps.get(4);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(2);
-		String currentPrincipalName = userAux.getName();
+		String currentPrincipalName = userAux.getUsername();
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
@@ -312,7 +308,7 @@ public class ApplicationServiceTest {
 		Application appAux = apps.get(2);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(1);
-		String currentPrincipalName = userAux.getName();
+		String currentPrincipalName = userAux.getUsername();
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
@@ -329,7 +325,7 @@ public class ApplicationServiceTest {
 		Application appAux = apps.get(2);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(1);
-		String currentPrincipalName = userAux.getName();
+		String currentPrincipalName = userAux.getUsername();
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
@@ -347,7 +343,7 @@ public class ApplicationServiceTest {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
 			User userAux = users.get(1324);
-			String currentPrincipalName = userAux.getName();
+			String currentPrincipalName = userAux.getUsername();
 			Application app = new Application();
 			User user = this.userService.userByUsername(currentPrincipalName);
 			Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
@@ -366,7 +362,7 @@ public class ApplicationServiceTest {
 			List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 			Application appAux = apps.get(23546476);
 			User userAux = users.get(3);
-			String currentPrincipalName = userAux.getName();
+			String currentPrincipalName = userAux.getUsername();
 			Application app = new Application();
 			User user = this.userService.userByUsername(currentPrincipalName);
 			Optional<Application> ap = this.applicationService.findApplicationById(appAux.getId());
@@ -380,9 +376,8 @@ public class ApplicationServiceTest {
 
 	@Test
 	void listingFavouriteApps() {
-		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
-		User userAux = users.get(1);
-		String currentPrincipalName = userAux.getName();
+		User user = this.userService.userById(100);
+		String currentPrincipalName = user.getUsername();
 		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
 		Assert.notNull(favorites);
 	}

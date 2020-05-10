@@ -39,8 +39,7 @@ public class CommentsServiceTests {
 	public void shouldAddNewCommentForApplication() {
 
 		Application app2 = new Application();
-		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
-		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId());
+		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
 
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
@@ -52,11 +51,7 @@ public class CommentsServiceTests {
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
-		ap2 = this.applicationService.findApplicationById(101);
-		if (ap2.isPresent()) {
-			app2 = ap2.get();
-		}
-		Assertions.assertEquals(1, app2.getComments().size());
+		Assertions.assertEquals(2, app2.getComments().size());
 	}
 
 	@Test
@@ -113,7 +108,7 @@ public class CommentsServiceTests {
 	void FindCommentByRandomAppId() {
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService
-				.findAllByAplicationId(apps.get(0).getId());
+				.findAllByAplicationId(apps.get(1).getId());
 		Assertions.assertTrue(comments.size() >= 1);
 	}
 
