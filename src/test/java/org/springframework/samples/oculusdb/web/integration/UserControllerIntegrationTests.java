@@ -1,4 +1,4 @@
-package org.springframework.samples.oculusdb.system.integration;
+package org.springframework.samples.oculusdb.web.integration;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
