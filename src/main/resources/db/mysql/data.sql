@@ -215,6 +215,9 @@ INSERT IGNORE INTO oculusdb.developer(id,username,password,name,surname,email,co
 
 --Sponsor
 
+INSERT IGNORE INTO sponsors (id, email, name, password, surname, username, credit_card_id) VALUES
+	(100, 'testsponsor@gmail.com ', 'testsponsor', 'testsponsor', 'testsponsor', 'testsponsor', 1);
+
 --Sponsorship
 
 INSERT IGNORE INTO sponsorship(id, attachmenturl, title, user_id) VALUES (115, 'http://www.miguel.com', 'miguel', 100);
