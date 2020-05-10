@@ -1,4 +1,4 @@
-package org.springframework.samples.oculusdb.system.integration;
+package org.springframework.samples.oculusdb.web.integration;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.samples.oculusdb.controllers.ApplicationController;
 import org.springframework.samples.oculusdb.model.Application;
-import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.ui.ModelMap;
