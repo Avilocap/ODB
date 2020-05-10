@@ -21,9 +21,6 @@ public class SponsorshipControllerE2ETests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	// el test no funciona porque no funciona el listar sponsor, por la etiqueta de
-	// seguridad del html
-
 	@WithMockUser(username = "testuser")
 	@Test
 	void testListSponsorshipsSuccess() throws Exception {

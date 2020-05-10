@@ -21,6 +21,8 @@ public class ApplicationControllerE2ETests {
 
 	private static final int TEST_APP_ID = 100;
 
+	private static final int TEST_APP_ID_1 = 101;
+
 	@Autowired
 	private MockMvc mockMvc;
 
@@ -91,12 +93,10 @@ public class ApplicationControllerE2ETests {
 				.andExpect(view().name("applications/favorites"));
 	}
 
-	// no se si esta bien, da error 404 al añadir a favoritos
-
 	@WithMockUser(username = "testuser")
 	@Test
 	void testAddToFavoritesSuccess() throws Exception {
-		mockMvc.perform(get("/appInfo/{appId}/favorite", TEST_APP_ID)).andExpect(status().isOk())
+		mockMvc.perform(get("/applications/appInfo/{appId}/favorite", TEST_APP_ID_1)).andExpect(status().isOk())
 				.andExpect(view().name("applications/favorites"));
 	}
 
@@ -111,7 +111,7 @@ public class ApplicationControllerE2ETests {
 	@WithMockUser(username = "testuser")
 	@Test
 	void testDeleteFavoriteSuccess() throws Exception {
-		mockMvc.perform(get("/applications/favorites/delete/{appId}", TEST_APP_ID)).andExpect(status().isOk())
+		mockMvc.perform(get("/applications/favorites/delete?appId={appId}", TEST_APP_ID)).andExpect(status().isOk())
 				.andExpect(view().name("applications/favorites"));
 	}
 
