@@ -192,20 +192,20 @@ INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, u
 INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
 
-INSERT IGNORE INTO comments VALUES (1001, 'This game is awesome!', 'Perfect', 100, 1);
-INSERT IGNORE INTO comments VALUES (1002, 'This game is a shit', 'Bad', 101, 1);
-INSERT IGNORE INTO comments VALUES (1003, 'Best game in the world', 'Incredible', 102, 2);
-INSERT IGNORE INTO comments VALUES (1004, 'I think that is a very good game', 'Very good', 103, 3);
-INSERT IGNORE INTO comments VALUES (1005, 'I regret buying it', 'Bad', 104, 4);
-INSERT IGNORE INTO comments VALUES (1006, 'Very good game', 'Very good', 105, 5);
-INSERT IGNORE INTO comments VALUES (1007, 'I did not like it to much', 'Regular', 106, 6);
-INSERT IGNORE INTO comments VALUES (1008, 'The best game ever!', 'Perfect', 107, 1);
-INSERT IGNORE INTO comments VALUES (1009, 'What a scam', 'Very bad', 108, 2);
-INSERT IGNORE INTO comments VALUES (10010, 'Awesome!!', 'Incredible', 109, 3);
-INSERT IGNORE INTO comments VALUES (10011, 'Disappointing the truth', 'Bad', 110, 4);
-INSERT IGNORE INTO comments VALUES (10012, 'To play all day!', 'Perfect', 111, 5);
-INSERT IGNORE INTO comments VALUES (10013, 'I dont like', 'Bad', 112, 6);
-INSERT IGNORE INTO comments VALUES (10014, '...', 'Regular', 113, 1);
+INSERT IGNORE INTO comments VALUES (1001, 'This game is awesome!', 'Perfect', 100, 100);
+INSERT IGNORE INTO comments VALUES (1002, 'This game is a shit', 'Bad', 101, 100);
+INSERT IGNORE INTO comments VALUES (1003, 'Best game in the world', 'Incredible', 102, 102);
+INSERT IGNORE INTO comments VALUES (1004, 'I think that is a very good game', 'Very good', 103, 103);
+INSERT IGNORE INTO comments VALUES (1005, 'I regret buying it', 'Bad', 104, 104);
+INSERT IGNORE INTO comments VALUES (1006, 'Very good game', 'Very good', 105, 105);
+INSERT IGNORE INTO comments VALUES (1007, 'I did not like it to much', 'Regular', 106, 106);
+INSERT IGNORE INTO comments VALUES (1008, 'The best game ever!', 'Perfect', 107, 100);
+INSERT IGNORE INTO comments VALUES (1009, 'What a scam', 'Very bad', 108, 102);
+INSERT IGNORE INTO comments VALUES (10010, 'Awesome!!', 'Incredible', 109, 103);
+INSERT IGNORE INTO comments VALUES (10011, 'Disappointing the truth', 'Bad', 110, 104);
+INSERT IGNORE INTO comments VALUES (10012, 'To play all day!', 'Perfect', 111, 105);
+INSERT IGNORE INTO comments VALUES (10013, 'I dont like', 'Bad', 112, 106);
+INSERT IGNORE INTO comments VALUES (10014, '...', 'Regular', 113, 100);
 
 
 --Developer
@@ -217,17 +217,17 @@ INSERT IGNORE INTO oculusdb.developer(id,username,password,name,surname,email,co
 
 --Sponsorship
 
-INSERT IGNORE INTO sponsorship VALUES (115, 'http://www.miguel.com', 'miguel', 100);
+INSERT IGNORE INTO sponsorship(id, attachmenturl, title, user_id) VALUES (115, 'http://www.miguel.com', 'miguel', 100);
 
 INSERT IGNORE INTO oculusdb.users_sponsorships (user_id, sponsorships_id) VALUES (100, 115);
 
 --Favorites
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 2);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 4);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 7);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 8);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 3);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 5);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (104, 9);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (105, 10);
-INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (106, 11);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (100, 100);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 104);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 107);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (102, 108);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 103);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (103, 105);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (104, 109);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (105, 112);
+INSERT IGNORE INTO oculusdb.users_favorites (user_id, favorites_id) VALUES (106, 113);

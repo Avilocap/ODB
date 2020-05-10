@@ -50,7 +50,7 @@ public class CommentsControllerE2ETests {
 
 	@WithMockUser(username = "testuser")
 	@Test
-	void testAñadirComentarioHasErrors() throws Exception {
+	void testAñadirComentarioHasErrorsCase0() throws Exception {
 		mockMvc.perform(
 				post("/appInfo/{appId}/comments/new", TEST_APP_ID).with(csrf()).param("title", "").param("content", ""))
 				.andExpect(model().attributeHasErrors("comments"))
@@ -59,12 +59,28 @@ public class CommentsControllerE2ETests {
 				.andExpect(view().name("comments/newComment"));
 	}
 
-	// deberia funcionar, no se porque da error 404 al borrar
+	@WithMockUser(username = "testuser")
+	@Test
+	void testAñadirComentarioHasErrorsCase1() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).with(csrf()).param("title", "good game")
+				.param("content", "")).andExpect(model().attributeHasErrors("comments"))
+				.andExpect(model().attributeHasFieldErrors("comments", "content"))
+				.andExpect(view().name("comments/newComment"));
+	}
+
+	@WithMockUser(username = "testuser")
+	@Test
+	void testAñadirComentarioHasErrorsCase2() throws Exception {
+		mockMvc.perform(post("/appInfo/{appId}/comments/new", TEST_APP_ID).with(csrf()).param("title", "")
+				.param("content", "good game")).andExpect(model().attributeHasErrors("comments"))
+				.andExpect(model().attributeHasFieldErrors("comments", "title"))
+				.andExpect(view().name("comments/newComment"));
+	}
 
 	@WithMockUser(username = "testuser")
 	@Test
 	void testBorrarComentarioSuccess() throws Exception {
-		mockMvc.perform(get("/comments/delete", TEST_COMMENT_ID)).andExpect(status().isOk())
+		mockMvc.perform(get("/comments/delete?commentId={commentId}", TEST_COMMENT_ID)).andExpect(status().isOk())
 				.andExpect(view().name("applications/todoOk"));
 	}
 
