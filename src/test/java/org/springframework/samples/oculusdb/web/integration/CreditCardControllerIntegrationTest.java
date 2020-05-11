@@ -22,54 +22,89 @@ public class CreditCardControllerIntegrationTest {
 
 	@WithMockUser("adri")
 	@Test
-	void initCreditCardForm() throws Exception {
+	void testInitCreditCardFormSuccess() throws Exception {
+	    String view = creditCardController.loadCreditCardForm();
+		Assertions.assertEquals(view, "creditCard/creditCardForm.html");
+	}
+
+	@WithMockUser("adri")
+	@Test
+	void testInitCreditCardFormHasErrors() throws Exception {
 
 		String view = creditCardController.loadCreditCardForm();
-		Assertions.assertEquals(view, "creditCard/creditCardForm.html");
+		Assertions.assertNotEquals(view, "creditCard/creditCardFormm.html");
 	}
 
 	@WithMockUser("testuser")
 	@Test
-	void initCreditCardFormPremiun() throws Exception {
+	void testInitCreditCardFormPremiumSuccess() throws Exception {
 
 		String view = creditCardController.loadCreditCardForm();
+		System.out.println(view);
 		Assertions.assertEquals(view, "creditCard/yaPremium.html");
 	}
 
 	@WithMockUser("testuser")
 	@Test
-	void paySucces() throws Exception {
+	void testInitCreditCardFormPremiumHasErrors() throws Exception {
+
+		String view = creditCardController.loadCreditCardForm();
+		Assertions.assertNotEquals(view, "creditCard/yaPremiumm.html");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testPaySuccess() throws Exception {
 		String number = "12300";
 		int expY = 2023;
 		int expM = 10;
 		int cvv = 345;
-
 		String view = creditCardController.processPayment(number, expY, expM, cvv);
 		Assertions.assertEquals(view, "creditCard/pagoRealizado");
 	}
 
 	@WithMockUser("testuser")
 	@Test
-	void payHasErrors() throws Exception {
+	void payHasErrors1() throws Exception {
 		String number = "123000";
 		int expY = 2018;
 		int expM = 10;
 		int cvv = 345;
-
 		String view = creditCardController.processPayment(number, expY, expM, cvv);
 		Assertions.assertEquals(view, "creditCard/PagoErroneo");
 	}
 
 	@WithMockUser("testuser")
 	@Test
-	void payHasErrors2() throws Exception {
+	void testPayHasErrors2() throws Exception {
 		String number = "338976";
 		int expY = 2023;
 		int expM = 123;
-		int cvv = 789;
-
+		int cvv = 345;
 		String view = creditCardController.processPayment(number, expY, expM, cvv);
 		Assertions.assertEquals(view, "creditCard/PagoErroneo");
 	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testPayHasErrors3() throws Exception {
+		String number = "338976";
+		int expY = 2023;
+		int expM = 10;
+		int cvv = 1000;
+		String view = creditCardController.processPayment(number, expY, expM, cvv);
+		Assertions.assertEquals(view, "creditCard/PagoErroneo");
+	}
+
+    @WithMockUser("testuser")
+    @Test
+    void testPayHasErrors4() throws Exception {
+        String number = "338976";
+        int expY = 2023;
+        int expM = 10;
+        int cvv = 1000;
+        String view = creditCardController.processPayment(number, expY, expM, cvv);
+        Assertions.assertNotEquals(view, "creditCard/PagoErroneoo");
+    }
 
 }

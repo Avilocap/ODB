@@ -146,12 +146,13 @@ public class CommentControllerIntegrationTests {
 
     @Test
     void testDeleteCommentHasErrors1() throws Exception {
-        String view = commentsController.borrarComentario(TEST_COMMENT_ID);
+	    int commentID = 1002;
+        String view = commentsController.borrarComentario(commentID);
         Assertions.assertNotEquals(view, "applications/todoOkk");
     }
 
 	@Test
-	void listCommentsSuccess() throws Exception {
+	void testListCommentsSuccess() throws Exception {
 		ModelMap model = new ModelMap();
 		String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
 		Assertions.assertEquals(view, "comments/listComments");
@@ -159,14 +160,14 @@ public class CommentControllerIntegrationTests {
 	}
 
     @Test
-    void listCommentsHasErrors1() throws Exception {
+    void testListCommentsHasErrors1() throws Exception {
         ModelMap model = new ModelMap();
         String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
         Assertions.assertNotEquals(view, "comments/listCommentss");
     }
 
     @Test
-    void listCommentsHasErrors2() throws Exception {
+    void testListCommentsHasErrors2() throws Exception {
         ModelMap model = new ModelMap();
         Integer appId = 200;
         String view = commentsController.listarComentarios(appId, model);

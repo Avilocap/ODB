@@ -21,7 +21,7 @@ INSERT IGNORE INTO role VALUES (3,'SPONSOR');
 INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (100, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (100, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',true);
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (102, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema',false);
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (103, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu',false);
 INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (104, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri',false);

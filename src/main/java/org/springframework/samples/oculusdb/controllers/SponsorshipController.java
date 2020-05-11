@@ -25,7 +25,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/sponsorship")
-public class SponsoshipController {
+public class SponsorshipController {
 
 	@Autowired
 	private SponsorService sponsorService;
@@ -55,7 +55,6 @@ public class SponsoshipController {
 
 	@GetMapping(value = "/new")
 	public String addSponsorship(final ModelMap modelMap) {
-
 		Sponsorship sponsorship = new Sponsorship();
 		modelMap.addAttribute("sponsorship", sponsorship);
 		return "sponsorship/new";
@@ -69,6 +68,9 @@ public class SponsoshipController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
 		User user = this.userService.userByUsername(currentPrincipalName);
+		if(result.hasErrors()) {
+			return "sponsorship/new";
+		}
 		if (userService.isSponsor(user)) {
 			sponsorship.setUser(user);
 			sponsorShipService.saveSponsorship(sponsorship);

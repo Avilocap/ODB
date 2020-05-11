@@ -30,7 +30,6 @@ public class UserControllerIntegrationTests {
 		String view = userController.registration(model);
 		Assertions.assertEquals(view, "security/registration");
 		Assertions.assertNotNull("userForm");
-
 	}
 
 	/*
