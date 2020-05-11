@@ -28,7 +28,7 @@ public class CreditCardControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@WithMockUser("testuser")
+	@WithMockUser("miguel")
 	@Test
 	void testInitCreditCardForm() throws Exception {
 		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
