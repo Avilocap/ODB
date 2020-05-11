@@ -117,5 +117,48 @@ public class SponsorShipServiceTests {
 	}
 
 
+	@Test
+	public void addSponsorShipHasErrors3() {
+		User user = userService.userById(100);
+		Sponsorship sponsorShip = new Sponsorship();
+
+		int sponsors = user.getSponsorships().size();
+
+		sponsorShip.setUser(user);
+
+		this.sponsorShipService.saveSponsorship(sponsorShip);
+
+		if(sponsorShip.getAttachmentUrl() == null || sponsorShip.getTitle() == null) {
+			sponsorShip = null;
+		} else {
+			user.getSponsorships().add(sponsorShip);
+		}
+
+		Assertions.assertEquals(sponsors, user.getSponsorships().size());
+	}
+
+
+	@Test
+	public void addSponsorShipHasErrors4() {
+		User user = userService.userById(104);
+		Sponsorship sponsorShip = new Sponsorship();
+
+
+		sponsorShip.setTitle("nuevo sponsorship");
+		sponsorShip.setAttachmentUrl("sponsornew.com");
+		sponsorShip.setUser(user);
+
+		this.sponsorShipService.saveSponsorship(sponsorShip);
+
+		if(!userService.isSponsor(user)) {
+			sponsorShip = null;
+		} else {
+			user.getSponsorships().add(sponsorShip);
+		}
+
+		Assertions.assertNull(sponsorShip);
+	}
+
+
 
 }

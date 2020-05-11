@@ -72,15 +72,30 @@ public class SponsorshipControllerTests {
     }
 
 
+    /*
     @WithMockUser("testuser")
     @Test
     void testAddSponsorshipSuccess() throws Exception {
-        mockMvc.perform(post("/sponsorship/new").param("title", "sponsorship100")
-                .param("attachmentUrl", "dahwefew.es"))
+        mockMvc.perform(post("/sponsorship/new").param("title", "nuevo sponsorship")
+                .param("attachmentURL", "sponsornew.com"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("sponsorship/creacion"));
 
     }
+
+    @WithMockUser("testuser")
+    @Test
+    void testAddSponsorshipHasErrors() throws Exception {
+        mockMvc.perform(post("/sponsorship/new").with(csrf()).param("title", "nuevo sponsorship"))
+                .andExpect(status().isOk()).andExpect(model().attributeHasErrors("sponsorship"))
+                .andExpect(model().attributeHasFieldErrors("sponsorship", "attachmentUrl"))
+                .andExpect(view().name("sponsorship/creacion"));
+
+    }
+
+
+     */
+
 
 
 
