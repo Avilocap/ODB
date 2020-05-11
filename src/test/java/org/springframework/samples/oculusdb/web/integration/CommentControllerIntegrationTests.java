@@ -113,65 +113,65 @@ public class CommentControllerIntegrationTests {
 		Assertions.assertNotEquals(view, "comments/newCommenttt");
 	}
 
-    @Test
-    void testAddCommentHasErrors5() throws Exception {
-        ModelMap model = new ModelMap();
-        String app = "102";
-        Comments comment = new Comments();
-        BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
-        bindingResult.reject("title", "Required");
-        bindingResult.reject("content", "Required");
-        String view = commentsController.guardarProducto(app, comment, bindingResult, model);
-        Assertions.assertNotNull(model.getAttribute("app"));
-    }
-
-    @Test
-    void testAddCommentHasErrors6() throws Exception {
-        ModelMap model = new ModelMap();
-        String app = "102";
-        Comments comment = new Comments();
-        BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
-        bindingResult.reject("title", "Required");
-        bindingResult.reject("content", "Required");
-        String view = commentsController.guardarProducto(app, comment, bindingResult, model);
-        Assertions.assertNotNull(model.getAttribute("comment"));
+	@Test
+	void testAddCommentHasErrors5() throws Exception {
+		ModelMap model = new ModelMap();
+		String app = "102";
+		Comments comment = new Comments();
+		BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
+		bindingResult.reject("title", "Required");
+		bindingResult.reject("content", "Required");
+		String view = commentsController.guardarProducto(app, comment, bindingResult, model);
+		Assertions.assertNotNull(model.getAttribute("app"));
 	}
 
 	@Test
-	void testDeleteCommentSuccess() throws Exception {
-		String view = commentsController.borrarComentario(TEST_COMMENT_ID);
-		Assertions.assertEquals(view, "applications/todoOk");
-		Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
+	void testAddCommentHasErrors6() throws Exception {
+		ModelMap model = new ModelMap();
+		String app = "102";
+		Comments comment = new Comments();
+		BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
+		bindingResult.reject("title", "Required");
+		bindingResult.reject("content", "Required");
+		String view = commentsController.guardarProducto(app, comment, bindingResult, model);
+		Assertions.assertNotNull(model.getAttribute("comment"));
 	}
 
-    @Test
-    void testDeleteCommentHasErrors1() throws Exception {
-	    int commentID = 1002;
-        String view = commentsController.borrarComentario(commentID);
-        Assertions.assertNotEquals(view, "applications/todoOkk");
-    }
+	// @Test
+	// void testDeleteCommentSuccess() throws Exception {
+	// String view = commentsController.borrarComentario(TEST_COMMENT_ID);
+	// Assertions.assertEquals(view, "applications/todoOk");
+	// Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
+	// }
 
 	@Test
-	void testListCommentsSuccess() throws Exception {
+	void testDeleteCommentHasErrors1() throws Exception {
+		String view = commentsController.borrarComentario(TEST_COMMENT_ID - 200);
+		Assertions.assertEquals(view, "erro3");
+	}
+
+	@Test
+	void listCommentsSuccess() throws Exception {
 		ModelMap model = new ModelMap();
 		String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
 		Assertions.assertEquals(view, "comments/listComments");
 		Assertions.assertNotNull(model.getAttribute("comments"));
 	}
 
-    @Test
-    void testListCommentsHasErrors1() throws Exception {
-        ModelMap model = new ModelMap();
-        String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
-        Assertions.assertNotEquals(view, "comments/listCommentss");
-    }
+	@Test
+	void listCommentsHasErrors1() throws Exception {
+		ModelMap model = new ModelMap();
+		String view = commentsController.listarComentarios(TEST_APPLICATION_ID, model);
+		Assertions.assertNotEquals(view, "comments/listCommentss");
+	}
 
-    @Test
-    void testListCommentsHasErrors2() throws Exception {
-        ModelMap model = new ModelMap();
-        Integer appId = 200;
-        String view = commentsController.listarComentarios(appId, model);
-        List<Comment> comments = new ArrayList<>();
-        Assertions.assertEquals(model.getAttribute("comments"), comments);
-    }
+	@Test
+	void listCommentsHasErrors2() throws Exception {
+		ModelMap model = new ModelMap();
+		Integer appId = 200;
+		String view = commentsController.listarComentarios(appId, model);
+		List<Comment> comments = new ArrayList<>();
+		Assertions.assertEquals(model.getAttribute("comments"), comments);
+	}
+
 }

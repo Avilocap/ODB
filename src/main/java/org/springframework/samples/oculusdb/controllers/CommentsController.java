@@ -71,12 +71,19 @@ public class CommentsController {
 
 	@RequestMapping(value = "/comments/delete")
 	public String borrarComentario(@RequestParam("commentId") int commentId) {
-		Comments c = this.commentsService.findCommentById(commentId).get();
-		Application a = c.getApplication();
-		a.getComments().removeIf(x -> c.getId() == commentId);
-		this.applicationService.saveApplication(a);
-		this.commentsService.deleteComment(c);
-		return "applications/todoOk";
+
+		Optional<Comments> p = this.commentsService.findCommentById(commentId);
+		if (p.isPresent()) {
+			Comments c = this.commentsService.findCommentById(commentId).get();
+			Application a = c.getApplication();
+			a.getComments().removeIf(x -> c.getId() == commentId);
+			this.applicationService.saveApplication(a);
+			this.commentsService.deleteComment(c);
+			return "applications/todoOk";
+		}
+		else {
+			return "erro3";
+		}
 
 	}
 

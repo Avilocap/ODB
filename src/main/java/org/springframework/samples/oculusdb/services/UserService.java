@@ -50,7 +50,7 @@ public class UserService {
 		return user.getRoles().stream().filter(o -> o.getName().equals("SPONSOR")).findFirst().isPresent();
 	}
 
-	public List<Sponsorship> sponsorshipsOfUser(User user){
+	public List<Sponsorship> sponsorshipsOfUser(User user) {
 		return userRepository.sponoshorShipOfUser(user);
 	}
 

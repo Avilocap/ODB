@@ -62,8 +62,7 @@ public class SponsorshipController {
 	}
 
 	@PostMapping(value = "/new")
-	public String newSponsorhip(@Valid Sponsorship sponsorship, BindingResult result,
-								  ModelMap model) {
+	public String newSponsorhip(@Valid Sponsorship sponsorship, BindingResult result, ModelMap model) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
