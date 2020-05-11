@@ -32,7 +32,7 @@ public class CreditCardControllerTests {
 	@Test
 	void testInitCreditCardForm() throws Exception {
 		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
-				.andExpect(view().name("creditCard/creditCardForm.html"));
+				.andExpect(view().name("creditCard/yaPremium.html"));
 	}
 
 	@WithMockUser("testuser")
