@@ -34,7 +34,6 @@ public class SponsorShipServiceTests {
 
 		int sponsors = user.getSponsorships().size();
 
-
 		sponsorShip.setTitle("nuevo sponsorship");
 		sponsorShip.setAttachmentUrl("sponsornew.com");
 		sponsorShip.setUser(user);
@@ -67,13 +66,13 @@ public class SponsorShipServiceTests {
 		User user = userService.userById(100);
 		Sponsorship sponsorShip = new Sponsorship();
 
-
 		sponsorShip.setAttachmentUrl("sponsornew.com");
 		sponsorShip.setUser(user);
 
-		if(sponsorShip.getTitle() == null) {
+		if (sponsorShip.getTitle() == null) {
 			sponsorShip = null;
-		} else {
+		}
+		else {
 			this.sponsorShipService.saveSponsorship(sponsorShip);
 		}
 
@@ -85,13 +84,13 @@ public class SponsorShipServiceTests {
 		User user = userService.userById(100);
 		Sponsorship sponsorShip = new Sponsorship();
 
-
 		sponsorShip.setTitle("sponsor");
 		sponsorShip.setUser(user);
 
-		if(sponsorShip.getAttachmentUrl() == null) {
+		if (sponsorShip.getAttachmentUrl() == null) {
 			sponsorShip = null;
-		} else {
+		}
+		else {
 			this.sponsorShipService.saveSponsorship(sponsorShip);
 		}
 
@@ -103,19 +102,18 @@ public class SponsorShipServiceTests {
 		User user = userService.userById(100);
 		Sponsorship sponsorShip = new Sponsorship();
 
-
 		sponsorShip.setTitle("sponsor");
 		sponsorShip.setUser(user);
 
-		if(sponsorShip.getAttachmentUrl() == null) {
+		if (sponsorShip.getAttachmentUrl() == null) {
 			sponsorShip = null;
-		} else {
+		}
+		else {
 			this.sponsorShipService.saveSponsorship(sponsorShip);
 		}
 
 		Assertions.assertNull(sponsorShip);
 	}
-
 
 	@Test
 	public void addSponsorShipHasErrors3() {
@@ -128,21 +126,20 @@ public class SponsorShipServiceTests {
 
 		this.sponsorShipService.saveSponsorship(sponsorShip);
 
-		if(sponsorShip.getAttachmentUrl() == null || sponsorShip.getTitle() == null) {
+		if (sponsorShip.getAttachmentUrl() == null || sponsorShip.getTitle() == null) {
 			sponsorShip = null;
-		} else {
+		}
+		else {
 			user.getSponsorships().add(sponsorShip);
 		}
 
 		Assertions.assertEquals(sponsors, user.getSponsorships().size());
 	}
 
-
 	@Test
 	public void addSponsorShipHasErrors4() {
 		User user = userService.userById(104);
 		Sponsorship sponsorShip = new Sponsorship();
-
 
 		sponsorShip.setTitle("nuevo sponsorship");
 		sponsorShip.setAttachmentUrl("sponsornew.com");
@@ -150,15 +147,14 @@ public class SponsorShipServiceTests {
 
 		this.sponsorShipService.saveSponsorship(sponsorShip);
 
-		if(!userService.isSponsor(user)) {
+		if (!userService.isSponsor(user)) {
 			sponsorShip = null;
-		} else {
+		}
+		else {
 			user.getSponsorships().add(sponsorShip);
 		}
 
 		Assertions.assertNull(sponsorShip);
 	}
-
-
 
 }
