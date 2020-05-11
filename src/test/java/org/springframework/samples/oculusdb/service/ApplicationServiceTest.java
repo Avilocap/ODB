@@ -51,31 +51,13 @@ public class ApplicationServiceTest {
 		int sizeBefore = apps.size();
 		// Upgrade process
 
-		this.applicationService.getInfoOfOneApplication("1320373124698683");
+		this.applicationService.getInfoOfOneApplication("1449841275090025");
 		// Checking the pool size of apps before updating them.
 		List<Application> appsUpdated = new ArrayList<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		// Let's make sure that they're different.
 		int sizeAfter = appsUpdated.size();
 		org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
-
-	}
-
-	@Test
-	void getInfoOfOneApplicationIfExists() throws IOException, JSONException {
-		// Checking the pool size of apps after updating them.
-		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
-		int sizeBefore = apps.size();
-		Assertions.assertThrows(JSONException.class, () -> {
-			// Upgrade process
-			this.applicationService.getInfoOfOneApplication("2104963472963790");
-			// Checking the pool size of apps before updating them.
-			this.applicationService.getInfoOfOneApplication("1471853306160646");
-			List<Application> appsUpdated = new ArrayList<>(
-					(Collection<? extends Application>) this.applicationService.findAll());
-			int sizeAfter = appsUpdated.size();
-			org.junit.Assert.assertNotEquals(sizeBefore, sizeAfter);
-		});
 
 	}
 
