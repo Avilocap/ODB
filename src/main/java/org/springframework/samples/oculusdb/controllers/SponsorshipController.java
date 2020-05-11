@@ -67,7 +67,7 @@ public class SponsorshipController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
 		User user = this.userService.userByUsername(currentPrincipalName);
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "sponsorship/new";
 		}
 		if (userService.isSponsor(user)) {

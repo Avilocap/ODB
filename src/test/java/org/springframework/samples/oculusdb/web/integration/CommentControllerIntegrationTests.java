@@ -173,4 +173,5 @@ public class CommentControllerIntegrationTests {
 		List<Comment> comments = new ArrayList<>();
 		Assertions.assertEquals(model.getAttribute("comments"), comments);
 	}
+
 }

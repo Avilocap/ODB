@@ -73,7 +73,7 @@ public class SponsorshipControllerIntegrationTests {
 
 	@WithMockUser("testuser")
 	@Test
-	void testNewSponsorshipSuccess() throws  Exception {
+	void testNewSponsorshipSuccess() throws Exception {
 		Sponsorship sponsorship = new Sponsorship();
 		sponsorship.setTitle("Sponsorship");
 		sponsorship.setAttachmentUrl("www.sponsorship.com");
@@ -85,7 +85,7 @@ public class SponsorshipControllerIntegrationTests {
 
 	@WithMockUser("testuser")
 	@Test
-	void testNewSponsorshipHasErrors1() throws  Exception {
+	void testNewSponsorshipHasErrors1() throws Exception {
 		Sponsorship sponsorship = new Sponsorship();
 		sponsorship.setTitle("Sponsorship");
 		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
@@ -97,7 +97,7 @@ public class SponsorshipControllerIntegrationTests {
 
 	@WithMockUser("testuser")
 	@Test
-	void testNewSponsorshipHasErrors2() throws  Exception {
+	void testNewSponsorshipHasErrors2() throws Exception {
 		Sponsorship sponsorship = new Sponsorship();
 		sponsorship.setAttachmentUrl("www.sponsorship.com");
 		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
@@ -109,7 +109,7 @@ public class SponsorshipControllerIntegrationTests {
 
 	@WithMockUser("testuser")
 	@Test
-	void testNewSponsorshipHasErrors3() throws  Exception {
+	void testNewSponsorshipHasErrors3() throws Exception {
 		Sponsorship sponsorship = new Sponsorship();
 		sponsorship.setTitle("Sponsorship");
 		sponsorship.setAttachmentUrl("www.sponsorship.com");
