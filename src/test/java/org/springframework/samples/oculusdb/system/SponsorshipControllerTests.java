@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.samples.oculusdb.controllers.SponsoshipController;
+import org.springframework.samples.oculusdb.controllers.SponsorshipController;
 import org.springframework.samples.oculusdb.services.SponsorShipService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,7 +23,7 @@ public class SponsorshipControllerTests {
 	private SponsorShipService sponsorShipService;
 
 	@Autowired
-	private SponsoshipController sponsoshipController;
+	private SponsorshipController sponsorshipController;
 
 	@Autowired
 	private MockMvc mockMvc;
