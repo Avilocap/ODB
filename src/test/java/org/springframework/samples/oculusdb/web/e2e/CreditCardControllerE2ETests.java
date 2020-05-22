@@ -30,14 +30,14 @@ public class CreditCardControllerE2ETests {
 				.andExpect(view().name("creditCard/creditCardForm.html"));
 	}
 
-	/*
-	 * @WithMockUser("testuser")
-	 *
-	 * @Test void testLoadCreditCardFormYaPremium() throws Exception {
-	 * mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
-	 * .andExpect(view().name("creditCard/yaPremium.html")); }
-	 */
-	@WithMockUser("testuser")
+
+	  @WithMockUser("testuser")
+
+	  @Test void testLoadCreditCardFormYaPremium() throws Exception {
+	  mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
+	  .andExpect(view().name("creditCard/yaPremium.html")); }
+
+	  @WithMockUser("testuser")
 	@Test
 	void testLoadCreditCardFormHasErrors() throws Exception {
 		mockMvc.perform(get("/creditCardsss/new")).andExpect(status().is4xxClientError());

@@ -119,4 +119,41 @@ public class SponsorshipControllerIntegrationTests {
 		Assertions.assertNotEquals(view, "sponsorship/neww");
 	}
 
+	@WithMockUser("miguel")
+	@Test
+	void testNewSponsorshipSuccessMiguel() throws Exception {
+		Sponsorship sponsorship = new Sponsorship();
+		sponsorship.setTitle("Sponsorship");
+		sponsorship.setAttachmentUrl("www.sponsorship.com");
+		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
+		ModelMap modelMap = new ModelMap();
+		String view = sponsorshipController.newSponsorhip(sponsorship, result, modelMap);
+		Assertions.assertEquals(view, "sponsorship/creacion");
+	}
+
+	@WithMockUser("miguel")
+	@Test
+	void testNewSponsorshipHasErrors1Miguel() throws Exception {
+		Sponsorship sponsorship = new Sponsorship();
+		sponsorship.setTitle("Sponsorship");
+		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
+		result.reject("attachmentUrl", "Required");
+		ModelMap modelMap = new ModelMap();
+		String view = sponsorshipController.newSponsorhip(sponsorship, result, modelMap);
+		Assertions.assertEquals(view, "sponsorship/new");
+	}
+
+	@WithMockUser("miguel")
+	@Test
+	void testNewSponsorshipHasErrors2Miguel() throws Exception {
+		Sponsorship sponsorship = new Sponsorship();
+		sponsorship.setAttachmentUrl("www.sponsorship.com");
+		BindingResult result = new MapBindingResult(Collections.emptyMap(), "");
+		result.reject("title", "Required");
+		ModelMap modelMap = new ModelMap();
+		String view = sponsorshipController.newSponsorhip(sponsorship, result, modelMap);
+		Assertions.assertEquals(view, "sponsorship/new");
+	}
+
+
 }
