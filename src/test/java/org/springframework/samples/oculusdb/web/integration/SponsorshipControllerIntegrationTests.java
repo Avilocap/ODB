@@ -155,5 +155,4 @@ public class SponsorshipControllerIntegrationTests {
 		Assertions.assertEquals(view, "sponsorship/new");
 	}
 
-
 }
