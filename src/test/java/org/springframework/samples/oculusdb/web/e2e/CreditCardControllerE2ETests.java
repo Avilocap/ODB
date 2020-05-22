@@ -23,14 +23,14 @@ public class CreditCardControllerE2ETests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@WithMockUser("testuser")
+	@WithMockUser("miguel")
 	@Test
 	void testLoadCreditCardFormSuccess() throws Exception {
 		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
 				.andExpect(view().name("creditCard/creditCardForm.html"));
 	}
 
-	@WithMockUser("testuser")
+	@WithMockUser("miguel")
 
 	@Test
 	void testLoadCreditCardFormYaPremium() throws Exception {
@@ -38,9 +38,30 @@ public class CreditCardControllerE2ETests {
 				.andExpect(view().name("creditCard/yaPremium.html"));
 	}
 
-	@WithMockUser("testuser")
+	@WithMockUser("miguel")
 	@Test
 	void testLoadCreditCardFormHasErrors() throws Exception {
+		mockMvc.perform(get("/creditCardsss/new")).andExpect(status().is4xxClientError());
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testLoadCreditCardFormSuccessTestUser() throws Exception {
+		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
+				.andExpect(view().name("creditCard/creditCardForm.html"));
+	}
+
+	@WithMockUser("testuser")
+
+	@Test
+	void testLoadCreditCardFormYaPremiumTestUser() throws Exception {
+		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
+				.andExpect(view().name("creditCard/yaPremium.html"));
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testLoadCreditCardFormHasErrorsTestUser() throws Exception {
 		mockMvc.perform(get("/creditCardsss/new")).andExpect(status().is4xxClientError());
 	}
 
