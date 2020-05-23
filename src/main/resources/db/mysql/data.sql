@@ -21,12 +21,12 @@ INSERT IGNORE INTO role VALUES (3,'SPONSOR');
 INSERT IGNORE INTO role VALUES (4,'DEVELOPER');
 
 --Users
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (100, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',true);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (102, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (103, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (104, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (105, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel',false);
-INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium) VALUES (106, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david',false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium,active) VALUES (100, 'testuser@gmail.com', 'User', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'Test', 'testuser',true,true);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium,active) VALUES (102, 'josema@gmail.com', 'josema', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'josema', 'josema',false,true);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium,active) VALUES (103, 'manu@gmail.com', 'manu', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'manu', 'manu',false,false);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium,active) VALUES (104, 'adri@gmail.com', 'adri', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'adri', 'adri',false,true);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium,active) VALUES (105, 'miguel@gmail.com', 'miguel', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'miguel', 'miguel',false,true);
+INSERT IGNORE INTO oculusdb.users (id, email, name, password, surname, username,premium,active) VALUES (106, 'david@gmail.com', 'david', '$2a$10$aqRkmFNk6QGlOmbk.xy7puTC7Y1DmHQayZBYGUghMEbkus.7vwT0K', 'david', 'david',false,true);
 
 --Users roles
 
@@ -191,6 +191,9 @@ Key Jobbing Features:
 INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, username) VALUES (1, 'pedro_admin@gmail.com', 'Pedro', '$2a$10$J1Av8xN3HaF8KZxiYvmOXels/.CmzkntgCizGreqoRqvNNTJukiiu', 'Rodríguez', 'administrator');
 INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
+
+-- Reviews
+INSERT IGNORE INTO oculusdb.reviews (id,oculus_id,title,content,publish_date) values (6000, '3452346523456','Review Title 1', 'Review Content 1', '1970-01-18');
 
 INSERT IGNORE INTO comments VALUES (1001, 'This game is awesome!', 'Perfect', 100, 100);
 INSERT IGNORE INTO comments VALUES (1002, 'This game is a shit', 'Bad', 101, 100);

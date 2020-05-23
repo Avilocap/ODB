@@ -24,7 +24,13 @@ public class CreditCardService {
 	public boolean checkCreditCard(String number, int expirationYear, int expirationMonth, int cvv) {
 		boolean res;
 
-		Assert.notNull(number);
+		if (number == null) {
+			return false;
+		}
+
+		if (number.equals("") || number.length() != 16) {
+			return false;
+		}
 		Assert.isTrue(expirationMonth >= 1);
 		Assert.isTrue(cvv >= 1);
 

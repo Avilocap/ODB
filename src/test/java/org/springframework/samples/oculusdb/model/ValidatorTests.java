@@ -11,6 +11,7 @@ import javax.validation.Validator;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.samples.oculusdb.application.Comments;
+import org.springframework.samples.oculusdb.category.Category;
 import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -23,7 +24,19 @@ class ValidatorTests {
 	}
 
 	@Test
-	void shouldNotValidateWhenIdEmpty() {
+	void shouldValidateAppWithAllParameters() {
+		LocaleContextHolder.setLocale(Locale.ENGLISH);
+		Application application = new Application();
+		application.setName("app1");
+		application.setDescription("smith");
+		application.setOculusId("8975424654");
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Application>> constraintViolations = validator.validate(application);
+		assertThat(constraintViolations.size()).isEqualTo(0);
+	}
+
+	@Test
+	void shouldNotValidateAppWhenIdEmpty() {
 		LocaleContextHolder.setLocale(Locale.ENGLISH);
 		Application application = new Application();
 		application.setName("app1");
@@ -38,7 +51,23 @@ class ValidatorTests {
 	}
 
 	@Test
-	void shouldNotValidateNameEmpty() {
+	void shouldNotValidateAppNameEmpty() {
+		LocaleContextHolder.setLocale(Locale.ENGLISH);
+		Application application = new Application();
+		application.setOculusId("102");
+		application.setDescription("smith");
+		application.setName("");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Application>> constraintViolations = validator.validate(application);
+
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Application> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("name");
+	}
+
+	@Test
+	void shouldNotValidateAppNameNull() {
 		LocaleContextHolder.setLocale(Locale.ENGLISH);
 		Application application = new Application();
 		application.setOculusId("102");
@@ -49,6 +78,37 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(1);
 		ConstraintViolation<Application> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("name");
+	}
+
+	@Test
+	void shouldValidateUserWithAllParameters() {
+		LocaleContextHolder.setLocale(Locale.ENGLISH);
+		User user = new User();
+		user.setSurname("Gallardo");
+		user.setEmail("deokw@gmail.com");
+		user.setName("Name");
+		user.setUsername("username");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
+		assertThat(constraintViolations.size()).isEqualTo(0);
+
+	}
+
+	@Test
+	void shouldNotValidateNameUserNull() {
+		LocaleContextHolder.setLocale(Locale.ENGLISH);
+		User user = new User();
+		user.setSurname("Gallardo");
+		user.setEmail("deokw@gmail.com");
+		user.setName(null);
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
+
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("name");
 	}
 
@@ -68,7 +128,23 @@ class ValidatorTests {
 	}
 
 	@Test
-	void shouldNotValidateSurnameUserEmpty() {
+	void shouldNotValidateSurnameUserNameEmpty() {
+		LocaleContextHolder.setLocale(Locale.ENGLISH);
+		User user = new User();
+		user.setName("Josema");
+		user.setEmail("deokw@gmail.com");
+		user.setUsername("");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
+
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<User> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("surname");
+	}
+
+	@Test
+	void shouldNotValidateSurnameUserNameNull() {
 		LocaleContextHolder.setLocale(Locale.ENGLISH);
 		User user = new User();
 		user.setName("Josema");
@@ -84,6 +160,22 @@ class ValidatorTests {
 
 	@Test
 	void shouldNotValidateEmailUserEmpty() {
+		LocaleContextHolder.setLocale(Locale.ENGLISH);
+		User user = new User();
+		user.setName("Josema");
+		user.setSurname("Gallardo");
+		user.setEmail("");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
+
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<User> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("email");
+	}
+
+	@Test
+	void shouldNotValidateEmailUserNull() {
 		LocaleContextHolder.setLocale(Locale.ENGLISH);
 		User user = new User();
 		user.setName("Josema");
@@ -111,6 +203,19 @@ class ValidatorTests {
 	}
 
 	@Test
+	void shouldNotValidateTitleNull() {
+		Comments comment = new Comments();
+		comment.setTitle(null);
+		comment.setContent("good comment");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Comments>> constraintViolations = validator.validate(comment);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Comments> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("title");
+	}
+
+	@Test
 	void shouldNotValidateContentEmpty() {
 		Comments comment = new Comments();
 		comment.setTitle("koaoa");
@@ -124,12 +229,66 @@ class ValidatorTests {
 	}
 
 	@Test
+	void shouldNotValidateContentNull() {
+		Comments comment = new Comments();
+		comment.setTitle("koaoa");
+		comment.setContent(null);
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Comments>> constraintViolations = validator.validate(comment);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Comments> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("content");
+	}
+
+	@Test
+	void shouldValidateCommentWithAllParameters() {
+		Comments comment = new Comments();
+		comment.setTitle("koaoa");
+		comment.setContent("Content");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Comments>> constraintViolations = validator.validate(comment);
+		assertThat(constraintViolations.size()).isEqualTo(0);
+	}
+
+	@Test
+	void shouldValidateCreditCardWithAllParameters() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setHolderName("Abraham");
+		creditCard.setNumber(343049239);
+		creditCard.setExpirationMonth(7);
+		creditCard.setExpirationYear(2022);
+		creditCard.setCVV(527);
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<CreditCard>> constraintViolations = validator.validate(creditCard);
+		assertThat(constraintViolations.size()).isEqualTo(0);
+	}
+
+	@Test
+	void shouldNotValidateHolderNameNull() {
+		CreditCard creditCard = new CreditCard();
+		creditCard.setNumber(343049239);
+		creditCard.setExpirationMonth(7);
+		creditCard.setExpirationYear(2022);
+		creditCard.setCVV(527);
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<CreditCard>> constraintViolations = validator.validate(creditCard);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<CreditCard> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("holderName");
+	}
+
+	@Test
 	void shouldNotValidateHolderNameEmpty() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setNumber(343049239);
 		creditCard.setExpirationMonth(7);
 		creditCard.setExpirationYear(2022);
 		creditCard.setCVV(527);
+		creditCard.setHolderName("");
 
 		Validator validator = createValidator();
 		Set<ConstraintViolation<CreditCard>> constraintViolations = validator.validate(creditCard);
@@ -196,6 +355,39 @@ class ValidatorTests {
 		assertThat(constraintViolations.size()).isEqualTo(1);
 		ConstraintViolation<CreditCard> violation = constraintViolations.iterator().next();
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("CVV");
+	}
+
+	@Test
+	void shouldNotValidateCategotyWithNullTitle() {
+		Category category = new Category();
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Category>> constraintViolations = validator.validate(category);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Category> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("title");
+	}
+
+	@Test
+	void shouldNotValidateCategotyWithEmptyTitle() {
+		Category category = new Category();
+		category.setTitle("");
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Category>> constraintViolations = validator.validate(category);
+		assertThat(constraintViolations.size()).isEqualTo(1);
+		ConstraintViolation<Category> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("title");
+	}
+
+	@Test
+	void shouldValidateCategotyWithAllParametersOk() {
+		Category category = new Category();
+		category.setTitle("Title 1");
+		category.setDescription("Description 1");
+
+		Validator validator = createValidator();
+		Set<ConstraintViolation<Category>> constraintViolations = validator.validate(category);
+		assertThat(constraintViolations.size()).isEqualTo(0);
 	}
 
 }

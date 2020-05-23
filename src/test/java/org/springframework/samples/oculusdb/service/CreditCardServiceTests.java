@@ -19,7 +19,6 @@ import java.util.*;
 
 @SpringBootTest
 @Transactional
-@Deprecated
 public class CreditCardServiceTests {
 
 	@Autowired
@@ -28,7 +27,7 @@ public class CreditCardServiceTests {
 	@Autowired
 	private UserService userService;
 
-	int randomCreditCardNumber = (int) 5489018195186573L;
+	int randomCreditCardNumber = (int) 4137810659147011L;
 
 	@Test
 	public void createCreditCardOk0() {
@@ -38,8 +37,8 @@ public class CreditCardServiceTests {
 		creditCard.setExpirationYear(2022);
 		creditCard.setNumber(randomCreditCardNumber);
 		creditCard.setHolderName("Pepito el de los palotes");
-		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
-				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		boolean res = this.creditCardService.checkCreditCard("4137810659147011", creditCard.getExpirationYear(),
+				creditCard.getExpirationMonth(), creditCard.getCVV());
 		Assert.isTrue(res);
 	}
 
@@ -51,8 +50,8 @@ public class CreditCardServiceTests {
 		creditCard.setExpirationYear(2050);
 		creditCard.setNumber(randomCreditCardNumber + 1);
 		creditCard.setHolderName("Pepito el de los palotes");
-		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
-				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
+		boolean res = this.creditCardService.checkCreditCard("8137810659147046", creditCard.getExpirationYear(),
+				creditCard.getExpirationMonth(), creditCard.getCVV());
 		Assert.isTrue(res);
 	}
 
@@ -119,6 +118,78 @@ public class CreditCardServiceTests {
 		boolean res = this.creditCardService.checkCreditCard(creditCard.getNumber().toString(),
 				creditCard.getExpirationYear(), creditCard.getExpirationMonth(), creditCard.getCVV());
 		Assert.isTrue(!res);
+	}
+
+	@Test
+	public void checkCreditCardPositiveCase1() {
+		String number = "4137810659147011";
+		int expirationYear = 2021;
+		int expirationMonth = 12;
+		int cvv = 345;
+		Assertions.assertTrue(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardPositiveCase2() {
+		String number = "8137810659147046";
+		int expirationYear = 2022;
+		int expirationMonth = 06;
+		int cvv = 545;
+		Assertions.assertTrue(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardBadNumber() {
+		String number = "8137810";
+		int expirationYear = 2022;
+		int expirationMonth = 06;
+		int cvv = 545;
+		Assertions.assertFalse(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardEmptyNumber() {
+		String number = "";
+		int expirationYear = 2022;
+		int expirationMonth = 06;
+		int cvv = 545;
+		Assertions.assertFalse(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardNullNumber() {
+		String number = null;
+		int expirationYear = 2022;
+		int expirationMonth = 06;
+		int cvv = 545;
+		Assertions.assertFalse(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardBadYear() {
+		String number = "8137810659147046";
+		int expirationYear = 1998;
+		int expirationMonth = 06;
+		int cvv = 545;
+		Assertions.assertFalse(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardBadMonth() {
+		String number = "8137810659147046";
+		int expirationYear = 2022;
+		int expirationMonth = 54;
+		int cvv = 545;
+		Assertions.assertFalse(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
+	}
+
+	@Test
+	public void checkCreditCardBadCvv() {
+		String number = "8137810659147046";
+		int expirationYear = 2022;
+		int expirationMonth = 54;
+		int cvv = 444444;
+		Assertions.assertFalse(creditCardService.checkCreditCard(number, expirationYear, expirationMonth, cvv));
 	}
 
 	@Test

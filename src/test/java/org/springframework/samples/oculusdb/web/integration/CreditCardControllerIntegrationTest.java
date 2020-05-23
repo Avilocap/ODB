@@ -60,7 +60,7 @@ public class CreditCardControllerIntegrationTest {
 		int expM = 10;
 		int cvv = 345;
 		String view = creditCardController.processPayment(number, expY, expM, cvv);
-		Assertions.assertEquals(view, "creditCard/pagoRealizado");
+		Assertions.assertEquals(view, "creditCard/PagoErroneo");
 	}
 
 	@WithMockUser("testuser")

@@ -9,6 +9,7 @@ import org.springframework.samples.oculusdb.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -27,6 +28,11 @@ public class UserServiceImpl extends UserService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public void save(User user) {
+
+		if (user.getUsername().equals("") || user.getPassword().equals("") || user.getName().equals("")
+				|| user.getSurname().equals("") || user.getEmail().equals("")) {
+			throw new IllegalArgumentException("Username should not be empty");
+		}
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		Random random = new Random();
 		user.setId(random.nextInt());
@@ -34,10 +40,15 @@ public class UserServiceImpl extends UserService {
 		Set<Role> userRoles = new HashSet<Role>();
 		userRoles.add(userRole);
 		user.setRoles(userRoles);
+		user.setActive(true);
 		userRepository.save(user);
 	}
 
 	public void saveSponsor(User user) {
+		if (user.getUsername().equals("") || user.getPassword().equals("") || user.getName().equals("")
+				|| user.getSurname().equals("") || user.getEmail().equals("")) {
+			throw new IllegalArgumentException("Username should not be empty");
+		}
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		Random random = new Random();
 		user.setId(random.nextInt());
@@ -47,6 +58,7 @@ public class UserServiceImpl extends UserService {
 		userRoles.add(userRole);
 		userRoles.add(sponsorRole);
 		user.setRoles(userRoles);
+		user.setActive(true);
 		userRepository.save(user);
 	}
 

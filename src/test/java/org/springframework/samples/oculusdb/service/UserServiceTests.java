@@ -160,4 +160,34 @@ public class UserServiceTests {
 		Assert.assertFalse(userService.isSponsor(user));
 	}
 
+	@Test
+	public void banUser() {
+		User user = this.userService.userById(104);
+		userService.banUser(user.getUsername());
+		Assert.assertFalse(user.isActive());
+	}
+
+	@Test
+	public void banUserAlreadyBanned() {
+		User user = this.userService.userById(103);
+		Assertions.assertThrows(UnsupportedOperationException.class, () -> {
+			userService.banUser(user.getUsername());
+		});
+	}
+
+	@Test
+	public void unbanUser() {
+		User user = this.userService.userById(103);
+		userService.unbanUser(user.getUsername());
+		Assert.assertTrue(user.isActive());
+	}
+
+	@Test
+	public void unbanUserAlreadyUnbanned() {
+		User user = this.userService.userById(104);
+		Assertions.assertThrows(UnsupportedOperationException.class, () -> {
+			userService.unbanUser(user.getUsername());
+		});
+	}
+
 }

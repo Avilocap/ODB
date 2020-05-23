@@ -18,6 +18,9 @@ public class User extends Actor {
 	@Column(name = "premium")
 	private boolean premium;
 
+	@Column(name = "active")
+	private boolean active;
+
 	@OneToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Sponsorship> sponsorships;
@@ -64,6 +67,14 @@ public class User extends Actor {
 
 	public void setPremium(boolean premium) {
 		this.premium = premium;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

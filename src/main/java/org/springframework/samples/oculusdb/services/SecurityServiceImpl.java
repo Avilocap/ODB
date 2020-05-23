@@ -34,6 +34,10 @@ public class SecurityServiceImpl implements SecurityService {
 	@Override
 	public void autoLogin(String username, String password) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+		if (!userDetails.isEnabled()) {
+			throw new UnsupportedOperationException("You are banned");
+		}
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 				userDetails, password, userDetails.getAuthorities());
 

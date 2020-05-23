@@ -67,8 +67,13 @@ public class UserController {
 
 	@PostMapping("/login")
 	public String performLogin(@RequestParam String username, @RequestParam String password) {
-		securityServiceImpl.autoLogin(username, password);
-		return "redirect:/";
+		try {
+			securityServiceImpl.autoLogin(username, password);
+			return "redirect:/";
+		}
+		catch (UnsupportedOperationException exception) {
+			return "users/userBanned";
+		}
 	}
 
 	@GetMapping("/logout")
@@ -108,6 +113,38 @@ public class UserController {
 		if (userService.isAdmin(user)) {
 			userService.setSponsorRole(username);
 			vista = "users/sponsorSet";
+		}
+		else {
+			vista = "error";
+		}
+		return vista;
+	}
+
+	@GetMapping("/users/ban/{username}")
+	public String banUser(@PathVariable("username") String username) {
+		String vista;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isAdmin(user)) {
+			userService.banUser(username);
+			vista = "users/userBannedOk";
+		}
+		else {
+			vista = "error";
+		}
+		return vista;
+	}
+
+	@GetMapping("/users/unban/{username}")
+	public String unbanUser(@PathVariable("username") String username) {
+		String vista;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isAdmin(user)) {
+			userService.unbanUser(username);
+			vista = "users/userUnbanned";
 		}
 		else {
 			vista = "error";

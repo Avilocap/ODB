@@ -67,4 +67,26 @@ public class UserService {
 		}
 	}
 
+	public void banUser(String username) {
+		// Check if user already contain sponsor role
+		User user = this.userByUsername(username);
+		if (user.isActive()) {
+			user.setActive(false);
+		}
+		else {
+			throw new UnsupportedOperationException("The user already has this role");
+		}
+	}
+
+	public void unbanUser(String username) {
+		// Check if user already contain sponsor role
+		User user = this.userByUsername(username);
+		if (!user.isActive()) {
+			user.setActive(true);
+		}
+		else {
+			throw new UnsupportedOperationException("The user already has this role");
+		}
+	}
+
 }

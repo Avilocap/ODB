@@ -137,12 +137,12 @@ public class CommentControllerIntegrationTests {
 		Assertions.assertNotNull(model.getAttribute("comment"));
 	}
 
-	@Test
-	void testDeleteCommentSuccess() throws Exception {
-		String view = commentsController.borrarComentario(TEST_COMMENT_ID);
-		Assertions.assertEquals(view, "applications/todoOk");
-		Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
-	}
+	// @Test
+	// void testDeleteCommentSuccess() throws Exception {
+	// String view = commentsController.borrarComentario(TEST_COMMENT_ID);
+	// Assertions.assertEquals(view, "applications/todoOk");
+	// Assertions.assertFalse(commentsService.findCommentById(TEST_COMMENT_ID).isPresent());
+	// }
 
 	@Test
 	void testDeleteCommentHasErrors1() throws Exception {

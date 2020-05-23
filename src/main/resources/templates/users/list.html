@@ -11,16 +11,31 @@
         <tr>
             <th style="width: 200px;">Name</th>
             <th style="width: 150px;">Surname</th>
+            <th style="width: 150px;">Active</th>
             <th style="width: 150px;">Set as Sponsor</th>
+            <th style="width: 150px;">Ban</th>
+            <th style="width: 150px;">Unban</th>
         </tr>
         </thead>
         <tbody>
           <tr th:each="user : ${users}">
               <td th:text="${user.name}"></td>
               <td th:text="${user.surname}"></td>
+              <td th:text="${user.active}"></td>
+
               <td text="Set as Sponsor">
                   <a th:href="@{/users/setSponsor/__${user.username}__}">Set as Sponsor</a>
                   <span th:if="${user.roles != SPONSOR}" >Static summary</span>
+
+              </td>
+
+              <td text="Ban User">
+                  <a th:href="@{/users/ban/__${user.username}__}">Ban</a>
+
+              </td>
+
+              <td text="Unban User">
+                  <a th:href="@{/users/unban/__${user.username}__}">Unban</a>
 
               </td>
           </tr>

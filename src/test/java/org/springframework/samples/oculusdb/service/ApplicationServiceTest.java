@@ -101,6 +101,13 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
+	void getInfoOfOneApplicationNegativeWithNegativeID() {
+		Assertions.assertThrows(JSONException.class, () -> {
+			this.applicationService.getInfoOfOneApplication("-34542356236546");
+		});
+	}
+
+	@Test
 	void getInfoOfOneApplicationNullId() {
 		Assertions.assertThrows(JSONException.class, () -> {
 			this.applicationService.getInfoOfOneApplication(null);
@@ -363,6 +370,11 @@ public class ApplicationServiceTest {
 		String currentPrincipalName = user.getUsername();
 		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
 		Assert.notNull(favorites);
+	}
+
+	@Test
+	void getApplicationsOfFavoritesCase1() {
+
 	}
 
 	@Test
