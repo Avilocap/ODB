@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ReviewRating</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb.administrator</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ReviewRating (org.springframework.samples.oculusdb.administrator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReviewRating</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 46)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package org.springframework.samples.oculusdb.administrator;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.io.*;
+<i>4</i>&nbsp;import java.util.*;
+<i>5</i>&nbsp;
+<b class="nc"><i>6</i>&nbsp;public class ReviewRating {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;	public static void main(String[] args) {
+<i>9</i>&nbsp;
+<b class="nc"><i>10</i>&nbsp;		getPositiveAdjetivesOfText(</b>
+<i>11</i>&nbsp;				&quot;A really fun and probably overlooked rhythm-action game! It&#39;s more challenging than Beat Saber, Audica and Pistol Whip, especially in the sense that you need to move around quite a bit more, but the easy difficulty will ease anyone into the play style efficiently enough. I kinda love the campaign storyline; it gives you a little bit more of a reason to play than just working your way through a track list and perfecting your scores on indvidual songs.\n&quot;
+<i>12</i>&nbsp;						+ &quot;\n&quot;
+<i>13</i>&nbsp;						+ &quot;There aren&#39;t any licensed songs but the composer (or composers?) has done a really good job of creating great-sounding original tracks that span multiple EDM genres. I also really like the idea of each in-game character you compete against loosely representing a genre/style. Oh, and there&#39;s an option to add custom songs, which I haven&#39;t tried yet but will no doubt cater to anyone who&#39;d like to use tracks from their own library.&quot;);
+<i>14</i>&nbsp;
+<b class="nc"><i>15</i>&nbsp;		getNegativeAdjetivesOfText(</b>
+<i>16</i>&nbsp;				&quot;A really fun and probably overlooked rhythm-action game! It&#39;s more challenging than Beat Saber, Audica and Pistol Whip, especially in the sense that you need to move around quite a bit more, but the easy difficulty will ease anyone into the play style efficiently enough. I kinda love the campaign storyline; it gives you a little bit more of a reason to play than just working your way through a track list and perfecting your scores on indvidual songs.\n&quot;
+<i>17</i>&nbsp;						+ &quot;\n&quot;
+<i>18</i>&nbsp;						+ &quot;There aren&#39;t any licensed songs but the composer (or composers?) has done a really good job of creating great-sounding original tracks that span multiple EDM genres. I also really like the idea of each in-game character you compete against loosely representing a genre/style. Oh, and there&#39;s an option to add custom songs, which I haven&#39;t tried yet but will no doubt cater to anyone who&#39;d like to use tracks from their own library.&quot;);
+<i>19</i>&nbsp;
+<b class="nc"><i>20</i>&nbsp;	}</b>
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;	private static Map&lt;String, Integer&gt; getPositiveAdjetivesOfText(String paragraph) {
+<i>23</i>&nbsp;
+<b class="nc"><i>24</i>&nbsp;		File positiveFile = new File(&quot;src/main/resources/tempFiles/positiveWords.txt&quot;);</b>
+<i>25</i>&nbsp;
+<b class="nc"><i>26</i>&nbsp;		ArrayList&lt;String&gt; positiveWordList = new ArrayList&lt;String&gt;();</b>
+<i>27</i>&nbsp;		;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;		try {
+<i>30</i>&nbsp;
+<b class="nc"><i>31</i>&nbsp;			BufferedReader br = new BufferedReader(new FileReader(positiveFile));</b>
+<i>32</i>&nbsp;			String st;
+<b class="nc"><i>33</i>&nbsp;			while ((st = br.readLine()) != null) {</b>
+<b class="nc"><i>34</i>&nbsp;				st = br.readLine();</b>
+<b class="nc"><i>35</i>&nbsp;				positiveWordList.add(st);</b>
+<i>36</i>&nbsp;			}
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;		}
+<b class="nc"><i>39</i>&nbsp;		catch (FileNotFoundException e) {</b>
+<b class="nc"><i>40</i>&nbsp;			e.printStackTrace();</b>
+<i>41</i>&nbsp;		}
+<b class="nc"><i>42</i>&nbsp;		catch (IOException e) {</b>
+<b class="nc"><i>43</i>&nbsp;			e.printStackTrace();</b>
+<b class="nc"><i>44</i>&nbsp;		}</b>
+<i>45</i>&nbsp;
+<b class="nc"><i>46</i>&nbsp;		Map&lt;String, Integer&gt; positiveOccurrences = new HashMap&lt;String, Integer&gt;();</b>
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;		String[] splittedWords = paragraph.split(&quot; &quot;);</b>
+<i>49</i>&nbsp;
+<b class="nc"><i>50</i>&nbsp;		for (String word : splittedWords) {</b>
+<b class="nc"><i>51</i>&nbsp;			if (positiveWordList.contains(word)) {</b>
+<b class="nc"><i>52</i>&nbsp;				Integer poldCount = positiveOccurrences.get(word);</b>
+<b class="nc"><i>53</i>&nbsp;				if (poldCount == null) {</b>
+<b class="nc"><i>54</i>&nbsp;					poldCount = 0;</b>
+<i>55</i>&nbsp;				}
+<b class="nc"><i>56</i>&nbsp;				positiveOccurrences.put(word, poldCount + 1);</b>
+<i>57</i>&nbsp;			}
+<i>58</i>&nbsp;			else {
+<i>59</i>&nbsp;				continue;
+<i>60</i>&nbsp;			}
+<i>61</i>&nbsp;		}
+<b class="nc"><i>62</i>&nbsp;		System.out.println(positiveOccurrences);</b>
+<i>63</i>&nbsp;
+<b class="nc"><i>64</i>&nbsp;		return positiveOccurrences;</b>
+<i>65</i>&nbsp;	}
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;	private static Map&lt;String, Integer&gt; getNegativeAdjetivesOfText(String paragraph) {
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;		File negativeFile = new File(&quot;src/main/resources/tempFiles/negativeWords.txt&quot;);</b>
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;		ArrayList&lt;String&gt; negativeWordList = new ArrayList&lt;String&gt;();</b>
+<i>72</i>&nbsp;		;
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;		try {
+<b class="nc"><i>75</i>&nbsp;			BufferedReader br2 = new BufferedReader(new FileReader(negativeFile));</b>
+<i>76</i>&nbsp;			String st2;
+<b class="nc"><i>77</i>&nbsp;			while ((st2 = br2.readLine()) != null) {</b>
+<b class="nc"><i>78</i>&nbsp;				st2 = br2.readLine();</b>
+<b class="nc"><i>79</i>&nbsp;				negativeWordList.add(st2);</b>
+<i>80</i>&nbsp;			}
+<i>81</i>&nbsp;		}
+<b class="nc"><i>82</i>&nbsp;		catch (FileNotFoundException e) {</b>
+<b class="nc"><i>83</i>&nbsp;			e.printStackTrace();</b>
+<i>84</i>&nbsp;		}
+<b class="nc"><i>85</i>&nbsp;		catch (IOException e) {</b>
+<b class="nc"><i>86</i>&nbsp;			e.printStackTrace();</b>
+<b class="nc"><i>87</i>&nbsp;		}</b>
+<i>88</i>&nbsp;
+<b class="nc"><i>89</i>&nbsp;		Map&lt;String, Integer&gt; negativeOccurrences = new HashMap&lt;String, Integer&gt;();</b>
+<i>90</i>&nbsp;
+<b class="nc"><i>91</i>&nbsp;		String[] splittedWords = paragraph.split(&quot; &quot;);</b>
+<i>92</i>&nbsp;
+<b class="nc"><i>93</i>&nbsp;		for (String word : splittedWords) {</b>
+<b class="nc"><i>94</i>&nbsp;			if (negativeWordList.contains(word)) {</b>
+<b class="nc"><i>95</i>&nbsp;				Integer noldCount = negativeOccurrences.get(word);</b>
+<b class="nc"><i>96</i>&nbsp;				if (noldCount == null) {</b>
+<b class="nc"><i>97</i>&nbsp;					noldCount = 0;</b>
+<i>98</i>&nbsp;				}
+<b class="nc"><i>99</i>&nbsp;				negativeOccurrences.put(word, noldCount + 1);</b>
+<i>100</i>&nbsp;			}
+<i>101</i>&nbsp;			else {
+<i>102</i>&nbsp;				continue;
+<i>103</i>&nbsp;			}
+<i>104</i>&nbsp;		}
+<b class="nc"><i>105</i>&nbsp;		System.out.println(negativeOccurrences);</b>
+<i>106</i>&nbsp;
+<b class="nc"><i>107</i>&nbsp;		return negativeOccurrences;</b>
+<i>108</i>&nbsp;	}
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ApplicationRepository</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb.administrator</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ApplicationRepository (org.springframework.samples.oculusdb.administrator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ApplicationRepository</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;package org.springframework.samples.oculusdb.administrator;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import org.springframework.data.jpa.repository.Query;
+<i>5</i>&nbsp;import org.springframework.data.repository.CrudRepository;
+<i>6</i>&nbsp;import org.springframework.samples.oculusdb.model.Application;
+<i>7</i>&nbsp;import org.springframework.samples.oculusdb.model.Word;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.util.Collection;
+<i>10</i>&nbsp;import java.util.List;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public interface ApplicationRepository extends CrudRepository&lt;Application, Integer&gt; {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;	@Query(&quot;select fv from User c join c.favorites fv where c.id = ?2 and fv.id = ?1&quot;)
+<i>15</i>&nbsp;	Application applicationOfUserById(int appId, int userId);
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;	@Query(&quot;select app from Application app where app.oculusId = ?1&quot;)
+<i>18</i>&nbsp;	Application applicationByOculusId(String oculusId);
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;	@Query(&quot;select a.positiveWords from Application a where a.oculusId =?1&quot;)
+<i>21</i>&nbsp;	Collection&lt;Word&gt; getApplicationPositiveWord(String oculusID);
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;	@Query(&quot;select a.negativeWords from Application a where a.oculusId =?1&quot;)
+<i>24</i>&nbsp;	Collection&lt;Word&gt; getApplicationNegativeWord(String oculusID);
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WebSecurityConfig</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WebSecurityConfig (org.springframework.samples.oculusdb)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WebSecurityConfig</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">WebSecurityConfig$$EnhancerBySpringCGLIB$$9c64f112</td>
+  </tr>
+  <tr>
+    <td class="name">WebSecurityConfig$$EnhancerBySpringCGLIB$$9c64f112$$FastClassBySpringCGLIB$$dae6bf2</td>
+  </tr>
+  <tr>
+    <td class="name">WebSecurityConfig$$FastClassBySpringCGLIB$$f1b12f1b</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package org.springframework.samples.oculusdb;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>4</i>&nbsp;import org.springframework.beans.factory.annotation.Qualifier;
+<i>5</i>&nbsp;import org.springframework.context.annotation.Bean;
+<i>6</i>&nbsp;import org.springframework.context.annotation.Configuration;
+<i>7</i>&nbsp;import org.springframework.security.authentication.AuthenticationManager;
+<i>8</i>&nbsp;import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+<i>9</i>&nbsp;import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+<i>10</i>&nbsp;import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+<i>11</i>&nbsp;import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+<i>12</i>&nbsp;import org.springframework.security.core.userdetails.UserDetailsService;
+<i>13</i>&nbsp;import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;@Configuration
+<i>16</i>&nbsp;@EnableWebSecurity
+<b class="fc"><i>17</i>&nbsp;public class WebSecurityConfig extends WebSecurityConfigurerAdapter {</b>
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;	@Qualifier(&quot;userDetailsServiceImpl&quot;)
+<i>20</i>&nbsp;	@Autowired
+<i>21</i>&nbsp;	private UserDetailsService userDetailsService;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;	@Bean
+<i>24</i>&nbsp;	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+<b class="fc"><i>25</i>&nbsp;		return new BCryptPasswordEncoder();</b>
+<i>26</i>&nbsp;	}
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;	@Override
+<i>29</i>&nbsp;	protected void configure(HttpSecurity http) throws Exception {
+<b class="fc"><i>30</i>&nbsp;		http.csrf().disable().authorizeRequests()</b>
+<b class="fc"><i>31</i>&nbsp;				.antMatchers(&quot;/webjars/**&quot;, &quot;/resources/**&quot;, &quot;/registration&quot;, &quot;/login&quot;, &quot;/sponsor/registration&quot;, &quot;/&quot;)</b>
+<b class="fc"><i>32</i>&nbsp;				.permitAll().anyRequest().authenticated().and().formLogin().defaultSuccessUrl(&quot;/&quot;).loginPage(&quot;/login&quot;)</b>
+<b class="fc"><i>33</i>&nbsp;				.permitAll().and().logout().permitAll();</b>
+<b class="fc"><i>34</i>&nbsp;	}</b>
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;	@Bean
+<i>37</i>&nbsp;	public AuthenticationManager customAuthenticationManager() throws Exception {
+<b class="fc"><i>38</i>&nbsp;		return authenticationManager();</b>
+<i>39</i>&nbsp;	}
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;	@Autowired
+<i>42</i>&nbsp;	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+<b class="fc"><i>43</i>&nbsp;		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());</b>
+<b class="fc"><i>44</i>&nbsp;	}</b>
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>

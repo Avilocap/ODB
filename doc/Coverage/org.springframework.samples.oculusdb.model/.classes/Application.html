@@ -1,0 +1,363 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Application</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Application (org.springframework.samples.oculusdb.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Application</td>
+<td class="coverageStat">
+  <span class="percent">
+    72,1%
+  </span>
+  <span class="absValue">
+    (31/ 43)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    59%
+  </span>
+  <span class="absValue">
+    (46/ 78)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Application$HibernateProxy$813JdogD</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    72,1%
+  </span>
+  <span class="absValue">
+    (31/ 43)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    59%
+  </span>
+  <span class="absValue">
+    (46/ 78)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;package org.springframework.samples.oculusdb.model;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import org.springframework.format.annotation.DateTimeFormat;
+<i>5</i>&nbsp;import org.springframework.samples.oculusdb.application.Comments;
+<i>6</i>&nbsp;import org.springframework.samples.oculusdb.application.Reviews;
+<i>7</i>&nbsp;import org.springframework.samples.oculusdb.category.Category;
+<i>8</i>&nbsp;import org.springframework.samples.oculusdb.platform.Platform;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import javax.persistence.*;
+<i>11</i>&nbsp;import javax.validation.constraints.NotEmpty;
+<i>12</i>&nbsp;import java.time.LocalDate;
+<i>13</i>&nbsp;import java.util.Collection;
+<i>14</i>&nbsp;import java.util.Map;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;@Entity
+<i>17</i>&nbsp;@Table(name = &quot;application&quot;)
+<i>18</i>&nbsp;public class Application extends BaseEntity {
+<i>19</i>&nbsp;
+<b class="fc"><i>20</i>&nbsp;	public Application() {</b>
+<i>21</i>&nbsp;
+<b class="fc"><i>22</i>&nbsp;	}</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;	public Application(String oculusId, String name, String description, LocalDate releaseDate, Double price,
+<i>25</i>&nbsp;			String website, String company, String picture, Integer incomeEstimation, Integer salesEstimation,
+<b class="nc"><i>26</i>&nbsp;			Integer totalReviews) {</b>
+<b class="nc"><i>27</i>&nbsp;		this.oculusId = oculusId;</b>
+<b class="nc"><i>28</i>&nbsp;		this.name = name;</b>
+<b class="nc"><i>29</i>&nbsp;		this.description = description;</b>
+<b class="nc"><i>30</i>&nbsp;		this.releaseDate = releaseDate;</b>
+<b class="nc"><i>31</i>&nbsp;		this.price = price;</b>
+<b class="nc"><i>32</i>&nbsp;		this.website = website;</b>
+<b class="nc"><i>33</i>&nbsp;		this.company = company;</b>
+<b class="nc"><i>34</i>&nbsp;		this.picture = picture;</b>
+<b class="nc"><i>35</i>&nbsp;		this.incomeEstimation = incomeEstimation;</b>
+<b class="nc"><i>36</i>&nbsp;		this.salesEstimation = salesEstimation;</b>
+<b class="nc"><i>37</i>&nbsp;		this.totalReviews = totalReviews;</b>
+<b class="nc"><i>38</i>&nbsp;	}</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;	@Column(name = &quot;oculusDBId&quot;)
+<i>41</i>&nbsp;	@NotEmpty
+<i>42</i>&nbsp;	private String oculusId;
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;	@Column(name = &quot;name&quot;)
+<i>45</i>&nbsp;	@NotEmpty
+<i>46</i>&nbsp;	private String name;
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;	@Lob
+<i>49</i>&nbsp;	@Column(name = &quot;description&quot;, columnDefinition = &quot;LONGTEXT&quot;)
+<i>50</i>&nbsp;	private String description;
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;	@Column(name = &quot;releaseDate&quot;)
+<i>53</i>&nbsp;	@DateTimeFormat(pattern = &quot;mm-dd-yyyy&quot;)
+<i>54</i>&nbsp;	private LocalDate releaseDate;
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;	@Column(name = &quot;price&quot;)
+<i>57</i>&nbsp;	private Double price;
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;	@Column(name = &quot;website&quot;)
+<i>60</i>&nbsp;	private String website;
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;	@Column(name = &quot;company&quot;)
+<i>63</i>&nbsp;	private String company;
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;	@Lob
+<i>66</i>&nbsp;	@Column(name = &quot;picture&quot;, columnDefinition = &quot;LONGTEXT&quot;)
+<i>67</i>&nbsp;	private String picture;
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;	@Column(name = &quot;type_of_gameplay&quot;)
+<i>70</i>&nbsp;	private TypeOfGameplay typeOfGameplay;
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;	@Column(name = &quot;sales_estimations&quot;)
+<i>73</i>&nbsp;	private Integer salesEstimation;
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;	@Column(name = &quot;income_estimation&quot;)
+<i>76</i>&nbsp;	private Integer incomeEstimation;
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;	@Column(name = &quot;total_reviews&quot;)
+<i>79</i>&nbsp;	private Integer totalReviews;
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;	@Column(name = &quot;language&quot;)
+<i>82</i>&nbsp;	private String language;
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;	@Column(name = &quot;typeOfApp&quot;)
+<i>85</i>&nbsp;	private TypeOfApp typeOfApp;
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;	@OneToMany(cascade = CascadeType.ALL)
+<i>88</i>&nbsp;	private Collection&lt;Word&gt; positiveWords;
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;	@OneToMany(cascade = CascadeType.ALL)
+<i>91</i>&nbsp;	private Collection&lt;Word&gt; negativeWords;
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;	@ManyToOne
+<i>94</i>&nbsp;	private Platform platform;
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;	@ManyToOne
+<i>97</i>&nbsp;	private Category category;
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;	@OneToMany(mappedBy = &quot;application&quot;, cascade = CascadeType.ALL)
+<i>100</i>&nbsp;	private Collection&lt;Reviews&gt; reviewsCollection;
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;	@OneToMany(mappedBy = &quot;application&quot;, fetch = FetchType.EAGER)
+<i>103</i>&nbsp;	private Collection&lt;Comments&gt; comments;
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;	public Collection&lt;Word&gt; getPositiveWords() {
+<b class="nc"><i>106</i>&nbsp;		return positiveWords;</b>
+<i>107</i>&nbsp;	}
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;	public void setPositiveWords(Collection&lt;Word&gt; positiveWords) {
+<b class="nc"><i>110</i>&nbsp;		this.positiveWords = positiveWords;</b>
+<b class="nc"><i>111</i>&nbsp;	}</b>
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;	public Collection&lt;Word&gt; getNegativeWords() {
+<b class="nc"><i>114</i>&nbsp;		return negativeWords;</b>
+<i>115</i>&nbsp;	}
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;	public void setNegativeWords(Collection&lt;Word&gt; negativeWords) {
+<b class="nc"><i>118</i>&nbsp;		this.negativeWords = negativeWords;</b>
+<b class="nc"><i>119</i>&nbsp;	}</b>
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;	public String getOculusId() {
+<b class="fc"><i>122</i>&nbsp;		return this.oculusId;</b>
+<i>123</i>&nbsp;	}
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;	public void setOculusId(final String oculusId) {
+<b class="fc"><i>126</i>&nbsp;		this.oculusId = oculusId;</b>
+<b class="fc"><i>127</i>&nbsp;	}</b>
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;	public String getName() {
+<b class="fc"><i>130</i>&nbsp;		return this.name;</b>
+<i>131</i>&nbsp;	}
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;	public void setName(final String name) {
+<b class="fc"><i>134</i>&nbsp;		this.name = name;</b>
+<b class="fc"><i>135</i>&nbsp;	}</b>
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;	public String getDescription() {
+<b class="fc"><i>138</i>&nbsp;		return this.description;</b>
+<i>139</i>&nbsp;	}
+<i>140</i>&nbsp;
+<i>141</i>&nbsp;	public void setDescription(final String description) {
+<b class="fc"><i>142</i>&nbsp;		this.description = description;</b>
+<b class="fc"><i>143</i>&nbsp;	}</b>
+<i>144</i>&nbsp;
+<i>145</i>&nbsp;	public LocalDate getReleaseDate() {
+<b class="fc"><i>146</i>&nbsp;		return this.releaseDate;</b>
+<i>147</i>&nbsp;	}
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;	public void setReleaseDate(final LocalDate releaseDate) {
+<b class="fc"><i>150</i>&nbsp;		this.releaseDate = releaseDate;</b>
+<b class="fc"><i>151</i>&nbsp;	}</b>
+<i>152</i>&nbsp;
+<i>153</i>&nbsp;	public Double getPrice() {
+<b class="fc"><i>154</i>&nbsp;		return this.price;</b>
+<i>155</i>&nbsp;	}
+<i>156</i>&nbsp;
+<i>157</i>&nbsp;	public void setPrice(final Double price) {
+<b class="nc"><i>158</i>&nbsp;		this.price = price;</b>
+<b class="nc"><i>159</i>&nbsp;	}</b>
+<i>160</i>&nbsp;
+<i>161</i>&nbsp;	public String getWebsite() {
+<b class="fc"><i>162</i>&nbsp;		return this.website;</b>
+<i>163</i>&nbsp;	}
+<i>164</i>&nbsp;
+<i>165</i>&nbsp;	public void setWebsite(final String website) {
+<b class="fc"><i>166</i>&nbsp;		this.website = website;</b>
+<b class="fc"><i>167</i>&nbsp;	}</b>
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;	public String getCompany() {
+<b class="fc"><i>170</i>&nbsp;		return this.company;</b>
+<i>171</i>&nbsp;	}
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;	public void setCompany(final String company) {
+<b class="fc"><i>174</i>&nbsp;		this.company = company;</b>
+<b class="fc"><i>175</i>&nbsp;	}</b>
+<i>176</i>&nbsp;
+<i>177</i>&nbsp;	public String getPicture() {
+<b class="fc"><i>178</i>&nbsp;		return this.picture;</b>
+<i>179</i>&nbsp;	}
+<i>180</i>&nbsp;
+<i>181</i>&nbsp;	public void setPicture(final String picture) {
+<b class="fc"><i>182</i>&nbsp;		this.picture = picture;</b>
+<b class="fc"><i>183</i>&nbsp;	}</b>
+<i>184</i>&nbsp;
+<i>185</i>&nbsp;	public TypeOfGameplay getTypeOfGameplay() {
+<b class="fc"><i>186</i>&nbsp;		return this.typeOfGameplay;</b>
+<i>187</i>&nbsp;	}
+<i>188</i>&nbsp;
+<i>189</i>&nbsp;	public void setTypeOfGameplay(final TypeOfGameplay typeOfGameplay) {
+<b class="fc"><i>190</i>&nbsp;		this.typeOfGameplay = typeOfGameplay;</b>
+<b class="fc"><i>191</i>&nbsp;	}</b>
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;	public Integer getSalesEstimation() {
+<b class="fc"><i>194</i>&nbsp;		return this.salesEstimation;</b>
+<i>195</i>&nbsp;	}
+<i>196</i>&nbsp;
+<i>197</i>&nbsp;	public void setSalesEstimation(final Integer salesEstimation) {
+<b class="fc"><i>198</i>&nbsp;		this.salesEstimation = salesEstimation;</b>
+<b class="fc"><i>199</i>&nbsp;	}</b>
+<i>200</i>&nbsp;
+<i>201</i>&nbsp;	public Integer getIncomeEstimation() {
+<b class="fc"><i>202</i>&nbsp;		return this.incomeEstimation;</b>
+<i>203</i>&nbsp;	}
+<i>204</i>&nbsp;
+<i>205</i>&nbsp;	public void setIncomeEstimation(final Integer incomeEstimation) {
+<b class="nc"><i>206</i>&nbsp;		this.incomeEstimation = incomeEstimation;</b>
+<b class="nc"><i>207</i>&nbsp;	}</b>
+<i>208</i>&nbsp;
+<i>209</i>&nbsp;	public Integer getTotalReviews() {
+<b class="fc"><i>210</i>&nbsp;		return this.totalReviews;</b>
+<i>211</i>&nbsp;	}
+<i>212</i>&nbsp;
+<i>213</i>&nbsp;	public void setTotalReviews(final Integer totalReviews) {
+<b class="nc"><i>214</i>&nbsp;		this.totalReviews = totalReviews;</b>
+<b class="nc"><i>215</i>&nbsp;	}</b>
+<i>216</i>&nbsp;
+<i>217</i>&nbsp;	public String getLanguage() {
+<b class="fc"><i>218</i>&nbsp;		return this.language;</b>
+<i>219</i>&nbsp;	}
+<i>220</i>&nbsp;
+<i>221</i>&nbsp;	public void setLanguage(final String language) {
+<b class="fc"><i>222</i>&nbsp;		this.language = language;</b>
+<b class="fc"><i>223</i>&nbsp;	}</b>
+<i>224</i>&nbsp;
+<i>225</i>&nbsp;	public TypeOfApp getTypeOfApp() {
+<b class="fc"><i>226</i>&nbsp;		return this.typeOfApp;</b>
+<i>227</i>&nbsp;	}
+<i>228</i>&nbsp;
+<i>229</i>&nbsp;	public void setTypeOfApp(final TypeOfApp typeOfApp) {
+<b class="nc"><i>230</i>&nbsp;		this.typeOfApp = typeOfApp;</b>
+<b class="nc"><i>231</i>&nbsp;	}</b>
+<i>232</i>&nbsp;
+<i>233</i>&nbsp;	public Platform getPlatform() {
+<b class="fc"><i>234</i>&nbsp;		return platform;</b>
+<i>235</i>&nbsp;	}
+<i>236</i>&nbsp;
+<i>237</i>&nbsp;	public void setPlatform(Platform platform) {
+<b class="fc"><i>238</i>&nbsp;		this.platform = platform;</b>
+<b class="fc"><i>239</i>&nbsp;	}</b>
+<i>240</i>&nbsp;
+<i>241</i>&nbsp;	public Category getCategory() {
+<b class="fc"><i>242</i>&nbsp;		return category;</b>
+<i>243</i>&nbsp;	}
+<i>244</i>&nbsp;
+<i>245</i>&nbsp;	public void setCategory(Category category) {
+<b class="fc"><i>246</i>&nbsp;		this.category = category;</b>
+<b class="fc"><i>247</i>&nbsp;	}</b>
+<i>248</i>&nbsp;
+<i>249</i>&nbsp;	public Collection&lt;Reviews&gt; getReviewsCollection() {
+<b class="nc"><i>250</i>&nbsp;		return reviewsCollection;</b>
+<i>251</i>&nbsp;	}
+<i>252</i>&nbsp;
+<i>253</i>&nbsp;	public void setReviewsCollection(Collection&lt;Reviews&gt; reviewsCollection) {
+<b class="nc"><i>254</i>&nbsp;		this.reviewsCollection = reviewsCollection;</b>
+<b class="nc"><i>255</i>&nbsp;	}</b>
+<i>256</i>&nbsp;
+<i>257</i>&nbsp;	public Collection&lt;Comments&gt; getComments() {
+<b class="fc"><i>258</i>&nbsp;		return comments;</b>
+<i>259</i>&nbsp;	}
+<i>260</i>&nbsp;
+<i>261</i>&nbsp;	public void setComments(Collection&lt;Comments&gt; comments) {
+<b class="nc"><i>262</i>&nbsp;		this.comments = comments;</b>
+<b class="nc"><i>263</i>&nbsp;	}</b>
+<i>264</i>&nbsp;
+<i>265</i>&nbsp;	public void addComment(Comments comments) {
+<b class="fc"><i>266</i>&nbsp;		getComments().add(comments);</b>
+<b class="fc"><i>267</i>&nbsp;		comments.setApplication(this);</b>
+<b class="fc"><i>268</i>&nbsp;	}</b>
+<i>269</i>&nbsp;
+<i>270</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SponsorController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb.controllers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SponsorController (org.springframework.samples.oculusdb.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SponsorController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    12,5%
+  </span>
+  <span class="absValue">
+    (1/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    2,6%
+  </span>
+  <span class="absValue">
+    (1/ 38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package org.springframework.samples.oculusdb.controllers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>4</i>&nbsp;import org.springframework.samples.oculusdb.model.User;
+<i>5</i>&nbsp;import org.springframework.samples.oculusdb.services.SecurityServiceImpl;
+<i>6</i>&nbsp;import org.springframework.samples.oculusdb.services.UserService;
+<i>7</i>&nbsp;import org.springframework.samples.oculusdb.services.UserServiceImpl;
+<i>8</i>&nbsp;import org.springframework.samples.oculusdb.validator.UserValidator;
+<i>9</i>&nbsp;import org.springframework.security.core.Authentication;
+<i>10</i>&nbsp;import org.springframework.security.core.context.SecurityContextHolder;
+<i>11</i>&nbsp;import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+<i>12</i>&nbsp;import org.springframework.stereotype.Controller;
+<i>13</i>&nbsp;import org.springframework.ui.ModelMap;
+<i>14</i>&nbsp;import org.springframework.validation.BindingResult;
+<i>15</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i>18</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;@Controller
+<i>21</i>&nbsp;@RequestMapping(&quot;/sponsor&quot;)
+<b class="fc"><i>22</i>&nbsp;public class SponsorController {</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;	@Autowired
+<i>25</i>&nbsp;	private UserServiceImpl userServiceImpl;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;	@Autowired
+<i>28</i>&nbsp;	private UserService userService;
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;	@Autowired
+<i>31</i>&nbsp;	private SecurityServiceImpl securityServiceImpl;
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;	@Autowired
+<i>34</i>&nbsp;	private UserValidator userValidator;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;	@GetMapping(&quot;/registration&quot;)
+<i>37</i>&nbsp;	public String registration(ModelMap model) {
+<b class="nc"><i>38</i>&nbsp;		model.addAttribute(&quot;userForm&quot;, new User());</b>
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;		return &quot;sponsor/SponsorRegistration&quot;;</b>
+<i>41</i>&nbsp;	}
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;	@PostMapping(&quot;/registration&quot;)
+<i>44</i>&nbsp;	public String registration(@ModelAttribute(&quot;userForm&quot;) User userForm, BindingResult bindingResult) {
+<b class="nc"><i>45</i>&nbsp;		userValidator.validate(userForm, bindingResult);</b>
+<i>46</i>&nbsp;
+<b class="nc"><i>47</i>&nbsp;		if (bindingResult.hasErrors()) {</b>
+<b class="nc"><i>48</i>&nbsp;			return &quot;security/registration&quot;;</b>
+<i>49</i>&nbsp;		}
+<i>50</i>&nbsp;
+<b class="nc"><i>51</i>&nbsp;		userServiceImpl.saveSponsor(userForm);</b>
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;		securityServiceImpl.autoLogin(userForm.getUsername(), userForm.getGetPasswordConfirm());</b>
+<i>54</i>&nbsp;
+<b class="nc"><i>55</i>&nbsp;		return &quot;welcome&quot;;</b>
+<i>56</i>&nbsp;	}
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;	@GetMapping(&quot;/login&quot;)
+<i>59</i>&nbsp;	public String login(ModelMap model, String error, String logout) {
+<b class="nc"><i>60</i>&nbsp;		if (error != null)</b>
+<b class="nc"><i>61</i>&nbsp;			model.addAttribute(&quot;error&quot;, &quot;Your username and password is invalid.&quot;);</b>
+<i>62</i>&nbsp;
+<b class="nc"><i>63</i>&nbsp;		if (logout != null)</b>
+<b class="nc"><i>64</i>&nbsp;			model.addAttribute(&quot;message&quot;, &quot;You have been logged out successfully.&quot;);</b>
+<i>65</i>&nbsp;
+<b class="nc"><i>66</i>&nbsp;		return &quot;security/login&quot;;</b>
+<i>67</i>&nbsp;	}
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;	@PostMapping(&quot;/login&quot;)
+<i>70</i>&nbsp;	public String performLogin(@RequestParam String username, @RequestParam String password) {
+<b class="nc"><i>71</i>&nbsp;		securityServiceImpl.autoLogin(username, password);</b>
+<b class="nc"><i>72</i>&nbsp;		return &quot;redirect:/&quot;;</b>
+<i>73</i>&nbsp;	}
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;	@GetMapping(&quot;/logout&quot;)
+<i>76</i>&nbsp;	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+<b class="nc"><i>77</i>&nbsp;		Authentication auth = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="nc"><i>78</i>&nbsp;		if (auth != null) {</b>
+<b class="nc"><i>79</i>&nbsp;			new SecurityContextLogoutHandler().logout(request, response, auth);</b>
+<i>80</i>&nbsp;		}
+<b class="nc"><i>81</i>&nbsp;		return &quot;redirect:/login?logout&quot;;// You can redirect wherever you want, but</b>
+<i>82</i>&nbsp;										// generally it&#39;s a good practice to show login
+<i>83</i>&nbsp;										// screen again.
+<i>84</i>&nbsp;	}
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;	@GetMapping(&quot;/users/list&quot;)
+<i>87</i>&nbsp;	public String listUsers(final ModelMap modelMap) {
+<i>88</i>&nbsp;		String vista;
+<b class="nc"><i>89</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="nc"><i>90</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<b class="nc"><i>91</i>&nbsp;		User user = this.userService.userByUsername(currentPrincipalName);</b>
+<b class="nc"><i>92</i>&nbsp;		if (userService.isAdmin(user)) {</b>
+<b class="nc"><i>93</i>&nbsp;			vista = &quot;users/list&quot;;</b>
+<b class="nc"><i>94</i>&nbsp;			Iterable&lt;User&gt; users = userService.findAll();</b>
+<b class="nc"><i>95</i>&nbsp;			modelMap.addAttribute(&quot;users&quot;, users);</b>
+<b class="nc"><i>96</i>&nbsp;		}</b>
+<i>97</i>&nbsp;		else {
+<b class="nc"><i>98</i>&nbsp;			vista = &quot;error&quot;;</b>
+<i>99</i>&nbsp;		}
+<b class="nc"><i>100</i>&nbsp;		return vista;</b>
+<i>101</i>&nbsp;	}
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;	@GetMapping(&quot;/users/setSponsor/{username}&quot;)
+<i>104</i>&nbsp;	public String setSponsor(@PathVariable(&quot;username&quot;) String username) {
+<i>105</i>&nbsp;		String vista;
+<b class="nc"><i>106</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="nc"><i>107</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<b class="nc"><i>108</i>&nbsp;		User user = this.userService.userByUsername(currentPrincipalName);</b>
+<b class="nc"><i>109</i>&nbsp;		if (userService.isAdmin(user)) {</b>
+<b class="nc"><i>110</i>&nbsp;			userService.setSponsorRole(username);</b>
+<b class="nc"><i>111</i>&nbsp;			vista = &quot;users/sponsorSet&quot;;</b>
+<i>112</i>&nbsp;		}
+<i>113</i>&nbsp;		else {
+<b class="nc"><i>114</i>&nbsp;			vista = &quot;error&quot;;</b>
+<i>115</i>&nbsp;		}
+<b class="nc"><i>116</i>&nbsp;		return vista;</b>
+<i>117</i>&nbsp;	}
+<i>118</i>&nbsp;	// @GetMapping({ &quot;/&quot;, &quot;/welcome&quot; })
+<i>119</i>&nbsp;	// public String welcome(Model model) {
+<i>120</i>&nbsp;	// return &quot;welcome&quot;;
+<i>121</i>&nbsp;	// }
+<i>122</i>&nbsp;
+<i>123</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>

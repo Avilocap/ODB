@@ -1,0 +1,325 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ApplicationController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb.controllers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ApplicationController (org.springframework.samples.oculusdb.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ApplicationController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84,6%
+  </span>
+  <span class="absValue">
+    (11/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82,2%
+  </span>
+  <span class="absValue">
+    (97/ 118)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;package org.springframework.samples.oculusdb.controllers;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import org.json.JSONException;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>6</i>&nbsp;import org.springframework.samples.oculusdb.administrator.PdfGeneratorUtil;
+<i>7</i>&nbsp;import org.springframework.samples.oculusdb.model.Application;
+<i>8</i>&nbsp;import org.springframework.samples.oculusdb.model.User;
+<i>9</i>&nbsp;import org.springframework.samples.oculusdb.services.ApplicationService;
+<i>10</i>&nbsp;import org.springframework.samples.oculusdb.services.UserService;
+<i>11</i>&nbsp;import org.springframework.security.core.Authentication;
+<i>12</i>&nbsp;import org.springframework.security.core.context.SecurityContextHolder;
+<i>13</i>&nbsp;import org.springframework.stereotype.Controller;
+<i>14</i>&nbsp;import org.springframework.ui.ModelMap;
+<i>15</i>&nbsp;import org.springframework.validation.BindingResult;
+<i>16</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>17</i>&nbsp;import org.springframework.web.servlet.ModelAndView;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i>20</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>21</i>&nbsp;import javax.validation.Valid;
+<i>22</i>&nbsp;import java.io.File;
+<i>23</i>&nbsp;import java.io.IOException;
+<i>24</i>&nbsp;import java.io.OutputStream;
+<i>25</i>&nbsp;import java.nio.file.Files;
+<i>26</i>&nbsp;import java.nio.file.Path;
+<i>27</i>&nbsp;import java.util.*;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;@Controller
+<i>30</i>&nbsp;@RequestMapping(&quot;/applications&quot;)
+<b class="fc"><i>31</i>&nbsp;public class ApplicationController {</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;	@Autowired
+<i>34</i>&nbsp;	PdfGeneratorUtil pdfGenerator;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;	@Autowired
+<i>37</i>&nbsp;	private ApplicationService applicationService;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;	@Autowired
+<i>40</i>&nbsp;	private UserService userService;
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;	@GetMapping(&quot;/list&quot;)
+<i>43</i>&nbsp;	public String listadoAplicaciones(final ModelMap modelMap) {
+<b class="fc"><i>44</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="fc"><i>45</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<b class="fc"><i>46</i>&nbsp;		User user = this.userService.userByUsername(currentPrincipalName);</b>
+<b class="fc"><i>47</i>&nbsp;		if (userService.isAdmin(user)) {</b>
+<b class="fc"><i>48</i>&nbsp;			modelMap.addAttribute(&quot;admin&quot;, true);</b>
+<i>49</i>&nbsp;		}
+<b class="fc"><i>50</i>&nbsp;		String vista = &quot;applications/listadoAplicaciones&quot;;</b>
+<b class="fc"><i>51</i>&nbsp;		Iterable&lt;Application&gt; applications = applicationService.findAll();</b>
+<b class="fc"><i>52</i>&nbsp;		modelMap.addAttribute(&quot;applications&quot;, applications);</b>
+<b class="fc"><i>53</i>&nbsp;		return vista;</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;	}
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;	@GetMapping(&quot;/listOrd&quot;)
+<i>58</i>&nbsp;	public String listadoAplicacionesOrd(final ModelMap modelMap) {
+<b class="nc"><i>59</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="nc"><i>60</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<b class="nc"><i>61</i>&nbsp;		User user = this.userService.userByUsername(currentPrincipalName);</b>
+<b class="nc"><i>62</i>&nbsp;		if (userService.isAdmin(user)) {</b>
+<b class="nc"><i>63</i>&nbsp;			modelMap.addAttribute(&quot;admin&quot;, true);</b>
+<i>64</i>&nbsp;		}
+<b class="nc"><i>65</i>&nbsp;		String vista = &quot;applications/listadoAplicaciones&quot;;</b>
+<b class="nc"><i>66</i>&nbsp;		Iterable&lt;Application&gt; applications = applicationService.findAll();</b>
+<b class="nc"><i>67</i>&nbsp;		List&lt;Application&gt; applications3 = (List&lt;Application&gt;) applications;</b>
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;		Collections.sort(applications3, (a1, a2) -&gt; a1.getCategory().getId().compareTo(a2.getCategory().getId()));</b>
+<b class="nc"><i>70</i>&nbsp;		modelMap.addAttribute(&quot;applications&quot;, applications3);</b>
+<b class="nc"><i>71</i>&nbsp;		return vista;</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;	}
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;	@GetMapping(&quot;/loadGet&quot;)
+<i>76</i>&nbsp;	public String loadApplicationGet() {
+<b class="fc"><i>77</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="fc"><i>78</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<b class="fc"><i>79</i>&nbsp;		User user = this.userService.userByUsername(currentPrincipalName);</b>
+<b class="fc"><i>80</i>&nbsp;		if (userService.isAdmin(user)) {</b>
+<b class="fc"><i>81</i>&nbsp;			return &quot;applications/getApplication&quot;;</b>
+<i>82</i>&nbsp;		}
+<i>83</i>&nbsp;		else {
+<b class="nc"><i>84</i>&nbsp;			return &quot;security/login&quot;;</b>
+<i>85</i>&nbsp;		}
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;	}
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;	@GetMapping(&quot;/appInfo/{appId}&quot;)
+<i>90</i>&nbsp;	public ModelAndView showOwner2(@PathVariable(&quot;appId&quot;) int appId) {
+<b class="fc"><i>91</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="fc"><i>92</i>&nbsp;		Boolean isAdmin = authentication.getAuthorities().stream().filter(o -&gt; o.getAuthority().equals(&quot;ADMIN&quot;))</b>
+<b class="fc"><i>93</i>&nbsp;				.findFirst().isPresent();</b>
+<i>94</i>&nbsp;
+<b class="fc"><i>95</i>&nbsp;		ModelAndView vista = new ModelAndView(&quot;applications/applicationsDetails&quot;);</b>
+<b class="fc"><i>96</i>&nbsp;		Application application = new Application();</b>
+<b class="fc"><i>97</i>&nbsp;		Optional&lt;Application&gt; ap = this.applicationService.findApplicationById(appId);</b>
+<b class="fc"><i>98</i>&nbsp;		if (ap.isPresent()) {</b>
+<b class="fc"><i>99</i>&nbsp;			application = ap.get();</b>
+<i>100</i>&nbsp;		}
+<i>101</i>&nbsp;		// Esto es una prueba
+<b class="fc"><i>102</i>&nbsp;		vista.addObject(&quot;app&quot;, application);</b>
+<b class="fc"><i>103</i>&nbsp;		vista.addObject(&quot;isAdmin&quot;, isAdmin);</b>
+<b class="fc"><i>104</i>&nbsp;		vista.addObject(&quot;positiveWords&quot;, applicationService.getPositiveWords(application));</b>
+<b class="fc"><i>105</i>&nbsp;		vista.addObject(&quot;negativeWords&quot;, applicationService.getNegativeWords(application));</b>
+<i>106</i>&nbsp;
+<b class="fc"><i>107</i>&nbsp;		return vista;</b>
+<i>108</i>&nbsp;	}
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;	@GetMapping(&quot;/pdf/{appId}&quot;)
+<i>111</i>&nbsp;	public void appToPDF(@PathVariable(&quot;appId&quot;) int appId, HttpServletRequest request, HttpServletResponse response)
+<i>112</i>&nbsp;			throws Exception {
+<b class="fc"><i>113</i>&nbsp;		ModelAndView vistaPDF = new ModelAndView(&quot;applications/applicationsDetails&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;		Application application = new Application();</b>
+<b class="fc"><i>115</i>&nbsp;		Optional&lt;Application&gt; ap = this.applicationService.findApplicationById(appId);</b>
+<b class="fc"><i>116</i>&nbsp;		if (ap.isPresent()) {</b>
+<b class="fc"><i>117</i>&nbsp;			application = ap.get();</b>
+<i>118</i>&nbsp;		}
+<i>119</i>&nbsp;
+<b class="fc"><i>120</i>&nbsp;		Map&lt;String, String&gt; data = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>121</i>&nbsp;		data.put(&quot;name&quot;, application.getName());</b>
+<b class="fc"><i>122</i>&nbsp;		data.put(&quot;description&quot;, application.getDescription());</b>
+<b class="fc"><i>123</i>&nbsp;		data.put(&quot;picture&quot;, application.getPicture());</b>
+<b class="fc"><i>124</i>&nbsp;		data.put(&quot;releaseDate&quot;, application.getReleaseDate().toString());</b>
+<b class="fc"><i>125</i>&nbsp;		data.put(&quot;price&quot;, application.getPrice().toString());</b>
+<b class="fc"><i>126</i>&nbsp;		data.put(&quot;website&quot;, application.getWebsite());</b>
+<b class="fc"><i>127</i>&nbsp;		data.put(&quot;company&quot;, application.getCompany());</b>
+<b class="fc"><i>128</i>&nbsp;		data.put(&quot;incomeEstimation&quot;, application.getIncomeEstimation().toString());</b>
+<b class="fc"><i>129</i>&nbsp;		data.put(&quot;salesEstimation&quot;, application.getSalesEstimation().toString());</b>
+<b class="fc"><i>130</i>&nbsp;		data.put(&quot;totalReviews&quot;, application.getTotalReviews().toString());</b>
+<i>131</i>&nbsp;
+<b class="fc"><i>132</i>&nbsp;		File outputPDF = pdfGenerator.createPdf(&quot;applications/applicationOnPDF&quot;, data, application.getName());</b>
+<i>133</i>&nbsp;
+<b class="fc"><i>134</i>&nbsp;		response.setContentType(&quot;application/pdf&quot;);</b>
+<b class="fc"><i>135</i>&nbsp;		response.addHeader(&quot;Content-Disposition&quot;, &quot;attachment; filename=&quot; + outputPDF);</b>
+<i>136</i>&nbsp;
+<b class="fc"><i>137</i>&nbsp;		try (OutputStream out = response.getOutputStream()) {</b>
+<b class="fc"><i>138</i>&nbsp;			Path path = outputPDF.toPath();</b>
+<b class="fc"><i>139</i>&nbsp;			Files.copy(path, out);</b>
+<b class="fc"><i>140</i>&nbsp;			out.flush();</b>
+<b class="fc"><i>141</i>&nbsp;		}</b>
+<b class="nc"><i>142</i>&nbsp;		catch (IOException e) {</b>
+<i>143</i>&nbsp;			// handle exception
+<b class="fc"><i>144</i>&nbsp;		}</b>
+<i>145</i>&nbsp;
+<b class="fc"><i>146</i>&nbsp;	}</b>
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;	@RequestMapping(&quot;/get&quot;)
+<i>149</i>&nbsp;	public ModelAndView getApplication(@RequestParam String id) throws IOException, JSONException {
+<b class="nc"><i>150</i>&nbsp;		ModelAndView vista = new ModelAndView(&quot;applications/applicationsDetails&quot;);</b>
+<b class="nc"><i>151</i>&nbsp;		Boolean applicationExists = applicationService.applicationExists(id);</b>
+<b class="nc"><i>152</i>&nbsp;		if (!applicationExists) {</b>
+<b class="nc"><i>153</i>&nbsp;			Application application = this.applicationService.getInfoOfOneApplication(id);</b>
+<b class="nc"><i>154</i>&nbsp;			vista.addObject(&quot;app&quot;, application);</b>
+<b class="nc"><i>155</i>&nbsp;		}</b>
+<i>156</i>&nbsp;		else {
+<b class="nc"><i>157</i>&nbsp;			vista = new ModelAndView(&quot;applications/appexists&quot;);</b>
+<i>158</i>&nbsp;		}
+<i>159</i>&nbsp;
+<b class="nc"><i>160</i>&nbsp;		return vista;</b>
+<i>161</i>&nbsp;	}
+<i>162</i>&nbsp;
+<i>163</i>&nbsp;	@GetMapping(&quot;appInfo/edit&quot;)
+<i>164</i>&nbsp;	public String initUpdateForm(@RequestParam int appId, ModelMap model) {
+<b class="fc"><i>165</i>&nbsp;		String view = &quot;applications/createOrUpdateApplicationForm&quot;;</b>
+<b class="fc"><i>166</i>&nbsp;		Application application = new Application();</b>
+<b class="fc"><i>167</i>&nbsp;		Optional&lt;Application&gt; ap = this.applicationService.findApplicationById(appId);</b>
+<b class="fc"><i>168</i>&nbsp;		if (ap.isPresent()) {</b>
+<b class="fc"><i>169</i>&nbsp;			application = ap.get();</b>
+<i>170</i>&nbsp;		}
+<b class="fc"><i>171</i>&nbsp;		model.put(&quot;app&quot;, application);</b>
+<b class="fc"><i>172</i>&nbsp;		return view;</b>
+<i>173</i>&nbsp;	}
+<i>174</i>&nbsp;
+<i>175</i>&nbsp;	@PostMapping(&quot;appInfo/edit&quot;)
+<i>176</i>&nbsp;	public String processUpdateForm(@Valid Application application, BindingResult result, ModelMap model) {
+<b class="fc"><i>177</i>&nbsp;		if (result.hasErrors()) {</b>
+<b class="fc"><i>178</i>&nbsp;			model.put(&quot;app&quot;, application);</b>
+<b class="fc"><i>179</i>&nbsp;			return &quot;applications/createOrUpdateApplicationForm&quot;;</b>
+<i>180</i>&nbsp;		}
+<i>181</i>&nbsp;		else {
+<b class="fc"><i>182</i>&nbsp;			Application application1 = this.applicationService.saveApplication(application);</b>
+<b class="fc"><i>183</i>&nbsp;			String vista = &quot;applications/applicationsDetails&quot;;</b>
+<b class="fc"><i>184</i>&nbsp;			model.put(&quot;app&quot;, application1);</b>
+<b class="fc"><i>185</i>&nbsp;			return vista;</b>
+<i>186</i>&nbsp;		}
+<i>187</i>&nbsp;	}
+<i>188</i>&nbsp;
+<i>189</i>&nbsp;	@RequestMapping(&quot;appInfo/delete&quot;)
+<i>190</i>&nbsp;	public String deleteApp(@RequestParam(&quot;appId&quot;) int appId) {
+<i>191</i>&nbsp;
+<b class="fc"><i>192</i>&nbsp;		Optional&lt;Application&gt; ap = this.applicationService.findApplicationById(appId);</b>
+<b class="fc"><i>193</i>&nbsp;		ap.ifPresent(application -&gt; this.applicationService.deleteApplication(application));</b>
+<b class="fc"><i>194</i>&nbsp;		return &quot;applications/todoOk&quot;;</b>
+<i>195</i>&nbsp;	}
+<i>196</i>&nbsp;
+<i>197</i>&nbsp;	@GetMapping(&quot;/appInfo/{appId}/favorite&quot;)
+<i>198</i>&nbsp;	public String addToFavorites(@PathVariable(&quot;appId&quot;) int appId, ModelMap model) {
+<i>199</i>&nbsp;
+<b class="fc"><i>200</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="fc"><i>201</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<i>202</i>&nbsp;
+<b class="fc"><i>203</i>&nbsp;		Application app = new Application();</b>
+<b class="fc"><i>204</i>&nbsp;		User user = this.userService.userByUsername(currentPrincipalName);</b>
+<b class="fc"><i>205</i>&nbsp;		Optional&lt;Application&gt; ap = this.applicationService.findApplicationById(appId);</b>
+<b class="fc"><i>206</i>&nbsp;		if (ap.isPresent()) {</b>
+<b class="fc"><i>207</i>&nbsp;			app = ap.get();</b>
+<i>208</i>&nbsp;		}
+<b class="fc"><i>209</i>&nbsp;		user.getFavorites().add(app);</b>
+<b class="fc"><i>210</i>&nbsp;		userService.saveUser(user);</b>
+<i>211</i>&nbsp;
+<b class="fc"><i>212</i>&nbsp;		model.addAttribute(&quot;favorites&quot;, user.getFavorites());</b>
+<b class="fc"><i>213</i>&nbsp;		return &quot;applications/favorites&quot;;</b>
+<i>214</i>&nbsp;	}
+<i>215</i>&nbsp;
+<i>216</i>&nbsp;	@RequestMapping(&quot;/favorites/delete&quot;)
+<i>217</i>&nbsp;	public String deleteFavorite(@RequestParam(&quot;appId&quot;) int appId, ModelMap model) {
+<b class="fc"><i>218</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="fc"><i>219</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<b class="fc"><i>220</i>&nbsp;		User currentUser = userService.userByUsername(currentPrincipalName);</b>
+<b class="fc"><i>221</i>&nbsp;		List&lt;Application&gt; newList = new ArrayList&lt;Application&gt;(currentUser.getFavorites());</b>
+<b class="fc"><i>222</i>&nbsp;		newList.removeIf(x -&gt; x.getId() == appId);</b>
+<b class="fc"><i>223</i>&nbsp;		currentUser.setFavorites(newList);</b>
+<b class="fc"><i>224</i>&nbsp;		userService.saveUser(currentUser);</b>
+<b class="fc"><i>225</i>&nbsp;		model.addAttribute(&quot;favorites&quot;, currentUser.getFavorites());</b>
+<b class="fc"><i>226</i>&nbsp;		return &quot;applications/favorites&quot;;</b>
+<i>227</i>&nbsp;
+<i>228</i>&nbsp;	}
+<i>229</i>&nbsp;
+<i>230</i>&nbsp;	@GetMapping(&quot;/favorites&quot;)
+<i>231</i>&nbsp;	public String favorites(final ModelMap modelMap) {
+<i>232</i>&nbsp;
+<b class="fc"><i>233</i>&nbsp;		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</b>
+<b class="fc"><i>234</i>&nbsp;		String currentPrincipalName = authentication.getName();</b>
+<i>235</i>&nbsp;
+<b class="fc"><i>236</i>&nbsp;		String vista = &quot;applications/favorites&quot;;</b>
+<b class="fc"><i>237</i>&nbsp;		List&lt;Application&gt; favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();</b>
+<b class="fc"><i>238</i>&nbsp;		modelMap.addAttribute(&quot;favorites&quot;, favorites);</b>
+<b class="fc"><i>239</i>&nbsp;		return vista;</b>
+<i>240</i>&nbsp;	}
+<i>241</i>&nbsp;
+<i>242</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>

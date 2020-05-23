@@ -1,0 +1,618 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ApplicationService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.springframework.samples.oculusdb.services</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ApplicationService (org.springframework.samples.oculusdb.services)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ApplicationService</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (10/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15,1%
+  </span>
+  <span class="absValue">
+    (36/ 239)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ApplicationService$$EnhancerBySpringCGLIB$$a313d14</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$$EnhancerBySpringCGLIB$$a313d14$$FastClassBySpringCGLIB$$4a1b0f4</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$$FastClassBySpringCGLIB$$8552ccda</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$5SOhdWTF</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$7ZRWbgiJ</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$Ed2hIyIF</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$Fd3eRayL</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$kaZSnzyX</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$LklgBa7R</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$Op1XE5ZR</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$Rf9gvao8</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$ROV2WOGC</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$VdRdJyf6</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$vt9AeMGH</td>
+  </tr>
+  <tr>
+    <td class="name">ApplicationService$MockitoMock$1268010210$auxiliary$YmnTtRXc</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (10/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15,1%
+  </span>
+  <span class="absValue">
+    (36/ 239)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package org.springframework.samples.oculusdb.services;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.ahocorasick.trie.Emit;
+<i>4</i>&nbsp;import org.ahocorasick.trie.Trie;
+<i>5</i>&nbsp;import org.apache.http.HttpEntity;
+<i>6</i>&nbsp;import org.apache.http.HttpResponse;
+<i>7</i>&nbsp;import org.apache.http.NameValuePair;
+<i>8</i>&nbsp;import org.apache.http.client.HttpClient;
+<i>9</i>&nbsp;import org.apache.http.client.entity.UrlEncodedFormEntity;
+<i>10</i>&nbsp;import org.apache.http.client.methods.HttpPost;
+<i>11</i>&nbsp;import org.apache.http.impl.client.HttpClients;
+<i>12</i>&nbsp;import org.apache.http.message.BasicNameValuePair;
+<i>13</i>&nbsp;import org.json.JSONArray;
+<i>14</i>&nbsp;import org.json.JSONException;
+<i>15</i>&nbsp;import org.json.JSONObject;
+<i>16</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>17</i>&nbsp;import org.springframework.samples.oculusdb.administrator.ApplicationRepository;
+<i>18</i>&nbsp;import org.springframework.samples.oculusdb.application.Reviews;
+<i>19</i>&nbsp;import org.springframework.samples.oculusdb.model.Application;
+<i>20</i>&nbsp;import org.springframework.samples.oculusdb.model.Word;
+<i>21</i>&nbsp;import org.springframework.stereotype.Service;
+<i>22</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;import java.io.*;
+<i>25</i>&nbsp;import java.sql.Timestamp;
+<i>26</i>&nbsp;import java.time.LocalDate;
+<i>27</i>&nbsp;import java.util.*;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;@Service
+<b class="fc"><i>30</i>&nbsp;public class ApplicationService {</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;	@Autowired
+<i>33</i>&nbsp;	private ApplicationRepository applicationRepository;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;	@Transactional
+<i>36</i>&nbsp;	public int applicationCount() {
+<b class="fc"><i>37</i>&nbsp;		return (int) this.applicationRepository.count();</b>
+<i>38</i>&nbsp;	}
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;	@Transactional
+<i>41</i>&nbsp;	public Application saveApplication(Application app) {
+<b class="fc"><i>42</i>&nbsp;		return this.applicationRepository.save(app);</b>
+<i>43</i>&nbsp;	}
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;	@Transactional
+<i>47</i>&nbsp;	public Iterable&lt;Application&gt; findAll() {
+<b class="fc"><i>48</i>&nbsp;		return this.applicationRepository.findAll();</b>
+<i>49</i>&nbsp;	}
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;	@Transactional
+<i>52</i>&nbsp;	public Optional&lt;Application&gt; findApplicationById(int id) {
+<b class="fc"><i>53</i>&nbsp;		return this.applicationRepository.findById(id);</b>
+<i>54</i>&nbsp;	}
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;	@Transactional
+<i>57</i>&nbsp;	public void deleteApplication(Application t) {
+<b class="fc"><i>58</i>&nbsp;		this.applicationRepository.delete(t);</b>
+<b class="fc"><i>59</i>&nbsp;	}</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;	@Transactional
+<i>62</i>&nbsp;	public Application getApplicationByOculusId(String oculusId) {
+<b class="nc"><i>63</i>&nbsp;		return applicationRepository.applicationByOculusId(oculusId);</b>
+<i>64</i>&nbsp;	}
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;	@Transactional
+<i>67</i>&nbsp;	public Collection&lt;Word&gt; getPositiveWords(Application application) {
+<b class="fc"><i>68</i>&nbsp;		return this.applicationRepository.getApplicationPositiveWord(application.getOculusId());</b>
+<i>69</i>&nbsp;	}
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;	public Collection&lt;Word&gt; getNegativeWords(Application application) {
+<b class="fc"><i>72</i>&nbsp;		return this.applicationRepository.getApplicationNegativeWord(application.getOculusId());</b>
+<i>73</i>&nbsp;	}
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;	@Transactional
+<i>76</i>&nbsp;	public boolean applicationExists(String oculusID) {
+<b class="nc"><i>77</i>&nbsp;		boolean res = false;</b>
+<i>78</i>&nbsp;
+<b class="nc"><i>79</i>&nbsp;		if (applicationRepository.applicationByOculusId(oculusID) != null) {</b>
+<b class="nc"><i>80</i>&nbsp;			res = true;</b>
+<i>81</i>&nbsp;		}
+<i>82</i>&nbsp;
+<b class="nc"><i>83</i>&nbsp;		return res;</b>
+<i>84</i>&nbsp;	}
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;	@Transactional
+<i>87</i>&nbsp;	public Application getInfoOfOneApplication(String game_id) throws IOException, JSONException {
+<i>88</i>&nbsp;
+<b class="fc"><i>89</i>&nbsp;		Application res = new Application();</b>
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;		// Build front page query
+<b class="fc"><i>92</i>&nbsp;		String API_URL = &quot;https://graph.oculus.com/graphql?forced_locale=en_EN&quot;;</b>
+<b class="fc"><i>93</i>&nbsp;		HttpClient httpclient = HttpClients.createDefault();</b>
+<b class="fc"><i>94</i>&nbsp;		HttpPost httppost = new HttpPost(API_URL);</b>
+<b class="fc"><i>95</i>&nbsp;		String variableChain = &quot;{\&quot;itemId\&quot;:\&quot;&quot; + game_id</b>
+<i>96</i>&nbsp;				+ &quot;\&quot;,\&quot;first\&quot;:5,\&quot;last\&quot;:null,\&quot;after\&quot;:null,\&quot;before\&quot;:null,\&quot;forward\&quot;:true,\&quot;ordering\&quot;:null,\&quot;ratingScores\&quot;:null,\&quot;hmdType\&quot;:\&quot;RIFT\&quot;}&quot;;
+<i>97</i>&nbsp;		FileWriter file;
+<i>98</i>&nbsp;
+<b class="fc"><i>99</i>&nbsp;		List&lt;NameValuePair&gt; params = new ArrayList&lt;NameValuePair&gt;(3);</b>
+<b class="fc"><i>100</i>&nbsp;		params.add(new BasicNameValuePair(&quot;access_token&quot;, &quot;OC|1317831034909742|&quot;));</b>
+<b class="fc"><i>101</i>&nbsp;		params.add(new BasicNameValuePair(&quot;variables&quot;, variableChain));</b>
+<b class="fc"><i>102</i>&nbsp;		params.add(new BasicNameValuePair(&quot;doc_id&quot;, &quot;2626024984114321&quot;));</b>
+<b class="fc"><i>103</i>&nbsp;		httppost.setEntity(new UrlEncodedFormEntity(params, &quot;UTF-8&quot;));</b>
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;		// Execute and get the response.
+<b class="fc"><i>106</i>&nbsp;		HttpResponse response = httpclient.execute(httppost);</b>
+<b class="fc"><i>107</i>&nbsp;		HttpEntity entity = response.getEntity();</b>
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;		// Get the general info about the game
+<b class="fc"><i>110</i>&nbsp;		if (entity != null) {</b>
+<b class="fc"><i>111</i>&nbsp;			try (InputStream instream = entity.getContent()) {</b>
+<b class="fc"><i>112</i>&nbsp;				String result = convertStreamToString(instream);</b>
+<b class="fc"><i>113</i>&nbsp;				JSONObject rawJson = new JSONObject(result);</b>
+<b class="fc"><i>114</i>&nbsp;				JSONObject data = rawJson.getJSONObject(&quot;data&quot;);</b>
+<b class="fc"><i>115</i>&nbsp;				JSONObject node = data.getJSONObject(&quot;node&quot;);</b>
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;				// Basic
+<b class="nc"><i>118</i>&nbsp;				String oculusId = node.getString(&quot;id&quot;);</b>
+<b class="nc"><i>119</i>&nbsp;				String name = node.getString(&quot;display_name&quot;);</b>
+<b class="nc"><i>120</i>&nbsp;				String description = node.getString(&quot;display_long_description&quot;);</b>
+<b class="nc"><i>121</i>&nbsp;				String website = node.getString(&quot;website_url&quot;);</b>
+<b class="nc"><i>122</i>&nbsp;				String company = node.getString(&quot;developer_name&quot;);</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;				// Price
+<b class="nc"><i>125</i>&nbsp;				JSONObject currentOffer = node.getJSONObject(&quot;current_offer&quot;);</b>
+<b class="nc"><i>126</i>&nbsp;				JSONObject priceJson = currentOffer.getJSONObject(&quot;price&quot;);</b>
+<b class="nc"><i>127</i>&nbsp;				String formatted = priceJson.getString(&quot;formatted&quot;).substring(1);</b>
+<b class="nc"><i>128</i>&nbsp;				Double price = new Double(formatted);</b>
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;				// Date
+<i>131</i>&nbsp;				// TODO esto siempre da 1970
+<b class="nc"><i>132</i>&nbsp;				int releaseDateInteger = node.getInt(&quot;release_date&quot;);</b>
+<b class="nc"><i>133</i>&nbsp;				Timestamp timestamp = new Timestamp((long) releaseDateInteger);</b>
+<b class="nc"><i>134</i>&nbsp;				LocalDate releaseDate = timestamp.toLocalDateTime().toLocalDate();</b>
+<i>135</i>&nbsp;
+<i>136</i>&nbsp;				// Picture
+<b class="nc"><i>137</i>&nbsp;				JSONObject hero = node.getJSONObject(&quot;hero&quot;);</b>
+<b class="nc"><i>138</i>&nbsp;				String picture = hero.getString(&quot;uri&quot;);</b>
+<i>139</i>&nbsp;
+<i>140</i>&nbsp;				// Total Reviews
+<b class="nc"><i>141</i>&nbsp;				JSONObject reviewInfo = node.getJSONObject(&quot;reviewInfo&quot;);</b>
+<b class="nc"><i>142</i>&nbsp;				Integer totalReviews = reviewInfo.getInt(&quot;count&quot;);</b>
+<i>143</i>&nbsp;
+<i>144</i>&nbsp;				// Derived Properties
+<b class="nc"><i>145</i>&nbsp;				Integer salesEstimation = salesEstimationCalculator(totalReviews);</b>
+<b class="nc"><i>146</i>&nbsp;				double incomeEstimationDouble = salesEstimation * price;</b>
+<b class="nc"><i>147</i>&nbsp;				Integer incomeEstimation = (int) incomeEstimationDouble;</b>
+<b class="nc"><i>148</i>&nbsp;				Application app2 = new Application(oculusId, name, description, releaseDate, price, website, company,</b>
+<i>149</i>&nbsp;						picture, incomeEstimation, salesEstimation, totalReviews);
+<b class="nc"><i>150</i>&nbsp;				app2.setReviewsCollection(new ArrayList&lt;&gt;());</b>
+<b class="nc"><i>151</i>&nbsp;				app2.setPositiveWords(new ArrayList&lt;&gt;());</b>
+<b class="nc"><i>152</i>&nbsp;				app2.setNegativeWords(new ArrayList&lt;&gt;());</b>
+<i>153</i>&nbsp;
+<i>154</i>&nbsp;				// ****************************** REVIEW EXTRACTION
+<i>155</i>&nbsp;				// **********************************************
+<i>156</i>&nbsp;
+<b class="nc"><i>157</i>&nbsp;				String[] positiveWords = getPositiveWords();</b>
+<b class="nc"><i>158</i>&nbsp;				Trie trie = Trie.builder().onlyWholeWords().addKeywords(positiveWords).build();</b>
+<i>159</i>&nbsp;
+<b class="nc"><i>160</i>&nbsp;				String[] negativeWords = getNegativeWords();</b>
+<b class="nc"><i>161</i>&nbsp;				Trie trien = Trie.builder().onlyWholeWords().addKeywords(negativeWords).build();</b>
+<i>162</i>&nbsp;
+<i>163</i>&nbsp;				// Comment Data
+<b class="nc"><i>164</i>&nbsp;				JSONObject firstQualityRatings = node.getJSONObject(&quot;firstQualityRatings&quot;);</b>
+<b class="nc"><i>165</i>&nbsp;				JSONObject pageInfo = firstQualityRatings.getJSONObject(&quot;page_info&quot;);</b>
+<i>166</i>&nbsp;
+<i>167</i>&nbsp;				// Cursors to get the second page:
+<b class="nc"><i>168</i>&nbsp;				String end_cursor = pageInfo.getString(&quot;end_cursor&quot;);</b>
+<b class="nc"><i>169</i>&nbsp;				String start_cursor = pageInfo.getString(&quot;start_cursor&quot;);</b>
+<i>170</i>&nbsp;
+<b class="nc"><i>171</i>&nbsp;				JSONArray edges = firstQualityRatings.getJSONArray(&quot;edges&quot;);</b>
+<i>172</i>&nbsp;
+<b class="nc"><i>173</i>&nbsp;				Map&lt;String, Integer&gt; positiveWordsCount = new HashMap&lt;&gt;();</b>
+<b class="nc"><i>174</i>&nbsp;				Map&lt;String, Integer&gt; negativeWordsCount = new HashMap&lt;&gt;();</b>
+<i>175</i>&nbsp;
+<i>176</i>&nbsp;				// First page reviews
+<i>177</i>&nbsp;				int i;
+<b class="nc"><i>178</i>&nbsp;				for (i = 0; i &lt; edges.length(); i++) {</b>
+<b class="nc"><i>179</i>&nbsp;					JSONObject review = edges.getJSONObject(i);</b>
+<b class="nc"><i>180</i>&nbsp;					JSONObject review_node = review.getJSONObject(&quot;node&quot;);</b>
+<i>181</i>&nbsp;
+<b class="nc"><i>182</i>&nbsp;					String reviewTitle = review_node.getString(&quot;reviewTitle&quot;);</b>
+<b class="nc"><i>183</i>&nbsp;					String reviewDesc = review_node.getString(&quot;reviewDescription&quot;);</b>
+<i>184</i>&nbsp;
+<b class="nc"><i>185</i>&nbsp;					Integer reviewDate = review_node.getInt(&quot;date&quot;);</b>
+<b class="nc"><i>186</i>&nbsp;					Timestamp reviewTimestamp = new Timestamp((long) reviewDate);</b>
+<b class="nc"><i>187</i>&nbsp;					LocalDate reviewReleaseDate = reviewTimestamp.toLocalDateTime().toLocalDate();</b>
+<i>188</i>&nbsp;
+<b class="nc"><i>189</i>&nbsp;					String reviewOculusID = review_node.getString(&quot;id&quot;);</b>
+<i>190</i>&nbsp;
+<i>191</i>&nbsp;					// Word search Algorithm
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;					// For positive words
+<b class="nc"><i>194</i>&nbsp;					Collection&lt;Emit&gt; emits = trie.parseText(reviewTitle + reviewDesc);</b>
+<i>195</i>&nbsp;
+<b class="nc"><i>196</i>&nbsp;					for (Emit em : emits) {</b>
+<b class="nc"><i>197</i>&nbsp;						String[] emsplited = em.toString().split(&quot;=&quot;);</b>
+<b class="nc"><i>198</i>&nbsp;						String ourWord = emsplited[1];</b>
+<b class="nc"><i>199</i>&nbsp;						if (positiveWordsCount.containsKey(ourWord)) {</b>
+<b class="nc"><i>200</i>&nbsp;							positiveWordsCount.put(ourWord, positiveWordsCount.get(ourWord) + 1);</b>
+<i>201</i>&nbsp;						}
+<i>202</i>&nbsp;						else {
+<b class="nc"><i>203</i>&nbsp;							positiveWordsCount.put(ourWord, 1);</b>
+<i>204</i>&nbsp;						}
+<i>205</i>&nbsp;
+<b class="nc"><i>206</i>&nbsp;					}</b>
+<i>207</i>&nbsp;
+<b class="nc"><i>208</i>&nbsp;					boolean positiveFound = true;</b>
+<b class="nc"><i>209</i>&nbsp;					for (String word : positiveWords) {</b>
+<b class="nc"><i>210</i>&nbsp;						boolean containsPositive = Arrays.toString(emits.toArray()).contains(word);</b>
+<b class="nc"><i>211</i>&nbsp;						if (!containsPositive) {</b>
+<b class="nc"><i>212</i>&nbsp;							positiveFound = false;</b>
+<b class="nc"><i>213</i>&nbsp;							break;</b>
+<i>214</i>&nbsp;						}
+<i>215</i>&nbsp;					}
+<i>216</i>&nbsp;
+<i>217</i>&nbsp;					// For negative words
+<b class="nc"><i>218</i>&nbsp;					Collection&lt;Emit&gt; emitsn = trien.parseText(reviewTitle + reviewDesc);</b>
+<i>219</i>&nbsp;
+<b class="nc"><i>220</i>&nbsp;					for (Emit em : emitsn) {</b>
+<b class="nc"><i>221</i>&nbsp;						String[] emsplited = em.toString().split(&quot;=&quot;);</b>
+<b class="nc"><i>222</i>&nbsp;						String ourWord = emsplited[1];</b>
+<b class="nc"><i>223</i>&nbsp;						if (negativeWordsCount.containsKey(ourWord)) {</b>
+<b class="nc"><i>224</i>&nbsp;							negativeWordsCount.put(ourWord, negativeWordsCount.get(ourWord) + 1);</b>
+<i>225</i>&nbsp;						}
+<i>226</i>&nbsp;						else {
+<b class="nc"><i>227</i>&nbsp;							negativeWordsCount.put(ourWord, 1);</b>
+<i>228</i>&nbsp;						}
+<i>229</i>&nbsp;
+<b class="nc"><i>230</i>&nbsp;					}</b>
+<i>231</i>&nbsp;
+<b class="nc"><i>232</i>&nbsp;					boolean negativeFound = true;</b>
+<b class="nc"><i>233</i>&nbsp;					for (String word : negativeWords) {</b>
+<b class="nc"><i>234</i>&nbsp;						boolean containsNegative = Arrays.toString(emitsn.toArray()).contains(word);</b>
+<b class="nc"><i>235</i>&nbsp;						if (!containsNegative) {</b>
+<b class="nc"><i>236</i>&nbsp;							negativeFound = false;</b>
+<b class="nc"><i>237</i>&nbsp;							break;</b>
+<i>238</i>&nbsp;						}
+<i>239</i>&nbsp;					}
+<i>240</i>&nbsp;
+<b class="nc"><i>241</i>&nbsp;					Reviews currentReviewObject = new Reviews();</b>
+<b class="nc"><i>242</i>&nbsp;					currentReviewObject.setContent(reviewDesc);</b>
+<b class="nc"><i>243</i>&nbsp;					currentReviewObject.setTitle(reviewTitle);</b>
+<b class="nc"><i>244</i>&nbsp;					currentReviewObject.setPublishDate(reviewReleaseDate);</b>
+<b class="nc"><i>245</i>&nbsp;					currentReviewObject.setOculusId(reviewOculusID);</b>
+<i>246</i>&nbsp;
+<b class="nc"><i>247</i>&nbsp;					currentReviewObject.setApplication(app2);</b>
+<b class="nc"><i>248</i>&nbsp;					app2.getReviewsCollection().add(currentReviewObject);</b>
+<i>249</i>&nbsp;
+<i>250</i>&nbsp;				}
+<i>251</i>&nbsp;
+<i>252</i>&nbsp;				// Check if there is more comment pages
+<b class="nc"><i>253</i>&nbsp;				Boolean more_comments = false;</b>
+<b class="nc"><i>254</i>&nbsp;				if (!end_cursor.equals(&quot;&quot;)) {</b>
+<b class="nc"><i>255</i>&nbsp;					more_comments = true;</b>
+<i>256</i>&nbsp;				}
+<i>257</i>&nbsp;
+<b class="nc"><i>258</i>&nbsp;				while (more_comments) {</b>
+<i>259</i>&nbsp;
+<i>260</i>&nbsp;					// Build query for next comment page. using previous end cursor
+<b class="nc"><i>261</i>&nbsp;					HttpPost reviewHttppost = new HttpPost(API_URL);</b>
+<b class="nc"><i>262</i>&nbsp;					String reviewVariableChain = &quot;{\&quot;id\&quot;:\&quot;&quot; + game_id + &quot;\&quot;,\&quot;first\&quot;:5,\&quot;last\&quot;:null,\&quot;after\&quot;:\&quot;&quot;</b>
+<i>263</i>&nbsp;							+ end_cursor
+<i>264</i>&nbsp;							+ &quot;\&quot;,\&quot;before\&quot;:null,\&quot;forward\&quot;:true,\&quot;ordering\&quot;:\&quot;top\&quot;,\&quot;ratingScores\&quot;:[1,2,3,4,5]}&quot;;
+<i>265</i>&nbsp;
+<b class="nc"><i>266</i>&nbsp;					List&lt;NameValuePair&gt; reviewParams = new ArrayList&lt;NameValuePair&gt;(3);</b>
+<b class="nc"><i>267</i>&nbsp;					reviewParams.add(new BasicNameValuePair(&quot;access_token&quot;, &quot;OC|1317831034909742|&quot;));</b>
+<b class="nc"><i>268</i>&nbsp;					reviewParams.add(new BasicNameValuePair(&quot;variables&quot;, reviewVariableChain));</b>
+<b class="nc"><i>269</i>&nbsp;					reviewParams.add(new BasicNameValuePair(&quot;doc_id&quot;, &quot;1494813307288657&quot;));</b>
+<b class="nc"><i>270</i>&nbsp;					reviewHttppost.setEntity(new UrlEncodedFormEntity(reviewParams, &quot;UTF-8&quot;));</b>
+<i>271</i>&nbsp;
+<i>272</i>&nbsp;					// Execute and get the response.
+<b class="nc"><i>273</i>&nbsp;					HttpResponse reviewResponse = httpclient.execute(reviewHttppost);</b>
+<b class="nc"><i>274</i>&nbsp;					HttpEntity reviewEntity = reviewResponse.getEntity();</b>
+<i>275</i>&nbsp;
+<b class="nc"><i>276</i>&nbsp;					if (reviewEntity != null) {</b>
+<b class="nc"><i>277</i>&nbsp;						try (InputStream reviewInstream = reviewEntity.getContent()) {</b>
+<b class="nc"><i>278</i>&nbsp;							String reviewResult = convertStreamToString(reviewInstream);</b>
+<b class="nc"><i>279</i>&nbsp;							JSONObject reviewRawJson = new JSONObject(reviewResult);</b>
+<b class="nc"><i>280</i>&nbsp;							JSONObject reviewData = reviewRawJson.getJSONObject(&quot;data&quot;);</b>
+<b class="nc"><i>281</i>&nbsp;							JSONObject reviewNode = reviewData.getJSONObject(&quot;node&quot;);</b>
+<i>282</i>&nbsp;
+<i>283</i>&nbsp;							// Comment Data
+<b class="nc"><i>284</i>&nbsp;							JSONObject reviewFirstQualityRatings = reviewNode.getJSONObject(&quot;firstQualityRatings&quot;);</b>
+<b class="nc"><i>285</i>&nbsp;							JSONObject reviewPageInfo = reviewFirstQualityRatings.getJSONObject(&quot;page_info&quot;);</b>
+<i>286</i>&nbsp;
+<i>287</i>&nbsp;							// Cursors to get the second page:
+<b class="nc"><i>288</i>&nbsp;							String reviewEndCursor = reviewPageInfo.getString(&quot;end_cursor&quot;);</b>
+<b class="nc"><i>289</i>&nbsp;							String reviewStartCursor = reviewPageInfo.getString(&quot;start_cursor&quot;);</b>
+<i>290</i>&nbsp;
+<b class="nc"><i>291</i>&nbsp;							if (reviewEndCursor.equals(&quot;null&quot;)) {</b>
+<b class="nc"><i>292</i>&nbsp;								more_comments = false;</b>
+<i>293</i>&nbsp;								break;
+<i>294</i>&nbsp;							}
+<i>295</i>&nbsp;
+<b class="nc"><i>296</i>&nbsp;							JSONArray reviewEdges = firstQualityRatings.getJSONArray(&quot;edges&quot;);</b>
+<i>297</i>&nbsp;
+<i>298</i>&nbsp;							// Get page reviews
+<i>299</i>&nbsp;							int ri;
+<b class="nc"><i>300</i>&nbsp;							for (ri = 0; ri &lt; reviewEdges.length(); ri++) {</b>
+<b class="nc"><i>301</i>&nbsp;								JSONObject Rreview = reviewEdges.getJSONObject(ri);</b>
+<b class="nc"><i>302</i>&nbsp;								JSONObject Rreview_node = Rreview.getJSONObject(&quot;node&quot;);</b>
+<i>303</i>&nbsp;
+<b class="nc"><i>304</i>&nbsp;								String RreviewTitle = Rreview_node.getString(&quot;reviewTitle&quot;);</b>
+<b class="nc"><i>305</i>&nbsp;								String RreviewDesc = Rreview_node.getString(&quot;reviewDescription&quot;);</b>
+<i>306</i>&nbsp;
+<b class="nc"><i>307</i>&nbsp;								Integer RreviewDate = Rreview_node.getInt(&quot;date&quot;);</b>
+<b class="nc"><i>308</i>&nbsp;								Timestamp RreviewTimestamp = new Timestamp((long) RreviewDate);</b>
+<b class="nc"><i>309</i>&nbsp;								LocalDate RreviewReleaseDate = RreviewTimestamp.toLocalDateTime().toLocalDate();</b>
+<i>310</i>&nbsp;
+<b class="nc"><i>311</i>&nbsp;								String RreviewOculusID = Rreview_node.getString(&quot;id&quot;);</b>
+<i>312</i>&nbsp;
+<i>313</i>&nbsp;								// Word search Algorithm
+<i>314</i>&nbsp;
+<i>315</i>&nbsp;								// For positive words
+<b class="nc"><i>316</i>&nbsp;								Collection&lt;Emit&gt; emits = trie.parseText(RreviewTitle + RreviewDesc);</b>
+<i>317</i>&nbsp;
+<b class="nc"><i>318</i>&nbsp;								for (Emit em : emits) {</b>
+<b class="nc"><i>319</i>&nbsp;									String[] emsplited = em.toString().split(&quot;=&quot;);</b>
+<b class="nc"><i>320</i>&nbsp;									String ourWord = emsplited[1];</b>
+<b class="nc"><i>321</i>&nbsp;									if (positiveWordsCount.containsKey(ourWord)) {</b>
+<b class="nc"><i>322</i>&nbsp;										positiveWordsCount.put(ourWord, positiveWordsCount.get(ourWord) + 1);</b>
+<i>323</i>&nbsp;									}
+<i>324</i>&nbsp;									else {
+<b class="nc"><i>325</i>&nbsp;										positiveWordsCount.put(ourWord, 1);</b>
+<i>326</i>&nbsp;									}
+<i>327</i>&nbsp;
+<b class="nc"><i>328</i>&nbsp;								}</b>
+<i>329</i>&nbsp;
+<b class="nc"><i>330</i>&nbsp;								boolean positiveFound = true;</b>
+<b class="nc"><i>331</i>&nbsp;								for (String word : positiveWords) {</b>
+<b class="nc"><i>332</i>&nbsp;									boolean containsPositive = Arrays.toString(emits.toArray()).contains(word);</b>
+<b class="nc"><i>333</i>&nbsp;									if (!containsPositive) {</b>
+<b class="nc"><i>334</i>&nbsp;										positiveFound = false;</b>
+<b class="nc"><i>335</i>&nbsp;										break;</b>
+<i>336</i>&nbsp;									}
+<i>337</i>&nbsp;								}
+<i>338</i>&nbsp;
+<i>339</i>&nbsp;								// For negative words
+<b class="nc"><i>340</i>&nbsp;								Collection&lt;Emit&gt; emitsn = trien.parseText(RreviewTitle + RreviewDesc);</b>
+<i>341</i>&nbsp;
+<b class="nc"><i>342</i>&nbsp;								for (Emit em : emitsn) {</b>
+<b class="nc"><i>343</i>&nbsp;									String[] emsplited = em.toString().split(&quot;=&quot;);</b>
+<b class="nc"><i>344</i>&nbsp;									String ourWord = emsplited[1];</b>
+<b class="nc"><i>345</i>&nbsp;									if (negativeWordsCount.containsKey(ourWord)) {</b>
+<b class="nc"><i>346</i>&nbsp;										negativeWordsCount.put(ourWord, negativeWordsCount.get(ourWord) + 1);</b>
+<i>347</i>&nbsp;									}
+<i>348</i>&nbsp;									else {
+<b class="nc"><i>349</i>&nbsp;										negativeWordsCount.put(ourWord, 1);</b>
+<i>350</i>&nbsp;									}
+<i>351</i>&nbsp;
+<b class="nc"><i>352</i>&nbsp;								}</b>
+<i>353</i>&nbsp;
+<b class="nc"><i>354</i>&nbsp;								boolean negativeFound = true;</b>
+<b class="nc"><i>355</i>&nbsp;								for (String word : negativeWords) {</b>
+<b class="nc"><i>356</i>&nbsp;									boolean containsNegative = Arrays.toString(emitsn.toArray()).contains(word);</b>
+<b class="nc"><i>357</i>&nbsp;									if (!containsNegative) {</b>
+<b class="nc"><i>358</i>&nbsp;										negativeFound = false;</b>
+<b class="nc"><i>359</i>&nbsp;										break;</b>
+<i>360</i>&nbsp;									}
+<i>361</i>&nbsp;								}
+<i>362</i>&nbsp;
+<b class="nc"><i>363</i>&nbsp;								Reviews currentReviewObject = new Reviews();</b>
+<b class="nc"><i>364</i>&nbsp;								currentReviewObject.setContent(RreviewTitle);</b>
+<b class="nc"><i>365</i>&nbsp;								currentReviewObject.setTitle(RreviewDesc);</b>
+<b class="nc"><i>366</i>&nbsp;								currentReviewObject.setPublishDate(RreviewReleaseDate);</b>
+<b class="nc"><i>367</i>&nbsp;								currentReviewObject.setOculusId(RreviewOculusID);</b>
+<i>368</i>&nbsp;
+<b class="nc"><i>369</i>&nbsp;								currentReviewObject.setApplication(app2);</b>
+<b class="nc"><i>370</i>&nbsp;								app2.getReviewsCollection().add(currentReviewObject);</b>
+<i>371</i>&nbsp;							}
+<i>372</i>&nbsp;
+<b class="nc"><i>373</i>&nbsp;							end_cursor = reviewEndCursor;</b>
+<i>374</i>&nbsp;
+<b class="nc"><i>375</i>&nbsp;						}</b>
+<i>376</i>&nbsp;					}
+<b class="nc"><i>377</i>&nbsp;				}</b>
+<i>378</i>&nbsp;
+<b class="nc"><i>379</i>&nbsp;				for (String positiveKeyword : positiveWordsCount.keySet()) {</b>
+<b class="nc"><i>380</i>&nbsp;					Word positiveWord = new Word();</b>
+<b class="nc"><i>381</i>&nbsp;					positiveWord.setLetters(positiveKeyword);</b>
+<b class="nc"><i>382</i>&nbsp;					positiveWord.setRepeats(positiveWordsCount.get(positiveKeyword));</b>
+<b class="nc"><i>383</i>&nbsp;					app2.getPositiveWords().add(positiveWord);</b>
+<b class="nc"><i>384</i>&nbsp;				}</b>
+<i>385</i>&nbsp;
+<b class="nc"><i>386</i>&nbsp;				for (String negativeKeyword : negativeWordsCount.keySet()) {</b>
+<b class="nc"><i>387</i>&nbsp;					Word negativeWord = new Word();</b>
+<b class="nc"><i>388</i>&nbsp;					negativeWord.setLetters(negativeKeyword);</b>
+<b class="nc"><i>389</i>&nbsp;					negativeWord.setRepeats(negativeWordsCount.get(negativeKeyword));</b>
+<b class="nc"><i>390</i>&nbsp;					app2.getNegativeWords().add(negativeWord);</b>
+<b class="nc"><i>391</i>&nbsp;				}</b>
+<i>392</i>&nbsp;
+<b class="nc"><i>393</i>&nbsp;				return this.saveApplication(app2);</b>
+<b class="fc"><i>394</i>&nbsp;			}</b>
+<i>395</i>&nbsp;		}
+<b class="nc"><i>396</i>&nbsp;		return this.saveApplication(res);</b>
+<i>397</i>&nbsp;	}
+<i>398</i>&nbsp;
+<i>399</i>&nbsp;	private static Integer salesEstimationCalculator(Integer reviewCount) {
+<i>400</i>&nbsp;
+<i>401</i>&nbsp;		int result;
+<i>402</i>&nbsp;
+<b class="nc"><i>403</i>&nbsp;		if (reviewCount == 0) {</b>
+<b class="nc"><i>404</i>&nbsp;			return 0;</b>
+<i>405</i>&nbsp;		}
+<i>406</i>&nbsp;
+<b class="nc"><i>407</i>&nbsp;		double aux = reviewCount / 0.05;</b>
+<b class="nc"><i>408</i>&nbsp;		result = (int) aux;</b>
+<i>409</i>&nbsp;
+<b class="nc"><i>410</i>&nbsp;		return result;</b>
+<i>411</i>&nbsp;	}
+<i>412</i>&nbsp;
+<i>413</i>&nbsp;	private static String convertStreamToString(InputStream is) {
+<i>414</i>&nbsp;
+<b class="fc"><i>415</i>&nbsp;		BufferedReader reader = new BufferedReader(new InputStreamReader(is));</b>
+<b class="fc"><i>416</i>&nbsp;		StringBuilder sb = new StringBuilder();</b>
+<i>417</i>&nbsp;
+<b class="fc"><i>418</i>&nbsp;		String line = null;</b>
+<i>419</i>&nbsp;		try {
+<b class="fc"><i>420</i>&nbsp;			while ((line = reader.readLine()) != null) {</b>
+<b class="fc"><i>421</i>&nbsp;				sb.append(line).append(&quot;\n&quot;);</b>
+<i>422</i>&nbsp;			}
+<i>423</i>&nbsp;		}
+<b class="nc"><i>424</i>&nbsp;		catch (IOException e) {</b>
+<b class="nc"><i>425</i>&nbsp;			e.printStackTrace();</b>
+<i>426</i>&nbsp;		}
+<i>427</i>&nbsp;		finally {
+<b class="nc"><i>428</i>&nbsp;			try {</b>
+<b class="fc"><i>429</i>&nbsp;				is.close();</b>
+<i>430</i>&nbsp;			}
+<b class="nc"><i>431</i>&nbsp;			catch (IOException e) {</b>
+<b class="nc"><i>432</i>&nbsp;				e.printStackTrace();</b>
+<b class="fc"><i>433</i>&nbsp;			}</b>
+<b class="nc"><i>434</i>&nbsp;		}</b>
+<b class="fc"><i>435</i>&nbsp;		return sb.toString();</b>
+<i>436</i>&nbsp;	}
+<i>437</i>&nbsp;
+<i>438</i>&nbsp;	private static String[] getPositiveWords() throws IOException {
+<b class="nc"><i>439</i>&nbsp;		String[] arr = null;</b>
+<b class="nc"><i>440</i>&nbsp;		List&lt;String&gt; items = new ArrayList&lt;String&gt;();</b>
+<i>441</i>&nbsp;
+<b class="nc"><i>442</i>&nbsp;		FileInputStream fstream_school = new FileInputStream(</b>
+<i>443</i>&nbsp;				&quot;src\\main\\java\\org\\springframework\\samples\\oculusdb\\positiveWords.txt&quot;);
+<b class="nc"><i>444</i>&nbsp;		DataInputStream data_input = new DataInputStream(fstream_school);</b>
+<b class="nc"><i>445</i>&nbsp;		BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input));</b>
+<i>446</i>&nbsp;		String str_line;
+<i>447</i>&nbsp;
+<b class="nc"><i>448</i>&nbsp;		while ((str_line = buffer.readLine()) != null) {</b>
+<b class="nc"><i>449</i>&nbsp;			str_line = str_line.trim();</b>
+<b class="nc"><i>450</i>&nbsp;			if ((str_line.length() != 0)) {</b>
+<b class="nc"><i>451</i>&nbsp;				items.add(str_line);</b>
+<i>452</i>&nbsp;			}
+<i>453</i>&nbsp;		}
+<i>454</i>&nbsp;
+<b class="nc"><i>455</i>&nbsp;		arr = (String[]) items.toArray(new String[items.size()]);</b>
+<b class="nc"><i>456</i>&nbsp;		return arr;</b>
+<i>457</i>&nbsp;	}
+<i>458</i>&nbsp;
+<i>459</i>&nbsp;	private static String[] getNegativeWords() throws IOException {
+<b class="nc"><i>460</i>&nbsp;		String[] arr = null;</b>
+<b class="nc"><i>461</i>&nbsp;		List&lt;String&gt; items = new ArrayList&lt;String&gt;();</b>
+<i>462</i>&nbsp;
+<b class="nc"><i>463</i>&nbsp;		FileInputStream fstream_school = new FileInputStream(</b>
+<i>464</i>&nbsp;				&quot;src\\main\\java\\org\\springframework\\samples\\oculusdb\\negativeWords.txt&quot;);
+<b class="nc"><i>465</i>&nbsp;		DataInputStream data_input = new DataInputStream(fstream_school);</b>
+<b class="nc"><i>466</i>&nbsp;		BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input));</b>
+<i>467</i>&nbsp;		String str_line;
+<i>468</i>&nbsp;
+<b class="nc"><i>469</i>&nbsp;		while ((str_line = buffer.readLine()) != null) {</b>
+<b class="nc"><i>470</i>&nbsp;			str_line = str_line.trim();</b>
+<b class="nc"><i>471</i>&nbsp;			if ((str_line.length() != 0)) {</b>
+<b class="nc"><i>472</i>&nbsp;				items.add(str_line);</b>
+<i>473</i>&nbsp;			}
+<i>474</i>&nbsp;		}
+<i>475</i>&nbsp;
+<b class="nc"><i>476</i>&nbsp;		arr = (String[]) items.toArray(new String[items.size()]);</b>
+<b class="nc"><i>477</i>&nbsp;		return arr;</b>
+<i>478</i>&nbsp;	}
+<i>479</i>&nbsp;
+<i>480</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-23 13:14</div>
+</div>
+</body>
+</html>
