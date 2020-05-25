@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.concurrent.TimeUnit;
@@ -28,8 +28,8 @@ public class GeneralUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\CimaGrande\\Documents\\geckodriver.exe");
-		driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
+		driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("http://localhost:8080/login");
@@ -61,6 +61,14 @@ public class GeneralUITest {
 	}
 
 	@Test
+	public void testAddToFavoritesUI2() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Eleven Table Tennis")).click();
+		driver.findElement(By.id("addToFav")).click();
+		Assert.assertTrue(driver.findElement(By.linkText("Eleven Table Tennis")).isDisplayed());
+	}
+
+	@Test
 	public void testPaymentUI() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
@@ -86,7 +94,19 @@ public class GeneralUITest {
 		driver.findElement(By.id("sub")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/table/tbody/tr[1]/td[3]/a"))
 				.isDisplayed());
+	}
 
+	@Test
+	public void testAddCommentUI2() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Lone Echo")).click();
+		driver.findElement(By.id("addCom")).click();
+		driver.findElement(By.id("title")).click();
+		driver.findElement(By.id("title")).clear();
+		driver.findElement(By.id("title")).sendKeys("Comentario de prueba");
+		driver.findElement(By.id("content")).clear();
+		driver.findElement(By.id("content")).sendKeys("Esto es un comentario de prueba");
+		driver.findElement(By.id("sub")).click();
 	}
 
 	@Test
@@ -121,6 +141,13 @@ public class GeneralUITest {
 		driver.findElement(By.name("id")).sendKeys("1141678862547889");
 		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
 		Assert.assertTrue(driver.getPageSource().contains("Evil"));
+	}
+
+	@Test
+	public void testDownloadPDF() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Lone Echo")).click();
+		driver.findElement(By.linkText("Download info on PDF")).click();
 	}
 
 	@AfterEach
