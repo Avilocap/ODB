@@ -60,8 +60,10 @@ public class UserControllerIntegrationTests {
 
 		BindingResult bindingResult = new MapBindingResult(new HashMap<>(), "");
 
-		String view = userController.registration(userform, bindingResult);
-		Assertions.assertEquals(view, "security/registration");
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			userController.registration(userform, bindingResult);
+		});
+
 	}
 
 	@Test

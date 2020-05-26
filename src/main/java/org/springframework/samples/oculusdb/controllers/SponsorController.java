@@ -25,9 +25,6 @@ public class SponsorController {
 	private UserServiceImpl userServiceImpl;
 
 	@Autowired
-	private UserService userService;
-
-	@Autowired
 	private SecurityServiceImpl securityServiceImpl;
 
 	@Autowired
@@ -83,38 +80,6 @@ public class SponsorController {
 										// screen again.
 	}
 
-	@GetMapping("/users/list")
-	public String listUsers(final ModelMap modelMap) {
-		String vista;
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
-		User user = this.userService.userByUsername(currentPrincipalName);
-		if (userService.isAdmin(user)) {
-			vista = "users/list";
-			Iterable<User> users = userService.findAll();
-			modelMap.addAttribute("users", users);
-		}
-		else {
-			vista = "error";
-		}
-		return vista;
-	}
-
-	@GetMapping("/users/setSponsor/{username}")
-	public String setSponsor(@PathVariable("username") String username) {
-		String vista;
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
-		User user = this.userService.userByUsername(currentPrincipalName);
-		if (userService.isAdmin(user)) {
-			userService.setSponsorRole(username);
-			vista = "users/sponsorSet";
-		}
-		else {
-			vista = "error";
-		}
-		return vista;
-	}
 	// @GetMapping({ "/", "/welcome" })
 	// public String welcome(Model model) {
 	// return "welcome";

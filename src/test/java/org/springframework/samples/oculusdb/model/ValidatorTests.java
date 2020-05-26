@@ -89,7 +89,7 @@ class ValidatorTests {
 		user.setEmail("deokw@gmail.com");
 		user.setName("Name");
 		user.setUsername("username");
-
+		user.setPassword("password");
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 		assertThat(constraintViolations.size()).isEqualTo(0);
@@ -107,9 +107,9 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(1);
+		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("name");
+		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("name"));
 	}
 
 	@Test
@@ -122,9 +122,9 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(1);
+		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("name");
+		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("name"));
 	}
 
 	@Test
@@ -138,9 +138,9 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(1);
+		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("surname");
+		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("surname") || violation.getPropertyPath().toString().equals("name"));
 	}
 
 	@Test
@@ -153,9 +153,10 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(1);
+		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("surname");
+		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("surname"));
+
 	}
 
 	@Test
@@ -169,9 +170,10 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(1);
+		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("email");
+		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("email"));
+
 	}
 
 	@Test
@@ -184,9 +186,9 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(1);
+		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("email");
+		assertThat(violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("email"));
 	}
 
 	@Test

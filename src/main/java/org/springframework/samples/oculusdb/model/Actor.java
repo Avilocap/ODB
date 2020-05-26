@@ -9,9 +9,11 @@ import java.util.Set;
 public class Actor extends BaseEntity {
 
 	@Column(name = "username")
+	@NotEmpty
 	private String username;
 
 	@Column(name = "password")
+	@NotEmpty
 	private String password;
 
 	@Transient

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -40,15 +41,13 @@ public class UserController {
 	}
 
 	@PostMapping("/registration")
-	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
-		userValidator.validate(userForm, bindingResult);
+	public String registration(@Valid @ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return "security/registration";
 		}
-
+		userValidator.validate(userForm, bindingResult);
 		userServiceImpl.save(userForm);
-
 		securityServiceImpl.autoLogin(userForm.getUsername(), userForm.getGetPasswordConfirm());
 
 		return "welcome";

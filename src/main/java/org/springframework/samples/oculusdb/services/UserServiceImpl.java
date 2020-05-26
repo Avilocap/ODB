@@ -30,7 +30,7 @@ public class UserServiceImpl extends UserService {
 	public void save(User user) {
 
 		if (user.getUsername().equals("") || user.getPassword().equals("") || user.getName().equals("")
-				|| user.getSurname().equals("") || user.getEmail().equals("")) {
+				|| user.getEmail().equals("")) {
 			throw new IllegalArgumentException("Username should not be empty");
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

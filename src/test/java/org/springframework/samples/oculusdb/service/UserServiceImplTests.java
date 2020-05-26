@@ -106,12 +106,12 @@ public class UserServiceImplTests {
 	}
 
 	@Test
-	public void saveUserNegativeCaseWrongSurname() {
+	public void saveUserNegativeCaseWrongName2() {
 		String username = "Prueba2";
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword("prueba2");
-		user.setName("Nombre2");
+		user.setName("");
 		user.setSurname("");
 		user.setEmail("Correo2@correo2.com");
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
