@@ -39,7 +39,7 @@ public class LoginUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-
+//https://stackoverflow.com/questions/12572955/how-to-properly-configure-the-selenium-maven-plugin-to-work-with-xvfb-to-run-hea
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
