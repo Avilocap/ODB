@@ -33,7 +33,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B test --file pom.xml
+        run: sudo chmod a+x /home/runner/work/ODB/ODB/src/test/resources/geckodriver && mvn -B test --file pom.xml
 
 
 
