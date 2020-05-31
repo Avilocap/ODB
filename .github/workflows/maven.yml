@@ -33,6 +33,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Download Chrome Driver
+        - uses: nanasess/setup-chromedriver@master
       - name: Build with Maven
         run: mvn -B test --file pom.xml
 

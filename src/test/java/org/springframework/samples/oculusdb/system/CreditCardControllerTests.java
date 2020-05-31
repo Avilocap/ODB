@@ -18,14 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Disabled
 public class CreditCardControllerTests {
-
-	@Autowired
-	private CreditCardController creditCardController;
-
-	@MockBean
-	private CreditCardService creditCardService;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -34,7 +27,7 @@ public class CreditCardControllerTests {
 	@Test
 	void testInitCreditCardForm() throws Exception {
 		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
-				.andExpect(view().name("creditCard/yaPremium.html"));
+				.andExpect(view().name("creditCard/creditCardForm.html"));
 	}
 
 	@WithMockUser("testuser")
