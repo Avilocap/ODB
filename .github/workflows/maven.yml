@@ -35,13 +35,7 @@ jobs:
       - name: Build with Maven
 
         run:
-        cd /tmp \
-        && https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz \
-        && sudo tar xvzf geckodriver-v0.26.0-linux64.tar.gz \
-        && sudo mv chromedriver /usr/local/bin/geckodriver \
-        && sudo chmod +x /usr/local/bin/geckodriver \
-        && geckodriver --version \
-        && mvn -B test --file pom.xml
+        cd /tmp && https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz && sudo tar xvzf geckodriver-v0.26.0-linux64.tar.gz sudo mv chromedriver /usr/local/bin/geckodriver sudo chmod +x /usr/local/bin/geckodriver && geckodriver --version && mvn -B test --file pom.xml
 
 
 
