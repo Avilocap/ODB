@@ -28,7 +28,7 @@ public class GeneralUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.firefox.driver", "src/test/resources/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
