@@ -11,11 +11,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Disabled
 public class LoginUITest {
 
 	private WebDriver driver;
@@ -28,7 +30,7 @@ public class LoginUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Disabled
 public class GeneralUITest {
 
 	private WebDriver driver;
@@ -28,7 +28,7 @@ public class GeneralUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
