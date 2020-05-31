@@ -48,7 +48,7 @@ jobs:
         run: export DISPLAY=":99"
 
       - name: Run firefox
-        run: DISPLAY=:99 firefox
+        run: DISPLAY=:99 firefox &
 
       - name: Test suite execution with Maven
         run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml -Dtest=LoginUITest
