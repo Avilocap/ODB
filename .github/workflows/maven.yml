@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Sleep for 3 minutes
+      - name: Sleep for 3 minutes...
         run: sleep 3m
 
       - name: Set up JDK 1.8
@@ -49,7 +49,7 @@ jobs:
         run: export DISPLAY=":99"
 
       - name: Test suite execution with Maven
-        run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml
+        run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml -Dtest=GeneralUITest testRegister
 
   package:
 
