@@ -5,19 +5,25 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Disabled
+@DirtiesContext
+
 public class LoginUITest {
 
 	private WebDriver driver;
@@ -28,9 +34,13 @@ public class LoginUITest {
 
 	private StringBuffer verificationErrors = new StringBuffer();
 
+	@LocalServerPort
+	private int port;
+
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\geckodriver.exe");
+
+		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -38,7 +48,8 @@ public class LoginUITest {
 
 	@Test
 	public void testLogin() throws Exception {
-		driver.get("http://localhost:8080/login");
+		String url = "http://localhost:" + port;
+		driver.get(url + "/login");
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys("testuser");
 		driver.findElement(By.name("password")).click();
@@ -49,7 +60,8 @@ public class LoginUITest {
 
 	@Test
 	public void testRegister() throws Exception {
-		driver.get("http://localhost:8080/registration");
+		String url = "http://localhost:" + port;
+		driver.get(url + "/registration");
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys("testregister");
 
