@@ -33,10 +33,12 @@ jobs:
         with:
           java-version: 1.8
       - name: Gecko driver installation
-        run: cd /tmp && wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz && sudo tar xvzf geckodriver-v0.26.0-linux64.tar.gz && sudo mv geckodriver /usr/local/bin/geckodriver && sudo chmod +x /usr/local/bin/geckodriver && geckodriver --version && sudo /usr/bin/Xvfb :99 -screen 0 1920x1080x24+32 > /dev/null 2>&1 &
-      - name: Exporting the display to driver
+        run: cd /tmp && wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz && sudo tar xvzf geckodriver-v0.26.0-linux64.tar.gz && sudo mv geckodriver /usr/local/bin/geckodriver && sudo chmod +x /usr/local/bin/geckodriver && geckodriver --version
+      - name: Create the display instance
+        run: sudo /usr/bin/Xvfb :99 -screen 0 1920x1080x24+32 > /dev/null 2>&1 &
+      - name: Export the display so driver can use it
         run: export DISPLAY=":99"
-      - name: Testing with Maven
+      - name: Test suite execution with Maven
         run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml
 
   package:
