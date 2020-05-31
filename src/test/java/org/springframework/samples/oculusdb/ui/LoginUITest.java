@@ -40,7 +40,7 @@ public class LoginUITest {
 	@BeforeEach
 	public void setUp() throws Exception {
 
-		System.setProperty("webdriver.gecko.driver", "/home/runner/work/ODB/ODB/src/test/resources/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
