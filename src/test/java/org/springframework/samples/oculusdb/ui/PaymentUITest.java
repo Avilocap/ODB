@@ -37,7 +37,8 @@ public class PaymentUITest {
 	public void setUp() throws Exception {
 		String url = "http://localhost:" + port;
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
-		//System.setProperty("webdriver.gecko.driver", "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
+		// System.setProperty("webdriver.gecko.driver",
+		// "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
 
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
@@ -51,36 +52,35 @@ public class PaymentUITest {
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
 
-
-
-	@Test
-	public void testPaymentUIOK0() {
-		driver.findElement(By.id("paym")).click();
-		driver.findElement(By.name("number")).clear();
-		driver.findElement(By.name("number")).sendKeys("4766649212071864");
-		driver.findElement(By.name("expY")).clear();
-		driver.findElement(By.name("expY")).sendKeys("2021");
-		driver.findElement(By.name("expM")).clear();
-		driver.findElement(By.name("expM")).sendKeys("12");
-		driver.findElement(By.name("cvv")).clear();
-		driver.findElement(By.name("cvv")).sendKeys("213");
-		driver.findElement(By.xpath("//input[@type='submit']")).click();
-		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
-	}
-	@Test
-	public void testPaymentUIOK1() {
-		driver.findElement(By.id("paym")).click();
-		driver.findElement(By.name("number")).clear();
-		driver.findElement(By.name("number")).sendKeys("5489018194236743");
-		driver.findElement(By.name("expY")).clear();
-		driver.findElement(By.name("expY")).sendKeys("2020");
-		driver.findElement(By.name("expM")).clear();
-		driver.findElement(By.name("expM")).sendKeys("12");
-		driver.findElement(By.name("cvv")).clear();
-		driver.findElement(By.name("cvv")).sendKeys("654");
-		driver.findElement(By.xpath("//input[@type='submit']")).click();
-		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
-	}
+	// @Test
+	// public void testPaymentUIOK0() {
+	// driver.findElement(By.id("paym")).click();
+	// driver.findElement(By.name("number")).clear();
+	// driver.findElement(By.name("number")).sendKeys("4766649212071864");
+	// driver.findElement(By.name("expY")).clear();
+	// driver.findElement(By.name("expY")).sendKeys("2021");
+	// driver.findElement(By.name("expM")).clear();
+	// driver.findElement(By.name("expM")).sendKeys("12");
+	// driver.findElement(By.name("cvv")).clear();
+	// driver.findElement(By.name("cvv")).sendKeys("213");
+	// driver.findElement(By.xpath("//input[@type='submit']")).click();
+	// Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
+	// }
+	//
+	// @Test
+	// public void testPaymentUIOK1() {
+	// driver.findElement(By.id("paym")).click();
+	// driver.findElement(By.name("number")).clear();
+	// driver.findElement(By.name("number")).sendKeys("5489018194236743");
+	// driver.findElement(By.name("expY")).clear();
+	// driver.findElement(By.name("expY")).sendKeys("2020");
+	// driver.findElement(By.name("expM")).clear();
+	// driver.findElement(By.name("expM")).sendKeys("12");
+	// driver.findElement(By.name("cvv")).clear();
+	// driver.findElement(By.name("cvv")).sendKeys("654");
+	// driver.findElement(By.xpath("//input[@type='submit']")).click();
+	// Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
+	// }
 
 	@AfterEach
 	public void tearDown() throws Exception {
