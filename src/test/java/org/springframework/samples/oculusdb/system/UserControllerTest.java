@@ -95,8 +95,6 @@ public class UserControllerTest {
 
 	}
 
-
-
 	@Test
 	void testInitLogin() throws Exception {
 		mockMvc.perform(get("/login")).andExpect(status().isOk()).andExpect(view().name("security/login"));

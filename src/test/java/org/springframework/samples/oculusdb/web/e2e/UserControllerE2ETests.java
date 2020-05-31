@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -49,20 +50,45 @@ public class UserControllerE2ETests {
 		mockMvc.perform(get("/login")).andExpect(status().isOk()).andExpect(view().name("security/login"));
 	}
 
-	// no deberia fallar, da error de que no encuentra la vista
-
 	@Test
 	void testLoginSuccess() throws Exception {
 		mockMvc.perform(post("/login").param("username", "testuser").param("password", "testuser"))
 				.andExpect(status().is3xxRedirection());
 	}
 
-	// no deberia fallar, da error de que no encuentra la vista
-
 	@Test
 	void testLoginHasErrors() throws Exception {
 		mockMvc.perform(post("/login").param("username", "").param("password", ""))
 				.andExpect(status().is3xxRedirection());
+	}
+
+	@WithMockUser(username = "testuser")
+	@Test
+	void testBanUsers() throws Exception {
+		mockMvc.perform(get("/users/ban/josema")).andExpect(status().is2xxSuccessful());
+	}
+
+	@WithMockUser(username = "testuser")
+	@Test
+	void testUnBanUsers() throws Exception {
+		mockMvc.perform(get("/users/unban/manu")).andExpect(status().is2xxSuccessful());
+	}
+
+	@WithMockUser(username = "testuser")
+	@Test
+	void testToolsViewWithAdminAndSponsor() throws Exception {
+		mockMvc.perform(get("/tools")).andExpect(status().is2xxSuccessful());
+	}
+
+	@WithMockUser(username = "manu")
+	@Test
+	void testToolsViewWithSponsor() throws Exception {
+		mockMvc.perform(get("/tools")).andExpect(status().is2xxSuccessful());
+	}
+
+	@Test
+	void testToolViewUnauthenticated() throws Exception {
+		mockMvc.perform(get("/tools")).andExpect(status().is3xxRedirection());
 	}
 
 }
