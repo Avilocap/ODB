@@ -33,7 +33,10 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: sudo apt install firefox -y && sudo chmod a+x /home/runner/work/ODB/ODB/src/test/resources/geckodriver && mvn -B test --file pom.xml
+        uses: Xotabu4/selenoid-github-action@v1
+        run: mvn -B test --file pom.xml
+
+
 
   package:
 
