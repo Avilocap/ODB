@@ -43,9 +43,8 @@ jobs:
         run: Xvfb -ac :99 -screen 0 1280x1024x16 &
 
       - name: Exporting the display so driver can use it...
-        run: export DISPLAY=":99"
-      - name: Echo display
-        run: echo $DISPLAY
+        run: DISPLAY=:99 firefox
+
       - name: Test suite execution with Maven
         run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml -Dtest=LoginUITest
 
