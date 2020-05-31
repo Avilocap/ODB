@@ -38,8 +38,6 @@ jobs:
 
       - name: Gecko driver installation
         run: cd /tmp && wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz && sudo tar xvzf geckodriver-v0.26.0-linux64.tar.gz && sudo mv geckodriver /usr/local/bin/geckodriver && sudo chmod +x /usr/local/bin/geckodriver && geckodriver --version
-      - name: Dbus installation
-        run: sudo apt-get install dbus-x11 -y
 
       - name: Starting X virtual framebuffer in background...
         run: Xvfb -ac :99 -screen 0 1280x1024x16 &
