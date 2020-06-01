@@ -39,8 +39,9 @@ public class GeneralUITest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		String url = "http://localhost:" + port;
-		// System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		// System.setProperty("webdriver.gecko.driver",
+		// "src/test/resources/geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
