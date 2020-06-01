@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +24,7 @@ import static org.junit.Assert.fail;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-
+@Transactional
 public class LoginUITest {
 
 	private WebDriver driver;
@@ -39,7 +40,6 @@ public class LoginUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		// https://stackoverflow.com/questions/12572955/how-to-properly-configure-the-selenium-maven-plugin-to-work-with-xvfb-to-run-hea
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";

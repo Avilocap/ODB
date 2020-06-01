@@ -1,17 +1,17 @@
 package org.springframework.samples.oculusdb.ui;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +20,9 @@ import static org.junit.Assert.fail;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
+@Transactional
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class PaymentUITest {
 
 	private WebDriver driver;
@@ -36,8 +39,9 @@ public class PaymentUITest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		String url = "http://localhost:" + port;
-		// System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		System.setProperty("webdriver.gecko.driver", "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		// System.setProperty("webdriver.gecko.driver",
+		// "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
 
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
@@ -52,13 +56,15 @@ public class PaymentUITest {
 	}
 
 	@Test
-	public void testPaymentUIOK() {
+	@Order(3)
+	public void testPaymentUI_OK() {
 		driver.findElement(By.id("paym")).click();
 		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
 	}
 
 	@Test
-	public void testPaymentUIAlready() {
+	@Order(2)
+	public void testPaymentUI_Already() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
 		driver.findElement(By.name("number")).sendKeys("4567887754321234");
@@ -70,6 +76,22 @@ public class PaymentUITest {
 		driver.findElement(By.name("cvv")).sendKeys("356");
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
+	}
+
+	@Test
+	@Order(1)
+	public void testPaymentUI_bad() {
+		driver.findElement(By.id("paym")).click();
+		driver.findElement(By.name("number")).clear();
+		driver.findElement(By.name("number")).sendKeys("4567887754321234");
+		driver.findElement(By.name("expY")).clear();
+		driver.findElement(By.name("expY")).sendKeys("2019");
+		driver.findElement(By.name("expM")).clear();
+		driver.findElement(By.name("expM")).sendKeys("10");
+		driver.findElement(By.name("cvv")).clear();
+		driver.findElement(By.name("cvv")).sendKeys("356");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		Assert.assertTrue(driver.findElement(By.id("paymentErr")).isDisplayed());
 	}
 
 	@AfterEach
