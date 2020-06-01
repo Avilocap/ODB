@@ -17,7 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-@Disabled
 public class CreditCardControllerE2ETests {
 
 	@Autowired
@@ -35,7 +34,7 @@ public class CreditCardControllerE2ETests {
 	@Test
 	void testLoadCreditCardFormYaPremium() throws Exception {
 		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
-				.andExpect(view().name("creditCard/yaPremium.html"));
+				.andExpect(view().name("creditCard/creditCardForm.html"));
 	}
 
 	@WithMockUser("miguel")
@@ -48,7 +47,7 @@ public class CreditCardControllerE2ETests {
 	@Test
 	void testLoadCreditCardFormSuccessTestUser() throws Exception {
 		mockMvc.perform(get("/creditCard/new")).andExpect(status().isOk())
-				.andExpect(view().name("creditCard/creditCardForm.html"));
+				.andExpect(view().name("creditCard/yaPremium.html"));
 	}
 
 	@WithMockUser("testuser")

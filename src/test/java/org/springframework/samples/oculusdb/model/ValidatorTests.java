@@ -109,7 +109,9 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("name"));
+		assertThat(violation.getPropertyPath().toString().equals("username")
+				|| violation.getPropertyPath().toString().equals("password")
+				|| violation.getPropertyPath().toString().equals("name"));
 	}
 
 	@Test
@@ -124,7 +126,9 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("name"));
+		assertThat(violation.getPropertyPath().toString().equals("username")
+				|| violation.getPropertyPath().toString().equals("password")
+				|| violation.getPropertyPath().toString().equals("name"));
 	}
 
 	@Test
@@ -140,7 +144,9 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("surname") || violation.getPropertyPath().toString().equals("name"));
+		assertThat(violation.getPropertyPath().toString().equals("username")
+				|| violation.getPropertyPath().toString().equals("surname")
+				|| violation.getPropertyPath().toString().equals("name"));
 	}
 
 	@Test
@@ -155,8 +161,9 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("surname"));
-
+		assertThat(violation.getPropertyPath().toString().equals("username")
+				|| violation.getPropertyPath().toString().equals("password")
+				|| violation.getPropertyPath().toString().equals("surname"));
 	}
 
 	@Test
@@ -172,8 +179,9 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username") || violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("email"));
-
+		assertThat(violation.getPropertyPath().toString().equals("username")
+				|| violation.getPropertyPath().toString().equals("password")
+				|| violation.getPropertyPath().toString().equals("email"));
 	}
 
 	@Test
@@ -188,7 +196,8 @@ class ValidatorTests {
 
 		assertThat(constraintViolations.size()).isEqualTo(3);
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("password") || violation.getPropertyPath().toString().equals("email"));
+		assertThat(violation.getPropertyPath().toString().equals("password")
+				|| violation.getPropertyPath().toString().equals("email"));
 	}
 
 	@Test

@@ -103,18 +103,39 @@ public class UserControllerIntegrationTests {
 		Assertions.assertNotNull("users");
 	}
 
-	/*
-	 * no pasa el test porque el usuario testuser ya tiene el rol de sponsor
-	 *
-	 * @WithMockUser("testuser")
-	 *
-	 * @Test void testSetSponsorSuccess() throws Exception { ModelMap model = new
-	 * ModelMap(); Authentication authentication =
-	 * SecurityContextHolder.getContext().getAuthentication(); String currentPrincipalName
-	 * = authentication.getName(); String view =
-	 * userController.setSponsor(currentPrincipalName); Assertions.assertEquals(view,
-	 * "users/sponsorSet"); }
-	 */
+	@WithMockUser("testuser")
+	@Test
+	void testSetSponsorSuccess() throws Exception {
+		ModelMap model = new ModelMap();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String view = userController.setSponsor("manu");
+		Assertions.assertEquals(view, "users/sponsorSet");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testBanUsers() throws Exception {
+		ModelMap model = new ModelMap();
+		String view = userController.banUser("josema");
+		Assertions.assertEquals(view, "users/userBannedOk");
+	}
+
+	@WithMockUser("manu")
+	@Test
+	void testBanUsersNotAdmin() throws Exception {
+		ModelMap model = new ModelMap();
+		String view = userController.banUser("josema");
+		Assertions.assertEquals(view, "error");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testunBanUsers() throws Exception {
+		ModelMap model = new ModelMap();
+		String view = userController.unbanUser("manu");
+		Assertions.assertEquals(view, "users/userUnbanned");
+	}
+
 	@WithMockUser("manu")
 	@Test
 	void testSetSponsorHasErrors() throws Exception {
@@ -123,6 +144,26 @@ public class UserControllerIntegrationTests {
 		String currentPrincipalName = authentication.getName();
 		String view = userController.setSponsor(currentPrincipalName);
 		Assertions.assertEquals(view, "error");
+	}
+
+	@WithMockUser("testuser")
+	@Test
+	void testGetToolsWithAdminAndSponsorRole() throws Exception {
+		ModelMap model = new ModelMap();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		String view = userController.toolsList(model);
+		Assertions.assertEquals(view, "security/tools");
+	}
+
+	@WithMockUser("manu")
+	@Test
+	void testGetToolsWithSponsorRole() throws Exception {
+		ModelMap model = new ModelMap();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		String view = userController.toolsList(model);
+		Assertions.assertEquals(view, "security/tools");
 	}
 
 }

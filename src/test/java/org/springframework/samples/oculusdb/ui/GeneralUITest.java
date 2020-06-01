@@ -5,17 +5,26 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.rsocket.context.LocalRSocketServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Disabled
+@DirtiesContext
+@Transactional
 public class GeneralUITest {
 
 	private WebDriver driver;
@@ -26,13 +35,17 @@ public class GeneralUITest {
 
 	private StringBuffer verificationErrors = new StringBuffer();
 
+	@LocalServerPort
+	private int port;
+
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
-		driver = new ChromeDriver();
+		String url = "http://localhost:" + port;
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.get("http://localhost:8080/login");
+		driver.get(url + "/login");
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys("testuser");
 		driver.findElement(By.name("password")).click();
@@ -43,8 +56,9 @@ public class GeneralUITest {
 
 	@Test
 	public void testApplicationWithoutLogin() throws Exception {
-		driver.get("http://localhost:8080/");
-		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
+		String url = "http://localhost:" + port;
+		driver.get(url);
+		Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
 	}
 
 	@Test
@@ -55,9 +69,10 @@ public class GeneralUITest {
 
 	@Test
 	public void testAddToFavoritesUI() throws Exception {
-		driver.get("http://localhost:8080/applications/appInfo/100");
+		String url = "http://localhost:" + port;
+		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.id("addToFav")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
 	}
 
 	@Test
@@ -100,7 +115,8 @@ public class GeneralUITest {
 
 	@Test
 	public void testAddCommentUI() {
-		driver.get("http://localhost:8080/applications/appInfo/100");
+		String url = "http://localhost:" + port;
+		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.id("addCom")).click();
 		driver.findElement(By.name("title")).clear();
 		driver.findElement(By.name("title")).sendKeys("Automated Test Comment");
@@ -126,7 +142,8 @@ public class GeneralUITest {
 
 	@Test
 	public void testDeleteComment() {
-		driver.get("http://localhost:8080/applications/appInfo/100");
+		String url = "http://localhost:" + port;
+		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/table/tbody/tr[1]/td[3]/a")).click();
 		Assert.assertTrue(driver.findElement(By.id("opSuc")).isDisplayed());
 
@@ -134,7 +151,8 @@ public class GeneralUITest {
 
 	@Test
 	public void testFavoritesList() throws Exception {
-		driver.get("http://localhost:8080/applications/favorites");
+		String url = "http://localhost:" + port;
+		driver.get(url + "/applications/favorites");
 		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
 	}
 
@@ -148,15 +166,15 @@ public class GeneralUITest {
 		Assert.assertTrue(driver.getPageSource().contains("already"));
 	}
 
-	@Test
-	public void getNewApplication() {
-		driver.findElement(By.id("appList")).click();
-		driver.findElement(By.linkText("Get New")).click();
-		driver.findElement(By.name("id")).clear();
-		driver.findElement(By.name("id")).sendKeys("1141678862547889");
-		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-		Assert.assertTrue(driver.getPageSource().contains("Evil"));
-	}
+	// @Test
+	// public void getNewApplication() {
+	// driver.findElement(By.id("appList")).click();
+	// driver.findElement(By.linkText("Get New")).click();
+	// driver.findElement(By.name("id")).clear();
+	// driver.findElement(By.name("id")).sendKeys("1141678862547889");
+	// driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+	// Assert.assertTrue(driver.getPageSource().contains("Evil"));
+	// }
 
 	@Test
 	public void testDownloadPDF() throws Exception {
