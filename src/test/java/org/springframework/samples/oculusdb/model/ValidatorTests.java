@@ -1,20 +1,20 @@
 package org.springframework.samples.oculusdb.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Locale;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.category.Category;
-import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import java.util.Locale;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@Transactional
 class ValidatorTests {
 
 	private Validator createValidator() {

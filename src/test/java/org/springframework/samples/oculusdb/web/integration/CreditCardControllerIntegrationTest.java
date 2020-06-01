@@ -9,7 +9,9 @@ import org.springframework.samples.oculusdb.controllers.CreditCardController;
 import org.springframework.samples.oculusdb.services.CreditCardService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CreditCardControllerIntegrationTest {

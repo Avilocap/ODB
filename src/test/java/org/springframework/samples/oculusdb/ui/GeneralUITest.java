@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
@@ -38,8 +38,9 @@ public class GeneralUITest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		String url = "http://localhost:" + port;
-		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		driver = new FirefoxDriver();
+		// System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+		driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(url + "/login");
@@ -51,26 +52,20 @@ public class GeneralUITest {
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
 
-	// @Test
-	// public void testApplicationWithoutLogin() throws Exception {
-	// String url = "http://localhost:" + port;
-	// driver.get(url);
-	// Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
-	// }
-
 	@Test
 	public void testListApplicationsUI() throws Exception {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
+		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
 	}
 
-	// @Test
-	// public void testAddToFavoritesUI() throws Exception {
-	// String url = "http://localhost:" + port;
-	// driver.get(url + "/applications/appInfo/100");
-	// driver.findElement(By.id("addToFav")).click();
-	// Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
-	// }
+	@Test
+	public void testAddToFavoritesUI() throws Exception {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/applications/appInfo/102");
+		driver.findElement(By.id("addToFav")).click();
+		Assert.assertTrue(driver.findElement(By.linkText("Guided Tai Chi")).isDisplayed());
+	}
 
 	@Test
 	public void testAddToFavoritesUI2() throws Exception {
@@ -92,7 +87,7 @@ public class GeneralUITest {
 	public void testDeleteFavorite() throws Exception {
 		driver.findElement(By.id("favorites")).click();
 		driver.findElement(By.linkText("Quit from list")).click();
-		driver.findElement(By.xpath("//body/div")).click();
+		Assert.assertTrue(driver.getPageSource().contains("My favorite apps"));
 	}
 
 	@Test
@@ -120,6 +115,7 @@ public class GeneralUITest {
 		driver.findElement(By.id("content")).clear();
 		driver.findElement(By.id("content")).sendKeys("Esto es un comentario de prueba");
 		driver.findElement(By.id("sub")).click();
+		Assert.assertTrue(driver.getPageSource().contains("comentario de prueba"));
 	}
 
 	@Test
@@ -148,15 +144,15 @@ public class GeneralUITest {
 		Assert.assertTrue(driver.getPageSource().contains("already"));
 	}
 
-	// @Test
-	// public void getNewApplication() {
-	// driver.findElement(By.id("appList")).click();
-	// driver.findElement(By.linkText("Get New")).click();
-	// driver.findElement(By.name("id")).clear();
-	// driver.findElement(By.name("id")).sendKeys("1141678862547889");
-	// driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-	// Assert.assertTrue(driver.getPageSource().contains("Evil"));
-	// }
+	@Test
+	public void getNewApplication() {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Get New")).click();
+		driver.findElement(By.name("id")).clear();
+		driver.findElement(By.name("id")).sendKeys("1141678862547889");
+		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+		Assert.assertTrue(driver.getPageSource().contains("Evil"));
+	}
 
 	@Test
 	public void testDownloadPDF() throws Exception {

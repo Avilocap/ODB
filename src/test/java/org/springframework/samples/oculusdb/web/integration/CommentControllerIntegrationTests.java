@@ -3,24 +3,25 @@ package org.springframework.samples.oculusdb.web.integration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.provider.EnumSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.controllers.CommentsController;
-import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.services.CommentsService;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.MapBindingResult;
 
 import javax.xml.stream.events.Comment;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
+@Transactional
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CommentControllerIntegrationTests {

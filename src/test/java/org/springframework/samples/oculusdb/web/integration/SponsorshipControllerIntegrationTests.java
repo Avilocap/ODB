@@ -10,6 +10,7 @@ import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.samples.oculusdb.sponsor.Sponsorship;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import org.springframework.validation.MapBindingResult;
 
 import java.util.Collections;
 
+@Transactional
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SponsorshipControllerIntegrationTests {
