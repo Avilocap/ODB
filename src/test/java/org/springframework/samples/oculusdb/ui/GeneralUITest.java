@@ -54,12 +54,12 @@ public class GeneralUITest {
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
 
-	@Test
-	public void testApplicationWithoutLogin() throws Exception {
-		String url = "http://localhost:" + port;
-		driver.get(url);
-		Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
-	}
+	// @Test
+	// public void testApplicationWithoutLogin() throws Exception {
+	// String url = "http://localhost:" + port;
+	// driver.get(url);
+	// Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
+	// }
 
 	@Test
 	public void testListApplicationsUI() throws Exception {
@@ -67,13 +67,13 @@ public class GeneralUITest {
 		driver.findElement(By.linkText("Lone Echo")).click();
 	}
 
-	@Test
-	public void testAddToFavoritesUI() throws Exception {
-		String url = "http://localhost:" + port;
-		driver.get(url + "/applications/appInfo/100");
-		driver.findElement(By.id("addToFav")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
-	}
+	// @Test
+	// public void testAddToFavoritesUI() throws Exception {
+	// String url = "http://localhost:" + port;
+	// driver.get(url + "/applications/appInfo/100");
+	// driver.findElement(By.id("addToFav")).click();
+	// Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
+	// }
 
 	@Test
 	public void testAddToFavoritesUI2() throws Exception {
@@ -96,22 +96,6 @@ public class GeneralUITest {
 		driver.findElement(By.id("favorites")).click();
 		driver.findElement(By.linkText("Quit from list")).click();
 		driver.findElement(By.xpath("//body/div")).click();
-	}
-
-	@Test
-	public void testPaymentUI() {
-		driver.findElement(By.id("paym")).click();
-		driver.findElement(By.name("number")).clear();
-		driver.findElement(By.name("number")).sendKeys("4766649212071864");
-		driver.findElement(By.name("expY")).clear();
-		driver.findElement(By.name("expY")).sendKeys("2021");
-		driver.findElement(By.name("expM")).clear();
-		driver.findElement(By.name("expM")).sendKeys("12");
-		driver.findElement(By.name("cvv")).clear();
-		driver.findElement(By.name("cvv")).sendKeys("213");
-		driver.findElement(By.xpath("//input[@type='submit']")).click();
-		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
-		Assert.assertTrue(driver.findElement(By.linkText("Pistol Whip")).isDisplayed());
 	}
 
 	@Test
