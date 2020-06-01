@@ -151,15 +151,15 @@ public class GeneralUITest {
 		Assert.assertTrue(driver.getPageSource().contains("already"));
 	}
 
-	@Test
-	public void getNewApplication() {
-		driver.findElement(By.id("appList")).click();
-		driver.findElement(By.linkText("Get New")).click();
-		driver.findElement(By.name("id")).clear();
-		driver.findElement(By.name("id")).sendKeys("1141678862547889");
-		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-		Assert.assertTrue(driver.getPageSource().contains("Evil"));
-	}
+//	@Test
+//	public void getNewApplication() {
+//		driver.findElement(By.id("appList")).click();
+//		driver.findElement(By.linkText("Get New")).click();
+//		driver.findElement(By.name("id")).clear();
+//		driver.findElement(By.name("id")).sendKeys("1141678862547889");
+//		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+//		Assert.assertTrue(driver.getPageSource().contains("Evil"));
+//	}
 
 	@Test
 	public void testDownloadPDF() throws Exception {
