@@ -210,9 +210,10 @@ public class ApplicationController {
 		if (ap.isPresent()) {
 			app = ap.get();
 		}
-		if(favoriteExists){
+		if (favoriteExists) {
 			return "applications/favoriteExists";
-		} else {
+		}
+		else {
 			user.getFavorites().add(app);
 			userService.saveUser(user);
 

@@ -111,6 +111,7 @@ public class GeneralUITest {
 		driver.findElement(By.name("cvv")).sendKeys("213");
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.linkText("Pistol Whip")).isDisplayed());
 	}
 
 	@Test
