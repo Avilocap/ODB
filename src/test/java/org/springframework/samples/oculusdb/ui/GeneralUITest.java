@@ -58,7 +58,7 @@ public class GeneralUITest {
 	public void testApplicationWithoutLogin() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url);
-		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class GeneralUITest {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.id("addToFav")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.linkText("Ready At Dawn")).isDisplayed());
 	}
 
 	@Test
