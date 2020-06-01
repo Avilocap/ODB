@@ -200,17 +200,26 @@ public class ApplicationController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
 
+		Integer userId = this.userService.userByUsername(currentPrincipalName).getId();
+
+		Boolean favoriteExists = this.applicationService.favoriteExists(appId, userId);
+
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
 		if (ap.isPresent()) {
 			app = ap.get();
 		}
-		user.getFavorites().add(app);
-		userService.saveUser(user);
+		if(favoriteExists){
+			return "applications/favoriteExists";
+		} else {
+			user.getFavorites().add(app);
+			userService.saveUser(user);
 
-		model.addAttribute("favorites", user.getFavorites());
-		return "applications/favorites";
+			model.addAttribute("favorites", user.getFavorites());
+			return "applications/favorites";
+		}
+
 	}
 
 	@RequestMapping("/favorites/delete")

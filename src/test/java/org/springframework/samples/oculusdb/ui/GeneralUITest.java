@@ -84,6 +84,21 @@ public class GeneralUITest {
 	}
 
 	@Test
+	public void testAddToFavoritesError() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Lone Echo")).click();
+		driver.findElement(By.id("addToFav")).click();
+		Assert.assertTrue(driver.getPageSource().contains("already"));
+	}
+
+	@Test
+	public void testDeleteFavorite() throws Exception {
+		driver.findElement(By.id("favorites")).click();
+		driver.findElement(By.linkText("Quit from list")).click();
+		driver.findElement(By.xpath("//body/div")).click();
+	}
+
+	@Test
 	public void testPaymentUI() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();

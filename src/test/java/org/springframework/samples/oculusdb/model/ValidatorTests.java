@@ -164,7 +164,6 @@ class ValidatorTests {
 		assertThat(violation.getPropertyPath().toString().equals("username")
 				|| violation.getPropertyPath().toString().equals("password")
 				|| violation.getPropertyPath().toString().equals("surname"));
-
 	}
 
 	@Test
@@ -183,7 +182,6 @@ class ValidatorTests {
 		assertThat(violation.getPropertyPath().toString().equals("username")
 				|| violation.getPropertyPath().toString().equals("password")
 				|| violation.getPropertyPath().toString().equals("email"));
-
 	}
 
 	@Test
