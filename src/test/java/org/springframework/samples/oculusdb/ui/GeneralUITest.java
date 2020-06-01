@@ -3,14 +3,11 @@ package org.springframework.samples.oculusdb.ui;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.rsocket.context.LocalRSocketServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
@@ -142,7 +139,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void getNewApplicationExits() {
+	public void getNewApplicationExists() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Get New")).click();
 		driver.findElement(By.name("id")).clear();
