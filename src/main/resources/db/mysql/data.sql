@@ -95,7 +95,7 @@ When you''re happy with your creation, you can upload to the SculptrVR content g
 
 Creations made in SculptrVR can be exported to OBJ or FBX formats for 3D printing or sharing online!
 
-In your world, anything is possible.', 22977, 'English', 'SculptrVR', '1978992975501648', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38974561_621234305285673_8048003890697732096_n.jpg?_nc_cat=105&_nc_sid=79b88e&_nc_oc=AQkOd_Nat5TExTIAyEddzuc-MmVXSBzgClkSu3nMzrAydnW5fvZjIy1CTiNp_jaLVuo&_nc_ht=scontent.oculuscdn.com&oh=483347ccf3319483a73e71bf7015f6cb&oe=5EA0F3D6', 9.99, '1970-01-18', 2300, 115, 0, 0, 'http://www.sculptrvr.com/', 1, 1);
+In your world, anything is possible.', 22977, 'English', 'SculptrVR', '1978992975501648', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38982679_927286610976615_5492502365372153856_n.jpg?_nc_cat=109&_nc_sid=79b88e&_nc_oc=AQnb8Cq1zTE-aVwzZytj0Os0A_KPmT0fcPP64HdXuslOdgzlhPpjSdYMVWd731R7ErU&_nc_ht=scontent.oculuscdn.com&oh=61104111e747da5218dd20c4bc14abd6&oe=5EF91171', 9.99, '1970-01-18', 2300, 115, 0, 0, 'http://www.sculptrvr.com/', 1, 1);
 INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (106, 'Gravity Sketch', 'Gravity Sketch is an intuitive sketching experience giving you extensive access to tools for creative exploration. You can fully express your ideas in real-time at any scale, from initial conception to model. Create loose free form sketches, detailed models, expansive scenes, and artwork unrestricted.
 
 Export your work as an image or model for use in other phases of your workflow. Gravity Sketch is a tool for the designer who makes every stroke count. Join the community of creatives defining new design workflows.
@@ -110,7 +110,7 @@ Export your work as an image or model for use in other phases of your workflow. 
 - Image import (.jpg and .png)
 - Snapshot Tool for quick image capture
 - Export/Import .OBJ
-- Upload to Landing Pad (a 3D Cloud file management Platform)', 57580, 'English', 'Gravity Sketch', '1587090851394426', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38984453_646356645846950_4132124650354245632_n.jpg?_nc_cat=111&_nc_sid=79b88e&_nc_oc=AQn1AZaTJFL5069iQ03mvB9D56S4-QlNpRz73eBZF32KrkEoUN0gMlJpqm10_LkvCHc&_nc_ht=scontent.oculuscdn.com&oh=4c7e46cee8ce3bea65694c3ccc8e6259&oe=5EF9B28', 29.99, '1970-01-18', 1920, 96, 0, 0, 'https://www.gravitysketch.com/', 1, 1);
+- Upload to Landing Pad (a 3D Cloud file management Platform)', 57580, 'English', 'Gravity Sketch', '1587090851394426', 'https://scontent.oculuscdn.com/v/t64.5771-25/q92/s2048x2048/38984453_646356645846950_4132124650354245632_n.jpg?_nc_cat=111&_nc_sid=79b88e&_nc_oc=AQn1AZaTJFL5069iQ03mvB9D56S4-QlNpRz73eBZF32KrkEoUN0gMlJpqm10_LkvCHc&_nc_ht=scontent.oculuscdn.com&oh=4c7e46cee8ce3bea65694c3ccc8e6259&oe=5EF9B289', 29.99, '1970-01-18', 1920, 96, 0, 0, 'https://www.gravitysketch.com/', 1, 1);
 INSERT IGNORE INTO oculusdb.application (id, company, description, income_estimation, language, name, oculusdbid, picture, price, release_date, sales_estimations, total_reviews, type_of_app, type_of_gameplay, website, category_id, platform_id) VALUES (107, 'Lucky VR Inc.', 'PokerStars, the world’s leading poker brand, has combined live and online poker in a truly immersive VR experience.
 
 -Study your opponents, pick up on their tells, and chat in real time
