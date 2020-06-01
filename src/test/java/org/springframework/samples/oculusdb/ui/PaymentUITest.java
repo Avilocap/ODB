@@ -39,8 +39,9 @@ public class PaymentUITest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		String url = "http://localhost:" + port;
-		// System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		// System.setProperty("webdriver.chrome.driver",
+		// "src/test/resources/chromedriver.exe");
 		// System.setProperty("webdriver.gecko.driver",
 		// "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
 

@@ -37,8 +37,9 @@ public class LoginUITest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		// System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		// System.setProperty("webdriver.chrome.driver",
+		// "src/test/resources/chromedriver.exe");
 		driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
