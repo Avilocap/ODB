@@ -40,14 +40,10 @@ jobs:
         run: cd /tmp && wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz && sudo tar xvzf geckodriver-v0.26.0-linux64.tar.gz && sudo mv geckodriver /usr/local/bin/geckodriver && sudo chmod +x /usr/local/bin/geckodriver && geckodriver --version
 
       - name: Starting X virtual framebuffer in background...
-        run: Xvfb -ac :99 -screen 0 1280x1024x16 &
+        run: sudo Xvfb -ac :99 -screen 0 1280x1024x16 &
 
       - name: Exporting the display so driver can use it...
-        run: export DISPLAY=":99"
-
-      - name: Exporting the display so driver can use it...
-        run: echo $DISPLAY
-
+        run: sudo export DISPLAY=":99"
 
       - name: Test suite execution with Maven
         run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml -Dtest=LoginUITest
