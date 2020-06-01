@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
@@ -40,7 +41,7 @@ public class LoginUITest {
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		// System.setProperty("webdriver.chrome.driver",
 		// "src/test/resources/chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}

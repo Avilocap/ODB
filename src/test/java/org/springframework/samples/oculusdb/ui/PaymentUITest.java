@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.annotation.Order;
@@ -45,7 +46,7 @@ public class PaymentUITest {
 		// System.setProperty("webdriver.gecko.driver",
 		// "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
 
-		driver = new ChromeDriver();
+		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(url + "/login");
