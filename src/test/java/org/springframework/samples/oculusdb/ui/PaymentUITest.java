@@ -36,9 +36,8 @@ public class PaymentUITest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		String url = "http://localhost:" + port;
-		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		// System.setProperty("webdriver.gecko.driver",
-		// "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
+		// System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "D:\\IdeaProjects\\ODB\\src\\test\\resources\\geckodriver.exe");
 
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
@@ -55,15 +54,6 @@ public class PaymentUITest {
 	@Test
 	public void testPaymentUIOK() {
 		driver.findElement(By.id("paym")).click();
-		driver.findElement(By.name("number")).clear();
-		driver.findElement(By.name("number")).sendKeys("4567887754321234");
-		driver.findElement(By.name("expY")).clear();
-		driver.findElement(By.name("expY")).sendKeys("2026");
-		driver.findElement(By.name("expM")).clear();
-		driver.findElement(By.name("expM")).sendKeys("10");
-		driver.findElement(By.name("cvv")).clear();
-		driver.findElement(By.name("cvv")).sendKeys("356");
-		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
 	}
 
