@@ -7,7 +7,6 @@ import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.Word;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface ApplicationRepository extends CrudRepository<Application, Integer> {
 

@@ -83,6 +83,16 @@ public class ApplicationService {
 	}
 
 	@Transactional
+	public boolean favoriteExists(int appId, int userId){
+		boolean res = false;
+
+		if(applicationRepository.applicationOfUserById(appId, userId) != null){
+			res = true;
+		}
+		return res;
+	}
+
+	@Transactional
 	public Application getInfoOfOneApplication(String game_id) throws IOException, JSONException {
 
 		Application res = new Application();
