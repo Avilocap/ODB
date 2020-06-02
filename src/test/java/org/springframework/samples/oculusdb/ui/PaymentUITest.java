@@ -23,7 +23,6 @@ import static org.junit.Assert.fail;
 @DirtiesContext
 @Transactional
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-
 public class PaymentUITest {
 
 	private WebDriver driver;
@@ -59,14 +58,14 @@ public class PaymentUITest {
 	}
 
 	@Test
-	@Order(3)
+	@Order(6)
 	public void testPaymentUI_OK() {
 		driver.findElement(By.id("paym")).click();
 		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
 	}
 
 	@Test
-	@Order(2)
+	@Order(5)
 	public void testPaymentUI_Already() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
@@ -82,17 +81,65 @@ public class PaymentUITest {
 	}
 
 	@Test
-	@Order(1)
+	@Order(4)
 	public void testPaymentUI_bad() {
+		driver.findElement(By.id("paym")).click();
+		driver.findElement(By.name("number")).clear();
+		driver.findElement(By.name("number")).sendKeys("11232431343431431433");
+		driver.findElement(By.name("expY")).clear();
+		driver.findElement(By.name("expY")).sendKeys("2000");
+		driver.findElement(By.name("expM")).clear();
+		driver.findElement(By.name("expM")).sendKeys("01");
+		driver.findElement(By.name("cvv")).clear();
+		driver.findElement(By.name("cvv")).sendKeys("222");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		Assert.assertTrue(driver.findElement(By.id("paymentErr")).isDisplayed());
+	}
+
+	@Test
+	@Order(3)
+	public void testPaymentUI_bad_date0() {
+		driver.findElement(By.id("paym")).click();
+		driver.findElement(By.name("number")).clear();
+		driver.findElement(By.name("number")).sendKeys("4567887754321234");
+		driver.findElement(By.name("expY")).clear();
+		driver.findElement(By.name("expY")).sendKeys("2015");
+		driver.findElement(By.name("expM")).clear();
+		driver.findElement(By.name("expM")).sendKeys("10");
+		driver.findElement(By.name("cvv")).clear();
+		driver.findElement(By.name("cvv")).sendKeys("111");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		Assert.assertTrue(driver.findElement(By.id("paymentErr")).isDisplayed());
+	}
+
+	@Test
+	@Order(2)
+	public void testPaymentUI_bad_date1() {
+		driver.findElement(By.id("paym")).click();
+		driver.findElement(By.name("number")).clear();
+		driver.findElement(By.name("number")).sendKeys("4567887754321234");
+		driver.findElement(By.name("expY")).clear();
+		driver.findElement(By.name("expY")).sendKeys("2020");
+		driver.findElement(By.name("expM")).clear();
+		driver.findElement(By.name("expM")).sendKeys("03");
+		driver.findElement(By.name("cvv")).clear();
+		driver.findElement(By.name("cvv")).sendKeys("111");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		Assert.assertTrue(driver.findElement(By.id("paymentErr")).isDisplayed());
+	}
+
+	@Test
+	@Order(1)
+	public void testPaymentUI_bad_date2() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
 		driver.findElement(By.name("number")).sendKeys("4567887754321234");
 		driver.findElement(By.name("expY")).clear();
 		driver.findElement(By.name("expY")).sendKeys("2019");
 		driver.findElement(By.name("expM")).clear();
-		driver.findElement(By.name("expM")).sendKeys("10");
+		driver.findElement(By.name("expM")).sendKeys("12");
 		driver.findElement(By.name("cvv")).clear();
-		driver.findElement(By.name("cvv")).sendKeys("356");
+		driver.findElement(By.name("cvv")).sendKeys("111");
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		Assert.assertTrue(driver.findElement(By.id("paymentErr")).isDisplayed());
 	}
