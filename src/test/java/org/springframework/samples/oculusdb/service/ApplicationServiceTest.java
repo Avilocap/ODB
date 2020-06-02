@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 @SpringBootTest
@@ -281,6 +280,7 @@ public class ApplicationServiceTest {
 		Application appAux = apps.get(4);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(2);
+		int favorites = userAux.getFavorites().size();
 		String currentPrincipalName = userAux.getUsername();
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
@@ -290,6 +290,7 @@ public class ApplicationServiceTest {
 		}
 		user.getFavorites().add(app);
 		userService.saveUser(user);
+		Assertions.assertEquals(favorites + 1, user.getFavorites().size());
 	}
 
 	@Test
@@ -298,6 +299,7 @@ public class ApplicationServiceTest {
 		Application appAux = apps.get(2);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(1);
+		int favorites = userAux.getFavorites().size();
 		String currentPrincipalName = userAux.getUsername();
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
@@ -307,6 +309,7 @@ public class ApplicationServiceTest {
 		}
 		user.getFavorites().add(app);
 		userService.saveUser(user);
+		Assertions.assertEquals(favorites + 1, user.getFavorites().size());
 	}
 
 	@Test
