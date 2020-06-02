@@ -45,13 +45,15 @@ public class CommentsServiceTests {
 			app2 = ap2.get();
 		}
 
+		int comments = app2.getComments().size();
+
 		Comments comment = new Comments();
 		app2.addComment(comment);
 		comment.setTitle("Title");
 		comment.setContent("this is a new comment");
 		this.commentsService.saveComment(comment);
 
-		Assertions.assertEquals(2, app2.getComments().size());
+		Assertions.assertEquals(comments + 1, app2.getComments().size());
 	}
 
 	@Test
@@ -60,6 +62,7 @@ public class CommentsServiceTests {
 		Application app2 = new Application();
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId());
+
 		if (ap2.isPresent()) {
 			app2 = ap2.get();
 		}
