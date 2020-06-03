@@ -42,7 +42,10 @@ public class GeneralUITest {
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		// System.setProperty("webdriver.gecko.driver",
 		// "src/test/resources/geckodriver.exe");
+		// System.setProperty("webdriver.chrome.driver",
+		 // "src/test/resources/chromedriver.exe");
 		driver = new FirefoxDriver();
+		// driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(url + "/login");
@@ -166,6 +169,26 @@ public class GeneralUITest {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		driver.findElement(By.linkText("Download info on PDF")).click();
+	}
+
+	@Test
+	public void testListUsers() throws Exception {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/tools");
+		driver.findElement(By.linkText("User List")).click();
+		Assert.assertEquals("josema", driver.findElement(By.xpath("//table[@id='app']/tbody/tr[2]/td")).getText());
+	}
+
+	@Test
+	public void testNewSponsorship() throws Exception {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/tools");
+		driver.findElement(By.linkText("New Sponsorhips")).click();
+		driver.findElement(By.id("title")).click();
+		driver.findElement(By.id("title")).sendKeys("New sponsorship");
+		driver.findElement(By.id("attachmentUrl")).click();
+		driver.findElement(By.id("attachmentUrl")).sendKeys("A new sponsorship");
+		driver.findElement(By.id("sub")).click();
 	}
 
 	@AfterEach
