@@ -1,8 +1,6 @@
 
 package org.springframework.samples.oculusdb.model;
 
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

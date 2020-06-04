@@ -10,9 +10,6 @@ import org.springframework.samples.oculusdb.application.Reviews;
 import org.springframework.samples.oculusdb.services.ReviewService;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @SpringBootTest
 @Transactional
 public class ReviewServiceTests {

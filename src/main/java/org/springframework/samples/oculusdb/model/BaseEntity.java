@@ -15,8 +15,6 @@
  */
 package org.springframework.samples.oculusdb.model;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;

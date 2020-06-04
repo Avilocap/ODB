@@ -25,7 +25,7 @@ public class GetInfoOfAppTests {
 
 	}
 
-	public static void getInfoOfOneApplication(String game_id) throws IOException, JSONException {
+	public static void getInfoOfOneApplication(String gameId) throws IOException, JSONException {
 
 		String[] positiveWords = getPositiveWords();
 		Trie trie = Trie.builder().onlyWholeWords().addKeywords(positiveWords).build();
@@ -33,7 +33,7 @@ public class GetInfoOfAppTests {
 		String apiUrl = "https://graph.oculus.com/graphql?forced_locale=en_EN";
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(apiUrl);
-		String variableChain = "{\"itemId\":\"" + game_id
+		String variableChain = "{\"itemId\":\"" + gameId
 				+ "\",\"first\":5,\"last\":null,\"after\":null,\"before\":null,\"forward\":true,\"ordering\":null,\"ratingScores\":null,\"hmdType\":\"RIFT\"}";
 
 		List<NameValuePair> params = new ArrayList<>(3);

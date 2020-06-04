@@ -30,12 +30,10 @@ public class CreditCardController {
 		User currentUser = userService.userByUsername(currentPrincipalName);
 
 		if (!currentUser.isPremium()) {
-			String vista = "creditCard/creditCardForm.html";
-			return vista;
+			return "creditCard/creditCardForm.html";
 		}
 		else {
-			String vista = "creditCard/yaPremium.html";
-			return vista;
+			return "creditCard/yaPremium.html";
 		}
 
 	}

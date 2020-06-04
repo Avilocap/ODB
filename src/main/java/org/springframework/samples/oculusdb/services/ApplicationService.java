@@ -58,11 +58,6 @@ public class ApplicationService {
 	}
 
 	@Transactional
-	public Application getApplicationByOculusId(String oculusId) {
-		return applicationRepository.applicationByOculusId(oculusId);
-	}
-
-	@Transactional
 	public Collection<Word> getPositiveWords(Application application) {
 		return this.applicationRepository.getApplicationPositiveWord(application.getOculusId());
 	}
@@ -98,9 +93,9 @@ public class ApplicationService {
 		Application res = new Application();
 
 		// Build front page query
-		String API_URL = "https://graph.oculus.com/graphql?forced_locale=en_EN";
+		String apiUrl = "https://graph.oculus.com/graphql?forced_locale=en_EN";
 		HttpClient httpclient = HttpClients.createDefault();
-		HttpPost httppost = new HttpPost(API_URL);
+		HttpPost httppost = new HttpPost(apiUrl);
 		String variableChain = "{\"itemId\":\"" + game_id
 				+ "\",\"first\":5,\"last\":null,\"after\":null,\"before\":null,\"forward\":true,\"ordering\":null,\"ratingScores\":null,\"hmdType\":\"RIFT\"}";
 
@@ -261,7 +256,7 @@ public class ApplicationService {
 				while (moreComments) {
 
 					// Build query for next comment page. using previous end cursor
-					HttpPost reviewHttppost = new HttpPost(API_URL);
+					HttpPost reviewHttppost = new HttpPost(apiUrl);
 					String reviewVariableChain = "{\"id\":\"" + game_id + "\",\"first\":5,\"last\":null,\"after\":\""
 							+ endCursor
 							+ "\",\"before\":null,\"forward\":true,\"ordering\":\"top\",\"ratingScores\":[1,2,3,4,5]}";

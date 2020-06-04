@@ -7,7 +7,6 @@ import org.springframework.samples.oculusdb.repositories.ReviewRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class ReviewService {

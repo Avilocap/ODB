@@ -33,9 +33,6 @@ public class User extends Actor {
 		this.favorites = favorites;
 	}
 
-	public User() {
-	}
-
 	public List<Sponsorship> getSponsorships() {
 		return sponsorships;
 	}
@@ -49,6 +46,7 @@ public class User extends Actor {
 		return "User{" + "favorites=" + favorites + '}';
 	}
 
+	@Override
 	public String getUsername() {
 		return super.getUsername();
 	}
@@ -57,6 +55,7 @@ public class User extends Actor {
 		return super.getPassword();
 	}
 
+	@Override
 	public String getGetPasswordConfirm() {
 		return super.getGetPasswordConfirm();
 	}
