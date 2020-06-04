@@ -88,8 +88,6 @@ public class GetInfoOfAppTests {
 						}
 					}
 				}
-				System.out.println(positiveWordsCount);
-
 			}
 		}
 	}
@@ -106,14 +104,12 @@ public class GetInfoOfAppTests {
 			}
 		}
 		catch (IOException e) {
-			e.printStackTrace();
 		}
 		finally {
 			try {
 				is.close();
 			}
 			catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
 		return sb.toString();

@@ -35,10 +35,8 @@ public class ReviewRating {
 
 		}
 		catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
 		catch (IOException e) {
-			e.printStackTrace();
 		}
 
 		Map<String, Integer> positiveOccurrences = new HashMap<>();
@@ -54,8 +52,6 @@ public class ReviewRating {
 				positiveOccurrences.put(word, poldCount + 1);
 			}
 		}
-		System.out.println(positiveOccurrences);
-
 		return positiveOccurrences;
 	}
 
@@ -74,7 +70,6 @@ public class ReviewRating {
 			}
 		}
 		catch (IOException e) {
-			e.printStackTrace();
 		}
 
 		Map<String, Integer> negativeOccurrences = new HashMap<>();
@@ -90,8 +85,6 @@ public class ReviewRating {
 				negativeOccurrences.put(word, noldCount + 1);
 			}
 		}
-		System.out.println(negativeOccurrences);
-
 		return negativeOccurrences;
 	}
 
