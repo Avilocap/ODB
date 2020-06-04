@@ -39,10 +39,12 @@ public class ApplicationController {
 	@Autowired
 	private UserService userService;
 
+	private String favs = "favorites";
+
 	@GetMapping("/list")
 	public String listadoAplicaciones(final ModelMap modelMap) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
+		Authentication authentication0 = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication0.getName();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		if (userService.isAdmin(user)) {
 			modelMap.addAttribute("admin", true);
@@ -56,8 +58,8 @@ public class ApplicationController {
 
 	@GetMapping("/listOrd")
 	public String listadoAplicacionesOrd(final ModelMap modelMap) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
+		Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication1.getName();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		if (userService.isAdmin(user)) {
 			modelMap.addAttribute("admin", true);
@@ -74,8 +76,8 @@ public class ApplicationController {
 
 	@GetMapping("/loadGet")
 	public String loadApplicationGet() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
+		Authentication authentication2 = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication2.getName();
 		User user = this.userService.userByUsername(currentPrincipalName);
 		if (userService.isAdmin(user)) {
 			return "applications/getApplication";
@@ -88,8 +90,8 @@ public class ApplicationController {
 
 	@GetMapping("/appInfo/{appId}")
 	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Boolean isAdmin = authentication.getAuthorities().stream().anyMatch(o -> o.getAuthority().equals("ADMIN"));
+		Authentication authentication3 = SecurityContextHolder.getContext().getAuthentication();
+		Boolean isAdmin = authentication3.getAuthorities().stream().anyMatch(o -> o.getAuthority().equals("ADMIN"));
 
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
@@ -97,7 +99,6 @@ public class ApplicationController {
 		if (ap.isPresent()) {
 			application = ap.get();
 		}
-		// Esto es una prueba
 		vista.addObject("app", application);
 		vista.addObject("isAdmin", isAdmin);
 		vista.addObject("positiveWords", applicationService.getPositiveWords(application));
@@ -215,7 +216,7 @@ public class ApplicationController {
 			user.getFavorites().add(app);
 			userService.saveUser(user);
 
-			model.addAttribute("favorites", user.getFavorites());
+			model.addAttribute(favs, user.getFavorites());
 			return "applications/favorites";
 		}
 
@@ -226,11 +227,11 @@ public class ApplicationController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
 		User currentUser = userService.userByUsername(currentPrincipalName);
-		List<Application> newList = new ArrayList<Application>(currentUser.getFavorites());
+		List<Application> newList = new ArrayList<>(currentUser.getFavorites());
 		newList.removeIf(x -> x.getId() == appId);
 		currentUser.setFavorites(newList);
 		userService.saveUser(currentUser);
-		model.addAttribute("favorites", currentUser.getFavorites());
+		model.addAttribute(favs, currentUser.getFavorites());
 		return "applications/favorites";
 
 	}
@@ -243,7 +244,7 @@ public class ApplicationController {
 
 		String vista = "applications/favorites";
 		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
-		modelMap.addAttribute("favorites", favorites);
+		modelMap.addAttribute(favs, favorites);
 		return vista;
 	}
 

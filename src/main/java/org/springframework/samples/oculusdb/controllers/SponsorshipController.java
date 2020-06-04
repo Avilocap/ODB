@@ -3,7 +3,6 @@ package org.springframework.samples.oculusdb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.User;
-import org.springframework.samples.oculusdb.services.SponsorService;
 import org.springframework.samples.oculusdb.services.SponsorShipService;
 import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.samples.oculusdb.sponsor.Sponsorship;

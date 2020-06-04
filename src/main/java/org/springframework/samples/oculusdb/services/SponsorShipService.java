@@ -2,7 +2,6 @@
 package org.springframework.samples.oculusdb.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.repositories.SponsorShipRepository;
 import org.springframework.samples.oculusdb.sponsor.Sponsorship;
 import org.springframework.stereotype.Service;

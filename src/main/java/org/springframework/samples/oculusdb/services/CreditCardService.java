@@ -27,7 +27,7 @@ public class CreditCardService {
 
 		int yearAct0 = (new Date(System.currentTimeMillis())).getYear();
 		String year = "20" + Integer.toString(yearAct0).substring(1);
-		int yearAct = new Integer(year);
+		int yearAct = Integer.parseInt(year);
 		if (expirationYear == yearAct) {
 			res = true;
 		}

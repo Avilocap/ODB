@@ -51,6 +51,7 @@ public class User extends Actor {
 		return super.getUsername();
 	}
 
+	@Override
 	public String getPassword() {
 		return super.getPassword();
 	}

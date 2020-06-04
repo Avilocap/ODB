@@ -131,7 +131,6 @@ public class ApplicationService {
 				Double price = new Double(formatted);
 
 				// Date
-				// TODO esto siempre da 1970
 				int releaseDateInteger = node.getInt("release_date");
 				Timestamp timestamp = new Timestamp(releaseDateInteger);
 				LocalDate releaseDate = timestamp.toLocalDateTime().toLocalDate();

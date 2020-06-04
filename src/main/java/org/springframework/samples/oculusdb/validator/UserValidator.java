@@ -2,7 +2,6 @@ package org.springframework.samples.oculusdb.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.User;
-import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.samples.oculusdb.services.UserServiceImpl;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -34,10 +34,8 @@ class CacheConfiguration {
 
 	@Bean
 	public JCacheManagerCustomizer oculusdbCacheConfigurationCustomizer() {
-		return cm -> {
-			cm.createCache("application", cacheConfiguration());
-		};
-	}
+		return cm -> cm.createCache("application", cacheConfiguration());
+	};
 
 	/**
 	 * Create a simple configuration that enable statistics via the JCache programmatic

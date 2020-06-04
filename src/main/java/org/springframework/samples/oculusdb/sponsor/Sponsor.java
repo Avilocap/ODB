@@ -3,11 +3,7 @@ package org.springframework.samples.oculusdb.sponsor;
 
 import org.springframework.samples.oculusdb.model.Actor;
 import org.springframework.samples.oculusdb.model.CreditCard;
-import org.springframework.samples.oculusdb.model.User;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import java.util.Collection;
 
 @Entity
 @Table(name = "sponsors")

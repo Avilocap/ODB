@@ -1,16 +1,12 @@
 package org.springframework.samples.oculusdb.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.samples.oculusdb.model.Role;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.repositories.RoleRepository;
 import org.springframework.samples.oculusdb.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -37,7 +33,7 @@ public class UserServiceImpl extends UserService {
 		Random random = new Random();
 		user.setId(random.nextInt());
 		Role userRole = roleRepository.findRoleByName("USER");
-		Set<Role> userRoles = new HashSet<Role>();
+		Set<Role> userRoles = new HashSet<>();
 		userRoles.add(userRole);
 		user.setRoles(userRoles);
 		user.setActive(true);
@@ -54,7 +50,7 @@ public class UserServiceImpl extends UserService {
 		user.setId(random.nextInt());
 		Role userRole = roleRepository.findRoleByName("USER");
 		Role sponsorRole = roleRepository.findRoleByName("SPONSOR");
-		Set<Role> userRoles = new HashSet<Role>();
+		Set<Role> userRoles = new HashSet<>();
 		userRoles.add(userRole);
 		userRoles.add(sponsorRole);
 		user.setRoles(userRoles);
