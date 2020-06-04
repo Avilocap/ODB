@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
->
+<project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-oculusdb</artifactId>
@@ -31,6 +29,13 @@
         <nohttp-checkstyle.version>0.0.4.RELEASE</nohttp-checkstyle.version>
         <spring-format.version>0.0.19</spring-format.version>
         <cucumber.version>5.5.0</cucumber.version>
+
+
+        <sonar.projectKey>Avilocap_ODB</sonar.projectKey>
+        <sonar.organization>cimahorizons</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>bdf7bd41360b1470d9edc3a47ee9721d94bb616a</sonar.login>
+
     </properties>
 
     <dependencies>
@@ -257,6 +262,7 @@
             <scope>test</scope>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -289,29 +295,8 @@
                         <artifactId>checkstyle</artifactId>
                         <version>8.29</version>
                     </dependency>
-                    <!--          <dependency>-->
-                    <!--            <groupId>io.spring.nohttp</groupId>-->
-                    <!--            <artifactId>nohttp-checkstyle</artifactId>-->
-                    <!--            <version>${nohttp-checkstyle.version}</version>-->
-                    <!--          </dependency>-->
                 </dependencies>
-                <!--        <executions>-->
-                <!--          <execution>-->
-                <!--            <id>nohttp-checkstyle-validation</id>-->
-                <!--            <phase>validate</phase>-->
-                <!--            <configuration>-->
-                <!--              <configLocation>src/checkstyle/nohttp-checkstyle.xml</configLocation>-->
-                <!--              <suppressionsLocation>src/checkstyle/nohttp-checkstyle-suppressions.xml</suppressionsLocation>-->
-                <!--              <encoding>UTF-8</encoding>-->
-                <!--              <sourceDirectories>${basedir}</sourceDirectories>-->
-                <!--              <includes>**/*</includes>-->
-                <!--              <excludes>**/.git/**/*,**/.idea/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class</excludes>-->
-                <!--            </configuration>-->
-                <!--            <goals>-->
-                <!--              <goal>check</goal>-->
-                <!--            </goals>-->
-                <!--          </execution>-->
-                <!--        </executions>-->
+
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -23,14 +23,12 @@ public class ReviewRating {
 
 		File positiveFile = new File("src/main/resources/tempFiles/positiveWords.txt");
 
-		ArrayList<String> positiveWordList = new ArrayList<String>();
-		;
-
+		ArrayList<String> positiveWordList = new ArrayList<>();
 		try {
 
 			BufferedReader br = new BufferedReader(new FileReader(positiveFile));
 			String st;
-			while ((st = br.readLine()) != null) {
+			while (br.readLine() != null) {
 				st = br.readLine();
 				positiveWordList.add(st);
 			}
@@ -43,7 +41,7 @@ public class ReviewRating {
 			e.printStackTrace();
 		}
 
-		Map<String, Integer> positiveOccurrences = new HashMap<String, Integer>();
+		Map<String, Integer> positiveOccurrences = new HashMap<>();
 
 		String[] splittedWords = paragraph.split(" ");
 
@@ -55,9 +53,6 @@ public class ReviewRating {
 				}
 				positiveOccurrences.put(word, poldCount + 1);
 			}
-			else {
-				continue;
-			}
 		}
 		System.out.println(positiveOccurrences);
 
@@ -68,25 +63,21 @@ public class ReviewRating {
 
 		File negativeFile = new File("src/main/resources/tempFiles/negativeWords.txt");
 
-		ArrayList<String> negativeWordList = new ArrayList<String>();
-		;
+		ArrayList<String> negativeWordList = new ArrayList<>();
 
 		try {
 			BufferedReader br2 = new BufferedReader(new FileReader(negativeFile));
 			String st2;
-			while ((st2 = br2.readLine()) != null) {
+			while (br2.readLine() != null) {
 				st2 = br2.readLine();
 				negativeWordList.add(st2);
 			}
-		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		Map<String, Integer> negativeOccurrences = new HashMap<String, Integer>();
+		Map<String, Integer> negativeOccurrences = new HashMap<>();
 
 		String[] splittedWords = paragraph.split(" ");
 
@@ -97,9 +88,6 @@ public class ReviewRating {
 					noldCount = 0;
 				}
 				negativeOccurrences.put(word, noldCount + 1);
-			}
-			else {
-				continue;
 			}
 		}
 		System.out.println(negativeOccurrences);

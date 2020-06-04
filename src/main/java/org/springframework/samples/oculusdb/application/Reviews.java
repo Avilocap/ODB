@@ -8,7 +8,6 @@ import org.springframework.samples.oculusdb.model.BaseEntity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
-import java.util.Collection;
 
 @Entity
 @Table(name = "reviews")

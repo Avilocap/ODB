@@ -68,13 +68,6 @@ class ApplicationControllerTests {
 		mockMvc.perform(get("/applications/favorites")).andExpect(status().isOk());
 	}
 
-	// @Test
-	// @WithMockUser("testuser")
-	// void favApp() throws Exception {
-	// mockMvc.perform(get("/applications/appInfo/{appId}/favorite",
-	// 9)).andExpect(status().isOk());
-	// }
-
 	@Test
 	@WithMockUser("testuser")
 	void testInitFindForm() throws Exception {

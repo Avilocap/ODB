@@ -66,7 +66,7 @@ public class ApplicationController {
 		Iterable<Application> applications = applicationService.findAll();
 		List<Application> applications3 = (List<Application>) applications;
 
-		Collections.sort(applications3, (a1, a2) -> a1.getCategory().getId().compareTo(a2.getCategory().getId()));
+		applications3.sort(Comparator.comparing(a -> a.getCategory().getId()));
 		modelMap.addAttribute("applications", applications3);
 		return vista;
 
@@ -89,8 +89,7 @@ public class ApplicationController {
 	@GetMapping("/appInfo/{appId}")
 	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Boolean isAdmin = authentication.getAuthorities().stream().filter(o -> o.getAuthority().equals("ADMIN"))
-				.findFirst().isPresent();
+		Boolean isAdmin = authentication.getAuthorities().stream().anyMatch(o -> o.getAuthority().equals("ADMIN"));
 
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
@@ -110,14 +109,13 @@ public class ApplicationController {
 	@GetMapping("/pdf/{appId}")
 	public void appToPDF(@PathVariable("appId") int appId, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		ModelAndView vistaPDF = new ModelAndView("applications/applicationsDetails");
 		Application application = new Application();
 		Optional<Application> ap = this.applicationService.findApplicationById(appId);
 		if (ap.isPresent()) {
 			application = ap.get();
 		}
 
-		Map<String, String> data = new HashMap<String, String>();
+		Map<String, String> data = new HashMap<>();
 		data.put("name", application.getName());
 		data.put("description", application.getDescription());
 		data.put("picture", application.getPicture());
@@ -148,7 +146,7 @@ public class ApplicationController {
 	@RequestMapping("/get")
 	public ModelAndView getApplication(@RequestParam String id) throws IOException, JSONException {
 		ModelAndView vista = new ModelAndView("applications/applicationsDetails");
-		Boolean applicationExists = applicationService.applicationExists(id);
+		boolean applicationExists = applicationService.applicationExists(id);
 		if (!applicationExists) {
 			Application application = this.applicationService.getInfoOfOneApplication(id);
 			vista.addObject("app", application);
@@ -202,7 +200,7 @@ public class ApplicationController {
 
 		Integer userId = this.userService.userByUsername(currentPrincipalName).getId();
 
-		Boolean favoriteExists = this.applicationService.favoriteExists(appId, userId);
+		boolean favoriteExists = this.applicationService.favoriteExists(appId, userId);
 
 		Application app = new Application();
 		User user = this.userService.userByUsername(currentPrincipalName);
