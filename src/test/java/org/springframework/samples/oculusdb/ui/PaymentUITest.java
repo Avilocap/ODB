@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 @DirtiesContext
 @Transactional
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Disabled
 public class PaymentUITest {
 
 	private WebDriver driver;
