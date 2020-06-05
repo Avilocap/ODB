@@ -42,8 +42,11 @@ ALTER DATABASE oculusdb   DEFAULT CHARACTER SET utf8   DEFAULT COLLATE utf8_gene
 CREATE USER 'oculusdb'@'%' IDENTIFIED BY 'oculusdb';
 GRANT ALL PRIVILEGES ON *.* TO 'oculusdb'@'%' WITH GRANT OPTION;`
 
+## User to login
 
-## Looking for something in particular?
+User: testuser
+
+Password: testuser
 
 
 # License
