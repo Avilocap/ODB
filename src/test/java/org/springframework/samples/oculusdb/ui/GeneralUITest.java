@@ -76,21 +76,6 @@ public class GeneralUITest {
 	}
 
 	@Test
-	void testAddToFavoritesError() throws Exception {
-		driver.findElement(By.id("appList")).click();
-		driver.findElement(By.linkText("Lone Echo")).click();
-		driver.findElement(By.id("addToFav")).click();
-		Assert.assertTrue(driver.getPageSource().contains("already"));
-	}
-
-	@Test
-	void testDeleteFavorite() throws Exception {
-		driver.findElement(By.id("favorites")).click();
-		driver.findElement(By.linkText("Quit from list")).click();
-		Assert.assertTrue(driver.getPageSource().contains("My favorite apps"));
-	}
-
-	@Test
 	void testAddCommentUI() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/100");
@@ -144,26 +129,6 @@ public class GeneralUITest {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/favorites");
 		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
-	}
-
-	@Test
-	void getNewApplicationExists() {
-		driver.findElement(By.id("appList")).click();
-		driver.findElement(By.linkText("Get New")).click();
-		driver.findElement(By.name("id")).clear();
-		driver.findElement(By.name("id")).sendKeys("1368187813209608");
-		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-		Assert.assertTrue(driver.getPageSource().contains("already"));
-	}
-
-	@Test
-	void getNewApplication() {
-		driver.findElement(By.id("appList")).click();
-		driver.findElement(By.linkText("Get New")).click();
-		driver.findElement(By.name("id")).clear();
-		driver.findElement(By.name("id")).sendKeys("1141678862547889");
-		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-		Assert.assertTrue(driver.getPageSource().contains("app"));
 	}
 
 	@Test
