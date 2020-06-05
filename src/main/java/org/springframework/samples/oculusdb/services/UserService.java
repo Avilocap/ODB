@@ -2,12 +2,10 @@
 package org.springframework.samples.oculusdb.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.Role;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.repositories.RoleRepository;
 import org.springframework.samples.oculusdb.repositories.UserRepository;
-import org.springframework.samples.oculusdb.sponsor.Sponsor;
 import org.springframework.samples.oculusdb.sponsor.Sponsorship;
 
 import javax.transaction.Transactional;
@@ -20,6 +18,8 @@ public class UserService {
 
 	@Autowired
 	private RoleRepository roleRepository;
+
+	String exceptionMessage = "The user already has this role";
 
 	@Transactional
 	public User userById(final int id) {
@@ -43,11 +43,11 @@ public class UserService {
 
 	@Transactional
 	public boolean isAdmin(User user) {
-		return user.getRoles().stream().filter(o -> o.getName().equals("ADMIN")).findFirst().isPresent();
+		return user.getRoles().stream().anyMatch(o -> o.getName().equals("ADMIN"));
 	}
 
 	public boolean isSponsor(User user) {
-		return user.getRoles().stream().filter(o -> o.getName().equals("SPONSOR")).findFirst().isPresent();
+		return user.getRoles().stream().anyMatch(o -> o.getName().equals("SPONSOR"));
 	}
 
 	public List<Sponsorship> sponsorshipsOfUser(User user) {
@@ -57,13 +57,13 @@ public class UserService {
 	public void setSponsorRole(String username) {
 		// Check if user already contain sponsor role
 		User user = this.userByUsername(username);
-		if (!user.getRoles().stream().filter(o -> o.getName().equals("SPONSOR")).findFirst().isPresent()) {
+		if (user.getRoles().stream().noneMatch(o -> o.getName().equals("SPONSOR"))) {
 			Role sponsorRole = roleRepository.findRoleByName("SPONSOR");
 			user.getRoles().add(sponsorRole);
 			this.userRepository.save(user);
 		}
 		else {
-			throw new UnsupportedOperationException("The user already has this role");
+			throw new UnsupportedOperationException(exceptionMessage);
 		}
 	}
 
@@ -74,7 +74,7 @@ public class UserService {
 			user.setActive(false);
 		}
 		else {
-			throw new UnsupportedOperationException("The user already has this role");
+			throw new UnsupportedOperationException(exceptionMessage);
 		}
 	}
 
@@ -85,7 +85,7 @@ public class UserService {
 			user.setActive(true);
 		}
 		else {
-			throw new UnsupportedOperationException("The user already has this role");
+			throw new UnsupportedOperationException(exceptionMessage);
 		}
 	}
 

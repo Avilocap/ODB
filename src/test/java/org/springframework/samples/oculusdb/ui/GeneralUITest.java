@@ -29,21 +29,21 @@ public class GeneralUITest {
 
 	private String baseUrl;
 
-	private boolean acceptNextAlert = true;
+	private final boolean acceptNextAlert = true;
 
-	private StringBuffer verificationErrors = new StringBuffer();
+	private final StringBuffer verificationErrors = new StringBuffer();
 
 	@LocalServerPort
 	private int port;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	private void setUp() {
 		String url = "http://localhost:" + port;
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		// System.setProperty("webdriver.gecko.driver",
 		// "src/test/resources/geckodriver.exe");
 		// System.setProperty("webdriver.chrome.driver",
-		 // "src/test/resources/chromedriver.exe");
+		// "src/test/resources/chromedriver.exe");
 		driver = new FirefoxDriver();
 		// driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
@@ -58,14 +58,14 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testListApplicationsUI() throws Exception {
+	private void testListApplicationsUI() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		Assert.assertTrue(driver.getPageSource().contains("Lone Echo"));
 	}
 
 	@Test
-	public void testAddToFavoritesUI() throws Exception {
+	private void testAddToFavoritesUI() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/102");
 		driver.findElement(By.id("addToFav")).click();
@@ -73,7 +73,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testAddToFavoritesUI2() throws Exception {
+	private void testAddToFavoritesUI2() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Eleven Table Tennis")).click();
 		driver.findElement(By.id("addToFav")).click();
@@ -100,7 +100,7 @@ public class GeneralUITest {
 	// }
 
 	@Test
-	public void testAddCommentUI() {
+	private void testAddCommentUI() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.id("addCom")).click();
@@ -114,7 +114,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testAddCommentUI2() throws Exception {
+	private void testAddCommentUI2() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		driver.findElement(By.id("addCom")).click();
@@ -128,7 +128,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testDeleteComment() {
+	private void testDeleteComment() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/table/tbody/tr[1]/td[3]/a")).click();
@@ -137,7 +137,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testFavoritesList() throws Exception {
+	private void testFavoritesList() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/favorites");
 		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
@@ -165,14 +165,14 @@ public class GeneralUITest {
 	// }
 
 	@Test
-	public void testDownloadPDF() throws Exception {
+	private void testDownloadPDF() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		driver.findElement(By.linkText("Download info on PDF")).click();
 	}
 
 	@Test
-	public void testListUsers() throws Exception {
+	private void testListUsers() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
 		driver.findElement(By.linkText("User List")).click();
@@ -180,7 +180,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testNewSponsorship() throws Exception {
+	private void testNewSponsorship() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
 		driver.findElement(By.linkText("New Sponsorhips")).click();
@@ -198,7 +198,7 @@ public class GeneralUITest {
 	}
 
 	@AfterEach
-	public void tearDown() throws Exception {
+	private void tearDown() {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

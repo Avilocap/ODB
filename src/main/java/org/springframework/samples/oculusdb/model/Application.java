@@ -11,7 +11,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Map;
 
 @Entity
 @Table(name = "application")

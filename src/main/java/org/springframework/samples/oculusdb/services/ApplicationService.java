@@ -58,11 +58,6 @@ public class ApplicationService {
 	}
 
 	@Transactional
-	public Application getApplicationByOculusId(String oculusId) {
-		return applicationRepository.applicationByOculusId(oculusId);
-	}
-
-	@Transactional
 	public Collection<Word> getPositiveWords(Application application) {
 		return this.applicationRepository.getApplicationPositiveWord(application.getOculusId());
 	}
@@ -98,14 +93,13 @@ public class ApplicationService {
 		Application res = new Application();
 
 		// Build front page query
-		String API_URL = "https://graph.oculus.com/graphql?forced_locale=en_EN";
+		String apiUrl = "https://graph.oculus.com/graphql?forced_locale=en_EN";
 		HttpClient httpclient = HttpClients.createDefault();
-		HttpPost httppost = new HttpPost(API_URL);
+		HttpPost httppost = new HttpPost(apiUrl);
 		String variableChain = "{\"itemId\":\"" + game_id
 				+ "\",\"first\":5,\"last\":null,\"after\":null,\"before\":null,\"forward\":true,\"ordering\":null,\"ratingScores\":null,\"hmdType\":\"RIFT\"}";
-		FileWriter file;
 
-		List<NameValuePair> params = new ArrayList<NameValuePair>(3);
+		List<NameValuePair> params = new ArrayList<>(3);
 		params.add(new BasicNameValuePair("access_token", "OC|1317831034909742|"));
 		params.add(new BasicNameValuePair("variables", variableChain));
 		params.add(new BasicNameValuePair("doc_id", "2626024984114321"));
@@ -137,9 +131,8 @@ public class ApplicationService {
 				Double price = new Double(formatted);
 
 				// Date
-				// TODO esto siempre da 1970
 				int releaseDateInteger = node.getInt("release_date");
-				Timestamp timestamp = new Timestamp((long) releaseDateInteger);
+				Timestamp timestamp = new Timestamp(releaseDateInteger);
 				LocalDate releaseDate = timestamp.toLocalDateTime().toLocalDate();
 
 				// Picture
@@ -174,8 +167,7 @@ public class ApplicationService {
 				JSONObject pageInfo = firstQualityRatings.getJSONObject("page_info");
 
 				// Cursors to get the second page:
-				String end_cursor = pageInfo.getString("end_cursor");
-				String start_cursor = pageInfo.getString("start_cursor");
+				String endCursor = pageInfo.getString("endCursor");
 
 				JSONArray edges = firstQualityRatings.getJSONArray("edges");
 
@@ -191,7 +183,7 @@ public class ApplicationService {
 					String reviewTitle = review_node.getString("reviewTitle");
 					String reviewDesc = review_node.getString("reviewDescription");
 
-					Integer reviewDate = review_node.getInt("date");
+					int reviewDate = review_node.getInt("date");
 					Timestamp reviewTimestamp = new Timestamp((long) reviewDate);
 					LocalDate reviewReleaseDate = reviewTimestamp.toLocalDateTime().toLocalDate();
 
@@ -214,11 +206,9 @@ public class ApplicationService {
 
 					}
 
-					boolean positiveFound = true;
 					for (String word : positiveWords) {
 						boolean containsPositive = Arrays.toString(emits.toArray()).contains(word);
 						if (!containsPositive) {
-							positiveFound = false;
 							break;
 						}
 					}
@@ -238,11 +228,9 @@ public class ApplicationService {
 
 					}
 
-					boolean negativeFound = true;
 					for (String word : negativeWords) {
 						boolean containsNegative = Arrays.toString(emitsn.toArray()).contains(word);
 						if (!containsNegative) {
-							negativeFound = false;
 							break;
 						}
 					}
@@ -259,20 +247,20 @@ public class ApplicationService {
 				}
 
 				// Check if there is more comment pages
-				Boolean more_comments = false;
-				if (!end_cursor.equals("")) {
-					more_comments = true;
+				boolean moreComments = false;
+				if (!endCursor.equals("")) {
+					moreComments = true;
 				}
 
-				while (more_comments) {
+				while (moreComments) {
 
 					// Build query for next comment page. using previous end cursor
-					HttpPost reviewHttppost = new HttpPost(API_URL);
+					HttpPost reviewHttppost = new HttpPost(apiUrl);
 					String reviewVariableChain = "{\"id\":\"" + game_id + "\",\"first\":5,\"last\":null,\"after\":\""
-							+ end_cursor
+							+ endCursor
 							+ "\",\"before\":null,\"forward\":true,\"ordering\":\"top\",\"ratingScores\":[1,2,3,4,5]}";
 
-					List<NameValuePair> reviewParams = new ArrayList<NameValuePair>(3);
+					List<NameValuePair> reviewParams = new ArrayList<>(3);
 					reviewParams.add(new BasicNameValuePair("access_token", "OC|1317831034909742|"));
 					reviewParams.add(new BasicNameValuePair("variables", reviewVariableChain));
 					reviewParams.add(new BasicNameValuePair("doc_id", "1494813307288657"));
@@ -294,11 +282,8 @@ public class ApplicationService {
 							JSONObject reviewPageInfo = reviewFirstQualityRatings.getJSONObject("page_info");
 
 							// Cursors to get the second page:
-							String reviewEndCursor = reviewPageInfo.getString("end_cursor");
-							String reviewStartCursor = reviewPageInfo.getString("start_cursor");
-
+							String reviewEndCursor = reviewPageInfo.getString("endCursor");
 							if (reviewEndCursor.equals("null")) {
-								more_comments = false;
 								break;
 							}
 
@@ -313,8 +298,8 @@ public class ApplicationService {
 								String RreviewTitle = Rreview_node.getString("reviewTitle");
 								String RreviewDesc = Rreview_node.getString("reviewDescription");
 
-								Integer RreviewDate = Rreview_node.getInt("date");
-								Timestamp RreviewTimestamp = new Timestamp((long) RreviewDate);
+								int RreviewDate = Rreview_node.getInt("date");
+								Timestamp RreviewTimestamp = new Timestamp(RreviewDate);
 								LocalDate RreviewReleaseDate = RreviewTimestamp.toLocalDateTime().toLocalDate();
 
 								String RreviewOculusID = Rreview_node.getString("id");
@@ -322,9 +307,9 @@ public class ApplicationService {
 								// Word search Algorithm
 
 								// For positive words
-								Collection<Emit> emits = trie.parseText(RreviewTitle + RreviewDesc);
+								Collection<Emit> emitsP = trie.parseText(RreviewTitle + RreviewDesc);
 
-								for (Emit em : emits) {
+								for (Emit em : emitsP) {
 									String[] emsplited = em.toString().split("=");
 									String ourWord = emsplited[1];
 									if (positiveWordsCount.containsKey(ourWord)) {
@@ -336,19 +321,17 @@ public class ApplicationService {
 
 								}
 
-								boolean positiveFound = true;
 								for (String word : positiveWords) {
-									boolean containsPositive = Arrays.toString(emits.toArray()).contains(word);
+									boolean containsPositive = Arrays.toString(emitsP.toArray()).contains(word);
 									if (!containsPositive) {
-										positiveFound = false;
 										break;
 									}
 								}
 
 								// For negative words
-								Collection<Emit> emitsn = trien.parseText(RreviewTitle + RreviewDesc);
+								Collection<Emit> emitsN = trien.parseText(RreviewTitle + RreviewDesc);
 
-								for (Emit em : emitsn) {
+								for (Emit em : emitsN) {
 									String[] emsplited = em.toString().split("=");
 									String ourWord = emsplited[1];
 									if (negativeWordsCount.containsKey(ourWord)) {
@@ -360,11 +343,9 @@ public class ApplicationService {
 
 								}
 
-								boolean negativeFound = true;
 								for (String word : negativeWords) {
-									boolean containsNegative = Arrays.toString(emitsn.toArray()).contains(word);
+									boolean containsNegative = Arrays.toString(emitsN.toArray()).contains(word);
 									if (!containsNegative) {
-										negativeFound = false;
 										break;
 									}
 								}
@@ -379,7 +360,7 @@ public class ApplicationService {
 								app2.getReviewsCollection().add(currentReviewObject);
 							}
 
-							end_cursor = reviewEndCursor;
+							endCursor = reviewEndCursor;
 
 						}
 					}
@@ -424,7 +405,7 @@ public class ApplicationService {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		StringBuilder sb = new StringBuilder();
 
-		String line = null;
+		String line;
 		try {
 			while ((line = reader.readLine()) != null) {
 				sb.append(line).append("\n");
@@ -445,45 +426,41 @@ public class ApplicationService {
 	}
 
 	private static String[] getPositiveWords() throws IOException {
-		String[] arr = null;
-		List<String> items = new ArrayList<String>();
+		List<String> items = new ArrayList<>();
 
 		FileInputStream fstream_school = new FileInputStream(
 				"src\\main\\java\\org\\springframework\\samples\\oculusdb\\positiveWords.txt");
 		DataInputStream data_input = new DataInputStream(fstream_school);
 		BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input));
-		String str_line;
+		String strLine;
 
-		while ((str_line = buffer.readLine()) != null) {
-			str_line = str_line.trim();
-			if ((str_line.length() != 0)) {
-				items.add(str_line);
+		while ((strLine = buffer.readLine()) != null) {
+			strLine = strLine.trim();
+			if ((strLine.length() != 0)) {
+				items.add(strLine);
 			}
 		}
 
-		arr = (String[]) items.toArray(new String[items.size()]);
-		return arr;
+		return items.toArray(new String[items.size()]);
 	}
 
 	private static String[] getNegativeWords() throws IOException {
-		String[] arr = null;
-		List<String> items = new ArrayList<String>();
+		List<String> items = new ArrayList<>();
 
-		FileInputStream fstream_school = new FileInputStream(
+		FileInputStream fileInputStream = new FileInputStream(
 				"src\\main\\java\\org\\springframework\\samples\\oculusdb\\negativeWords.txt");
-		DataInputStream data_input = new DataInputStream(fstream_school);
+		DataInputStream data_input = new DataInputStream(fileInputStream);
 		BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input));
-		String str_line;
+		String strLine;
 
-		while ((str_line = buffer.readLine()) != null) {
-			str_line = str_line.trim();
-			if ((str_line.length() != 0)) {
-				items.add(str_line);
+		while ((strLine = buffer.readLine()) != null) {
+			strLine = strLine.trim();
+			if ((strLine.length() != 0)) {
+				items.add(strLine);
 			}
 		}
 
-		arr = (String[]) items.toArray(new String[items.size()]);
-		return arr;
+		return items.toArray(new String[items.size()]);
 	}
 
 }

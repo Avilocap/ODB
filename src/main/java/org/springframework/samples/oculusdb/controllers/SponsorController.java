@@ -3,7 +3,6 @@ package org.springframework.samples.oculusdb.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.SecurityServiceImpl;
-import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.samples.oculusdb.services.UserServiceImpl;
 import org.springframework.samples.oculusdb.validator.UserValidator;
 import org.springframework.security.core.Authentication;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -75,14 +73,7 @@ public class SponsorController {
 		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
-		return "redirect:/login?logout";// You can redirect wherever you want, but
-										// generally it's a good practice to show login
-										// screen again.
+		return "redirect:/login?logout";
 	}
-
-	// @GetMapping({ "/", "/welcome" })
-	// public String welcome(Model model) {
-	// return "welcome";
-	// }
 
 }

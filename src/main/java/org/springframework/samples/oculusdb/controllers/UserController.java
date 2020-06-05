@@ -33,6 +33,8 @@ public class UserController {
 	@Autowired
 	private UserValidator userValidator;
 
+	private String err = "error";
+
 	@GetMapping("/registration")
 	public String registration(ModelMap model) {
 		model.addAttribute("userForm", new User());
@@ -56,7 +58,7 @@ public class UserController {
 	@GetMapping("/login")
 	public String login(ModelMap model, String error, String logout) {
 		if (error != null)
-			model.addAttribute("error", "Your username and password is invalid.");
+			model.addAttribute(err, "Your username and password is invalid.");
 
 		if (logout != null)
 			model.addAttribute("message", "You have been logged out successfully.");
@@ -98,7 +100,7 @@ public class UserController {
 			modelMap.addAttribute("users", users);
 		}
 		else {
-			vista = "error";
+			vista = err;
 		}
 		return vista;
 	}
@@ -114,7 +116,7 @@ public class UserController {
 			vista = "users/sponsorSet";
 		}
 		else {
-			vista = "error";
+			vista = err;
 		}
 		return vista;
 	}
@@ -130,7 +132,7 @@ public class UserController {
 			vista = "users/userBannedOk";
 		}
 		else {
-			vista = "error";
+			vista = err;
 		}
 		return vista;
 	}
@@ -146,14 +148,10 @@ public class UserController {
 			vista = "users/userUnbanned";
 		}
 		else {
-			vista = "error";
+			vista = err;
 		}
 		return vista;
 	}
-	// @GetMapping({ "/", "/welcome" })
-	// public String welcome(Model model) {
-	// return "welcome";
-	// }
 
 	@GetMapping("/tools")
 	public String toolsList(final ModelMap modelMap) {

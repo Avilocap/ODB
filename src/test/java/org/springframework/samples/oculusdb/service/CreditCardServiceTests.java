@@ -9,12 +9,8 @@ import org.springframework.samples.oculusdb.model.CreditCard;
 import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.CreditCardService;
 import org.springframework.samples.oculusdb.services.UserService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-
-import javax.xml.crypto.Data;
 import java.util.*;
 
 @SpringBootTest
@@ -201,7 +197,7 @@ public class CreditCardServiceTests {
 		User currentUser = userService.userByUsername(currentPrincipalName);
 		boolean res;
 		if (this.creditCardService.checkCreditCard("5489018195186573", 2028,
-				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242)) {
 			currentUser.setPremium(true);
 			userService.saveUser(currentUser);
 			res = true;
@@ -221,7 +217,7 @@ public class CreditCardServiceTests {
 		boolean res;
 		if (this.creditCardService.checkCreditCard("5489018195186573",
 				new Date(System.currentTimeMillis() - 100).getYear(),
-				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242)) {
 			currentUser.setPremium(true);
 			userService.saveUser(currentUser);
 			res = true;
@@ -240,7 +236,7 @@ public class CreditCardServiceTests {
 		User currentUser = userService.userByUsername(currentPrincipalName);
 		boolean res;
 		if (this.creditCardService.checkCreditCard("", new Date(System.currentTimeMillis() - 100).getYear(),
-				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242)) {
 			currentUser.setPremium(true);
 			userService.saveUser(currentUser);
 			res = true;
@@ -260,7 +256,7 @@ public class CreditCardServiceTests {
 		boolean res;
 		if (this.creditCardService.checkCreditCard("5489018195186573",
 				new Date(System.currentTimeMillis() - 100).getYear(),
-				new Date(System.currentTimeMillis() - 100).getMonth(), 242) == true) {
+				new Date(System.currentTimeMillis() - 100).getMonth(), 242)) {
 			currentUser.setPremium(true);
 			userService.saveUser(currentUser);
 			res = true;
@@ -280,7 +276,7 @@ public class CreditCardServiceTests {
 		boolean res;
 		if (this.creditCardService.checkCreditCard("5489018195186573",
 				new Date(System.currentTimeMillis() - 100).getYear() - 100,
-				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242) == true) {
+				new Date(System.currentTimeMillis() - 100).getMonth() + 6, 242)) {
 			currentUser.setPremium(true);
 			userService.saveUser(currentUser);
 			res = true;

@@ -2,13 +2,9 @@
 package org.springframework.samples.oculusdb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.oculusdb.application.Comments;
-import org.springframework.samples.oculusdb.model.Application;
 import org.springframework.samples.oculusdb.model.User;
-import org.springframework.samples.oculusdb.services.SponsorService;
 import org.springframework.samples.oculusdb.services.SponsorShipService;
 import org.springframework.samples.oculusdb.services.UserService;
-import org.springframework.samples.oculusdb.sponsor.Sponsor;
 import org.springframework.samples.oculusdb.sponsor.Sponsorship;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,19 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/sponsorship")
 public class SponsorshipController {
 
-	@Autowired
-	private SponsorService sponsorService;
+	private String error = "error";
 
 	@Autowired
 	private SponsorShipService sponsorShipService;
@@ -48,7 +41,7 @@ public class SponsorshipController {
 			modelMap.addAttribute("sponsorships", sponsorships);
 		}
 		else {
-			vista = "error";
+			vista = error;
 		}
 		return vista;
 	}
@@ -76,7 +69,6 @@ public class SponsorshipController {
 			user.getSponsorships().add(sponsorship);
 			userService.saveUser(user);
 		}
-
 		return "sponsorship/creacion";
 	}
 

@@ -5,16 +5,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.xhtmlrenderer.pdf.ITextRenderer;
-
-import com.lowagie.text.DocumentException;
 
 @Component
 public class PdfGeneratorUtil {
@@ -35,9 +31,7 @@ public class PdfGeneratorUtil {
 
 		String processedHtml = templateEngine.process(templateName, ctx);
 		FileOutputStream os = null;
-		String fileName = UUID.randomUUID().toString();
 		try {
-			final File outputFile2 = File.createTempFile(appName, ".pdf");
 			final File outputFile = new File(appName + ".pdf");
 			os = new FileOutputStream(outputFile);
 
@@ -46,7 +40,6 @@ public class PdfGeneratorUtil {
 			renderer.layout();
 			renderer.createPDF(os, false);
 			renderer.finishPDF();
-			System.out.println("PDF created successfully");
 			return outputFile;
 		}
 		finally {
