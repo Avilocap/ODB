@@ -180,14 +180,6 @@ public class GeneralUITest {
 	}
 
 	@Test
-	void testShowApplicationsDetailsUI() throws Exception {
-		driver.findElement(By.id("appList")).click();
-		driver.findElement(By.linkText("Lone Echo")).click();
-		Assert.assertEquals("Lone Echo", driver.findElement(By.xpath("//h1")).getText());
-
-	}
-
-	@Test
 	void testNewSponsorship2() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
