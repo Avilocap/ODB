@@ -167,7 +167,7 @@ public class ApplicationService {
 				JSONObject pageInfo = firstQualityRatings.getJSONObject("page_info");
 
 				// Cursors to get the second page:
-				String endCursor = pageInfo.getString("endCursor");
+				String endCursor = pageInfo.getString("end_cursor");
 
 				JSONArray edges = firstQualityRatings.getJSONArray("edges");
 
@@ -282,7 +282,7 @@ public class ApplicationService {
 							JSONObject reviewPageInfo = reviewFirstQualityRatings.getJSONObject("page_info");
 
 							// Cursors to get the second page:
-							String reviewEndCursor = reviewPageInfo.getString("endCursor");
+							String reviewEndCursor = reviewPageInfo.getString("end_cursor");
 							if (reviewEndCursor.equals("null")) {
 								break;
 							}

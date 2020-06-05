@@ -19,6 +19,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <sonar.projectKey>Avilocap_ODB</sonar.projectKey>
+        <sonar.organization>cimahorizons</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>8fdbd037485e8948b2a183a73349659549f3ad63</sonar.login>
+
         <!-- Web dependencies -->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
         <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
@@ -90,6 +95,8 @@
             <artifactId>selenium-support</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+
 
         <!-- Spring and Spring Boot dependencies -->
         <dependency>
