@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @Transactional
-//@TestPropertySource(locations = "classpath:application-development.properties")
+// @TestPropertySource(locations = "classpath:application-development.properties")
 public class SponsorshipControllerE2ETests {
 
 	@Autowired
@@ -54,23 +54,19 @@ public class SponsorshipControllerE2ETests {
 	@Test
 	void testAddSponsorShipSuccesInit() throws Exception {
 
-		mockMvc.perform(post("/sponsorship/new").with(csrf()).param("title", "New Sponsorship")
-				.param("attachmentUrl", "newsponsor.com"))
-				.andExpect(status().isOk())
-				.andExpect(view().name("sponsorship/creacion"));
+		mockMvc.perform(post("/sponsorship/new").with(csrf()).param("title", "New Sponsorship").param("attachmentUrl",
+				"newsponsor.com")).andExpect(status().isOk()).andExpect(view().name("sponsorship/creacion"));
 
 	}
 
 	@WithMockUser(username = "testuser")
-	@Test void testAddSponsorshipErrors() throws Exception {
-		mockMvc.perform(post("/sponsorship/new").with(csrf())
-				.param("title", "New Sponsorship"))
+	@Test
+	void testAddSponsorshipErrors() throws Exception {
+		mockMvc.perform(post("/sponsorship/new").with(csrf()).param("title", "New Sponsorship"))
 				.andExpect(model().attributeHasErrors("sponsorship"))
-				.andExpect(model().attributeHasFieldErrors("sponsorship", "attachmentUrl"))
-				.andExpect(status().isOk())
+				.andExpect(model().attributeHasFieldErrors("sponsorship", "attachmentUrl")).andExpect(status().isOk())
 				.andExpect(view().name("sponsorship/new"));
 	}
-
 
 	@WithMockUser(username = "josema")
 	@Test

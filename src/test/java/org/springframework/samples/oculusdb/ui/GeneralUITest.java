@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -40,10 +39,7 @@ public class GeneralUITest {
 	private void setUp() {
 		String url = "http://localhost:" + port;
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
-		// System.setProperty("webdriver.gecko.driver",
-		// "src/test/resources/geckodriver.exe");
-		// System.setProperty("webdriver.chrome.driver",
-		// "src/test/resources/chromedriver.exe");
+
 		driver = new FirefoxDriver();
 		// driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
@@ -80,24 +76,20 @@ public class GeneralUITest {
 		Assert.assertTrue(driver.findElement(By.linkText("Eleven Table Tennis")).isDisplayed());
 	}
 
-	// TODO: mirar en la pipelina
+	@Test
+	private void testAddToFavoritesError() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Lone Echo")).click();
+		driver.findElement(By.id("addToFav")).click();
+		Assert.assertTrue(driver.getPageSource().contains("already"));
+	}
 
-	// @Test
-	// public void testAddToFavoritesError() throws Exception {
-	// driver.findElement(By.id("appList")).click();
-	// driver.findElement(By.linkText("Lone Echo")).click();
-	// driver.findElement(By.id("addToFav")).click();
-	// Assert.assertTrue(driver.getPageSource().contains("already"));
-	// }
-
-	// TODO: Mirar en la pipeline
-
-	// @Test
-	// public void testDeleteFavorite() throws Exception {
-	// driver.findElement(By.id("favorites")).click();
-	// driver.findElement(By.linkText("Quit from list")).click();
-	// Assert.assertTrue(driver.getPageSource().contains("My favorite apps"));
-	// }
+	@Test
+	private void testDeleteFavorite() throws Exception {
+		driver.findElement(By.id("favorites")).click();
+		driver.findElement(By.linkText("Quit from list")).click();
+		Assert.assertTrue(driver.getPageSource().contains("My favorite apps"));
+	}
 
 	@Test
 	private void testAddCommentUI() {
@@ -139,7 +131,6 @@ public class GeneralUITest {
 		Assert.assertTrue(driver.getPageSource().contains("comentario de prueba"));
 	}
 
-
 	@Test
 	private void testDeleteComment() {
 		String url = "http://localhost:" + port;
@@ -155,27 +146,26 @@ public class GeneralUITest {
 		driver.get(url + "/applications/favorites");
 		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
 	}
-	// Only local connections are allowed.
-	// @Test
-	// public void getNewApplicationExists() {
-	// driver.findElement(By.id("appList")).click();
-	// driver.findElement(By.linkText("Get New")).click();
-	// driver.findElement(By.name("id")).clear();
-	// driver.findElement(By.name("id")).sendKeys("1368187813209608");
-	// driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-	// Assert.assertTrue(driver.getPageSource().contains("already"));
-	// }
 
-	// TODO: Peta en la pipeline
-	// @Test
-	// public void getNewApplication() {
-	// driver.findElement(By.id("appList")).click();
-	// driver.findElement(By.linkText("Get New")).click();
-	// driver.findElement(By.name("id")).clear();
-	// driver.findElement(By.name("id")).sendKeys("1141678862547889");
-	// driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
-	// Assert.assertTrue(driver.getPageSource().contains("app"));
-	// }
+	@Test
+	private void getNewApplicationExists() {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Get New")).click();
+		driver.findElement(By.name("id")).clear();
+		driver.findElement(By.name("id")).sendKeys("1368187813209608");
+		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+		Assert.assertTrue(driver.getPageSource().contains("already"));
+	}
+
+	@Test
+	private void getNewApplication() {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Get New")).click();
+		driver.findElement(By.name("id")).clear();
+		driver.findElement(By.name("id")).sendKeys("1141678862547889");
+		driver.findElement(By.xpath("/html/body/div/div/form/input[2]")).click();
+		Assert.assertTrue(driver.getPageSource().contains("app"));
+	}
 
 	@Test
 	private void testDownloadPDF() {
@@ -204,15 +194,15 @@ public class GeneralUITest {
 		driver.findElement(By.id("sub")).click();
 	}
 
-  @Test
+	@Test
 	private void testShowApplicationsDetailsUI() throws Exception {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		Assert.assertEquals("Lone Echo", driver.findElement(By.xpath("//h1")).getText());
-    
-  }
-  
-  @Test
+
+	}
+
+	@Test
 	public void testNewSponsorship2() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");

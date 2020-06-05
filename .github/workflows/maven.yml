@@ -48,7 +48,7 @@ jobs:
           DISPLAY: ":99"
 
       - name: Test suite execution with Maven
-        run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml
+        run: cd /home/runner/work/ODB/ODB/ && mvn -B test --file pom.xml -Dtest=!GeneralUiTest#testAddToFavoritesError+testDeleteFavorite+getNewApplicationExists+getNewApplication
         env:
           DISPLAY: ":99"
 
