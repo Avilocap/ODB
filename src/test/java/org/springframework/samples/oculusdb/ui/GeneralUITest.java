@@ -38,7 +38,7 @@ public class GeneralUITest {
 	@BeforeEach
 	void setUp() {
 		String url = "http://localhost:" + port;
-		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
