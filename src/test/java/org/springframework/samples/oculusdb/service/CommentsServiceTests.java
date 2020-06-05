@@ -28,7 +28,7 @@ public class CommentsServiceTests {
 	private ApplicationService applicationService;
 
 	@Test
-	public void testCount() {
+	private void testCount() {
 		int count = this.commentsService.commentsCount();
 		Assertions.assertTrue(count >= 1);
 	}
@@ -36,7 +36,7 @@ public class CommentsServiceTests {
 	int randomIdAppendix = 425245;
 
 	@Test
-	public void shouldAddNewCommentForApplication() {
+	private void shouldAddNewCommentForApplication() {
 
 		Application app2 = new Application();
 		Optional<Application> ap2 = this.applicationService.findApplicationById(101);
@@ -57,7 +57,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void shouldAddCommentWithAppId() {
+	private void shouldAddCommentWithAppId() {
 
 		Application app2 = new Application();
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
@@ -77,7 +77,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void AddCommentWithRandomAppId() {
+	private void AddCommentWithRandomAppId() {
 		Application app2 = new Application();
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId());
@@ -96,19 +96,19 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void shouldFindCommentByAppId() {
+	private void shouldFindCommentByAppId() {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(101);
 		Assertions.assertTrue(comments.size() >= 1);
 	}
 
 	@Test
-	public void findCommentByAppIdNegative() {
+	private void findCommentByAppIdNegative() {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(38282383);
 		Assertions.assertTrue(comments.isEmpty());
 	}
 
 	@Test
-	void FindCommentByRandomAppId() {
+	private void FindCommentByRandomAppId() {
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService
 				.findAllByAplicationId(apps.get(1).getId());
@@ -116,7 +116,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void FindCommentByRandomAppIdNegative() {
+	private void FindCommentByRandomAppIdNegative() {
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		Application app = apps.get(0);
 		Collection<Comments> comments = app.getComments();
@@ -129,7 +129,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	public void shouldAddNewCommentForApplicationNegative() {
+	private void shouldAddNewCommentForApplicationNegative() {
 		Assertions.assertThrows(NullPointerException.class, () -> {
 
 			Application app2 = new Application();
@@ -155,7 +155,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void shouldAddCommentWithAppIdNegative() {
+	private void shouldAddCommentWithAppIdNegative() {
 		Assertions.assertThrows(NullPointerException.class, () -> {
 
 			Application app2 = new Application();
@@ -178,7 +178,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void AddCommentWithRandomAppIdNegative() {
+	private void AddCommentWithRandomAppIdNegative() {
 		Application app2 = new Application();
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		Optional<Application> ap2 = this.applicationService.findApplicationById(apps.get(2).getId() + randomIdAppendix);
@@ -197,19 +197,19 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	public void shouldFindCommentById() {
+	private void shouldFindCommentById() {
 		Optional<Comments> comment = this.commentsService.findCommentById(1001);
 		Assertions.assertNotNull(comment);
 	}
 
 	@Test
-	public void shouldFindCommentByIdNegative() {
+	private void shouldFindCommentByIdNegative() {
 		Optional<Comments> comment = this.commentsService.findCommentById(100001);
 		Assertions.assertFalse(comment.isPresent());
 	}
 
 	@Test
-	void shouldByDeleteComment() {
+	private void shouldByDeleteComment() {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
 		Optional<Comments> comment = this.commentsService.findCommentById(1001);
 
@@ -224,7 +224,7 @@ public class CommentsServiceTests {
 	}
 
 	@Test
-	void shouldByDeleteCommentNegative() {
+	private void shouldByDeleteCommentNegative() {
 		Collection<Comments> comments = (Collection<Comments>) this.commentsService.findAllByAplicationId(100);
 		Optional<Comments> comment = this.commentsService.findCommentById(100000000);
 

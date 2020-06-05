@@ -18,13 +18,13 @@ public class ReviewServiceTests {
 	private ReviewService reviewService;
 
 	@Test
-	public void testCount() {
+	private void testCount() {
 		int count = this.reviewService.reviewCount();
 		Assertions.assertTrue(count >= 0);
 	}
 
 	@Test
-	public void testBasicProperties() {
+	private void testBasicProperties() {
 		Iterable<Reviews> reviews = reviewService.reviewsList();
 		Reviews review = Iterables.get(reviews, 0);
 		review.getTitle();

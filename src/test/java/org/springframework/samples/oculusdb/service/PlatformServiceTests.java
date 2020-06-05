@@ -16,7 +16,7 @@ public class PlatformServiceTests {
 	private PlatformService platformService;
 
 	@Test
-	public void testCount() {
+	private void testCount() {
 		int count = this.platformService.platformCount();
 		Assertions.assertTrue(count > 0);
 	}

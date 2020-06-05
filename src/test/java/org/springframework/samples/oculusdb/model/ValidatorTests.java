@@ -5,11 +5,13 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.samples.oculusdb.application.Comments;
 import org.springframework.samples.oculusdb.category.Category;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -92,7 +94,7 @@ class ValidatorTests {
 		user.setPassword("password");
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
-		assertThat(constraintViolations.size()).isEqualTo(0);
+		Assert.isTrue((constraintViolations.size())==(0));
 
 	}
 
@@ -107,11 +109,11 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(3);
+		Assert.isTrue((constraintViolations.size())==(3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username")
-				|| violation.getPropertyPath().toString().equals("password")
-				|| violation.getPropertyPath().toString().equals("name"));
+		Assert.isTrue(Objects.equals(violation.getPropertyPath().toString(), "username")
+				|| Objects.equals(violation.getPropertyPath().toString(), "password")
+				|| Objects.equals(violation.getPropertyPath().toString(), "name"));
 	}
 
 	@Test
@@ -124,11 +126,11 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(3);
+		Assert.isTrue((constraintViolations.size())==(3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username")
-				|| violation.getPropertyPath().toString().equals("password")
-				|| violation.getPropertyPath().toString().equals("name"));
+		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
+				|| Objects.equals(violation.getPropertyPath().toString(), "password")
+				|| Objects.equals(violation.getPropertyPath().toString(), "name")));
 	}
 
 	@Test
@@ -142,11 +144,11 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(3);
+		Assert.isTrue((constraintViolations.size())==(3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username")
-				|| violation.getPropertyPath().toString().equals("surname")
-				|| violation.getPropertyPath().toString().equals("name"));
+		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
+				|| Objects.equals(violation.getPropertyPath().toString(), "surname")
+				|| Objects.equals(violation.getPropertyPath().toString(), "name")));
 	}
 
 	@Test
@@ -159,11 +161,11 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(3);
+		Assert.isTrue((constraintViolations.size())==(3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username")
-				|| violation.getPropertyPath().toString().equals("password")
-				|| violation.getPropertyPath().toString().equals("surname"));
+		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
+				|| Objects.equals(violation.getPropertyPath().toString(), "password")
+				|| Objects.equals(violation.getPropertyPath().toString(), "surname")));
 	}
 
 	@Test
@@ -177,11 +179,11 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(3);
+		Assert.isTrue((constraintViolations.size())==(3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("username")
-				|| violation.getPropertyPath().toString().equals("password")
-				|| violation.getPropertyPath().toString().equals("email"));
+		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
+				|| Objects.equals(violation.getPropertyPath().toString(), "password")
+				|| Objects.equals(violation.getPropertyPath().toString(), "email")));
 	}
 
 	@Test
@@ -194,10 +196,10 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		assertThat(constraintViolations.size()).isEqualTo(3);
+		Assert.isTrue((constraintViolations.size())==(3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString().equals("password")
-				|| violation.getPropertyPath().toString().equals("email"));
+		Assert.isTrue((violation.getPropertyPath().toString().equals("password")
+				|| violation.getPropertyPath().toString().equals("email")));
 	}
 
 	@Test

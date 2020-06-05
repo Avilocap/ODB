@@ -27,7 +27,7 @@ public class CreditCardServiceTests {
 	int randomCreditCardNumber = (int) 4137810659147011L;
 
 	@Test
-	public void createCreditCardOk0() {
+	private void createCreditCardOk0() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(12);
@@ -40,7 +40,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void createCreditCardOk1() {
+	private void createCreditCardOk1() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(452);
 		creditCard.setExpirationMonth(4);
@@ -53,7 +53,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void createCreditCardBadYear() {
+	private void createCreditCardBadYear() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(12);
@@ -66,7 +66,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void createCreditCardBadYearPastToActual() {
+	private void createCreditCardBadYearPastToActual() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(12);
@@ -79,7 +79,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void createCreditCardBadMonth() {
+	private void createCreditCardBadMonth() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth() + 33);
@@ -92,7 +92,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void createCreditCardBadMonthCloseToActual() {
+	private void createCreditCardBadMonthCloseToActual() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth() - 1);
@@ -105,7 +105,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void createCreditCardAboutToExpire() {
+	private void createCreditCardAboutToExpire() {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCVV(123);
 		creditCard.setExpirationMonth(new Date(System.currentTimeMillis() - 100).getMonth());
@@ -118,7 +118,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardPositiveCase1() {
+	private void checkCreditCardPositiveCase1() {
 		String number = "4137810659147011";
 		int expirationYear = 2021;
 		int expirationMonth = 12;
@@ -127,7 +127,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardPositiveCase2() {
+	private void checkCreditCardPositiveCase2() {
 		String number = "8137810659147046";
 		int expirationYear = 2022;
 		int expirationMonth = 06;
@@ -136,7 +136,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardBadNumber() {
+	private void checkCreditCardBadNumber() {
 		String number = "8137810";
 		int expirationYear = 2022;
 		int expirationMonth = 06;
@@ -145,7 +145,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardEmptyNumber() {
+	private void checkCreditCardEmptyNumber() {
 		String number = "";
 		int expirationYear = 2022;
 		int expirationMonth = 06;
@@ -154,7 +154,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardNullNumber() {
+	private void checkCreditCardNullNumber() {
 		String number = null;
 		int expirationYear = 2022;
 		int expirationMonth = 06;
@@ -163,7 +163,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardBadYear() {
+	private void checkCreditCardBadYear() {
 		String number = "8137810659147046";
 		int expirationYear = 1998;
 		int expirationMonth = 06;
@@ -172,7 +172,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardBadMonth() {
+	private void checkCreditCardBadMonth() {
 		String number = "8137810659147046";
 		int expirationYear = 2022;
 		int expirationMonth = 54;
@@ -181,7 +181,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void checkCreditCardBadCvv() {
+	private void checkCreditCardBadCvv() {
 		String number = "8137810659147046";
 		int expirationYear = 2022;
 		int expirationMonth = 54;
@@ -190,7 +190,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void paymentProcessing() {
+	private void paymentProcessing() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(4);
 		String currentPrincipalName = userAux.getName();
@@ -209,7 +209,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void badPaymentProcessing0() {
+	private void badPaymentProcessing0() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(4);
 		String currentPrincipalName = userAux.getName();
@@ -229,7 +229,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void badPaymentProcessing1() {
+	private void badPaymentProcessing1() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(4);
 		String currentPrincipalName = userAux.getName();
@@ -248,7 +248,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void badPaymentProcessing2() {
+	private void badPaymentProcessing2() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(4);
 		String currentPrincipalName = userAux.getName();
@@ -268,7 +268,7 @@ public class CreditCardServiceTests {
 	}
 
 	@Test
-	public void badPaymentProcessing3() {
+	private void badPaymentProcessing3() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		User userAux = users.get(4);
 		String currentPrincipalName = userAux.getName();
