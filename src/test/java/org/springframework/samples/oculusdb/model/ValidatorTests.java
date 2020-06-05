@@ -94,7 +94,7 @@ class ValidatorTests {
 		user.setPassword("password");
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
-		Assert.isTrue((constraintViolations.size())==(0));
+		Assert.isTrue((constraintViolations.size()) == (0));
 
 	}
 
@@ -109,7 +109,7 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		Assert.isTrue((constraintViolations.size())==(3));
+		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue(Objects.equals(violation.getPropertyPath().toString(), "username")
 				|| Objects.equals(violation.getPropertyPath().toString(), "password")
@@ -126,7 +126,7 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		Assert.isTrue((constraintViolations.size())==(3));
+		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
 				|| Objects.equals(violation.getPropertyPath().toString(), "password")
@@ -144,7 +144,7 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		Assert.isTrue((constraintViolations.size())==(3));
+		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
 				|| Objects.equals(violation.getPropertyPath().toString(), "surname")
@@ -161,7 +161,7 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		Assert.isTrue((constraintViolations.size())==(3));
+		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
 				|| Objects.equals(violation.getPropertyPath().toString(), "password")
@@ -179,7 +179,7 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		Assert.isTrue((constraintViolations.size())==(3));
+		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
 				|| Objects.equals(violation.getPropertyPath().toString(), "password")
@@ -196,7 +196,7 @@ class ValidatorTests {
 		Validator validator = createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
 
-		Assert.isTrue((constraintViolations.size())==(3));
+		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((violation.getPropertyPath().toString().equals("password")
 				|| violation.getPropertyPath().toString().equals("email")));
