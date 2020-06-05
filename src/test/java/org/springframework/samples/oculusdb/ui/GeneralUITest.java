@@ -204,11 +204,19 @@ public class GeneralUITest {
 		driver.findElement(By.id("sub")).click();
 	}
 
-	@Test
+  @Test
 	private void testShowApplicationsDetailsUI() throws Exception {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		Assert.assertEquals("Lone Echo", driver.findElement(By.xpath("//h1")).getText());
+    
+  }
+  
+  @Test
+	public void testNewSponsorship2() throws Exception {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/tools");
+
 	}
 
 	@AfterEach

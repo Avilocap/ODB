@@ -72,4 +72,10 @@ public class SponsorshipControllerE2ETests {
 	}
 
 
+	@WithMockUser(username = "josema")
+	@Test
+	void testAddSponsorshipHasErrors2() throws Exception {
+		mockMvc.perform(get("/sponsorship/new")).andExpect(status().is5xxServerError());
+	}
+
 }
