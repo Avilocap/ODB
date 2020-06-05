@@ -148,7 +148,8 @@ class ValidatorTests {
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((Objects.equals(violation.getPropertyPath().toString(), "username")
 				|| Objects.equals(violation.getPropertyPath().toString(), "surname")
-				|| Objects.equals(violation.getPropertyPath().toString(), "name")));
+				|| Objects.equals(violation.getPropertyPath().toString(), "name")
+				|| Objects.equals(violation.getPropertyPath().toString(), "password")));
 	}
 
 	@Test
@@ -199,7 +200,8 @@ class ValidatorTests {
 		Assert.isTrue((constraintViolations.size()) == (3));
 		ConstraintViolation<User> violation = constraintViolations.iterator().next();
 		Assert.isTrue((violation.getPropertyPath().toString().equals("password")
-				|| violation.getPropertyPath().toString().equals("email")));
+				|| violation.getPropertyPath().toString().equals("email")
+				|| violation.getPropertyPath().toString().equals("username")));
 	}
 
 	@Test
