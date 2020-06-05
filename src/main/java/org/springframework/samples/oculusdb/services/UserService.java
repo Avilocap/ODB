@@ -31,7 +31,6 @@ public class UserService {
 		return this.userRepository.findAll();
 	}
 
-	@Transactional
 	public User userByUsername(String username) {
 		return this.userRepository.findByUsername(username);
 	}

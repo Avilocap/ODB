@@ -73,12 +73,19 @@ public class CommentsController {
 
 		Optional<Comments> p = this.commentsService.findCommentById(commentId);
 		if (p.isPresent()) {
-			Comments c = this.commentsService.findCommentById(commentId).get();
-			Application a = c.getApplication();
-			a.getComments().removeIf(x -> c.getId() == commentId);
-			this.applicationService.saveApplication(a);
-			this.commentsService.deleteComment(c);
-			return "applications/todoOk";
+			if (this.commentsService.findCommentById(commentId).isPresent()) {
+				Comments c = this.commentsService.findCommentById(commentId).get();
+				Application a = c.getApplication();
+				a.getComments().removeIf(x -> c.getId() == commentId);
+				this.applicationService.saveApplication(a);
+				this.commentsService.deleteComment(c);
+				return "applications/todoOk";
+
+			}
+			else {
+				return "erro3";
+
+			}
 		}
 		else {
 			return "erro3";

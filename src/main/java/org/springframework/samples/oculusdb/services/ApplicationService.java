@@ -439,8 +439,9 @@ public class ApplicationService {
 			if ((strLine.length() != 0)) {
 				items.add(strLine);
 			}
-		}
 
+		}
+		buffer.close();
 		return items.toArray(new String[items.size()]);
 	}
 
@@ -459,7 +460,7 @@ public class ApplicationService {
 				items.add(strLine);
 			}
 		}
-
+		buffer.close();
 		return items.toArray(new String[items.size()]);
 	}
 
