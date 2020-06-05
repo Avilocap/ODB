@@ -191,6 +191,12 @@ public class GeneralUITest {
 		driver.findElement(By.id("sub")).click();
 	}
 
+	@Test
+	public void testNewSponsorship2() throws Exception {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/tools");
+	}
+
 	@AfterEach
 	public void tearDown() throws Exception {
 		driver.quit();
