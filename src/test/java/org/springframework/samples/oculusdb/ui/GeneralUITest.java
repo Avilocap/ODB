@@ -114,6 +114,18 @@ public class GeneralUITest {
 	}
 
 	@Test
+	private void testCommentUIHasError() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Eleven Table Tennis")).click();
+		driver.findElement(By.id("addCom")).click();
+		driver.findElement(By.id("title")).click();
+		driver.findElement(By.id("title")).clear();
+		driver.findElement(By.id("title")).sendKeys("good");
+		driver.findElement(By.id("sub")).click();
+		Assert.assertEquals("New Comment", driver.findElement(By.xpath("//h2")).getText());
+	}
+
+	@Test
 	private void testAddCommentUI2() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
@@ -126,6 +138,7 @@ public class GeneralUITest {
 		driver.findElement(By.id("sub")).click();
 		Assert.assertTrue(driver.getPageSource().contains("comentario de prueba"));
 	}
+
 
 	@Test
 	private void testDeleteComment() {
@@ -191,10 +204,19 @@ public class GeneralUITest {
 		driver.findElement(By.id("sub")).click();
 	}
 
-	@Test
+  @Test
+	private void testShowApplicationsDetailsUI() throws Exception {
+		driver.findElement(By.id("appList")).click();
+		driver.findElement(By.linkText("Lone Echo")).click();
+		Assert.assertEquals("Lone Echo", driver.findElement(By.xpath("//h1")).getText());
+    
+  }
+  
+  @Test
 	public void testNewSponsorship2() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
+
 	}
 
 	@AfterEach
