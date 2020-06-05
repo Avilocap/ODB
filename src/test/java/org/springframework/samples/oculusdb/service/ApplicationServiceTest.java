@@ -32,19 +32,19 @@ public class ApplicationServiceTest {
 	private UserService userService;
 
 	@Test
-	private void testCountWithInitialData() {
+	void testCountWithInitialData() {
 		Assert.isTrue(this.applicationService.applicationCount() >= 0);
 	}
 
 	@Test
-	private void testFindAllWithInitialData() {
+	void testFindAllWithInitialData() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertNotNull(applications);
 	}
 
 	@Test
-	private void getInfoOfOneApplicationRandomID() {
+	void getInfoOfOneApplicationRandomID() {
 		// Checking the pool size of apps after not-updating them.
 		List<Application> apps = new ArrayList<>((Collection<? extends Application>) this.applicationService.findAll());
 		int sizeBefore = apps.size();
@@ -61,35 +61,35 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void getInfoOfOneApplicationNegativeWithRandomIDCase0() {
+	void getInfoOfOneApplicationNegativeWithRandomIDCase0() {
 		Assertions.assertThrows(JSONException.class, () -> {
 			this.applicationService.getInfoOfOneApplication("14718406166046");
 		});
 	}
 
 	@Test
-	private void getInfoOfOneApplicationNegativeWithRandomIDCase1() {
+	void getInfoOfOneApplicationNegativeWithRandomIDCase1() {
 		Assertions.assertThrows(JSONException.class, () -> {
 			this.applicationService.getInfoOfOneApplication("1471866046");
 		});
 	}
 
 	@Test
-	private void getInfoOfOneApplicationNegativeWithZeroID() {
+	void getInfoOfOneApplicationNegativeWithZeroID() {
 		Assertions.assertThrows(JSONException.class, () -> {
 			this.applicationService.getInfoOfOneApplication("0");
 		});
 	}
 
 	@Test
-	private void getInfoOfOneApplicationNegativeWithNegativeID() {
+	void getInfoOfOneApplicationNegativeWithNegativeID() {
 		Assertions.assertThrows(JSONException.class, () -> {
 			this.applicationService.getInfoOfOneApplication("-34542356236546");
 		});
 	}
 
 	@Test
-	private void getInfoOfOneApplicationNullId() {
+	void getInfoOfOneApplicationNullId() {
 		Assertions.assertThrows(JSONException.class, () -> {
 			this.applicationService.getInfoOfOneApplication(null);
 		});
@@ -97,7 +97,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void shouldFindAppsById() {
+	void shouldFindAppsById() {
 		Application app = new Application();
 		Optional<Application> ap2 = this.applicationService.findApplicationById(2);
 		if (ap2.isPresent()) {
@@ -108,7 +108,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void FindApplicationByRandomId() {
+	void FindApplicationByRandomId() {
 		Application app;
 		Optional<Application> ap2 = this.applicationService.findApplicationById(273);
 		if (ap2.isPresent()) {
@@ -121,21 +121,21 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void findAllApplicationsInitialData() {
+	void findAllApplicationsInitialData() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertTrue(applications.size() >= 1);
 	}
 
 	@Test
-	private void findAllApplicationsHasErrors() {
+	void findAllApplicationsHasErrors() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 		Assertions.assertNotEquals(23457, applications.size());
 	}
 
 	@Test
-	private void shouldDeleteApp() {
+	void shouldDeleteApp() {
 		List<Application> applications = new ArrayList<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 
@@ -152,7 +152,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void shouldDeleteMultipleApps() {
+	void shouldDeleteMultipleApps() {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 
 		Application app0 = apps.get(0);
@@ -169,7 +169,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void deleteApplicationRandomId() {
+	void deleteApplicationRandomId() {
 		Collection<Application> applications = new HashSet<>(
 				(Collection<? extends Application>) this.applicationService.findAll());
 
@@ -187,7 +187,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void applicationToPDF_case0_OK() throws Exception {
+	void applicationToPDF_case0_OK() throws Exception {
 		Optional<Application> app = this.applicationService.findApplicationById(100);
 		Application application = app.get();
 
@@ -208,7 +208,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void applicationToPDF_case1_OK() throws Exception {
+	void applicationToPDF_case1_OK() throws Exception {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 		Application appAux = apps.get(4);
 
@@ -235,7 +235,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void applicationToPDF_NotOK() {
+	void applicationToPDF_NotOK() {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
 			Application application = apps.get(7652);
@@ -257,7 +257,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void addToFavourites_case0() {
+	void addToFavourites_case0() {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 		Application appAux = apps.get(4);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
@@ -276,7 +276,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void addToFavourites_case1() {
+	void addToFavourites_case1() {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 		Application appAux = apps.get(2);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
@@ -295,7 +295,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void addToFavourites_addingAnAlreadyAddedFavFromCase1() {
+	void addToFavourites_addingAnAlreadyAddedFavFromCase1() {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 		Application appAux = apps.get(2);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
@@ -312,7 +312,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void addToFavourites_ofNotExistentUser() {
+	void addToFavourites_ofNotExistentUser() {
 		List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
 		Application appAux = apps.get(2);
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
@@ -331,7 +331,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void addToFavourites_ofNotExistentApp() {
+	void addToFavourites_ofNotExistentApp() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
 			List<Application> apps = new ArrayList<>((List<? extends Application>) this.applicationService.findAll());
@@ -350,7 +350,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void listingFavouriteApps() {
+	void listingFavouriteApps() {
 		User user = this.userService.userById(100);
 		String currentPrincipalName = user.getUsername();
 		List<Application> favorites = this.userService.userByUsername(currentPrincipalName).getFavorites();
@@ -358,7 +358,7 @@ public class ApplicationServiceTest {
 	}
 
 	@Test
-	private void listingFavouriteAppsOfNoExistentUser() {
+	void listingFavouriteAppsOfNoExistentUser() {
 		List<User> users = new ArrayList<>((List<? extends User>) this.userService.findAll());
 		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
 			User userAux = users.get(142344);

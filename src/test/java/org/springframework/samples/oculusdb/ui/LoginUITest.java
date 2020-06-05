@@ -36,7 +36,7 @@ public class LoginUITest {
 	private int port;
 
 	@BeforeEach
-	private void setUp() throws Exception {
+	void setUp() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
@@ -44,7 +44,7 @@ public class LoginUITest {
 	}
 
 	@Test
-	private void testLogin() throws Exception {
+	void testLogin() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/login");
 		driver.findElement(By.name("username")).clear();
@@ -56,7 +56,7 @@ public class LoginUITest {
 	}
 
 	@Test
-	private void testRegister() throws Exception {
+	void testRegister() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/registration");
 		driver.findElement(By.name("username")).clear();
@@ -87,7 +87,7 @@ public class LoginUITest {
 	}
 
 	@AfterEach
-	private void tearDown() throws Exception {
+	void tearDown() throws Exception {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

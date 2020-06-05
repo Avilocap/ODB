@@ -28,7 +28,7 @@ public class GeneralUITest {
 
 	private String baseUrl;
 
-	private final boolean acceptNextAlert = true;
+	private boolean acceptNextAlert = true;
 
 	private final StringBuffer verificationErrors = new StringBuffer();
 
@@ -36,7 +36,7 @@ public class GeneralUITest {
 	private int port;
 
 	@BeforeEach
-	private void setUp() {
+	void setUp() {
 		String url = "http://localhost:" + port;
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 
@@ -53,14 +53,14 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testListApplicationsUI() {
+	void testListApplicationsUI() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		Assert.assertTrue(driver.getPageSource().contains("Lone Echo"));
 	}
 
 	@Test
-	private void testAddToFavoritesUI() {
+	void testAddToFavoritesUI() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/102");
 		driver.findElement(By.id("addToFav")).click();
@@ -68,7 +68,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testAddToFavoritesUI2() {
+	void testAddToFavoritesUI2() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Eleven Table Tennis")).click();
 		driver.findElement(By.id("addToFav")).click();
@@ -76,7 +76,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testAddToFavoritesError() throws Exception {
+	void testAddToFavoritesError() throws Exception {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		driver.findElement(By.id("addToFav")).click();
@@ -84,14 +84,14 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testDeleteFavorite() throws Exception {
+	void testDeleteFavorite() throws Exception {
 		driver.findElement(By.id("favorites")).click();
 		driver.findElement(By.linkText("Quit from list")).click();
 		Assert.assertTrue(driver.getPageSource().contains("My favorite apps"));
 	}
 
 	@Test
-	private void testAddCommentUI() {
+	void testAddCommentUI() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.id("addCom")).click();
@@ -105,7 +105,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testCommentUIHasError() throws Exception {
+	void testCommentUIHasError() throws Exception {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Eleven Table Tennis")).click();
 		driver.findElement(By.id("addCom")).click();
@@ -117,7 +117,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testAddCommentUI2() {
+	void testAddCommentUI2() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		driver.findElement(By.id("addCom")).click();
@@ -131,7 +131,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testDeleteComment() {
+	void testDeleteComment() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/appInfo/100");
 		driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/table/tbody/tr[1]/td[3]/a")).click();
@@ -140,14 +140,14 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testFavoritesList() {
+	void testFavoritesList() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/applications/favorites");
 		Assert.assertTrue(driver.findElement(By.linkText("Lone Echo")).isDisplayed());
 	}
 
 	@Test
-	private void getNewApplicationExists() {
+	void getNewApplicationExists() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Get New")).click();
 		driver.findElement(By.name("id")).clear();
@@ -157,7 +157,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void getNewApplication() {
+	void getNewApplication() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Get New")).click();
 		driver.findElement(By.name("id")).clear();
@@ -167,14 +167,14 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testDownloadPDF() {
+	void testDownloadPDF() {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		driver.findElement(By.linkText("Download info on PDF")).click();
 	}
 
 	@Test
-	private void testListUsers() {
+	void testListUsers() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
 		driver.findElement(By.linkText("User List")).click();
@@ -182,7 +182,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testNewSponsorship() {
+	void testNewSponsorship() {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
 		driver.findElement(By.linkText("New Sponsorhips")).click();
@@ -194,7 +194,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testShowApplicationsDetailsUI() throws Exception {
+	void testShowApplicationsDetailsUI() throws Exception {
 		driver.findElement(By.id("appList")).click();
 		driver.findElement(By.linkText("Lone Echo")).click();
 		Assert.assertEquals("Lone Echo", driver.findElement(By.xpath("//h1")).getText());
@@ -202,14 +202,14 @@ public class GeneralUITest {
 	}
 
 	@Test
-	private void testNewSponsorship2() throws Exception {
+	void testNewSponsorship2() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
 
 	}
 
 	@AfterEach
-	private void tearDown() {
+	void tearDown() {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

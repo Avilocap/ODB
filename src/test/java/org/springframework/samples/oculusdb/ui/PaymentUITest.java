@@ -36,7 +36,7 @@ public class PaymentUITest {
 	private int port;
 
 	@BeforeEach
-	private void setUp() throws Exception {
+	void setUp() throws Exception {
 		String url = "http://localhost:" + port;
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 
@@ -54,14 +54,14 @@ public class PaymentUITest {
 
 	@Test
 	@Order(3)
-	private void testPaymentUI_OK() {
+	void testPaymentUI_OK() {
 		driver.findElement(By.id("paym")).click();
 		Assert.assertTrue(driver.findElement(By.id("eveok")).isDisplayed());
 	}
 
 	@Test
 	@Order(2)
-	private void testPaymentUI_Already() {
+	void testPaymentUI_Already() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
 		driver.findElement(By.name("number")).sendKeys("4567887754321234");
@@ -77,7 +77,7 @@ public class PaymentUITest {
 
 	@Test
 	@Order(1)
-	private void testPaymentUI_bad() {
+	void testPaymentUI_bad() {
 		driver.findElement(By.id("paym")).click();
 		driver.findElement(By.name("number")).clear();
 		driver.findElement(By.name("number")).sendKeys("11232431343431431433");
@@ -92,7 +92,7 @@ public class PaymentUITest {
 	}
 
 	@AfterEach
-	private void tearDown() throws Exception {
+	void tearDown() throws Exception {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {
