@@ -188,7 +188,7 @@ Key Jobbing Features:
 
 --Administrator
 
-INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, username) VALUES (1, 'pedro_admin@gmail.com', 'Pedro', '$2a$10$J1Av8xN3HaF8KZxiYvmOXels/.CmzkntgCizGreqoRqvNNTJukiiu', 'Rodríguez', 'administrator');
+INSERT IGNORE INTO oculusdb.administrator (id, email, name, password, surname, username,banner) VALUES (1, 'pedro_admin@gmail.com', 'Pedro', '$2a$10$J1Av8xN3HaF8KZxiYvmOXels/.CmzkntgCizGreqoRqvNNTJukiiu', 'Rodríguez', 'administrator','https://60a99bedadae98078522-a9b6cded92292ef3bace063619038eb1.ssl.cf2.rackcdn.com/images_BrandPromos_Oculus_RiftSVRLandPgBanner.jpg');
 INSERT IGNORE INTO administrator_roles(administrator_id,roles_id) VALUES (1,1);
 --Comments
 

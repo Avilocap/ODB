@@ -38,7 +38,7 @@ public class GeneralUITest {
 	@BeforeEach
 	void setUp() {
 		String url = "http://localhost:" + port;
-		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\geckodriver.exe");
 
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.google.com/";
@@ -191,6 +191,27 @@ public class GeneralUITest {
 		driver.findElement(By.id("attachmentUrl")).click();
 		driver.findElement(By.id("attachmentUrl")).sendKeys("A new sponsorship");
 		driver.findElement(By.id("sub")).click();
+	}
+
+	@Test
+	void testNewBanner() {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/tools");
+		driver.findElement(By.linkText("Change Banner")).click();
+		driver.findElement(By.id("id")).click();
+		driver.findElement(By.id("id")).sendKeys("https://newBanner.com");
+		driver.findElement(By.id("sub")).click();
+	}
+
+	@Test
+	void testNewBannerEmpty() {
+		String url = "http://localhost:" + port;
+		driver.get(url + "/tools");
+		driver.findElement(By.linkText("Change Banner")).click();
+		driver.findElement(By.id("id")).click();
+		driver.findElement(By.id("id")).clear();
+		driver.findElement(By.id("sub")).click();
+		Assert.assertTrue(driver.getPageSource().contains("empty"));
 	}
 
 	@Test

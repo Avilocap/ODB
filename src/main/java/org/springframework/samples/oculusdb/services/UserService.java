@@ -2,8 +2,10 @@
 package org.springframework.samples.oculusdb.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.oculusdb.model.Administrator;
 import org.springframework.samples.oculusdb.model.Role;
 import org.springframework.samples.oculusdb.model.User;
+import org.springframework.samples.oculusdb.repositories.AdministratorRepository;
 import org.springframework.samples.oculusdb.repositories.RoleRepository;
 import org.springframework.samples.oculusdb.repositories.UserRepository;
 import org.springframework.samples.oculusdb.sponsor.Sponsorship;
@@ -18,6 +20,9 @@ public class UserService {
 
 	@Autowired
 	private RoleRepository roleRepository;
+
+	@Autowired
+	private AdministratorRepository administratorRepository;
 
 	String exceptionMessage = "The user already has this role";
 
@@ -51,6 +56,20 @@ public class UserService {
 
 	public List<Sponsorship> sponsorshipsOfUser(User user) {
 		return userRepository.sponoshorShipOfUser(user);
+	}
+
+	public Administrator getMainAdministrator() {
+		return administratorRepository.mainAdmin("Pedro");
+	}
+
+	public String getMainBanner() {
+		return administratorRepository.mainAdmin("Pedro").getBannerURL();
+	}
+
+	public void changeBanner(String bannerURL) {
+		Administrator mainAdmin = this.getMainAdministrator();
+		mainAdmin.setBannerURL(bannerURL);
+		administratorRepository.save(mainAdmin);
 	}
 
 	public void setSponsorRole(String username) {

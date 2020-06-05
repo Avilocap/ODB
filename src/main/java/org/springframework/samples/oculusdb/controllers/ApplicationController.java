@@ -88,6 +88,20 @@ public class ApplicationController {
 
 	}
 
+	@GetMapping("/loadGetBanner")
+	public String loadBannerGet() {
+		Authentication authentication2 = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication2.getName();
+		User user = this.userService.userByUsername(currentPrincipalName);
+		if (userService.isAdmin(user)) {
+			return "applications/getBanner";
+		}
+		else {
+			return "security/login";
+		}
+
+	}
+
 	@GetMapping("/appInfo/{appId}")
 	public ModelAndView showOwner2(@PathVariable("appId") int appId) {
 		Authentication authentication3 = SecurityContextHolder.getContext().getAuthentication();
@@ -157,6 +171,17 @@ public class ApplicationController {
 		}
 
 		return vista;
+	}
+
+	@RequestMapping("/getBanner")
+	public String getBanner(@RequestParam String id) throws IOException, JSONException {
+		if (id.isEmpty()) {
+			String errorView = "users/bannerChangedError";
+			return errorView;
+		}
+		userService.changeBanner(id);
+		String view = "users/bannerChanged";
+		return view;
 	}
 
 	@GetMapping("appInfo/edit")

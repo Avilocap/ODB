@@ -190,4 +190,10 @@ public class UserServiceTests {
 		});
 	}
 
+	@Test
+	public void changeBannerTest() {
+		userService.changeBanner("Https://newBanner.com");
+		Assertions.assertTrue(userService.getMainBanner().equals("Https://newBanner.com"));
+	}
+
 }

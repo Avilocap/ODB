@@ -17,8 +17,10 @@
 package org.springframework.samples.oculusdb.system;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.oculusdb.model.User;
 import org.springframework.samples.oculusdb.services.ApplicationService;
 import org.springframework.samples.oculusdb.model.Application;
+import org.springframework.samples.oculusdb.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +31,15 @@ public class WelcomeController {
 	@Autowired
 	private ApplicationService applicationService;
 
+	@Autowired
+	private UserService userService;
+
 	@GetMapping("/")
 	public String welcome(final ModelMap modelMap) {
 		Iterable<Application> applications = applicationService.findAll();
+		String banner = userService.getMainBanner();
 		modelMap.addAttribute("applications", applications);
+		modelMap.addAttribute("banner", banner);
 		return "welcome";
 	}
 
