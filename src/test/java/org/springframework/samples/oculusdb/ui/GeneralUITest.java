@@ -41,7 +41,6 @@ public class GeneralUITest {
 		System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 
 		driver = new FirefoxDriver();
-		// driver = new ChromeDriver();
 		baseUrl = "https://www.google.com/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(url + "/login");
@@ -203,7 +202,7 @@ public class GeneralUITest {
 	}
 
 	@Test
-	public void testNewSponsorship2() throws Exception {
+	private void testNewSponsorship2() throws Exception {
 		String url = "http://localhost:" + port;
 		driver.get(url + "/tools");
 
